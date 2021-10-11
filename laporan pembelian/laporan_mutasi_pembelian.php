@@ -14,15 +14,31 @@
 
 </head>
 <style>
+    .row{
+        margin-left: 5%;
+        margin-right: 5%;
+    }
     .box-header:hover{
         background-color: blue;
         color: white;
         cursor: pointer;
     }
-    table, th, td {
-        border: 1px solid black;
+    table{
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+    th{
         background-color: white;
-        padding: 5px;
+    }
+    td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+    
+    tr:nth-child(even) {
+        background-color: #dddddd;
     }
 </style>
 <body class="hold-transition skin-blue sidebar-mini">
@@ -40,29 +56,23 @@
                     <h1>Laporan mutasi pembelian</h1>
                 </div>
             </center>
-            <div class="row">
+            <div>
                 <center>
-                    <div class="row" style="padding-left: 2%; padding-right: 2%;">
-                        <div class="flexBox" style="
-                            display: flex;
-                            flex-flow: row wrap;
-                            justify-content: center;">
+                    <div>
+                        <div class="flexBox" >
                             <?php include '../nav_header_laporan.php'?>
                         </div>
                     </div>
                 </center>
             </div>
-            <div class="row" style="padding-left: 2%;">
+            <div class="row" >
                 <div class="col-md-2">
                     <button>Buat Laporan</button>
                 </div>
             </div>
-            <div class="row" style="margin-top: 2%; padding-left: 2%; padding-right: 2%;">
-                <div class="flexBox" style="
-                        display: flex;
-                        flex-flow: row wrap;
-                        justify-content: center;">
-                        <div class="col-md-5">
+            <div class="">
+                <div class="flexBox" style="">
+                        <div class="col-md-6">
                             <h3>Header pembelian</h3>
                             <table>
                                 <tr>
@@ -81,12 +91,8 @@
                                 </tr>
                             </table>
                         </div>
-
-                        <div class="col-md-2">
-                            
-                        </div>
                     
-                        <div class="col-md-5">
+                        <div class="col-md-6">
                             <h3>Detail pembelian</h3>
                             <table>
                                 <tr>

@@ -29,7 +29,7 @@
                 </ul>
             </li>
             <li>
-                <a href="../home laporan/home_laporan.php">
+                <a href="../laporan pembelian/laporan_per_supplier.php">
                     <i class="fa fa-files-o"></i> <span>Laporan</span>
                 </a>
             </li>

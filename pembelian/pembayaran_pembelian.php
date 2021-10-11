@@ -17,10 +17,22 @@
     .row{
         margin-left: 5%;
     }
-    table, th, td {
-        border: 1px solid black;
+    table{
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+    th{
         background-color: white;
-        padding: 5px;
+    }
+    td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+    
+    tr:nth-child(even) {
+        background-color: #dddddd;
     }
 </style>
 <body class="hold-transition skin-blue sidebar-mini">
@@ -43,87 +55,73 @@
             <div class="row">
                 <div class="col-md-5">
                     <div class="row">
-                        id Pembelian: <span>HBL0001</span>
-                    </div>
-                    <div class="row">
-                        tanggal: <span>19/9/2021</span>
-                    </div>
-                    <div class="row">
-                        nama supplier: <span>supplier 1</span>
-                    </div>
-                    <div class="row">
-                        status: <span style="color: red;">belum terbayar</span>
-                    </div>
-                    <div class="row">
-                        <h4>detail Pembelian</h4>
-                    </div>
-
-                    <div class="row">
-                        <table>
-                            <tr>
-                                <th>id transaksi</th>
-                                <th>id header</th>
-                                <th>nama pembelian</th>
-                                <th>harga satuan</th>
-                                <th>jumlah</th>
-                                <th>sub total</th>
-                            </tr>
-                            <tr>
-                                <th>DBL0001</th>
-                                <th>HBL0001</th>
-                                <th>bahan 1</th>
-                                <th>200</th>
-                                <th>4</th>
-                                <th>800</th>
-                            </tr>
-                            <tr>
-                                <th>DBL0002</th>
-                                <th>HBL0001</th>
-                                <th>bahan 2</th>
-                                <th>300</th>
-                                <th>3</th>
-                                <th>900</th>
-                            </tr>
-                        </table>
-                        
-                    </div>
-                    <br>
-                    <div class="row">
-                        <button><a href="pembayaran_pembelian_sudah.php">print nota</a></button>
-                        <button>bayar</button>
+                        <h4>id Pembelian: <span>HBL0001</span></h4>
+                        <h4>tanggal: <span>19/9/2021</span></h4>
+                        <h4>nama supplier: <span>supplier 1</span></h4>
+                        <h4>status: <span style="color: red;">belum terbayar</span></h4>
+                        <h4>total: <span>1600</span></h4>
+                        <div class="row">
+                            <button><a href="pembayaran_pembelian_sudah.php">print nota</a></button>
+                        </div>
                     </div>
                 </div>
                 
-                <div class="col-md-7">
+                <div class="col-md-6">
                     <div class="row">
                         <h4>form pembayaran</h4>
-                    </div>
-                    <div class="row">
-                        tanggal pembayaran: <input type="date" name="" id="">
-                    </div>
-                    <div class="row">
-                        jumlah pembayaran: <input type="text" name="" id="">
-                    </div>
-                    <div class="row">
-                        note(optional): <input type="text" name="" id="">
-                    </div>
-                    <div class="row">
-                        metode Pembayaran
-                        <select name="" id="">
+                        <br>
+                        <input type="text" name = "no" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="tanggal pembayaran">
+                        <br>
+                        tanggal pembayaran
+                        <input type="date" name = "no" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="jumlah pembayaran">
+                        <br>
+                        <input type="text" name = "no" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="note(optional)">
+                        <br>
+                        <select name = "no" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" >
                             <option value="">transfer</option>
                             <option value="">cash</option>
                             <option value="">e-wallet</option>
                         </select>
+                        <br>
+                        <button>bayar</button>
                     </div>
                     <br>
                 </div>
             </div>
-            
+            <div class="row">
+                <h3>detail Pembelian</h3>
+                </div>
+
+                <div class="row">
+                    <table>
+                        <tr>
+                            <th>id transaksi</th>
+                            <th>id header</th>
+                            <th>nama pembelian</th>
+                            <th>harga satuan</th>
+                            <th>jumlah</th>
+                            <th>sub total</th>
+                        </tr>
+                        <tr>
+                            <th>DBL0001</th>
+                            <th>HBL0001</th>
+                            <th>bahan 1</th>
+                            <th>200</th>
+                            <th>4</th>
+                            <th>800</th>
+                        </tr>
+                        <tr>
+                            <th>DBL0002</th>
+                            <th>HBL0001</th>
+                            <th>bahan 2</th>
+                            <th>300</th>
+                            <th>3</th>
+                            <th>900</th>
+                        </tr>
+                    </table>
+                </div>
+            </div>
         </div>
-
-        <footer class="main-footer">
-
-        </footer>
         <div class="control-sidebar-bg"></div>
     </div>
 

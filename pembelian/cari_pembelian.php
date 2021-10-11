@@ -22,10 +22,22 @@
         color: white;
         cursor: pointer;
     }
-    table, th, td {
-        border: 1px solid black;
+    table{
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+    th{
         background-color: white;
-        padding: 5px;
+    }
+    td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+    
+    tr:nth-child(even) {
+        background-color: #dddddd;
     }
 </style>
 <body class="hold-transition skin-blue sidebar-mini">
@@ -42,7 +54,7 @@
                 <h3>Daftar Pembelian</h3>
             </div>
             <div class="row">
-                <button><a href="tambah_pembelian.php">Tambah Pembelian</a></button>
+                <button class="btn btn-info pull-left"><a style="color: white" href="tambah_pembelian.php">Tambah Pembelian</a></button>
             </div>
             <div class="row">
                 <h4>Pencarian</h4>
@@ -53,120 +65,63 @@
                         display: flex;
                         flex-flow: row wrap;
                         justify-content: center;">
-                        <div class="col-md-5">
+                        <div class="col-md-6">
                             <form action="">
+                                <h4>pencarian header</h4>
+                                <input type="text" name = "no" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="Id Header">
+                                <br>
+                                <input type="text" name = "no" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="nama supplier">                        
+                                <br>
+                                tanggal start: 
+                                <input type="date" name = "no" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="tanggal start">
+                                <br>
+                                tanggal start: 
+                                <input type="date" name = "no" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="tanggal end">                                
+                                <br>
+                                <input type="text" name = "no" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="total start">                        
+                                <br>
+                                <input type="text" name = "no" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="total end">
+                                <br>                                
+                                
+                                <select name = "no" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;">
+                                    <option value="" style="color: green;">sudah terbayar</option>
+                                    <option value="" style="color: red;">belum terbayar</option>
+                                </select>
+                                <br>
                                 <div class="row" style="margin-left: 0%;">
-                                    id header: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                                    <input type="text" name="" id="">
-                                </div>
-                                <div class="row" style="margin-left: 0%;">
-                                    nama supplier: 
-                                    <input type="text" name="" id="">
-                                </div>
-                                <div class="row" style="margin-left: 0%;">
-                                    tanggal start: &nbsp&nbsp
-                                    <input type="date" name="" id="">
-                                </div>
-                                <div class="row" style="margin-left: 0%;">
-                                    tanggal end: &nbsp&nbsp&nbsp
-                                    <input type="date" name="" id="">
-                                </div>
-                                <div class="row" style="margin-left: 0%;">
-                                    total start: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                                    <input type="text" name="" id="">
-                                </div>
-                                <div class="row" style="margin-left: 0%;">
-                                    total end: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                                    <input type="text" name="" id="">
-                                </div>
-                                <div class="row" style="margin-left: 0%;">
-                                    status: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                                    <select name="" id="">
-                                        <option value="" style="color: green;">sudah terbayar</option>
-                                        <option value="" style="color: red;">belum terbayar</option>
-                                    </select>
-                                </div>
-                                <div class="row" style="margin-left: 0%;">
-                                    <input type="submit" value="cari">
-                                    <button>clear</button>
+                                    <input type="submit" class="btn btn-info pull-left" value = "Cari" style="">
+                                    <button class="btn btn-info pull-left" style="margin-left: 1%;">clear</button>
                                 </div>
                             </form>
-                            
-
-                            <h3>Header pembelian</h3>
-                            <table>
-                                <tr>
-                                    <th>id transaksi</th>
-                                    <th>tanggal</th>
-                                    <th>nama supplier</th>
-                                    <th>total</th>
-                                    <th>status</th>
-                                    <th>action</th>
-                                </tr>
-                                <tr>
-                                    <th>HBL0001</th>
-                                    <th>19/9/2021</th>
-                                    <th>supplier 1</th>
-                                    <th>2800</th>
-                                    <th>sudah terbayar</th>
-                                    <th>
-                                        <center>
-                                            <button><a href="tambah_pembayaran.php">update</a></button><br>
-                                            <button><a href="#">hapus</a></button><br>
-                                            <button><a href="pembayaran_pembelian.php">bayar</a></button>
-                                        </center>
-                                    </th>
-                                </tr>
-                            </table>
                         </div>
-                        <div class="col-md-1"></div>
                         <div class="col-md-6" style="padding-right: 5%;">
                             <form action="">
+                                <h4>pencarian detail</h4>
+                                <input type="text" name = "no" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="Id detail">
+                                <br>
+                                <input type="text" name = "no" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="id header">                        
+                                <br>
+                                <input type="text" name = "no" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="nama pembelian">
+                                <br>
+                                <input type="text" name = "no" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="harga satuan start">                                
+                                <br>
+                                <input type="text" name = "no" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="harga satuan end">                        
+                                <br>
+                                <input type="text" name = "no" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="jumlah start">
+                                <br>    
+                                <input type="text" name = "no" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="jumlah end">
+                                <br>
+                                <input type="text" name = "no" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="subtotal start">                        
+                                <br>
+                                <input type="text" name = "no" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="subtotal end">
+                                <br> 
+                                
                                 <div class="row" style="margin-left: 0%;">
-                                    id detail: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                                    <input type="text" name="" id="">
-                                </div>
-                                <div class="row" style="margin-left: 0%;">
-                                    id header: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                                    <input type="text" name="" id="">
-                                </div>
-                                <div class="row" style="margin-left: 0%;">
-                                    nama pembelian: &nbsp&nbsp
-                                    <input type="text" name="" id="">
-                                </div>
-                                <div class="row" style="margin-left: 0%;">
-                                    harga satuan start: 
-                                    <input type="text" name="" id="">
-                                </div>
-                                <div class="row" style="margin-left: 0%;">
-                                    harga satuan end: &nbsp
-                                    <input type="text" name="" id="">
-                                </div>
-                                <div class="row" style="margin-left: 0%;">
-                                    jumlah start: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                                    <input type="text" name="" id="">
-                                </div>
-                                <div class="row" style="margin-left: 0%;">
-                                    jumlah end: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                                    <input type="text" name="" id="">
-                                </div>
-                                <div class="row" style="margin-left: 0%;">
-                                    subtotal start: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                                    <input type="text" name="" id="">
-                                </div>
-                                <div class="row" style="margin-left: 0%;">
-                                    subtotal end: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                                    <input type="text" name="" id="">
-                                </div>
-                                <div class="row" style="margin-left: 0%;">
-                                    <input type="submit" value="cari">
-                                    <button>clear</button>
+                                <input type="submit" class="btn btn-info pull-left" value = "Cari" style="">
+                                    <button class="btn btn-info pull-left" style="margin-left: 1%;">clear</button>
                                 </div>
                             </form>
-
-                            
-                            
-
+<!-- 
                             <h3>Detail pembelian</h3>
                             <table>
                                 <tr>
@@ -193,9 +148,35 @@
                                     <th>3</th>
                                     <th>900</th>
                                 </tr>
-                            </table>
+                            </table> -->
                         </div>
                     </div>
+                    <h3>Header pembelian</h3>
+                        <table>
+                            <tr>
+                                <th>id transaksi</th>
+                                <th>tanggal</th>
+                                <th>nama supplier</th>
+                                <th>total</th>
+                                <th>status</th>
+                                <th>action</th>
+                            </tr>
+                            <tr>
+                                <th>HBL0001</th>
+                                <th>19/9/2021</th>
+                                <th>supplier 1</th>
+                                <th>2800</th>
+                                <th>sudah terbayar</th>
+                                <th>
+                                    <center>
+                                        <button class="btn btn-info pull-left"><a style="color: white" href="tambah_pembelian.php">update</a></button>
+                                        <button class="btn btn-info pull-left" style="margin-left: 1%;"><a style="color: white"href="#">hapus</a></button>
+                                        <button class="btn btn-info pull-left" style="margin-left: 1%;"><a style="color: white" href="pembayaran_pembelian.php">bayar</a></button>
+                                        <button class="btn btn-info pull-left" style="margin-left: 1%;">detail</button>
+                                    </center>
+                                </th>
+                            </tr>
+                        </table>
                 </div>
             </div>
         <footer class="main-footer">

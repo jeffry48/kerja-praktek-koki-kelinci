@@ -36,7 +36,7 @@
                     </center>
                 </div>
 
-                <div class="row">
+                <!-- <div class="row">
                     <center>
                         <div class="row">
                             <div class="flexBox" style="
@@ -100,7 +100,7 @@
                           </div>
 
                     </center>
-                </div>
+                </div> -->
         </div>
         <footer class="main-footer">
 

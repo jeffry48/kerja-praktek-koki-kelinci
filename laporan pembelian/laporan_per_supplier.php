@@ -14,15 +14,31 @@
 
 </head>
 <style>
+    .row{
+        margin-left: 5%;
+        margin-right: 5%;
+    }
     .box-header:hover{
         background-color: blue;
         color: white;
         cursor: pointer;
     }
-    table, th, td {
-        border: 1px solid black;
+    table{
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+    th{
         background-color: white;
-        padding: 5px;
+    }
+    td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+    
+    tr:nth-child(even) {
+        background-color: #dddddd;
     }
 </style>
 <body class="hold-transition skin-blue sidebar-mini">
@@ -40,43 +56,37 @@
                     <h1>Laporan per supplier</h1>
                 </div>
             </center>
-            <div class="row">
+            <div>
                 <center>
-                    <div class="row" style="padding-left: 2%; padding-right: 2%;">
-                        <div class="flexBox" style="
-                            display: flex;
-                            flex-flow: row wrap;
-                            justify-content: center;">
+                    <div>
+                        <div class="flexBox" >
                             <?php include '../nav_header_laporan.php'?>
                         </div>
                     </div>
                 </center>
             </div>
             <form action="">
-                <div class="row" style="padding-left: 2%;">
-                    nama supplier
-                    <input type="text" name="" id="">
-                </div>
-                <div class="row" style="padding-left: 2%;">
+                <div class="row" style="">
+                    <input type="text" name = "no" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="nama supplier">
+                    <br>
                     tanggal start: 
-                    <input type="date" name="" id="">
-                </div>
-                <div class="row" style="padding-left: 2%;">
+                    <input type="date" name = "no" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;">
+                    <br>
                     tanggal end: 
-                    <input type="date" name="" id="">
+                    <input type="date" name = "no" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;">
                 </div>
 
                 <br>
-                <div class="row" style="padding-left: 2%;">
-                    <input type="submit" value="buat laporan">
+                <div class="row" style="">
+                    <input type="submit" value="buat laporan" class="btn btn-info pull-left" >
                 </div>
             </form>
 
-            <div class="row" style="padding-left: 2%;">
+            <div class="row">
                 <h4>id supplier: <span>SUP00000000</span></h4>
             </div>
 
-            <div class="row" style="margin-top: 2%; padding-left: 2%; padding-right: 5%;">
+            <div class="row">
                 <table>
                     <tr>
                         <th>id transaksi</th>
@@ -101,7 +111,7 @@
                     </tr>
                 </table>
             </div>
-            <div class="row" style="padding-left: 3%;">
+            <div class="row">
                 <h4>total: <span>0000000000</span></h4>
             </div>
         <div class="control-sidebar-bg"></div>

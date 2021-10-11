@@ -16,11 +16,23 @@
 <style>
     .row{
         margin-left: 5%;
+        margin-right: 5%;
     }
-    table, th, td {
-        border: 1px solid black;
+    table{
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+    th{
         background-color: white;
-        padding: 5px;
+    }
+    td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+    tr:nth-child(even) {
+        background-color: #dddddd;
     }
 </style>
 <body class="hold-transition skin-blue sidebar-mini">
@@ -43,58 +55,19 @@
             <div class="row">
                 <div class="col-md-5">
                     <div class="row">
-                        id penjualan: <span>HJL0001</span>
+                        <h4>id penjualan: <span>HJL0001</span></h4>
+                        <h4>tanggal penjualan: <span>19/9/2021</span></h4>
+                        <h4>nama konsumen: <span>konsumen 1</span></h4>
+                        <h4>status : <span style="color: red;">belum terbayar</span></h4>
+                        <h4>total: <span>100000</span></h4>
                     </div>
                     <div class="row">
-                        tanggal penjualan: <span>19/9/2021</span>
-                    </div>
-                    <div class="row">
-                        nama konsumen: <span>konsumen 1</span>
-                    </div>
-                    <div class="row">
-                        status : <span style="color: red;">belum terbayar</span>
-                    </div>
-
-                    <div class="row">
-                        <h3>Detail penjualan</h3>
-                        <table>
-                            <tr>
-                                <th>id transaksi</th>
-                                <th>nama pesanan</th>
-                                <th>kategori</th>
-                                <th>harga satuan</th>
-                                <th>jumlah</th>
-                                <th>subtotal</th>
-                            </tr>
-                            <tr>
-                                <th>DJL0001</th>
-                                <th>makanan 1</th>
-                                <th>makanan</th>
-                                <th>2000</th>
-                                <th>4</th>
-                                <th>8000</th>
-                            </tr>
-                            <tr>
-                                <th>DJL0002</th>
-                                <th>makanan 2</th>
-                                <th>makanan</th>
-                                <th>3000</th>
-                                <th>4</th>
-                                <th>12000</th>
-                            </tr>
-                        </table>
-                    </div>
-                    
-                    <br>
-                    <div class="row">
-                        total: <span>100000</span>
+                        <button><a href="pembayaran_penjualan_sudah.php">print nota</a></button>
                     </div>
                 </div>
                 <div class="col-md-7">
-                    <div class="row">
                         <h4>form pembayaran</h4>
-                    </div>
-                    <div class="row">
+                    <!-- <div class="row">
                         tanggal pembayaran: <input type="date" name="" id="">
                     </div>
                     <div class="row">
@@ -115,11 +88,53 @@
                     <div class="row">
                         <button><a href="pembayaran_penjualan_sudah.php">print nota</a></button>
                         <button>bayar</button>
-                    </div>
+                    </div> -->
+                        tanggal pembayaran
+                        <input type="date" name = "no" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="tanggal pembayaran">
+                        <br>
+                        <input type="text" name = "no" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="jumlah pembayaran">
+                        <br>
+                        <input type="text" name = "no" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="note(optional)">
+                        <br>
+                        metode pembayaran
+                        <select name = "no" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" >
+                            <option value="">transfer</option>
+                            <option value="">cash</option>
+                            <option value="">e-wallet</option>
+                        </select>
+                        <br>
+                        <button>bayar</button>
                 </div>
             </div>
-            
-            
+            <div class="row">
+                <h3>Detail penjualan</h3>
+                <table>
+                    <tr>
+                        <th>id transaksi</th>
+                        <th>nama pesanan</th>
+                        <th>kategori</th>
+                        <th>harga satuan</th>
+                        <th>jumlah</th>
+                        <th>subtotal</th>
+                    </tr>
+                    <tr>
+                        <th>DJL0001</th>
+                        <th>makanan 1</th>
+                        <th>makanan</th>
+                        <th>2000</th>
+                        <th>4</th>
+                        <th>8000</th>
+                    </tr>
+                    <tr>
+                        <th>DJL0002</th>
+                        <th>makanan 2</th>
+                        <th>makanan</th>
+                        <th>3000</th>
+                        <th>4</th>
+                        <th>12000</th>
+                    </tr>
+                </table>
+            </div>
         </div>
 
         <footer class="main-footer">

@@ -16,11 +16,23 @@
 <style>
     .row{
         margin-left: 5%;
+        margin-right: 5%;
     }
-    table, th, td {
-        border: 1px solid black;
+    table{
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+    th{
         background-color: white;
-        padding: 5px;
+    }
+    td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+    tr:nth-child(even) {
+        background-color: #dddddd;
     }
 </style>
 <body class="hold-transition skin-blue sidebar-mini">
@@ -40,30 +52,22 @@
                 </div>
             </div>
             <br>
-            <div class="col-md-5">
                 <div class="row">
-                    id header: <span>HJL0001</span>
-                </div>
-                <div class="row">
-                    nama konsumen: 
-                    <input type="text" name="" id="">
-                </div>
-                <div class="row">
-                    tanggal: 
-                    <input type="date" name="" id="">
-                </div>
-                <div class="row">
-                    total: <span>10000000</span>
-                </div>
-                <div class="row">
+                    <h4>id header: <span>HJL0001</span></h4>
+                    <input type="text" name = "no" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="nama konsumen">
+                    <br>
+                    tanggal penjualan: 
+                    <input type="date" name = "no" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="nama supplier">
+                    <br>
+                    <h4>total: <span>10000000</span></h4>
+                    <br>
+
+
                     <h3>Detail</h3>
-                </div>
-                <div class="row">
-                    id detail: <span>DJL0006</span>
-                </div>
-                <div class="row">
+                    <h4>id detail: <span>DJL0006</span></h4>
+                    <br>
                     nama pesanan: 
-                    <select name="" id="">
+                    <select name = "no" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" >
                         <option value="">makanan 1</option>
                         <option value="">makanan 2</option>
                         <option value="">makanan 3</option>
@@ -71,20 +75,13 @@
                         <option value="">minuman 2</option>
                         <option value="">minuman 3</option>
                     </select>
-                </div>
-                <div class="row">
-                    kategori: <span>makanan</span>
-                </div>
-                <div class="row">
-                    harga satuan: <span>2000</span>
-                </div>
-                <div class="row">
-                    jumlah: <input type="text" name="" id="">
-                </div>
-                <div class="row">
-                    subtotal: <span>8000</span>
-                </div>
-                <div class="row">
+                    <br>
+                    <h4>kategori: <span>makanan</span></h4>
+                    <h4>harga satuan: <span>2000</span></h4>
+                    <br>
+                    <input name = "no" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="jumlah";>
+                    <br>
+                    <h4>subtotal: <span>8000</span></h4>
                     <button>tambah detail penjualan</button>
                 </div>
                 <br>
@@ -94,8 +91,6 @@
                 <div class="row">
                     <button>tambah penjualan</button>
                 </div>
-            </div>
-            <div class="col-md-7">
                 <div class="row">
                     <table>
                         <tr>
@@ -124,7 +119,6 @@
                         </tr>
                     </table>
                 </div>
-            </div>
         </div>
 
         <footer class="main-footer">
