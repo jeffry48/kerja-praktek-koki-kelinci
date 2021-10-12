@@ -127,33 +127,7 @@
                                 </div>
                             </form>
 
-                            <!-- <h3>Detail Penjualan</h3>
-                            <table>
-                                <tr>
-                                    <th>id transaksi</th>
-                                    <th>id header</th>
-                                    <th>nama pembelian</th>
-                                    <th>harga satuan</th>
-                                    <th>jumlah</th>
-                                    <th>sub total</th>
-                                </tr>
-                                <tr>
-                                    <th>DBL0001</th>
-                                    <th>HBL0001</th>
-                                    <th>bahan 123456</th>
-                                    <th>20000</th>
-                                    <th>4</th>
-                                    <th>80000</th>
-                                </tr>
-                                <tr>
-                                    <th>DBL0002</th>
-                                    <th>HBL0001</th>
-                                    <th>bahan 2</th>
-                                    <th>300</th>
-                                    <th>3</th>
-                                    <th>900</th>
-                                </tr>
-                            </table> -->
+ 
                         </div>
                     </div>
                 </div>
@@ -179,7 +153,53 @@
                                     <button class="btn btn-info pull-left"><a style="color: white"  href="tambah_penjualan.php">Update</a></button>
                                     <button class="btn btn-info pull-left" style="margin-left: 1%;"><a style="color: white" href="#">Hapus</a></button>
                                     <button class="btn btn-info pull-left" style="margin-left: 1%;"><a style="color: white" href="pembayaran_penjualan.php">Bayar</a></button>
-                                    <button class="btn btn-info pull-left" style="margin-left: 1%;"><a style="color: white" href="#">Detail</a></button>
+                                    <!-- <button class="btn btn-info pull-left" style="margin-left: 1%;"><a style="color: white" href="#">Detail</a></button> -->
+                                    <button type="button" class="btn btn-info pull-left" style="margin-left: 1%;" data-toggle="modal" data-target="#exampleModal">
+                                        detail
+                                    </button>
+                                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Detail penjualan</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <table>
+                                                    <tr>
+                                                        <th>id transaksi</th>
+                                                        <th>id header</th>
+                                                        <th>nama pembelian</th>
+                                                        <th>harga satuan</th>
+                                                        <th>jumlah</th>
+                                                        <th>sub total</th>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>DBL0001</th>
+                                                        <th>HBL0001</th>
+                                                        <th>bahan 123456</th>
+                                                        <th>20000</th>
+                                                        <th>4</th>
+                                                        <th>80000</th>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>DBL0002</th>
+                                                        <th>HBL0001</th>
+                                                        <th>bahan 2</th>
+                                                        <th>300</th>
+                                                        <th>3</th>
+                                                        <th>900</th>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                                            </div>
+                                            </div>
+                                        </div>
+                                        </div>
                                 </center>
                             </th>
                         </tr>
