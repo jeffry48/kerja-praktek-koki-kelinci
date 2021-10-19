@@ -105,7 +105,7 @@
                 </div>
                 <br>
                 <div class="row">
-                    <h4>Riwayat penjualan</h4>
+                    <h4>Riwayat pembelian</h4>
                     <table>
                         <tr>
                             <th>tanggal pembayaran</th>
