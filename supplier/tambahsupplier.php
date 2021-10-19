@@ -94,18 +94,18 @@
                     </div>
                 </div>
             </div> -->
-            <h2 style="float:left;padding-left:5%;padding-top:3%;">Tambah Supplier</h3>
-                <div class="row">
-                    <div class="col-md-5-left" style="padding-top:12%;padding-right:55%;padding-left:5.9%;">
+            <h2 style="float:left;padding-left:35%;padding-top:3%;">Tambah Supplier</h3>
+                <div class="row" style="margin-left:31.5%;">
+                    <div class="col-md-5-left" style="padding-top:20%;padding-right:55%;padding-left:5.9%;">
                         <div class="box">
                             <div class="box-header">
                                 <form action = "#" method = "post">
                                     <div class="form-group" style="padding-top:9%;">
-                                        <input type="text" name = "no" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:75%;" placeholder="Nama Supplier">
+                                        <input type="text" name = "no" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="Nama Supplier">
                                         <br>
-                                        <input type="text" name = "no" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:75%;" placeholder="Alamat Supplier">
+                                        <input type="text" name = "no" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="Alamat Supplier">
                                         <br>
-                                        <input type="text" name = "no" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:75%;" placeholder="Nomor Telepon Supplier">
+                                        <input type="text" name = "no" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="Telepon Supplier">
                                     </div>
                                     <input type="submit" class="btn btn-info pull-left" value = "Tambah" style="">
                                 </form>

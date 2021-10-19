@@ -93,9 +93,9 @@
                     </div>
                 </div>
             </div> -->
-            <h2 style="float:left;padding-left:5%;padding-top:3%;">Cari Pegawai</h3>
-                <div class="row">
-                    <div class="col-md-5-left" style="padding-top:12%;padding-right:55%;padding-left:5.9%;">
+            <h2 style="float:left;padding-left:25%;padding-top:3%;">Cari Pegawai</h3>
+                <div class="row" style="margin-left:20%;">
+                    <div class="col-md-5-left" style="padding-top:20%;padding-right:55%;padding-left:5.9%;">
                         <div class="box">
                             <div class="box-header">
                                 <form action = "tambahpegawai.php" method = "post">
@@ -108,15 +108,15 @@
                                 <br>
                                 <form action = "#" method = "post">
                                     <div class="form-group" style="">
-                                        <input type="text" name = "no" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:60%;" placeholder="Nama Karyawan">
+                                        <input type="text" name = "no" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:75%;" placeholder="Nama Karyawan">
                                         <br>
-                                        <input type="text" name = "no" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:60%;" placeholder="Posisi Karyawan">
+                                        <input type="text" name = "no" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:75%;" placeholder="Posisi Karyawan">
                                         <br>
-                                        <input type="text" name = "no" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:60%;" placeholder="Alamat Karyawan">
+                                        <input type="text" name = "no" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:75%;" placeholder="Alamat Karyawan">
                                         <br>
-                                        <input type="text" name = "no" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:60%;" placeholder="Username">
+                                        <input type="text" name = "no" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:75%;" placeholder="Username">
                                         <br>
-                                        <input type="text" name = "no" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:60%;" placeholder="Password">
+                                        <input type="text" name = "no" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:75%;" placeholder="Password">
                                     </div>
                                     <input type="submit" class="btn btn-info pull-left" value = "Cari" style="">
                                 </form>

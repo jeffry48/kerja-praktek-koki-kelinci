@@ -94,9 +94,9 @@
                     </div>
                 </div>
             </div> -->
-            <h2 style="float:left;padding-left:5%;padding-top:3%;">Cari Kategori</h3>
-                <div class="row" style="">
-                    <div class="col-md-5-left" style="padding-top:12%;padding-right:55%;padding-left:5.9%;">
+            <h2 style="float:left;padding-left:25%;padding-top:3%;">Cari Kategori</h3>
+                <div class="row" style="margin-left:20%;">
+                    <div class="col-md-5-left" style="padding-top:20%;padding-right:55%;padding-left:5.9%;">
                         <div class="box" >
                             <div class="box-header" style="">
                                 <form action = "tambahkategori.php" method = "post">
@@ -107,7 +107,7 @@
                                     <br>
                                     <br>
                                     <div class="form-group" style="padding-top:1%;">
-                                        <input type="text" name = "no" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:40%;" placeholder="Nama Kategori">
+                                        <input type="text" name = "no" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:75%;" placeholder="Nama Kategori">
                                     </div>
                                     <form action = "#" method = "post">
                                         <div class="form-group">
