@@ -126,9 +126,34 @@
                                     <button class="btn btn-info pull-left" style="margin-left: 1%;">clear</button>
                                 </div>
                             </form>
-
- 
                         </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <button class="btn btn-info pull-left" style="background-color: red;">
+                        <a style="color: white;" href="" data-toggle="modal" data-target="#modalTutup">
+                        Hapus Semua Data Penjualan
+                        </a>
+                    </button>
+                    <!-- modal -->
+                    <div class="modal fade" id="modalTutup" tabindex="-1" role="dialog" aria-labelledby="modalTutupLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                        <div class="modal-header" style="background-color: red;">
+                            <h5 class="modal-title" id="modalTutup"><b>HAPUS SEMUA DATA PENJUALAN</b></h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            Apakah anda yakin ingin menghapus semua data penjualan?
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" data-dismiss="modal">Batal</button>
+                            <button type="button" class="btn btn-primary" data-dismiss="modal" style="background-color: red;">hapus</button>
+                        </div>
+                        </div>
+                    </div>
                     </div>
                 </div>
                 <div class="row">
