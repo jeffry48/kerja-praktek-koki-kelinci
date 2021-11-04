@@ -1,0 +1,6 @@
+/cards
+/qrcodes
+.idea/
+__MACOSX/
+/application/config/database.php
+/application/config/config.php
