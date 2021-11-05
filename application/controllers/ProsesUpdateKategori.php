@@ -1,7 +1,5 @@
 <?php
-class cariKategori extends CI_Controller {
-
-
+class prosesUpdateKategori extends CI_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->model("kategori_model");
@@ -10,9 +8,10 @@ class cariKategori extends CI_Controller {
 
     public function index()
     {
-        $keyword=$this->input->post('keyword');
-        $_SESSION['hasilSearchkat'] = $this->kategori_model->searchKat($keyword);
-        $this->session->mark_as_flash('hasilSearchkat');
+        $idKat=$this->input->post('idKat');
+        $namaKat=$this->input->post('namaKat');
+        echo $idKat;
+        $this->kategori_model->updateKat($idKat, $namaKat);
         redirect("kategori");
     }
 }

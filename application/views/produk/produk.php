@@ -45,58 +45,6 @@
         </aside>
 
         <div class="content-wrapper">
-            <!-- <div class="row" style="padding-left:20px; padding-right:20px;">
-                <div class="row">
-                    <div class="col-md-2">
-                    <div class="box box-danger">
-                        <div class="box-header">
-                            <h3 class="box-title">Search</h3>
-                        </div>
-                        <div class="box-body">
-                            <div class="form-group">
-                                <label>Status :</label>
-                                <div class="radio">
-                                    <label><input type="radio" name="edStatus" id="" value="0" onfocus="stopShow()">Belum Dikonfirmasi</label>
-                                </div>
-                                <div class="radio">
-                                    <label><input type="radio" name="edStatus" id="" value="1" onfocus="stopShow()">Tidak Disetujui</label>
-                                </div>
-                                <div class="radio">
-                                    <label><input type="radio" name="edStatus" id="" value="2" onfocus="stopShow()">Sukses</label>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label>Tanggal :</label>
-                                <input type="text" class="form-control" name="edTanggal" id="edTanggal" onfocus="stopShow()">
-                            </div>
-                            <div class="form-group">
-                                <label>Jenis :</label>
-                                <div class="radio">
-                                    <label><input type="radio" name="edJenis" id="" value = "Dine" onfocus="stopShow()">Dine In</label>
-                                </div>
-                                <div class="radio">
-                                    <label><input type="radio" name="edJenis" id="" value = "T" onfocus="stopShow()">Booking</label>
-                                </div>
-                            </div>
-    
-                            <form action="#" method="post">
-                                <button type="button" class="btn btn-info pull-right" onclick="startShow()" name="edSearch">Search</button>
-                                <button type="submit" class="btn btn-info pull-right" name="edShowAll">Show All</button>
-                            </form>
-                            <div id="konfTrans"></div>
-                            <div id="detailTrans"></div>
-                            <div id="konf"></div>
-                        </div>
-                    </div>
-                    </div>
-                    <div class="col-md-10">
-                        <div id="konfTrans"></div>
-                        <div id="detailTrans"></div>
-                        <div id="konf"></div>
-                        <div id="tes"></div>
-                    </div>
-                </div>
-            </div> -->
             <h2 style="float:left;padding-left:25%;padding-top:3%;">Cari Produk</h3>
                 <div class="row" style="margin-left:20%;">
                     <div class="col-md-5-left" style="padding-top:20%;padding-right:55%;padding-left:5.9%;">
@@ -104,15 +52,30 @@
                             <div class="box-header">
                                 <form action = "<?= base_url() ?>TambahProduk" method = "post">
                                     <div class="form-group">
-                                        <input type="submit" class="btn btn-info pull-left" value = "Tambah" style="">
+                                        <input type="submit" class="btn btn-info pull-left" value = "Tambah">
                                     </div>
                                 </form>
                                 <br><br><br>
                                 <form action = "<?= base_url() ?>CariProduk" method = "post">
                                     <div class="form-group">
-                                        <input type="text" name = "nama" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:75%;" placeholder="Nama Produk">
+                                        <input type="text" name = "keyword" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:75%;" placeholder="Nama Produk">
                                         <br>
-                                        <input type="text" name = "harga" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:75%;" placeholder="Harga Produk">
+                                        <input type="text" name = "hargaStart" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:75%;" placeholder="Harga Produk Mulai">
+                                        <br>
+                                        <input type="text" name = "hargaEnd" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:75%;" placeholder="Harga Produk Akhir">
+                                        <br>
+                                        kategori: 
+                                        <select name = "kategoriPro" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:75%;" >
+                                            <option value="all">All</option>
+                                            <?php
+                                                for ($i=0; $i < count($_SESSION['dataKategori']); $i++) { 
+                                                    $currData=$_SESSION['dataKategori'][$i];
+                                                    echo '
+                                                        <option value="'.$currData['id_kategori'].'">'.$currData['nama_kategori'].'</option>
+                                                    ';
+                                                }
+                                            ?>
+                                        </select>
                                     </div>
                                         <div class="form-group">
                                             <input type="submit" class="btn btn-info pull-left" value = "Cari">
@@ -124,33 +87,77 @@
                             <tr>
                                 <th>Id Produk</th>
                                 <th>Nama Produk</th>
+                                <th>Kategori Produk</th>
                                 <th>Harga Produk</th>
                                 <th colspan="2">Action</th>
                             </tr>
-                            <tr>
-                                <td>P0001</td>
-                                <td>Spaghetti</td>
-                                <td>50000</td>
-                                <td>
-                                    <form action="<?= base_url() ?>HapusProduk" method="post">
-                                        <input type="submit" class="btn btn-info pull-left" value = "Hapus" style="">
-                                    </form>
-                                </td>
-                                <form action="<?= base_url() ?>UpdateProduk" method="post">
-                                    <td>
-                                        <input type="submit" class="btn btn-info pull-left" value = "Update" style="">
-                                    </td>
-                                </form>
-                            </tr>
+                            <?php
+                            if (isset($_SESSION['hasilSearchPro'])) {
+                                for ($i=0; $i < count($_SESSION['hasilSearchPro']); $i++) { 
+                                    $currData=$_SESSION['hasilSearchPro'][$i];
+                                    $namaKat="";
+                                    for ($j=0; $j < count($_SESSION['dataKategori']); $j++) { 
+                                        if($currData['id_kategori']==$_SESSION['dataKategori'][$j]['id_kategori']){
+                                            $namaKat=$_SESSION['dataKategori'][$j]['nama_kategori'];
+                                        }
+                                    }
+                                    echo '
+                                    <tr>
+                                        <td>'.$currData['id_produk'].'</td>
+                                        <td>'.$currData['nama_produk'].'</td>
+                                        <td>'.$namaKat.'</td>
+                                        <td>'.$currData['harga_produk'].'</td>
+                                        <td>
+                                            <form action="HapusProduk" method="post">
+                                                <input type="hidden" name="idPro" value="'.$currData['id_produk'].'">
+                                                <input type="submit" class="btn btn-info pull-left" value = "Hapus" >
+                                            </form>
+                                        </td>
+                                        <form action="UpdateProduk" method="post">
+                                            <td>
+                                                <input type="hidden" name="idPro" value="'.$currData['id_produk'].'">
+                                                <input type="submit" class="btn btn-info pull-left" value = "Update" >
+                                            </td>
+                                        </form>
+                                    </tr>';
+                                }
+                            }
+                            else{
+                                for ($i=0; $i < count($_SESSION['dataProduk']); $i++) { 
+                                    $currData=$_SESSION['dataProduk'][$i];
+                                    $namaKat="";
+                                    for ($j=0; $j < count($_SESSION['dataKategori']); $j++) { 
+                                        if($currData['id_kategori']==$_SESSION['dataKategori'][$j]['id_kategori']){
+                                            $namaKat=$_SESSION['dataKategori'][$j]['nama_kategori'];
+                                        }
+                                    }
+                                    echo '
+                                    <tr>
+                                        <td>'.$currData['id_produk'].'</td>
+                                        <td>'.$currData['nama_produk'].'</td>
+                                        <td>'.$namaKat.'</td>
+                                        <td>'.$currData['harga_produk'].'</td>
+                                        <td>
+                                            <form action="HapusProduk" method="post">
+                                                <input type="hidden" name="idPro" value="'.$currData['id_produk'].'">
+                                                <input type="submit" class="btn btn-info pull-left" value = "Hapus" >
+                                            </form>
+                                        </td>
+                                        <form action="UpdateProduk" method="post">
+                                            <td>
+                                                <input type="hidden" name="idPro" value="'.$currData['id_produk'].'">
+                                                <input type="submit" class="btn btn-info pull-left" value = "Update" >
+                                            </td>
+                                        </form>
+                                    </tr>';
+                                }
+                            }
+                                
+                            ?>
                         </table>
                     </div> 
                 </div>
         </div>
-
-        <!-- <footer class="main-footer">
-
-        </footer> -->
-        <!-- <div class="control-sidebar-bg"></div> -->
     </div>
 
     <script src="<?= base_url() ?>assets/backend/css/public/adminlte/bower_components/jquery/dist/jquery.min.js"></script>

@@ -45,63 +45,11 @@
         </aside>
 
         <div class="content-wrapper">
-            <!-- <div class="row" style="padding-left:20px; padding-right:20px;">
-                <div class="row">
-                    <div class="col-md-2">
-                    <div class="box box-danger">
-                        <div class="box-header">
-                            <h3 class="box-title">Search</h3>
-                        </div>
-                        <div class="box-body">
-                            <div class="form-group">
-                                <label>Status :</label>
-                                <div class="radio">
-                                    <label><input type="radio" name="edStatus" id="" value="0" onfocus="stopShow()">Belum Dikonfirmasi</label>
-                                </div>
-                                <div class="radio">
-                                    <label><input type="radio" name="edStatus" id="" value="1" onfocus="stopShow()">Tidak Disetujui</label>
-                                </div>
-                                <div class="radio">
-                                    <label><input type="radio" name="edStatus" id="" value="2" onfocus="stopShow()">Sukses</label>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label>Tanggal :</label>
-                                <input type="text" class="form-control" name="edTanggal" id="edTanggal" onfocus="stopShow()">
-                            </div>
-                            <div class="form-group">
-                                <label>Jenis :</label>
-                                <div class="radio">
-                                    <label><input type="radio" name="edJenis" id="" value = "Dine" onfocus="stopShow()">Dine In</label>
-                                </div>
-                                <div class="radio">
-                                    <label><input type="radio" name="edJenis" id="" value = "T" onfocus="stopShow()">Booking</label>
-                                </div>
-                            </div>
-    
-                            <form action="#" method="post">
-                                <button type="button" class="btn btn-info pull-right" onclick="startShow()" name="edSearch">Search</button>
-                                <button type="submit" class="btn btn-info pull-right" name="edShowAll">Show All</button>
-                            </form>
-                            <div id="konfTrans"></div>
-                            <div id="detailTrans"></div>
-                            <div id="konf"></div>
-                        </div>
-                    </div>
-                    </div>
-                    <div class="col-md-10">
-                        <div id="konfTrans"></div>
-                        <div id="detailTrans"></div>
-                        <div id="konf"></div>
-                        <div id="tes"></div>
-                    </div>
-                </div>
-            </div> -->
             <h2 style="float:left;padding-left:25%;padding-top:3%;">Cari Kategori</h3>
                 <div class="row" style="margin-left:20%;">
                     <div class="col-md-5-left" style="padding-top:20%;padding-right:55%;padding-left:5.9%;">
                         <div class="box" >
-                            <div class="box-header" style="">
+                            <div class="box-header">
                                 <form action = "<?= base_url() ?>TambahKategori" method = "post">
                                     <div class="form-group">
                                         <input type="submit" class="btn btn-info pull-left" value = "Tambah" >
@@ -109,9 +57,9 @@
                                 </form>
                                     <br>
                                     <br>
-                                    <form action = "<?= base_url() ?>CariKategori" method = "post">
+                                    <form action = "<?= base_url() ?>cariKategori" method = "post">
                                         <div class="form-group" style="padding-top:1%;">
-                                            <input type="text" name = "nama" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:75%;" placeholder="Nama Kategori">
+                                            <input type="text" name = "keyword" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:75%;" placeholder="Nama Kategori">
                                         </div>
                                    
                                         <div class="form-group">
@@ -127,20 +75,53 @@
                                 <th>Nama Kategori</th>
                                 <th colspan="2">Action</th>
                             </tr>
-                            <tr>
-                                <td>K0001</td>
-                                <td>Asian Food</td>
-                                <td>
-                                    <form action="<?= base_url() ?>HapusKategori" method="post">
-                                        <input type="submit" class="btn btn-info pull-left" value = "Hapus" >
-                                    </form>
-                                </td>
-                                <form action="<?= base_url() ?>UpdateKategori" method="post">
-                                    <td>
-                                        <input type="submit" class="btn btn-info pull-left" value = "Update" >
-                                    </td>
-                                </form>
-                            </tr>
+                            <?php
+                                if (isset($_SESSION['hasilSearchkat'])) {
+                                    for ($i=0; $i < count($_SESSION['hasilSearchkat']); $i++) { 
+                                        $currData=$_SESSION['hasilSearchkat'][$i];
+                                        echo '
+                                        <tr>
+                                            <td>'.$currData['id_kategori'].'</td>
+                                            <td>'.$currData['nama_kategori'].'</td>
+                                            <td>
+                                                <form action="HapusKategori" method="post">
+                                                    <input type="hidden" name="idKat" value="'.$currData['id_kategori'].'">
+                                                    <input type="submit" class="btn btn-info pull-left" value = "Hapus" >
+                                                </form>
+                                            </td>
+                                            <form action="UpdateKategori" method="post">
+                                                <td>
+                                                    <input type="submit" class="btn btn-info pull-left" value = "Update" >
+                                                    <input type="hidden" name="idKat" value="'.$currData['id_kategori'].'">
+                                                </td>
+                                            </form>
+                                        </tr>';
+                                    }
+                                }
+                                else{
+                                    for ($i=0; $i < count($_SESSION['dataKategori']); $i++) { 
+                                        $currData=$_SESSION['dataKategori'][$i];
+                                        echo '
+                                        <tr>
+                                            <td>'.$currData['id_kategori'].'</td>
+                                            <td>'.$currData['nama_kategori'].'</td>
+                                            <td>
+                                                <form action="HapusKategori" method="post">
+                                                    <input type="hidden" name="idKat" value="'.$currData['id_kategori'].'">
+                                                    <input type="submit" class="btn btn-info pull-left" value = "Hapus" >
+                                                </form>
+                                            </td>
+                                            <form action="UpdateKategori" method="post">
+                                                <td>
+                                                    <input type="submit" class="btn btn-info pull-left" value = "Update" >
+                                                    <input type="hidden" name="idKat" value="'.$currData['id_kategori'].'">
+                                                </td>
+                                            </form>
+                                        </tr>';
+                                    }
+                                }
+                                
+                            ?>
                         </table>
                     </div> 
                 </div>

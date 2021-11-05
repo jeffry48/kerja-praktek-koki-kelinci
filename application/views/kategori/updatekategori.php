@@ -102,11 +102,12 @@
                     <div class="col-md-5-left" style="padding-top:20%;padding-right:55%;padding-left:5.9%;">
                         <div class="box">
                             <div class="box-header">
-                                <form action = "<?= base_url() ?>UpdateKategori" method = "post">
+                                <form action = "<?= base_url() ?>prosesUpdateKategori" method = "post">
                                     <div class="form-group">
-                                        <input type="text" name = "nama" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:80%;" placeholder="Nama Kategori">
+                                        <input type="hidden" name="idKat" value="<?php echo $_SESSION['currKatData']['id_kategori'] ?>">
+                                        <input type="text" name = "namaKat" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:80%;" placeholder="Nama Kategori">
                                     </div>
-                                    <input type="submit" class="btn btn-info pull-left" value = "Update" style="">
+                                    <input type="submit" class="btn btn-info pull-left" value = "Update">
                                 </form>
                             </div>
                         </div>
@@ -115,14 +116,15 @@
                                 <th>Id Kategori</th>
                                 <th>Nama Kategori</th>
                             </tr>
-                            <tr>
-                                <td>K0001</td>
-                                <td>Asian Food</td>
-                            </tr>
-                            <tr>
-                                <td>K0002</td>
-                                <td>Western Food</td>
-                            </tr>
+                            <?php
+                                echo '
+                                <tr>
+                                    <td>'.$_SESSION['currKatData']['id_kategori'].'</td>
+                                    <td>'.$_SESSION['currKatData']['nama_kategori'].'</td>
+                                </tr>
+                                '
+                            ?>
+                            
                         </table>
                     </div> 
                 </div>

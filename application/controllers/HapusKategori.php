@@ -1,13 +1,16 @@
 <?php
 class HapusKategori extends CI_Controller {
-
+    
+    public function __construct() {
+        parent::__construct();
+        $this->load->model("kategori_model");
+        $this->load->library('session');
+    }
 
     public function index()
     {
-        // redirect(base_url() . 'login');
-        // $this->load->helper('URL');
-        // $this->load->helper('url');
-        // $this->load->view('employee/updatekategori.php');
-        
+        $idKat=$this->input->post('idKat');
+        $this->kategori_model->deleteKat($idKat);
+        redirect("kategori");
     }
 }
