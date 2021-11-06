@@ -2,12 +2,17 @@
 class TambahKategori extends CI_Controller {
 
 
+    public function __construct() {
+        parent::__construct();
+        $this->load->model("kategori_model");
+        $this->load->library('session');
+    }
+
     public function index()
     {
-        // redirect(base_url() . 'login');
-        // $this->load->helper('URL');
-        $this->load->helper('url');
-        $this->load->view('kategori/tambahkategori.php');
-        
+        $namaKat=$this->input->post('namaKategori');
+        // echo $namaKat;
+        $this->kategori_model->insertNewKat($namaKat);
+        redirect("kategori");
     }
 }

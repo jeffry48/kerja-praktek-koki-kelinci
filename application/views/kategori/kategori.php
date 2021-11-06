@@ -50,7 +50,7 @@
                     <div class="col-md-5-left" style="padding-top:20%;padding-right:55%;padding-left:5.9%;">
                         <div class="box" >
                             <div class="box-header">
-                                <form action = "<?= base_url() ?>TambahKategori" method = "post">
+                                <form action = "<?= base_url() ?>keTambahKategori" method = "post">
                                     <div class="form-group">
                                         <input type="submit" class="btn btn-info pull-left" value = "Tambah" >
                                     </div>
@@ -89,7 +89,7 @@
                                                     <input type="submit" class="btn btn-info pull-left" value = "Hapus" >
                                                 </form>
                                             </td>
-                                            <form action="UpdateKategori" method="post">
+                                            <form action="keUpdateKategori" method="post">
                                                 <td>
                                                     <input type="submit" class="btn btn-info pull-left" value = "Update" >
                                                     <input type="hidden" name="idKat" value="'.$currData['id_kategori'].'">
@@ -111,7 +111,7 @@
                                                     <input type="submit" class="btn btn-info pull-left" value = "Hapus" >
                                                 </form>
                                             </td>
-                                            <form action="UpdateKategori" method="post">
+                                            <form action="keUpdateKategori" method="post">
                                                 <td>
                                                     <input type="submit" class="btn btn-info pull-left" value = "Update" >
                                                     <input type="hidden" name="idKat" value="'.$currData['id_kategori'].'">

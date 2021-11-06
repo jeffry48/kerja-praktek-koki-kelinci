@@ -23,12 +23,12 @@
                     <i class="fa fa-th"></i> <span>Transaksi</span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="../pembelian/cari_pembelian.php"><i class="fa fa-circle-o"></i>pembelian</a></li>
-                    <li><a href="../penjualan/cari_penjualan.php"><i class="fa fa-circle-o"></i>penjualan</a></li>
+                    <li><a href="<?= base_url() ?>transaksi/pembelian"><i class="fa fa-circle-o"></i>pembelian</a></li>
+                    <li><a href="<?= base_url() ?>transaksi/penjualan"><i class="fa fa-circle-o"></i>penjualan</a></li>
                 </ul>
             </li>
             <li>
-                <a href="../laporan pembelian/laporan_per_supplier.php">
+                <a href="<?= base_url() ?>laporan/laporanPerSupplier">
                     <i class="fa fa-files-o"></i> <span>Laporan</span>
                 </a>
             </li>

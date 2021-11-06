@@ -5,18 +5,28 @@ class cekLogin extends CI_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->model("login_model");
+        $this->load->model("Karyawan");
         $this->load->library('session');
+        $this->load->helper(array('cookie', 'url'));
     }
 
     public function index()
     {
-        // echo $this->input->post('username');
         $nama=$this->input->post('username');
         $pass=$this->input->post('password');
         $cekLogin = $this->login_model->cekLogin($nama, $pass);
-        // var_dump($data["karyawan"]);
+        $user['karyawan'] = $this->Karyawan->cekDataLogin($nama,$pass);
+        print_r($user['karyawan'][0]['id_karyawan']);
         
         if($cekLogin==true){
+            $this->load->helper('cookie');
+            $cookie = array(
+                'name'   => 'active_id',
+                'value'  => $user['karyawan'][0]['id_karyawan'],
+                'expire' => '86400',
+                'prefix' => ''
+            );
+            $this->input->set_cookie($cookie);
             redirect("home");
         }
         else{

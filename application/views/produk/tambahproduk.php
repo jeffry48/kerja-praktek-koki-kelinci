@@ -50,7 +50,7 @@
                     <div class="col-md-5-left" style="padding-top:20%;padding-right:55%;padding-left:5.9%;">
                         <div class="box">
                             <div class="box-header">
-                                <form action = "prosesTambahProduk" method = "post">
+                                <form action = "TambahProduk" method = "post">
                                     <div class="form-group">
                                         <input type="text" name = "namaPro" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:75%;" placeholder="Nama Produk">
                                         <br>

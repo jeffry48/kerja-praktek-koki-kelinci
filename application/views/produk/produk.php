@@ -50,7 +50,7 @@
                     <div class="col-md-5-left" style="padding-top:20%;padding-right:55%;padding-left:5.9%;">
                         <div class="box">
                             <div class="box-header">
-                                <form action = "<?= base_url() ?>TambahProduk" method = "post">
+                                <form action = "<?= base_url() ?>keTambahProduk" method = "post">
                                     <div class="form-group">
                                         <input type="submit" class="btn btn-info pull-left" value = "Tambah">
                                     </div>
@@ -113,7 +113,7 @@
                                                 <input type="submit" class="btn btn-info pull-left" value = "Hapus" >
                                             </form>
                                         </td>
-                                        <form action="UpdateProduk" method="post">
+                                        <form action="keUpdateProduk" method="post">
                                             <td>
                                                 <input type="hidden" name="idPro" value="'.$currData['id_produk'].'">
                                                 <input type="submit" class="btn btn-info pull-left" value = "Update" >
@@ -143,7 +143,7 @@
                                                 <input type="submit" class="btn btn-info pull-left" value = "Hapus" >
                                             </form>
                                         </td>
-                                        <form action="UpdateProduk" method="post">
+                                        <form action="keUpdateProduk" method="post">
                                             <td>
                                                 <input type="hidden" name="idPro" value="'.$currData['id_produk'].'">
                                                 <input type="submit" class="btn btn-info pull-left" value = "Update" >
