@@ -1,9 +1,9 @@
 <?php
-class Pegawai extends CI_Controller {
+class Supply extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
-        $this->load->model("Karyawan");
+        $this->load->model("Supplier");
         $this->load->library('session');
         // $this->load->helper('url');
         // $this->load->view('employee/tambahpegawai.php');
@@ -14,8 +14,9 @@ class Pegawai extends CI_Controller {
         // redirect(base_url() . 'login');
         // $this->load->helper('URL');
         $this->load->helper('url');
-        $data['karyawan'] = $this->Karyawan->getAll();
+        $data['karyawan'] = $this->Supplier->getAll();
         // echo $data['post'];
-        $this->load->view('employee/pegawai.php',$data);
+        $this->load->view('supplier/supplier.php',$data);
+        
     }
 }
