@@ -109,7 +109,7 @@
                     <div class="col-md-5-left" style="padding-top:20%;padding-right:55%;padding-left:5.9%;">
                         <div class="box">
                             <div class="box-header">
-                                <form action = "<?= base_url() ?>TambahSupplier" method = "post">
+                                <form action = "<?= base_url() ?>KeTambahSupplier" method = "post">
                                     <div class="form-group">
                                         <input type="submit" class="btn btn-info pull-left" value = "Tambah" style="">
                                     </div>
@@ -135,22 +135,26 @@
                                 <th>Nomor Telepon Supplier</th>
                                 <th colspan="2">Action</th>
                             </tr>
+                            <?php foreach($karyawan as $d): ?>
                             <tr>
-                                <td>S0001</td>
-                                <td>Saratoga</td>
-                                <td>Jalan Pepaya Nomor 11</td>
-                                <td>111</td>
+                                <td><?php echo $d['id_supplier']; ?></td>
+                                <td><?php echo $d['nama_supplier']; ?></td>
+                                <td><?php echo $d['alamat_supplier']; ?></td>
+                                <td><?php echo $d['no_telp_supplier']; ?></td>
                                 <td>
                                     <form action="<?= base_url() ?>HapusSupplier" method="post">
                                         <input type="submit" class="btn btn-info pull-right" value = "Hapus" style="">
+                                        <input type="hidden" name="id" value="<?= $d['id_supplier']; ?>">
                                     </form>
                                 </td>
-                                <form action="<?= base_url() ?>UpdateSupplier" method="post">
+                                <form action="<?= base_url() ?>KeUpdateSupplier" method="post">
                                     <td>
                                         <input type="submit" class="btn btn-info pull-right" value = "Update" style="">
+                                        <input type="hidden" name="id" value="<?= $d['id_supplier']; ?>">
                                     </td>
                                 </form>
                             </tr>
+                            <?php endforeach; ?>
                         </table>
                     </div> 
                 </div>

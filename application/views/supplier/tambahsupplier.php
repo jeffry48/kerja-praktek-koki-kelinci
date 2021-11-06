@@ -5,11 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Tambah Supplier</title>
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <link rel="stylesheet" href="../public/adminlte/bower_components/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../public/adminlte/bower_components/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="../public/adminlte/bower_components/Ionicons/css/ionicons.min.css">
-    <link rel="stylesheet" href="../public/adminlte/dist/css/AdminLTE.css">
-    <link rel="stylesheet" href="../public/adminlte/dist/css/skins/_all-skins.min.css">
+    <link rel="stylesheet" href="<?= base_url() ?>assets/backend/css/public/adminlte/bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="<?= base_url() ?>assets/backend/css/public/adminlte/bower_components/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="<?= base_url() ?>assets/backend/css/public/adminlte/bower_components/Ionicons/css/ionicons.min.css">
+    <link rel="stylesheet" href="<?= base_url() ?>assets/backend/css/public/adminlte/dist/css/AdminLTE.css">
+    <link rel="stylesheet" href="<?= base_url() ?>assets/backend/css/public/adminlte/plugins/iCheck/square/blue.css">
+    <link rel="stylesheet" href="<?= base_url() ?>assets/backend/css/public/adminlte/dist/css/skins/_all-skins.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
     <style>
         table {
           font-family: arial, sans-serif;
@@ -34,12 +36,13 @@
 <body class="hold-transition skin-blue sidebar-mini">
     <div class="wrapper">
 
-        <header class="main-header">
-        <?php include '../header.php'?>
-
+    <header class="main-header">
+            <?php include 'application/views/header.php'; ?>
         </header>
 
-        <aside class="main-sidebar"> <?php include '../sidebar.php';?> </aside>
+        <aside class="main-sidebar">
+            <?php include 'application/views/sidebar.php';?>
+        </aside>
 
         <div class="content-wrapper">
             <!-- <div class="row" style="padding-left:20px; padding-right:20px;">
@@ -99,13 +102,13 @@
                     <div class="col-md-5-left" style="padding-top:20%;padding-right:55%;padding-left:5.9%;">
                         <div class="box">
                             <div class="box-header">
-                                <form action = "#" method = "post">
+                                <form action = "<?= base_url() ?>TambahSupplier" method = "post">
                                     <div class="form-group" style="padding-top:9%;">
-                                        <input type="text" name = "no" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="Nama Supplier">
+                                    <input type="text" name = "nama" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="Nama Supplier">
                                         <br>
-                                        <input type="text" name = "no" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="Alamat Supplier">
+                                        <input type="text" name = "alamat" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="Alamat Supplier">
                                         <br>
-                                        <input type="text" name = "no" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="Telepon Supplier">
+                                        <input type="text" name = "nohp" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="Telepon Supplier">
                                     </div>
                                     <input type="submit" class="btn btn-info pull-left" value = "Tambah" style="">
                                 </form>
@@ -135,13 +138,13 @@
         <!-- <div class="control-sidebar-bg"></div> -->
     </div>
 
-    <script src="../public/adminlte/bower_components/jquery/dist/jquery.min.js"></script>
-    <script src="../public/adminlte/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="../public/adminlte/bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
-    <script src="../public/adminlte/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.js"></script>
-    <script src="../public/adminlte/bower_components/fastclick/lib/fastclick.js"></script>
-    <script src="../public/adminlte/dist/js/adminlte.min.js"></script>
-    <script src="../public/adminlte/dist/js/demo.js"></script>
+    <script src="<?= base_url() ?>assets/backend/css/public/adminlte/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="<?= base_url() ?>assets/backend/css/public/adminlte/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="<?= base_url() ?>assets/backend/css/public/adminlte/bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="<?= base_url() ?>assets/backend/css/public/adminlte/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.js"></script>
+    <script src="<?= base_url() ?>assets/backend/css/public/adminlte/bower_components/fastclick/lib/fastclick.js"></script>
+    <script src="<?= base_url() ?>assets/backend/css/public/adminlte/dist/js/adminlte.min.js"></script>
+    <script src="<?= base_url() ?>assets/backend/css/public/adminlte/dist/js/demo.js"></script>
 
     <script>
         $(document).ready(function () {
