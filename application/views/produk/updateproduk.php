@@ -52,12 +52,21 @@
                             <div class="box-header">
                                 <form action = "prosesUpdateProduk" method = "post">
                                     <div class="form-group">
-                                        <input type="text" name = "namaPro" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:90%;" placeholder="Nama Produk">
+                                        <input type="text" name = "namaPro" class="form-control" value="<?php echo $_SESSION['currProData']['nama_produk']?>" style="border-color: #0d74a3; box-shadow: none;width:90%;" placeholder="Nama Produk">
                                         <br>
-                                        <input type="text" name = "hargaPro" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:90%;" placeholder="Harga Produk">
+                                        <input type="text" name = "hargaPro" class="form-control" value="<?php echo $_SESSION['currProData']['harga_produk']?>"  style="border-color: #0d74a3; box-shadow: none;width:90%;" placeholder="Harga Produk">
                                         <br>
+                                        <?php 
+                                            $namaKat="";
+                                            for ($j=0; $j < count($_SESSION['dataKategori']); $j++) { 
+                                                if($_SESSION['currProData']['id_kategori']==$_SESSION['dataKategori'][$j]['id_kategori']){
+                                                    $namaKat=$_SESSION['dataKategori'][$j]['nama_kategori'];
+                                                }
+                                            };
+                                        ?>
                                         Kategori: 
                                         <select name = "katPro" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:75%;" >
+                                            <option value="" selected disabled hidden><?php echo $namaKat;?></option>
                                             <?php
                                                 for ($i=0; $i < count($_SESSION['dataKategori']); $i++) { 
                                                     $currData=$_SESSION['dataKategori'][$i];
@@ -73,31 +82,6 @@
                                 </form>
                             </div>
                         </div>
-                        <table>
-                            <tr>
-                                <th>Id Produk</th>
-                                <th>Nama Produk</th>
-                                <th>kategori Produk</th>
-                                <th>Harga Produk</th>
-                            </tr>
-                            <?php
-                                $namaKat="";
-                                for ($j=0; $j < count($_SESSION['dataKategori']); $j++) { 
-                                    if($_SESSION['currProData']['id_kategori']==$_SESSION['dataKategori'][$j]['id_kategori']){
-                                        $namaKat=$_SESSION['dataKategori'][$j]['nama_kategori'];
-                                    }
-                                }
-                                echo '
-                                <tr>
-                                    <td>'.$_SESSION['currProData']['id_produk'].'</td>
-                                    <td>'.$_SESSION['currProData']['nama_produk'].'</td>
-                                    <td>'.$namaKat.'</td>
-                                    <td>'.$_SESSION['currProData']['harga_produk'].'</td>
-                                </tr>
-                                ';
-                            ?>
-
-                        </table>
                     </div> 
                 </div>
         </div>
