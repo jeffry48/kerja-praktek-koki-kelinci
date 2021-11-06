@@ -102,7 +102,7 @@
                     <div class="col-md-5-left" style="padding-top:20%;padding-right:55%;padding-left:5.9%;">
                         <div class="box">
                             <div class="box-header">
-                                <form action = "<?= base_url() ?>TambahKonsumen" method = "post">
+                                <form action = "<?= base_url() ?>KeTambahKonsumen" method = "post">
                                     <div class="form-group">
                                         <input type="submit" class="btn btn-info pull-left" value = "Tambah" style="">
                                     </div>
@@ -114,7 +114,7 @@
                                             <br>
                                             <input type="text" name = "alamat" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:75%;" placeholder="Alamat">
                                             <br>
-                                            <input type="text" name = "notelepon" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:75%;" placeholder="Nomor Telepon">
+                                            <input type="text" name = "nohp" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:75%;" placeholder="Nomor Telepon">
                                         </div>
                                     
                                         <div class="form-group">
@@ -126,27 +126,33 @@
                         <table>
                             <tr>
                                 <th>Id Pelanggan</th>
+                                <th>Id Karyawan</th>
                                 <th>Nama Pelanggan</th>
                                 <th>Alamat Pelanggan</th>
                                 <th>Nomor Telepon Pelanggan</th>
                                 <th colspan="2">Action</th>
                             </tr>
+                            <?php foreach($karyawan as $d): ?>
                             <tr>
-                                <td>P0001</td>
-                                <td>Michael</td>
-                                <td>Jalan Sulawesi Nomor 10</td>
-                                <td>123</td>
+                                <td><?php echo $d['id_konsumen']; ?></td>
+                                <td><?php echo $d['id_karyawan']; ?></td>
+                                <td><?php echo $d['nama_konsumen']; ?></td>
+                                <td><?php echo $d['alamat_konsumen']; ?></td>
+                                <td><?php echo $d['no_telp_konsumen']; ?></td>
                                 <td>
                                     <form action="<?= base_url() ?>HapusKonsumen" method="post">
                                         <input type="submit" class="btn btn-info pull-left" value = "Hapus" style="">
+                                        <input type="hidden" name="id" value="<?= $d['id_konsumen']; ?>">
                                     </form>
                                 </td>
-                                <form action="<?= base_url() ?>UpdateKonsumen" method="post">
+                                <form action="<?= base_url() ?>KeUpdateKonsumen" method="post">
                                     <td>
                                         <input type="submit" class="btn btn-info pull-left" value = "Update" style="">
+                                        <input type="hidden" name="id" value="<?= $d['id_konsumen']; ?>">
                                     </td>
                                 </form>
                             </tr>
+                            <?php endforeach; ?>
                         </table>
                     </div> 
                 </div>

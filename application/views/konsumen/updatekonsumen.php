@@ -103,37 +103,20 @@
                         <div class="box">
                             <div class="box-header">
                                 <form action = "<?= base_url() ?>UpdateKonsumen" method = "post">
+                                <?php foreach($karyawan as $k): ?>
                                     <div class="form-group" style="">
-                                        <input type="text" name = "nama" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:75%;" placeholder="Nama Customer">
+                                        <input type="hidden" name="id" value="<?= $k['id_konsumen'] ?>">
+                                        <input type="text" name = "nama" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:75%;" placeholder="Nama Customer" value="<?= $k['nama_konsumen'] ?>">
                                         <br>
-                                        <input type="text" name = "alamat" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:75%;" placeholder="Alamat">
+                                        <input type="text" name = "alamat" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:75%;" placeholder="Alamat" value="<?= $k['alamat_konsumen'] ?>">
                                         <br>
-                                        <input type="text" name = "notelepon" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:75%;" placeholder="Nomor Telepon">
+                                        <input type="text" name = "nohp" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:75%;" placeholder="Nomor Telepon" value="<?= $k['no_telp_konsumen'] ?>">
                                     </div>
                                     <input type="submit" class="btn btn-info pull-left" value = "Update" style="">
+                                <?php endforeach; ?>
                                 </form>
                             </div>
                         </div>
-                        <table>
-                            <tr>
-                                <th>Id Pelanggan</th>
-                                <th>Nama Pelanggan</th>
-                                <th>Alamat Pelanggan</th>
-                                <th>Nomor Telepon Pelanggan</th>
-                            </tr>
-                            <tr>
-                                <td>P0001</td>
-                                <td>Michael</td>
-                                <td>Jalan Sulawesi Nomor 10</td>
-                                <td>123</td>
-                            </tr>
-                            <tr>
-                                <td>P0002</td>
-                                <td>Michelle</td>
-                                <td>Jalan Sulawesi Nomor 20</td>
-                                <td>1234</td>
-                            </tr>
-                        </table>
                     </div> 
                 </div>
         </div>

@@ -108,7 +108,7 @@
                                         <br>
                                         <input type="text" name = "alamat" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:75%;" placeholder="Alamat">
                                         <br>
-                                        <input type="text" name = "notelepon" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:75%;" placeholder="Nomor Telepon">
+                                        <input type="text" name = "nohp" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:75%;" placeholder="Nomor Telepon">
                                     </div>
                                     <input type="submit" class="btn btn-info pull-left" value = "Tambah" style="">
                                 </form>
