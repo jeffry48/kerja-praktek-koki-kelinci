@@ -102,7 +102,7 @@
                     <div class="col-md-5-left" style="padding-top:20%;padding-right:55%;padding-left:5.9%;">
                         <div class="box">
                             <div class="box-header">
-                                <form action = "<?= base_url() ?>TambahPegawai" method = "post">
+                                <form action = "<?= base_url() ?>KeTambahPegawai" method = "post">
                                     <div class="form-group">
                                         <input type="submit" class="btn btn-info pull-left" value = "Tambah" style="">
                                     </div>
@@ -112,15 +112,15 @@
                                 <br>
                                 <form action = "<?= base_url() ?>CariPegawai" method = "post">
                                     <div class="form-group" style="">
-                                        <input type="text" name = "nama" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:75%;" placeholder="Nama Karyawan">
+                                    <input type="text" name = "nama" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:75%;" placeholder="Nama Karyawan">
                                         <br>
                                         <input type="text" name = "posisi" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:75%;" placeholder="Posisi Karyawan">
                                         <br>
                                         <input type="text" name = "alamat" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:75%;" placeholder="Alamat Karyawan">
                                         <br>
-                                        <input type="text" name = "username" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:75%;" placeholder="Username">
+                                        <input type="text" name = "jk" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:75%;" placeholder="Jenis Kelamin">
                                         <br>
-                                        <input type="text" name = "password" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:75%;" placeholder="Password">
+                                        <input type="text" name = "nohp" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:75%;" placeholder="Nomor Telepon">
                                     </div>
                                     <input type="submit" class="btn btn-info pull-left" value = "Cari" style="">
                                 </form>
@@ -132,28 +132,34 @@
                                 <th>Nama Karyawan</th>
                                 <th>Posisi Karyawan</th>
                                 <th>Alamat Karyawan</th>
-                                <th>Username</th>
-                                <th>Password</th>
+                                <th>Password Karyawan</th>
+                                <th>Nomor Telepon Karyawan</th>
+                                <th>Jenis Kelamin Karyawan</th>
                                 <th colspan="2">Action</th>
                             </tr>
+                            <?php foreach($karyawan as $d): ?>
                             <tr>
-                                <td>K0001</td>
-                                <td>Merry</td>
-                                <td>Manager</td>
-                                <td>Jalan Sulawesi Nomor 40</td>
-                                <td>Mer101</td>
-                                <td>***</td>
+                                <td><?php echo $d['id_karyawan']; ?></td>
+                                <td><?php echo $d['nama_karyawan']; ?></td>
+                                <td><?php echo $d['jabatan_karyawan']; ?></td>
+                                <td><?php echo $d['alamat_karyawan']; ?></td>
+                                <td><?php echo $d['password_karyawan']; ?></td>
+                                <td><?php echo $d['no_telp_karyawan']; ?></td>
+                                <td><?php echo $d['jk_karyawan']; ?></td>
                                 <td>
                                     <form action="<?= base_url() ?>HapusPegawai" method="post">
                                         <input type="submit" class="btn btn-info pull-left" value = "Hapus" style="">
+                                        <input type="hidden" name="id" value="<?= $d['id_karyawan']; ?>">
                                     </form>
                                 </td>
-                                <form action="<?= base_url() ?>UpdatePegawai" method="post">
+                                <form action="<?= base_url() ?>KeUpdatePegawai" method="post">
                                     <td>
                                         <input type="submit" class="btn btn-info pull-left" value = "Update" style="">
+                                        <input type="hidden" name="id" value="<?= $d['id_karyawan']; ?>">
                                     </td>
                                 </form>
                             </tr>
+                        <?php endforeach; ?>
                         </table>
                     </div> 
                 </div>

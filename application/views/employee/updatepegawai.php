@@ -103,47 +103,24 @@
                         <div class="box">
                             <div class="box-header">
                                 <form action = "<?= base_url() ?>UpdatePegawai" method = "post">
+                                <?php foreach($karyawan as $k): ?>
                                     <div class="form-group" style="">
-                                        <input type="text" name = "nama" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:75%;" placeholder="Nama Karyawan">
+                                        <input type="hidden" name="id" value="<?= $k['id_karyawan'] ?>">
+                                    <input type="text" name = "nama" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:75%;" placeholder="Nama Karyawan" value="<?= $k['nama_karyawan'] ?>">
                                         <br>
-                                        <input type="text" name = "posisi" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:75%;" placeholder="Posisi Karyawan">
+                                        <input type="text" name = "posisi" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:75%;" placeholder="Posisi Karyawan" value="<?= $k['jabatan_karyawan'] ?>">
                                         <br>
-                                        <input type="text" name = "alamat" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:75%;" placeholder="Alamat Karyawan">
+                                        <input type="text" name = "alamat" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:75%;" placeholder="Alamat Karyawan" value="<?= $k['alamat_karyawan'] ?>">
                                         <br>
-                                        <input type="text" name = "username" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:75%;" placeholder="Username">
+                                        <input type="text" name = "jk" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:75%;" placeholder="Jenis Kelamin" value="<?= $k['jk_karyawan'] ?>">
                                         <br>
-                                        <input type="text" name = "password" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:75%;" placeholder="Password">
+                                        <input type="text" name = "nohp" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:75%;" placeholder="Nomor Telepon" value="<?= $k['no_telp_karyawan'] ?>">
                                     </div>
                                     <input type="submit" class="btn btn-info pull-left" value = "Update" style="">
+                                    <?php endforeach; ?>
                                 </form>
                             </div>
                         </div>
-                        <table>
-                            <tr>
-                                <th>Id Karyawan</th>
-                                <th>Nama Karyawan</th>
-                                <th>Posisi Karyawan</th>
-                                <th>Alamat Karyawan</th>
-                                <th>Username</th>
-                                <th>Password</th>
-                            </tr>
-                            <tr>
-                                <td>K0001</td>
-                                <td>Merry</td>
-                                <td>Manager</td>
-                                <td>Jalan Sulawesi Nomor 40</td>
-                                <td>Mer101</td>
-                                <td>***</td>
-                            </tr>
-                            <tr>
-                                <td>K0002</td>
-                                <td>Misel</td>
-                                <td>Karyawan</td>
-                                <td>Jalan Sulawesi Nomor 50</td>
-                                <td>Mis202</td>
-                                <td>***</td>
-                            </tr>
-                        </table>
                     </div> 
                 </div>
         </div>

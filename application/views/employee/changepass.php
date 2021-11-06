@@ -102,35 +102,17 @@
                     <div class="col-md-5-left" style="padding-top:20%;padding-right:55%;padding-left:5.9%;">
                         <div class="box">
                             <div class="box-header">
-                                <form action = "#" method = "post">
+                                <form action = "<?= base_url() ?>UbahPass" method = "post">
                                     <div class="form-group">
                                         <h4>Nama Pegawai : Merry</h4><br>
-                                        <input type="text" name = "no" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:75%;" placeholder="Password Lama">
+                                        <input type="text" name = "passlama" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:75%;" placeholder="Password Lama">
                                         <br>
-                                        <input type="text" name = "no" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:75%;" placeholder="Password Baru">
+                                        <input type="text" name = "passbaru" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:75%;" placeholder="Password Baru">
                                     </div>
                                     <input type="submit" class="btn btn-info pull-left" value = "Ubah" style="">
                                 </form>
                             </div>
                         </div>
-                        <table>
-                            <tr>
-                                <th>Id Karyawan</th>
-                                <th>Nama Karyawan</th>
-                                <th>Posisi Karyawan</th>
-                                <th>Alamat Karyawan</th>
-                                <th>Username</th>
-                                <th>Password</th>
-                            </tr>
-                            <tr>
-                                <td>K0001</td>
-                                <td>Merry</td>
-                                <td>Manager</td>
-                                <td>Jalan Sulawesi Nomor 40</td>
-                                <td>Mer101</td>
-                                <td>*****</td>
-                            </tr>
-                        </table>
                     </div> 
                 </div>
         </div>

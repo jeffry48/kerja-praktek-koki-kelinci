@@ -110,48 +110,17 @@
                                         <br>
                                         <input type="text" name = "alamat" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:75%;" placeholder="Alamat Karyawan">
                                         <br>
-                                        <input type="text" name = "username" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:75%;" placeholder="Username">
+                                        <input type="text" name = "jk" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:75%;" placeholder="Jenis Kelamin">
                                         <br>
-                                        <input type="text" name = "password" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:75%;" placeholder="Password">
+                                        <input type="text" name = "nohp" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:75%;" placeholder="Nomor Telepon">
                                     </div>
                                     <input type="submit" class="btn btn-info pull-left" value = "Tambah" style="">
                                 </form>
                             </div>
                         </div>
-                        <!-- <table>
-                            <tr>
-                                <th>Id Karyawan</th>
-                                <th>Nama Karyawan</th>
-                                <th>Posisi Karyawan</th>
-                                <th>Alamat Karyawan</th>
-                                <th>Username</th>
-                                <th>Password</th>
-                            </tr>
-                            <tr>
-                                <td>K0001</td>
-                                <td>Merry</td>
-                                <td>Manager</td>
-                                <td>Jalan Sulawesi Nomor 40</td>
-                                <td>Mer101</td>
-                                <td>***</td>
-                            </tr>
-                            <tr>
-                                <td>K0002</td>
-                                <td>Misel</td>
-                                <td>Karyawan</td>
-                                <td>Jalan Sulawesi Nomor 50</td>
-                                <td>Mis202</td>
-                                <td>***</td>
-                            </tr>
-                        </table> -->
                     </div> 
                 </div>
         </div>
-
-        <!-- <footer class="main-footer">
-
-        </footer> -->
-        <!-- <div class="control-sidebar-bg"></div> -->
     </div>
 
     <script src="<?= base_url() ?>assets/backend/css/public/adminlte/bower_components/jquery/dist/jquery.min.js"></script>
