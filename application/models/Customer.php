@@ -26,7 +26,21 @@ class Customer extends CI_Model
 
     public function getFromSearch($nama,$alamat,$nohp)
     {
-        $query=$this->db->query('select * from konsumen where nama_konsumen="'.$nama.'" and alamat_konsumen="'.$alamat.'" and no_telp_konsumen="'.$nohp.'"');
+        $query = "";
+        if($nama != null && $alamat != null && $nohp != null)
+            $query=$this->db->query('select * from konsumen where nama_konsumen like "%'.$nama.'%" and alamat_konsumen like "%'.$alamat.'%" and no_telp_konsumen like "%'.$nohp.'%"');
+        else if ($nama != null && $alamat == null && $nohp == null)
+            $query=$this->db->query('select * from konsumen where nama_konsumen like "%'.$nama.'%"');
+        else if ($nama == null && $alamat != null && $nohp == null)
+            $query=$this->db->query('select * from konsumen where alamat_konsumen like "%'.$alamat.'%"');
+        else if ($nama == null && $alamat == null && $nohp != null)
+            $query=$this->db->query('select * from konsumen where no_telp_konsumen like "%'.$nohp.'%"');
+        else if($nama != null && $alamat != null && $nohp == null)
+            $query=$this->db->query('select * from konsumen where nama_konsumen like "%'.$nama.'%" and alamat_konsumen like "%'.$alamat.'%"');
+        else if($nama != null && $alamat == null && $nohp != null)
+            $query=$this->db->query('select * from konsumen where nama_konsumen like "%'.$nama.'%" and no_telp_konsumen like "%'.$nohp.'%"');
+        else if($nama == null && $alamat != null && $nohp != null)
+            $query=$this->db->query('select * from konsumen where alamat_konsumen like "%'.$alamat.'%" and no_telp_konsumen like "%'.$nohp.'%"');
         $result = $query->result_array();
         return $result;
     }

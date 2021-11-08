@@ -69,10 +69,41 @@ class Karyawan extends CI_Model
     public function getFromSearch($nama,$posisi,$alamat,$nohp,$jk)
     {
         // return $this->db->get($this->_table)->result();
-        
-        $query=$this->db->query('select * from karyawan where nama_karyawan="'.$nama.'" and 
-        jabatan_karyawan="'.$posisi.'" and alamat_karyawan="'.$alamat.'" and no_telp_karyawan="'.$nohp.'" and
-        jk_karyawan="'.$jk.'"');
+        if($nama != null && $posisi != null && $alamat != null && $nohp != null && $jk != null)
+            $query=$this->db->query('select * from karyawan where nama_karyawan like "%'.$nama.'%" and 
+            jabatan_karyawan like "%'.$posisi.'%" and alamat_karyawan like "%'.$alamat.'%" and no_telp_karyawan like "%'.$nohp.'%" and
+            jk_karyawan like "%'.$jk.'%"');
+        else if($nama != null && $posisi == null && $alamat == null && $nohp == null && $jk == null)
+            $query=$this->db->query('select * from karyawan where nama_karyawan like "%'.$nama.'%"');
+        else if($nama == null && $posisi != null && $alamat == null && $nohp == null && $jk == null)
+            $query=$this->db->query('select * from karyawan where jabatan_karyawan like "%'.$posisi.'%"');
+        else if($nama == null && $posisi == null && $alamat != null && $nohp == null && $jk == null)
+            $query=$this->db->query('select * from karyawan where alamat_karyawan like "%'.$alamat.'%"');
+        else if($nama == null && $posisi == null && $alamat == null && $nohp != null && $jk == null)
+            $query=$this->db->query('select * from karyawan where no_telp_karyawan like "%'.$nohp.'%"');
+        else if($nama == null && $posisi == null && $alamat == null && $nohp == null && $jk != null)
+            $query=$this->db->query('select * from karyawan where jk_karyawan like "%'.$jk.'%"');
+        else if($nama != null && $posisi != null && $alamat == null && $nohp == null && $jk == null)
+            $query=$this->db->query('select * from karyawan where nama_karyawan like "%'.$nama.'%" and jabatan_karyawan like "%'.$posisi.'%"');
+        else if($nama != null && $posisi == null && $alamat != null && $nohp == null && $jk == null)
+            $query=$this->db->query('select * from karyawan where nama_karyawan like "%'.$nama.'%" and alamat_karyawan like "%'.$alamat.'%"');
+        else if($nama != null && $posisi == null && $alamat == null && $nohp != null && $jk == null)
+            $query=$this->db->query('select * from karyawan where nama_karyawan like "%'.$nama.'%" and no_telp_karyawan like "%'.$nohp.'%"');
+        else if($nama != null && $posisi == null && $alamat == null && $nohp == null && $jk != null)
+            $query=$this->db->query('select * from karyawan where nama_karyawan like "%'.$nama.'%" and jk_karyawan like "%'.$jk.'%"');
+        else if($nama == null && $posisi != null && $alamat != null && $nohp == null && $jk == null)
+            $query=$this->db->query('select * from karyawan where jabatan_karyawan like "%'.$posisi.'%" and alamat_karyawan like "%'.$alamat.'%"');
+        else if($nama == null && $posisi != null && $alamat == null && $nohp != null && $jk == null)
+            $query=$this->db->query('select * from karyawan where jabatan_karyawan like "%'.$posisi.'%" and no_telp_karyawan like "%'.$nohp.'%"');
+        else if($nama == null && $posisi != null && $alamat == null && $nohp == null && $jk != null)
+            $query=$this->db->query('select * from karyawan where jabatan_karyawan like "%'.$posisi.'%" and jk_karyawan like "%'.$jk.'%"');
+        else if($nama == null && $posisi == null && $alamat != null && $nohp != null && $jk == null)
+            $query=$this->db->query('select * from karyawan where alamat_karyawan like "%'.$alamat.'%" and no_telp_karyawan like "%'.$nohp.'%"');
+        else if($nama == null && $posisi == null && $alamat != null && $nohp == null && $jk != null)
+            $query=$this->db->query('select * from karyawan where alamat_karyawan like "%'.$alamat.'%" and jk_karyawan like "%'.$jk.'%"');
+        else if($nama == null && $posisi == null && $alamat == null && $nohp != null && $jk != null)
+            $query=$this->db->query('select * from karyawan where no_telp_karyawan like "%'.$nohp.'%" and jk_karyawan like "%'.$jk.'%"');
+
         $result = $query->result_array();
         return $result;
     }
@@ -80,7 +111,7 @@ class Karyawan extends CI_Model
     public function getCount()
     {
         // return $this->db->get($this->_table)->result();
-        $query=$this->db->query("select count(*) from karyawan");
+        $query=$this->db->query("select count(*)+1 from karyawan");
         $result = $query->num_rows();
         return $result;
     }
@@ -107,7 +138,10 @@ class Karyawan extends CI_Model
             'no_telp_karyawan'=>$nohp,
             'jk_karyawan'=>$jk
         );
-        $this->db->insert('karyawan',$data);
+        // $this->db->insert('karyawan',$data);
+        return $this->db->query("insert into karyawan (id_karyawan,nama_karyawan,password_karyawan,
+        jabatan_karyawan,alamat_karyawan,no_telp_karyawan,jk_karyawan) values ('".$id."','".$nama."',
+        '".$password."','".$posisi."','".$alamat."','".$nohp."','".$jk."')");
     }
 
     public function update($id,$nama,$posisi,$alamat,$nohp,$jk)
