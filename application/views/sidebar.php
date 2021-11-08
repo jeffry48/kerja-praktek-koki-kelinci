@@ -12,7 +12,7 @@
                 </a>
                 <ul class="treeview-menu">
                     <li><a href="<?= base_url() ?>Pegawai"><i class="fa fa-circle-o"></i> Pegawai</a></li>
-                    <li><a href="<?= base_url() ?>Supplier"><i class="fa fa-circle-o"></i> Supplier</a></li>
+                    <li><a href="<?= base_url() ?>Supply"><i class="fa fa-circle-o"></i> Supplier</a></li>
                     <li><a href="<?= base_url() ?>Konsumen"><i class="fa fa-circle-o"></i> Konsumen</a></li>
                     <li><a href="<?= base_url() ?>Kategori"><i class="fa fa-circle-o"></i> Kategori</a></li>
                     <li><a href="<?= base_url() ?>Produk"><i class="fa fa-circle-o"></i> Produk</a></li>

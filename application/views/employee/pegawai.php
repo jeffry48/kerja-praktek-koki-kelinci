@@ -97,9 +97,9 @@
                     </div>
                 </div>
             </div> -->
-            <h2 style="float:left;padding-left:25%;padding-top:3%;">Cari Pegawai</h3>
-                <div class="row" style="margin-left:20%;">
-                    <div class="col-md-5-left" style="padding-top:20%;padding-right:55%;padding-left:5.9%;">
+            <h2 style="margin-left: 10%; margin-top: 0%;">Cari Pegawai</h3>
+                <div class="row" style="margin-left:10%;">
+                    <div class="col-md-10" style="">
                         <div class="box">
                             <div class="box-header">
                                 <form action = "<?= base_url() ?>KeTambahPegawai" method = "post">
@@ -126,7 +126,7 @@
                                 </form>
                             </div>
                         </div>
-                        <table>
+                            <table>
                             <tr>
                                 <th>Id Karyawan</th>
                                 <th>Nama Karyawan</th>
@@ -159,10 +159,11 @@
                                     </td>
                                 </form>
                             </tr>
-                        <?php endforeach; ?>
+                            <?php endforeach; ?>
                         </table>
                     </div> 
                 </div>
+
             </center>
         </div>
 

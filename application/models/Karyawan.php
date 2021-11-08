@@ -73,6 +73,8 @@ class Karyawan extends CI_Model
         $query=$this->db->query('select * from karyawan where nama_karyawan="'.$nama.'" and 
         jabatan_karyawan="'.$posisi.'" and alamat_karyawan="'.$alamat.'" and no_telp_karyawan="'.$nohp.'" and
         jk_karyawan="'.$jk.'"');
+        
+
         $result = $query->result_array();
         return $result;
     }

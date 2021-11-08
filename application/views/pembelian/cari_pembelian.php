@@ -116,7 +116,6 @@
                             <br>
                             <input type="text" name = "no" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="subtotal end">
                             <br> 
-                            
                             <div class="row" style="margin-left: 0%;">
                             <input type="submit" class="btn btn-info pull-left" value = "Cari">
                                 <button class="btn btn-info pull-left" style="margin-left: 1%;">clear</button>

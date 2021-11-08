@@ -10,14 +10,10 @@ class CariSupplier extends CI_Controller {
 
     public function index()
     {
-        // redirect(base_url() . 'login');
-        // $this->load->helper('URL');
-        // $this->load->helper('url');
-        // $this->load->view('employee/updatekategori.php');
         $nama=$this->input->post('nama');
         $alamat=$this->input->post('alamat');
         $nohp=$this->input->post('nohp');
         $data['karyawan'] = $this->Supplier->getFromSearch($nama,$alamat,$nohp);
-        $this->load->view('supplier/supplier.php',$data);
+        $this->load->view('supplier/supplier.php');
     }
 }

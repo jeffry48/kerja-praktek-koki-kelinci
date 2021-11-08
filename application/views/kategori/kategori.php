@@ -45,10 +45,10 @@
         </aside>
 
         <div class="content-wrapper">
-            <h2 style="float:left;padding-left:25%;padding-top:3%;">Cari Kategori</h3>
-                <div class="row" style="margin-left:20%;">
-                    <div class="col-md-5-left" style="padding-top:20%;padding-right:55%;padding-left:5.9%;">
-                        <div class="box" >
+        <h2 style="margin-left: 10%; margin-top: 0%;">Cari Pegawai</h3>
+                <div class="row" style="margin-left:10%;">
+                    <div class="col-md-10" style="">
+                        <div class="box">
                             <div class="box-header">
                                 <form action = "<?= base_url() ?>keTambahKategori" method = "post">
                                     <div class="form-group">

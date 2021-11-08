@@ -12,6 +12,5 @@ class buatLaporanMutasiPembelian extends CI_Controller {
         
         $this->load->helper('url');
         // $this->load->view('');
-        
     }
 }
