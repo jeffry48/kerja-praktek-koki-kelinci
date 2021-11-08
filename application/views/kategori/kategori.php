@@ -45,7 +45,7 @@
         </aside>
 
         <div class="content-wrapper">
-        <h2 style="margin-left: 10%; margin-top: 0%;">Cari Pegawai</h3>
+        <h2 style="margin-left: 10%; margin-top: 0%;">Cari Kategori</h3>
                 <div class="row" style="margin-left:10%;">
                     <div class="col-md-10" style="">
                         <div class="box">

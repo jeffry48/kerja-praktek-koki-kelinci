@@ -14,6 +14,6 @@ class CariSupplier extends CI_Controller {
         $alamat=$this->input->post('alamat');
         $nohp=$this->input->post('nohp');
         $data['karyawan'] = $this->Supplier->getFromSearch($nama,$alamat,$nohp);
-        $this->load->view('supplier/supplier.php');
+        $this->load->view('supplier/supplier.php', $data);
     }
 }

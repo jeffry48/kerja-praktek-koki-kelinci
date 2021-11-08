@@ -47,7 +47,7 @@ class Customer extends CI_Model
 
     public function getCount()
     {
-        $query=$this->db->query("select count(*) from konsumen");
+        $query=$this->db->query("select count(*)+1 from konsumen");
         $result = $query->num_rows();
         return $result;
     }

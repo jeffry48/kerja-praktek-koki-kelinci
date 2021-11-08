@@ -14,7 +14,8 @@ class TambahPegawai extends CI_Controller {
         // redirect(base_url() . 'login');
         // $this->load->helper('URL');
         $count = $this->Karyawan->getCount() + 1;
-        // echo $count;
+        $count+=1;
+        echo $count;
         $str = (string) $count;
         $id = "";
         if($count < 10)

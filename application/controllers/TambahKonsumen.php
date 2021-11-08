@@ -14,8 +14,9 @@ class TambahKonsumen extends CI_Controller {
     {
         // redirect(base_url() . 'login');
         // $this->load->helper('URL');
-        $count = $this->Customer->getCount() + 1;
-        // echo $count;
+        $count = $this->Customer->getCount();
+        $count+=1;
+        echo $count;
         $str = (string) $count;
         $id = "";
         if($count < 10)

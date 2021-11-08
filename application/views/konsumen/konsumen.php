@@ -107,20 +107,19 @@
                                         <input type="submit" class="btn btn-info pull-left" value = "Tambah" style="">
                                     </div>
                                 </form>
-                                    <br>
-                                    <form action = "<?= base_url() ?>CariKonsumen" method = "post">
-                                        <div class="form-group" style="padding-top:15%;">
-                                            <input type="text" name = "nama" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:75%;" placeholder="Nama Customer">
-                                            <br>
-                                            <input type="text" name = "alamat" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:75%;" placeholder="Alamat">
-                                            <br>
-                                            <input type="text" name = "nohp" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:75%;" placeholder="Nomor Telepon">
-                                        </div>
-                                    
-                                        <div class="form-group">
-                                            <input type="submit" class="btn btn-info pull-left" value = "Cari">
-                                        </div>
-                                    </form>
+                                <form action = "<?= base_url() ?>CariKonsumen" method = "post">
+                                    <div class="form-group" style="padding-top:8%;">
+                                        <input type="text" name = "nama" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:75%;" placeholder="Nama Customer">
+                                        <br>
+                                        <input type="text" name = "alamat" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:75%;" placeholder="Alamat">
+                                        <br>
+                                        <input type="text" name = "nohp" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:75%;" placeholder="Nomor Telepon">
+                                    </div>
+                                
+                                    <div class="form-group">
+                                        <input type="submit" class="btn btn-info pull-left" value = "Cari">
+                                    </div>
+                                </form>
                             </div>
                         </div>
                         <table>
