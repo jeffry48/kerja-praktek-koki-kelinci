@@ -97,9 +97,9 @@
                     </div>
                 </div>
             </div> -->
-            <h2 style="margin-left: 10%; margin-top: 0%;">Cari Pegawai</h3>
-                <div class="row" style="margin-left:10%;">
-                    <div class="col-md-10" style="">
+            <h2 style="float:left;padding-left:25%;padding-top:3%;">Cari Pegawai</h3>
+                <div class="row" style="margin-left:20%;">
+                    <div class="col-md-5-left" style="padding-top:20%;padding-right:55%;padding-left:5.9%;">
                         <div class="box">
                             <div class="box-header">
                                 <form action = "<?= base_url() ?>KeTambahPegawai" method = "post">
@@ -114,7 +114,11 @@
                                     <div class="form-group" style="">
                                     <input type="text" name = "nama" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:75%;" placeholder="Nama Karyawan">
                                         <br>
-                                        <input type="text" name = "posisi" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:75%;" placeholder="Posisi Karyawan">
+                                        <select class="form-control" name = "posisi" style="width:75%;border-color: #0d74a3; box-shadow: none;">
+                                            <option value="Pegawai">Pegawai</option>
+                                            <option value="Manajer">Manajer</option>
+                                            <option value="Direktur">Direktur</option>
+                                        </select>
                                         <br>
                                         <input type="text" name = "alamat" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:75%;" placeholder="Alamat Karyawan">
                                         <br>
@@ -126,13 +130,12 @@
                                 </form>
                             </div>
                         </div>
-                            <table>
+                        <table>
                             <tr>
                                 <th>Id Karyawan</th>
                                 <th>Nama Karyawan</th>
                                 <th>Posisi Karyawan</th>
                                 <th>Alamat Karyawan</th>
-                                <th>Password Karyawan</th>
                                 <th>Nomor Telepon Karyawan</th>
                                 <th>Jenis Kelamin Karyawan</th>
                                 <th colspan="2">Action</th>
@@ -143,7 +146,6 @@
                                 <td><?php echo $d['nama_karyawan']; ?></td>
                                 <td><?php echo $d['jabatan_karyawan']; ?></td>
                                 <td><?php echo $d['alamat_karyawan']; ?></td>
-                                <td><?php echo $d['password_karyawan']; ?></td>
                                 <td><?php echo $d['no_telp_karyawan']; ?></td>
                                 <td><?php echo $d['jk_karyawan']; ?></td>
                                 <td>
@@ -159,11 +161,10 @@
                                     </td>
                                 </form>
                             </tr>
-                            <?php endforeach; ?>
+                        <?php endforeach; ?>
                         </table>
                     </div> 
                 </div>
-
             </center>
         </div>
 

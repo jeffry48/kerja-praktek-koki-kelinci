@@ -106,11 +106,19 @@
                                     <div class="form-group" style="">
                                         <input type="text" name = "nama" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:75%;" placeholder="Nama Karyawan">
                                         <br>
-                                        <input type="text" name = "posisi" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:75%;" placeholder="Posisi Karyawan">
+                                        <select class="form-control" name = "posisi" style="width:75%;border-color: #0d74a3; box-shadow: none;">
+                                            <option value="Pegawai">Pegawai</option>
+                                            <option value="Manajer">Manajer</option>
+                                            <option value="Direktur">Direktur</option>
+                                        </select>
+                                        <!-- <input type="text" name = "posisi" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:75%;" placeholder="Posisi Karyawan"> -->
                                         <br>
                                         <input type="text" name = "alamat" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:75%;" placeholder="Alamat Karyawan">
                                         <br>
-                                        <input type="text" name = "jk" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:75%;" placeholder="Jenis Kelamin">
+                                        <label class="form-check-label" style="font-size:120%;">Jenis Kelamin : </label>
+                                        <input type="radio" name="jk" value="Laki-laki" style="margin-left:2%;"> Laki-laki
+                                        <input type="radio" name="jk" value="Perempuan" style="margin-left:2%;"> Perempuan<br>
+                                        <!-- <input type="text" name = "jk" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:75%;" placeholder="Jenis Kelamin"> -->
                                         <br>
                                         <input type="text" name = "nohp" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:75%;" placeholder="Nomor Telepon">
                                     </div>
