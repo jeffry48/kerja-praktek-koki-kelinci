@@ -97,9 +97,9 @@
                     </div>
                 </div>
             </div> -->
-            <h2 style="float:left;padding-left:28.5%;padding-top:3%;">Tambah Konsumen Baru</h3>
-                <div class="row" style="margin-left:25%;">
-                    <div class="col-md-5-left" style="padding-top:20%;padding-right:55%;padding-left:5.9%;">
+            <h2 style="float:left;padding-left:2%;padding-top:3%;">Tambah Konsumen Baru</h3>
+                <div class="row" style="margin-left:2%;">
+                    <div class="col-md-5-left" style="padding-top:12%;padding-right:65%;padding-left:0%;width:150%;">
                         <div class="box">
                             <div class="box-header">
                             <form action = "<?= base_url() ?>TambahKonsumen" method = "post">

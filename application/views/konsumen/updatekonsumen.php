@@ -97,9 +97,9 @@
                     </div>
                 </div>
             </div> -->
-            <h2 style="float:left;padding-left:35%;padding-top:3%;">Update Customer</h3>
-                <div class="row" style="margin-left:31%;">
-                    <div class="col-md-5-left" style="padding-top:20%;padding-right:55%;padding-left:5.9%;">
+            <h2 style="float:left;padding-left:2%;padding-top:3%;">Update Customer</h3>
+                <div class="row" style="margin-left:2%;">
+                    <div class="col-md-5-left" style="padding-top:12%;padding-right:65%;padding-left:0%;width:150%;">
                         <div class="box">
                             <div class="box-header">
                                 <form action = "<?= base_url() ?>UpdateKonsumen" method = "post">
@@ -127,13 +127,13 @@
         <!-- <div class="control-sidebar-bg"></div> -->
     </div>
 
-    <script src="../public/adminlte/bower_components/jquery/dist/jquery.min.js"></script>
-    <script src="../public/adminlte/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="../public/adminlte/bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
-    <script src="../public/adminlte/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.js"></script>
-    <script src="../public/adminlte/bower_components/fastclick/lib/fastclick.js"></script>
-    <script src="../public/adminlte/dist/js/adminlte.min.js"></script>
-    <script src="../public/adminlte/dist/js/demo.js"></script>
+    <script src="<?= base_url() ?>assets/backend/css/public/adminlte/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="<?= base_url() ?>assets/backend/css/public/adminlte/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="<?= base_url() ?>assets/backend/css/public/adminlte/bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="<?= base_url() ?>assets/backend/css/public/adminlte/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.js"></script>
+    <script src="<?= base_url() ?>assets/backend/css/public/adminlte/bower_components/fastclick/lib/fastclick.js"></script>
+    <script src="<?= base_url() ?>assets/backend/css/public/adminlte/dist/js/adminlte.min.js"></script>
+    <script src="<?= base_url() ?>assets/backend/css/public/adminlte/dist/js/demo.js"></script>
 
     <script>
         $(document).ready(function () {

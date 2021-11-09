@@ -97,9 +97,9 @@
                     </div>
                 </div>
             </div> -->
-            <h2 style="margin-left: 10%; margin-top: 0%;">Cari Konsumen</h3>
-                <div class="row" style="margin-left:10%;">
-                    <div class="col-md-10" style="">
+            <h2 style="float:left;padding-left:2%;padding-top:3%;">Cari Customer</h3>
+                <div class="row" style="margin-left:2%;">
+                    <div class="col-md-5-left" style="padding-top:12%;padding-right:65%;padding-left:0%;width:150%;">
                         <div class="box">
                             <div class="box-header">
                                 <form action = "<?= base_url() ?>KeTambahKonsumen" method = "post">
@@ -107,19 +107,20 @@
                                         <input type="submit" class="btn btn-info pull-left" value = "Tambah" style="">
                                     </div>
                                 </form>
-                                <form action = "<?= base_url() ?>CariKonsumen" method = "post">
-                                    <div class="form-group" style="padding-top:8%;">
-                                        <input type="text" name = "nama" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:75%;" placeholder="Nama Customer">
-                                        <br>
-                                        <input type="text" name = "alamat" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:75%;" placeholder="Alamat">
-                                        <br>
-                                        <input type="text" name = "nohp" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:75%;" placeholder="Nomor Telepon">
-                                    </div>
-                                
-                                    <div class="form-group">
-                                        <input type="submit" class="btn btn-info pull-left" value = "Cari">
-                                    </div>
-                                </form>
+                                    <br>
+                                    <form action = "<?= base_url() ?>CariKonsumen" method = "post">
+                                        <div class="form-group" style="padding-top:6%;">
+                                            <input type="text" name = "nama" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:75%;" placeholder="Nama Customer">
+                                            <br>
+                                            <input type="text" name = "alamat" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:75%;" placeholder="Alamat">
+                                            <br>
+                                            <input type="text" name = "nohp" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:75%;" placeholder="Nomor Telepon">
+                                        </div>
+                                    
+                                        <div class="form-group">
+                                            <input type="submit" class="btn btn-info pull-left" value = "Cari">
+                                        </div>
+                                    </form>
                             </div>
                         </div>
                         <table>
