@@ -106,11 +106,11 @@
                                 <?php foreach($karyawan as $k): ?>
                                     <div class="form-group" style="padding-top:9%;">
                                     <input type="hidden" name="id" value="<?= $k['id_supplier'] ?>">
-                                        <input type="text" name = "nama" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="Nama Supplier">
+                                        <input type="text" name = "nama" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="Nama Supplier" value="<?= $k['nama_supplier'] ?>">
                                         <br>
-                                        <input type="text" name = "alamat" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="Alamat Supplier">
+                                        <input type="text" name = "alamat" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="Alamat Supplier" value="<?= $k['alamat_supplier'] ?>">
                                         <br>
-                                        <input type="text" name = "nohp" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="Telepon Supplier">
+                                        <input type="text" name = "nohp" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="Telepon Supplier" value="<?= $k['no_telp_supplier'] ?>">
                                     </div>
                                     <input type="submit" class="btn btn-info pull-left" value = "Update" style="">
                                 <?php endforeach; ?>
