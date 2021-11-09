@@ -97,14 +97,13 @@
                     </div>
                 </div>
             </div> -->
-            <h2 style="float:left;padding-left:25%;padding-top:3%;">Ubah Password</h3>
+            <h2 style="float:left;padding-left:20%;padding-top:3%;">Ubah Password</h3>
                 <div class="row" style="margin-left:20%;">
-                    <div class="col-md-5-left" style="padding-top:20%;padding-right:55%;padding-left:5.9%;">
+                    <div class="col-md-5-left" style="padding-top:20%;padding-right:55%;padding-left:0%;width:150%;">
                         <div class="box">
                             <div class="box-header">
                                 <form action = "<?= base_url() ?>UbahPass" method = "post">
                                     <div class="form-group">
-                                        <h4>Nama Pegawai : Merry</h4><br>
                                         <input type="text" name = "passlama" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:75%;" placeholder="Password Lama">
                                         <br>
                                         <input type="text" name = "passbaru" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:75%;" placeholder="Password Baru">
