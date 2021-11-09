@@ -97,14 +97,14 @@
                     </div>
                 </div>
             </div> -->
-            <h2 style="float:left;padding-left:35%;padding-top:3%;">Update Supplier</h3>
-                <div class="row" style="margin-left:31%;">
-                    <div class="col-md-5-left" style="padding-top:20%;padding-right:55%;padding-left:5.9%;">
+            <h2 style="float:left;padding-left:2%;padding-top:3%;">Update Supplier</h3>
+                <div class="row" style="margin-left:2%;">
+                    <div class="col-md-5-left" style="padding-top:12%;padding-right:65%;padding-left:0%;width:150%;">
                         <div class="box">
                             <div class="box-header">
                                 <form action = "<?= base_url() ?>UpdateSupplier" method = "post">
                                 <?php foreach($karyawan as $k): ?>
-                                    <div class="form-group" style="padding-top:9%;">
+                                    <div class="form-group" style="padding-top:0%;">
                                     <input type="hidden" name="id" value="<?= $k['id_supplier'] ?>">
                                         <input type="text" name = "nama" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="Nama Supplier" value="<?= $k['nama_supplier'] ?>">
                                         <br>

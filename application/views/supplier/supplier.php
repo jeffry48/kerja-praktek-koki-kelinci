@@ -45,15 +45,68 @@
         </aside>
 
                 <!-- <div style="position: absolute; bottom: 0; z-index: -1">
+                    <img src="{{ url('/fubuki.png')}}" width=100% height=auto>
                     <center>
                         <img src="kokiKelinci.jpg" width=70% height=auto style="margin-bottom: 10%; border-radius: 100%;">
                     </center>
                 </div> -->
 
         <div class="content-wrapper">
-        <h2 style="margin-left: 10%; margin-top: 0%;">Cari Supplier</h3>
-                <div class="row" style="margin-left:10%;">
-                    <div class="col-md-10" style="">
+            <!-- <div class="row" style="padding-left:20px; padding-right:20px;">
+                <div class="row">
+                    <div class="col-md-2">
+                    <div class="box box-danger">
+                        <div class="box-header">
+                            <h3 class="box-title">Search</h3>
+                        </div>
+                        <div class="box-body">
+                            <div class="form-group">
+                                <label>Status :</label>
+                                <div class="radio">
+                                    <label><input type="radio" name="edStatus" id="" value="0" onfocus="stopShow()">Belum Dikonfirmasi</label>
+                                </div>
+                                <div class="radio">
+                                    <label><input type="radio" name="edStatus" id="" value="1" onfocus="stopShow()">Tidak Disetujui</label>
+                                </div>
+                                <div class="radio">
+                                    <label><input type="radio" name="edStatus" id="" value="2" onfocus="stopShow()">Sukses</label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Tanggal :</label>
+                                <input type="text" class="form-control" name="edTanggal" id="edTanggal" onfocus="stopShow()">
+                            </div>
+                            <div class="form-group">
+                                <label>Jenis :</label>
+                                <div class="radio">
+                                    <label><input type="radio" name="edJenis" id="" value = "Dine" onfocus="stopShow()">Dine In</label>
+                                </div>
+                                <div class="radio">
+                                    <label><input type="radio" name="edJenis" id="" value = "T" onfocus="stopShow()">Booking</label>
+                                </div>
+                            </div>
+    
+                            <form action="#" method="post">
+                                <button type="button" class="btn btn-info pull-right" onclick="startShow()" name="edSearch">Search</button>
+                                <button type="submit" class="btn btn-info pull-right" name="edShowAll">Show All</button>
+                            </form>
+                            <div id="konfTrans"></div>
+                            <div id="detailTrans"></div>
+                            <div id="konf"></div>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="col-md-10">
+                        <div id="konfTrans"></div>
+                        <div id="detailTrans"></div>
+                        <div id="konf"></div>
+                        <div id="tes"></div>
+                    </div>
+                </div>
+            </div> -->
+            <h2 style="float:left;padding-left:2%;padding-top:3%;">Cari Supplier</h3>
+                <div class="row" style="margin-left:2%;">
+                    <div class="col-md-5-left" style="padding-top:12%;padding-right:65%;padding-left:0%;width:150%;">
                         <div class="box">
                             <div class="box-header">
                                 <form action = "<?= base_url() ?>KeTambahSupplier" method = "post">
@@ -61,13 +114,14 @@
                                         <input type="submit" class="btn btn-info pull-left" value = "Tambah" style="">
                                     </div>
                                 </form>
+                                <br>
                                 <form action = "<?= base_url() ?>CariSupplier" method = "post">
-                                    <div class="form-group" style="padding-top:8%;">
+                                    <div class="form-group" style="padding-top:6%;">
                                         <input type="text" name = "nama" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="Nama Supplier">
                                         <br>
                                         <input type="text" name = "alamat" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="Alamat Supplier">
                                         <br>
-                                        <input type="text" name = "telepon" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="Telepon Supplier">
+                                        <input type="text" name = "nohp" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="Telepon Supplier">
                                     </div>
                                     <input type="submit" class="btn btn-info pull-left" value = "Cari" style="">
                                 </form>
@@ -89,13 +143,13 @@
                                 <td><?php echo $d['no_telp_supplier']; ?></td>
                                 <td>
                                     <form action="<?= base_url() ?>HapusSupplier" method="post">
-                                        <input type="submit" class="btn btn-info pull-right" value = "Hapus" style="">
+                                        <input type="submit" class="btn btn-info pull-left" value = "Hapus" style="">
                                         <input type="hidden" name="id" value="<?= $d['id_supplier']; ?>">
                                     </form>
                                 </td>
                                 <form action="<?= base_url() ?>KeUpdateSupplier" method="post">
                                     <td>
-                                        <input type="submit" class="btn btn-info pull-right" value = "Update" style="">
+                                        <input type="submit" class="btn btn-info pull-left" value = "Update" style="">
                                         <input type="hidden" name="id" value="<?= $d['id_supplier']; ?>">
                                     </td>
                                 </form>
