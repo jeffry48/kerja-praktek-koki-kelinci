@@ -111,7 +111,7 @@ class Karyawan extends CI_Model
 
     public function getCount()
     {
-
+        
         $query=$this->db->query("select count(*) from karyawan");
         $result = $query->num_rows();
         return $result;

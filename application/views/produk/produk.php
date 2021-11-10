@@ -136,7 +136,7 @@
                                         <td>'.$currData['id_produk'].'</td>
                                         <td>'.$currData['nama_produk'].'</td>
                                         <td>'.$namaKat.'</td>
-                                        <td>'.$currData['harga_produk'].'</td>
+                                        <td>'.number_format($currData['harga_produk'], 3, ".", ".").'</td>
                                         <td>
                                             <form action="HapusProduk" method="post">
                                                 <input type="hidden" name="idPro" value="'.$currData['id_produk'].'">
@@ -191,7 +191,10 @@
             <h5 class="modal-title" id="modalDetailLabel"></h5>
         </div>
         <div class="modal-body">
-            <?php echo $_SESSION['success']?>
+            <?php 
+            echo $_SESSION['success']; 
+            $_SESSION['success']=null;
+            ?>        
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>

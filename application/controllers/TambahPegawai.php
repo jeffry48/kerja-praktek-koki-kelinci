@@ -16,15 +16,7 @@ class TambahPegawai extends CI_Controller {
         $count = $this->Karyawan->getAll();
         $str = (string) count($count)+1;
         // $str = (string) $count;
-        $id = "";
-        if(count($count) < 10)
-            $id .= "KR000";
-        else if (count($count) >= 10 && count($count) < 100)
-            $id .= "KR00";
-        else if (count($count) >= 100 && count($count) < 1000)
-            $id .= "KR0";
-        else 
-            $id .= "KR";
+
         // echo $id;
         $nama=$this->input->post('nama');
         $pass=$this->input->post('password');
@@ -36,8 +28,19 @@ class TambahPegawai extends CI_Controller {
         $query2=$this->db->query("select max(substring(id_karyawan, 3)) from karyawan");
         $result = $query2->result_array();
         $lastId=(int)$result[0]["max(substring(id_karyawan, 3))"];
-        $id.=($lastId+1);
-        $tambah = $this->Karyawan->save($id,$nama,'1',$posisi,$alamat,$nohp,$jk);
+        $lastId+=1;
+        $id = "";
+        if($lastId < 10)
+            $id .= "KR000";
+        else if ($lastId >= 10 && $lastId < 100)
+            $id .= "KR00";
+        else if ($lastId >= 100 && $lastId < 1000)
+            $id .= "KR0";
+        else 
+            $id .= "KR";
+
+        $id.=($lastId);
+        $tambah = $this->Karyawan->save($id,$nama,$pass,$posisi,$alamat,$nohp,$jk);
         ?>
         <!-- <script>
             alert("tambah pegawai berhasil");

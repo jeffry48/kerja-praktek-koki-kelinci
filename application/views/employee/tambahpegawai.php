@@ -106,7 +106,7 @@
                                 <div class="form-group" style="">
                                     <input type="text" name = "nama" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:75%;" placeholder="Nama Karyawan">
                                     <br>
-                                    <input type="text" name = "password" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:75%;" placeholder="Password Karyawan">
+                                    <input type="password" name = "password" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:75%;" placeholder="Password Karyawan">
                                     <br>
                                     <select class="form-control" name = "posisi" style="width:75%;border-color: #0d74a3; box-shadow: none;">
                                         <option value="0">Pegawai</option>

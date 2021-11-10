@@ -195,7 +195,10 @@
             <h5 class="modal-title" id="modalDetailLabel"></h5>
         </div>
         <div class="modal-body">
-            <?php echo $_SESSION['success']?>
+        <?php 
+            echo $_SESSION['success']; 
+            $_SESSION['success']=null;
+            ?>        
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
