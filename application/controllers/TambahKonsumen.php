@@ -14,24 +14,27 @@ class TambahKonsumen extends CI_Controller {
     {
         // redirect(base_url() . 'login');
         // $this->load->helper('URL');
-        $count = $this->Customer->getCount();
-        $count+=1;
-        echo $count;
-        $str = (string) $count;
+        $count = $this->Customer->getAll();
+        // echo $count;
+        // $str = (string) count($count)+1;
         $id = "";
-        if($count < 10)
-            $id = "CU000" . $str;
-        else if ($count >= 10 && $count < 100)
-            $id = "CU00" . $str;
-        else if ($count >= 100 && $count < 1000)
-            $id = "CU0" . $str;
+        if(count($count) < 10)
+            $id .= "CU000";
+        else if (count($count) >= 10 && count($count) < 100)
+            $id .= "CU00";
+        else if (count($count) >= 100 && count($count) < 1000)
+            $id .= "CU0";
         else 
-            $id = "CU" . $str;
+            $id .= "CU";
         // echo $id;
         $nama=$this->input->post('nama');
         $alamat=$this->input->post('alamat');
         $nohp=$this->input->post('nohp');
         $cookie = get_cookie("active_id");
+        $query2=$this->db->query("select max(substring(id_konsumen, 3)) from konsumen");
+        $result = $query2->result_array();
+        $lastId=(int)$result[0]["max(substring(id_konsumen, 3))"];
+        $id.=($lastId+1);
         $tambah = $this->Customer->save($id,$cookie,$nama,$alamat,$nohp);
         ?>
             <script type="text/javascript">

@@ -13,22 +13,25 @@ class TambahSupplier extends CI_Controller {
     {
         // redirect(base_url() . 'login');
         // $this->load->helper('URL');
-        $count = $this->Supplier->getCount() + 1;
+        $count = $this->Supplier->getAll();
         // echo $count;
-        $str = (string) $count;
         $id = "";
-        if($count < 10)
-            $id = "SU000" . $str;
-        else if ($count >= 10 && $count < 100)
-            $id = "SU00" . $str;
-        else if ($count >= 100 && $count < 1000)
-            $id = "SU0" . $str;
+        if(count($count) < 10)
+            $id .= "SU000";
+        else if (count($count) >= 10 && count($count) < 100)
+            $id .= "SU00";
+        else if (count($count) >= 100 && count($count) < 1000)
+            $id .= "SU0";
         else 
-            $id = "SU" . $str;
+            $id .= "SU";
         // echo $id;
         $nama=$this->input->post('nama');
         $alamat=$this->input->post('alamat');
         $nohp=$this->input->post('nohp');
+        $query2=$this->db->query("select max(substring(id_supplier, 3)) from supplier");
+        $result = $query2->result_array();
+        $lastId=(int)$result[0]["max(substring(id_supplier, 3))"];
+        $id.=($lastId+1);
         $tambah = $this->Supplier->save($id,$nama,$alamat,$nohp);
         ?>
             <!-- <script type="text/javascript">
