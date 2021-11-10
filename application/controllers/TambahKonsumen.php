@@ -38,6 +38,8 @@ class TambahKonsumen extends CI_Controller {
                 alert("Berhasil Tambah Konsumen Baru");
             </script>
         <?php
+        $_SESSION['success']="berhasil tambah customer";
+        $this->session->mark_as_flash('success');
         $this->load->helper('url');
         $data['karyawan'] = $this->Customer->getAll();
         $this->load->view('konsumen/konsumen.php',$data);

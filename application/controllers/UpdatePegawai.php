@@ -22,10 +22,12 @@ class UpdatePegawai extends CI_Controller {
         $nohp=$this->input->post('nohp');
         $update = $this->Karyawan->update($id,$nama,$posisi,$alamat,$nohp,$jk);
         ?>
-            <script type="text/javascript">
+            <!-- <script type="text/javascript">
                 alert("Berhasil Update Pegawai");
-            </script>
+            </script> -->
         <?php
+        $_SESSION['success']="berhasil update pegawai";
+        $this->session->mark_as_flash('success');
         $data['karyawan'] = $this->Karyawan->getAll();
         $this->load->view('employee/pegawai.php',$data);
     }

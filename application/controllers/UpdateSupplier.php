@@ -19,10 +19,10 @@ class UpdateSupplier extends CI_Controller {
         $nohp=$this->input->post('nohp');
         $update = $this->Supplier->update($id,$nama,$alamat,$nohp);
         ?>
-            <script type="text/javascript">
-                alert("Berhasil Update Supplier");
-            </script>
+
         <?php
+        $_SESSION['success']="berhasil update supplier";
+        $this->session->mark_as_flash('success');
         $data['karyawan'] = $this->Supplier->getAll();
         $this->load->view('supplier/supplier.php',$data);
 

@@ -13,9 +13,7 @@ class TambahPegawai extends CI_Controller {
     {
         // redirect(base_url() . 'login');
         // $this->load->helper('URL');
-        $count = $this->Karyawan->getCount() + 1;
-        $count+=1;
-        echo $count;
+        $count = $this->Karyawan->getCount();
         $str = (string) $count;
         $id = "";
         if($count < 10)
@@ -28,19 +26,22 @@ class TambahPegawai extends CI_Controller {
             $id = "KR" . $str;
         // echo $id;
         $nama=$this->input->post('nama');
+        $pass=$this->input->post('password');
         $posisi=$this->input->post('posisi');
         $alamat=$this->input->post('alamat');
         $jk=$this->input->post('jk');
         // $password=$this->input->post('password');
         $nohp=$this->input->post('nohp');
-        $tambah = $this->Karyawan->save($id,$nama,'1',$posisi,$alamat,$nohp,$jk);
+        $tambah = $this->Karyawan->save($id,$nama,$pass,$posisi,$alamat,$nohp,$jk);
         ?>
-            <script type="text/javascript">
-                alert("Berhasil Tambah Pegawai");
-            </script>
+        <!-- <script>
+            alert("tambah pegawai berhasil");
+        </script> -->
         <?php
-        $this->load->helper('url');
+        $_SESSION['success']="berhasil tambah pegawai";
+        $this->session->mark_as_flash('success');
         $data['karyawan'] = $this->Karyawan->getAll();
-        $this->load->view('employee/pegawai.php',$data);
+        // $this->load->view('employee/pegawai.php',$data);
+        redirect('pegawai');
     }
 }

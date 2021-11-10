@@ -12,6 +12,8 @@ class UpdateKategori extends CI_Controller {
         $namaKat=$this->input->post('namaKat');
         echo $idKat;
         $this->kategori_model->updateKat($idKat, $namaKat);
+        $_SESSION['success']="berhasil update kategori";
+        $this->session->mark_as_flash('success');
         redirect("kategori");
     }
 }

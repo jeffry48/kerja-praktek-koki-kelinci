@@ -106,11 +106,11 @@
                                 <?php foreach($karyawan as $k): ?>
                                     <div class="form-group" style="">
                                         <input type="hidden" name="id" value="<?= $k['id_konsumen'] ?>">
-                                        <input type="text" name = "nama" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:75%;" placeholder="Nama Customer" value="<?= $k['nama_konsumen'] ?>">
+                                        <input type="text" name = "nama" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="Nama Customer" value="<?= $k['nama_konsumen'] ?>">
                                         <br>
-                                        <input type="text" name = "alamat" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:75%;" placeholder="Alamat" value="<?= $k['alamat_konsumen'] ?>">
+                                        <input type="text" name = "alamat" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="Alamat" value="<?= $k['alamat_konsumen'] ?>">
                                         <br>
-                                        <input type="text" name = "nohp" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:75%;" placeholder="Nomor Telepon" value="<?= $k['no_telp_konsumen'] ?>">
+                                        <input type="text" name = "nohp" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="Nomor Telepon" value="<?= $k['no_telp_konsumen'] ?>">
                                     </div>
                                     <input type="submit" class="btn btn-info pull-left" value = "Update" style="">
                                 <?php endforeach; ?>

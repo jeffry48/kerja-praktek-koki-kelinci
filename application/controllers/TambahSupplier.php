@@ -31,10 +31,12 @@ class TambahSupplier extends CI_Controller {
         $nohp=$this->input->post('nohp');
         $tambah = $this->Supplier->save($id,$nama,$alamat,$nohp);
         ?>
-            <script type="text/javascript">
+            <!-- <script type="text/javascript">
                 alert("Berhasil Tambah Supplier");
-            </script>
+            </script> -->
         <?php
+        $_SESSION['success']="berhasil tambah supplier";
+        $this->session->mark_as_flash('success');
         $this->load->helper('url');
         $data['karyawan'] = $this->Supplier->getAll();
         $this->load->view('supplier/supplier.php',$data);

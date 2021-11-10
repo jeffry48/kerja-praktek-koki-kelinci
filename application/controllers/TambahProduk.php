@@ -15,6 +15,8 @@ class TambahProduk extends CI_Controller {
         $katPro=$this->input->post('kategoriPro');
         // echo $katPro;
         $this->produk_model->insertNewPro($namaKat, $hargaPro, $katPro);
+        $_SESSION['success']="berhasil tambah produk";
+        $this->session->mark_as_flash('success');
         redirect("produk");
     }
 }

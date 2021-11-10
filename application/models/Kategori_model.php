@@ -15,24 +15,22 @@ class Kategori_model extends CI_Model
 
     public function insertNewKat($namaKat)
     {
-        $query=$this->db->query("select * from kategori");
-        $result = $query->result_array();
-        $count=count($result);
-        $newId="KT";
-        if($count<10){
-            $newId.="000";
-        }
-        else if($count>=10&&$count<100){
-            $newId.="00";
-        }
-        else if($count>=100&&$count<1000){
-            $newId.="0";
-        }
-
         $query2=$this->db->query("select max(substring(id_kategori, 3)) from kategori");
         $result = $query2->result_array();
         $lastId=(int)$result[0]["max(substring(id_kategori, 3))"];
-        $newId.=$lastId+1;
+        $lastId+=1;
+        $newId="KT";
+        if($lastId<10){
+            $newId.="000";
+        }
+        else if($lastId>=10&&$lastId<100){
+            $newId.="00";
+        }
+        else if($lastId>=100&&$lastId<1000){
+            $newId.="0";
+        }
+        $newId.=$lastId;
+
         // var_dump($newId);
         
         return $this->db->query("insert into kategori values('".$newId."', '".$namaKat."')");

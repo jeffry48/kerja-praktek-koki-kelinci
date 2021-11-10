@@ -106,19 +106,27 @@
                                 <?php foreach($karyawan as $k): ?>
                                     <div class="form-group" style="">
                                         <input type="hidden" name="id" value="<?= $k['id_karyawan'] ?>">
-                                    <input type="text" name = "nama" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:75%;" placeholder="Nama Karyawan" value="<?= $k['nama_karyawan'] ?>">
-                                        <br>
-                                        <input type="text" name = "posisi" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:75%;" placeholder="Posisi Karyawan" value="<?= $k['jabatan_karyawan'] ?>">
-                                        <br>
-                                        <input type="text" name = "alamat" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:75%;" placeholder="Alamat Karyawan" value="<?= $k['alamat_karyawan'] ?>">
-                                        <br>
-                                        <input type="text" name = "jk" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:75%;" placeholder="Jenis Kelamin" value="<?= $k['jk_karyawan'] ?>">
-                                        <br>
-                                        <input type="text" name = "nohp" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:75%;" placeholder="Nomor Telepon" value="<?= $k['no_telp_karyawan'] ?>">
+                                        <input type="text" name = "nama" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:75%;" placeholder="Nama Karyawan"value="<?= $k['nama_karyawan'] ?>">
+                                    <br>
+                                    <select class="form-control" name = "posisi" style="width:75%;border-color: #0d74a3; box-shadow: none;"value="<?= $k['jabatan_karyawan'] ?>">
+                                        <option value="0">Pegawai</option>
+                                        <option value="1">Admin</option>
+                                    </select>
+                                    <!-- <input type="text" name = "posisi" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:75%;" placeholder="Posisi Karyawan"> -->
+                                    <br>
+                                    <input type="text" name = "alamat" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:75%;" placeholder="Alamat Karyawan" value="<?= $k['alamat_karyawan'] ?>">
+                                    <br>
+                                    <label class="form-check-label" style="font-size:120%;">Jenis Kelamin : </label>
+                                    <input type="radio" name="jk" value="Laki-laki" style="margin-left:2%;"> Laki-laki
+                                    <input type="radio" name="jk" value="Perempuan" style="margin-left:2%;"> Perempuan<br>
+                                    <!-- <input type="text" name = "jk" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:75%;" placeholder="Jenis Kelamin"> -->
+                                    <br>
+                                    <input type="text" name = "nohp" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:75%;" placeholder="Nomor Telepon"value="<?= $k['no_telp_karyawan'] ?>">
                                     </div>
                                     <input type="submit" class="btn btn-info pull-left" value = "Update" style="">
                                     <?php endforeach; ?>
                                 </form>
+                                    
                             </div>
                         </div>
                     </div> 

@@ -177,11 +177,32 @@
     <script>
         $(document).ready(function () {
             $('.sidebar-menu').tree()
+            <?php
+            if(isset($_SESSION['success'])){
+                echo '$("#myModal").modal("show");';
+            }
+            ?>
         })
 
         $(function () {
             $('#edTanggal').datepicker();
         });
     </script>
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="modalDetailLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="modalDetailLabel"></h5>
+        </div>
+        <div class="modal-body">
+            <?php echo $_SESSION['success']?>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+        </div>
+        </div>
+    </div>
+    </div>
 </body>
 </html>
