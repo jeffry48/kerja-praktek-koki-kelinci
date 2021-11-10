@@ -110,11 +110,11 @@
                                     <br>
                                     <form action = "<?= base_url() ?>CariKonsumen" method = "post">
                                         <div class="form-group" style="padding-top:6%;">
-                                            <input type="text" name = "nama" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:75%;" placeholder="Nama Customer">
+                                            <input type="text" name = "nama" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="Nama Customer">
                                             <br>
-                                            <input type="text" name = "alamat" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:75%;" placeholder="Alamat">
+                                            <input type="text" name = "alamat" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="Alamat">
                                             <br>
-                                            <input type="text" name = "nohp" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:75%;" placeholder="Nomor Telepon">
+                                            <input type="text" name = "nohp" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="Nomor Telepon">
                                         </div>
                                     
                                         <div class="form-group">

@@ -17,6 +17,7 @@
           font-family: arial, sans-serif;
           border-collapse: collapse;
           width: 100%;
+          overflow: auto;
         }
         th
         {
@@ -112,57 +113,60 @@
                                 <br>
                                 <form action = "<?= base_url() ?>CariPegawai" method = "post">
                                     <div class="form-group" style="">
-                                    <input type="text" name = "nama" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:75%;" placeholder="Nama Karyawan">
+                                    <input type="text" name = "nama" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="Nama Karyawan">
                                         <br>
-                                        <select class="form-control" name = "posisi" style="width:75%;border-color: #0d74a3; box-shadow: none;">
+                                        <select class="form-control" name = "posisi" style="width:100%;border-color: #0d74a3; box-shadow: none;">
                                             <option value="Pegawai">Pegawai</option>
                                             <option value="Manajer">Manajer</option>
                                             <option value="Direktur">Direktur</option>
                                         </select>
                                         <br>
-                                        <input type="text" name = "alamat" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:75%;" placeholder="Alamat Karyawan">
+                                        <input type="text" name = "alamat" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="Alamat Karyawan">
                                         <br>
-                                        <input type="text" name = "jk" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:75%;" placeholder="Jenis Kelamin">
+                                        <input type="text" name = "jk" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="Jenis Kelamin">
                                         <br>
-                                        <input type="text" name = "nohp" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:75%;" placeholder="Nomor Telepon">
+                                        <input type="text" name = "nohp" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="Nomor Telepon">
                                     </div>
                                     <input type="submit" class="btn btn-info pull-left" value = "Cari" style="">
                                 </form>
                             </div>
                         </div>
-                        <table>
-                            <tr>
-                                <th>Id Karyawan</th>
-                                <th>Nama Karyawan</th>
-                                <th>Posisi Karyawan</th>
-                                <th>Alamat Karyawan</th>
-                                <th>Nomor Telepon Karyawan</th>
-                                <th>Jenis Kelamin Karyawan</th>
-                                <th colspan="2">Action</th>
-                            </tr>
-                            <?php foreach($karyawan as $d): ?>
-                            <tr>
-                                <td><?php echo $d['id_karyawan']; ?></td>
-                                <td><?php echo $d['nama_karyawan']; ?></td>
-                                <td><?php echo $d['jabatan_karyawan']; ?></td>
-                                <td><?php echo $d['alamat_karyawan']; ?></td>
-                                <td><?php echo $d['no_telp_karyawan']; ?></td>
-                                <td><?php echo $d['jk_karyawan']; ?></td>
-                                <td>
-                                    <form action="<?= base_url() ?>HapusPegawai" method="post">
-                                        <input type="submit" class="btn btn-info pull-left" value = "Hapus" style="">
-                                        <input type="hidden" name="id" value="<?= $d['id_karyawan']; ?>">
-                                    </form>
-                                </td>
-                                <form action="<?= base_url() ?>KeUpdatePegawai" method="post">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <tr>
+                                    <th>Id Karyawan</th>
+                                    <th>Nama Karyawan</th>
+                                    <th>Posisi Karyawan</th>
+                                    <th>Alamat Karyawan</th>
+                                    <th>Nomor Telepon Karyawan</th>
+                                    <th>Jenis Kelamin Karyawan</th>
+                                    <th colspan="2">Action</th>
+                                </tr>
+                                <?php foreach($karyawan as $d): ?>
+                                <tr>
+                                    <td><?php echo $d['id_karyawan']; ?></td>
+                                    <td><?php echo $d['nama_karyawan']; ?></td>
+                                    <td><?php echo $d['jabatan_karyawan']; ?></td>
+                                    <td><?php echo $d['alamat_karyawan']; ?></td>
+                                    <td><?php echo $d['no_telp_karyawan']; ?></td>
+                                    <td><?php echo $d['jk_karyawan']; ?></td>
                                     <td>
-                                        <input type="submit" class="btn btn-info pull-left" value = "Update" style="">
-                                        <input type="hidden" name="id" value="<?= $d['id_karyawan']; ?>">
+                                        <form action="<?= base_url() ?>HapusPegawai" method="post">
+                                            <input type="submit" class="btn btn-info pull-left" value = "Hapus" style="">
+                                            <input type="hidden" name="id" value="<?= $d['id_karyawan']; ?>">
+                                        </form>
                                     </td>
-                                </form>
-                            </tr>
-                        <?php endforeach; ?>
-                        </table>
+                                    <form action="<?= base_url() ?>KeUpdatePegawai" method="post">
+                                        <td>
+                                            <input type="submit" class="btn btn-info pull-left" value = "Update" style="">
+                                            <input type="hidden" name="id" value="<?= $d['id_karyawan']; ?>">
+                                        </td>
+                                    </form>
+                                </tr>
+                            <?php endforeach; ?>
+                            </table>
+                        </div>
+                        
                     </div> 
                 </div>
             </center>

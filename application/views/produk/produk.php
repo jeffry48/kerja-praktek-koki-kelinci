@@ -45,9 +45,9 @@
         </aside>
 
         <div class="content-wrapper">
-        <h2 style="margin-left: 10%; margin-top: 0%;">Cari Produk</h3>
-                <div class="row" style="margin-left:10%;">
-                    <div class="col-md-10" style="">
+        <h2 style="float:left;padding-left:2%;padding-top:3%;">Cari Produk</h3>
+                <div class="row" style="margin-left:2%;">
+                    <div class="col-md-5-left" style="padding-top:12%;padding-right:65%;padding-left:0%;width:150%;">
                         <div class="box">
                             <div class="box-header">
                                 <form action = "<?= base_url() ?>keTambahProduk" method = "post">
@@ -58,14 +58,14 @@
                                 <br><br><br>
                                 <form action = "<?= base_url() ?>CariProduk" method = "post">
                                     <div class="form-group">
-                                        <input type="text" name = "keyword" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:75%;" placeholder="Nama Produk">
+                                        <input type="text" name = "keyword" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="Nama Produk">
                                         <br>
-                                        <input type="text" name = "hargaStart" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:75%;" placeholder="Harga Produk Mulai">
+                                        <input type="text" name = "hargaStart" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="Harga Produk Mulai">
                                         <br>
-                                        <input type="text" name = "hargaEnd" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:75%;" placeholder="Harga Produk Akhir">
+                                        <input type="text" name = "hargaEnd" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="Harga Produk Akhir">
                                         <br>
                                         kategori: 
-                                        <select name = "kategoriPro" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:75%;" >
+                                        <select name = "kategoriPro" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" >
                                             <option value="all">All</option>
                                             <?php
                                                 for ($i=0; $i < count($_SESSION['dataKategori']); $i++) { 

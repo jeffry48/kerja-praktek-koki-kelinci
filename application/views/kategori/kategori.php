@@ -45,9 +45,9 @@
         </aside>
 
         <div class="content-wrapper">
-        <h2 style="margin-left: 10%; margin-top: 0%;">Cari Kategori</h3>
-                <div class="row" style="margin-left:10%;">
-                    <div class="col-md-10" style="">
+        <h2 style="float:left;padding-left:2%;padding-top:3%;">Cari kategori</h3>
+                <div class="row" style="margin-left:2%;">
+                    <div class="col-md-5-left" style="padding-top:12%;padding-right:65%;padding-left:0%;width:150%;">
                         <div class="box">
                             <div class="box-header">
                                 <form action = "<?= base_url() ?>keTambahKategori" method = "post">
@@ -59,7 +59,7 @@
                                     <br>
                                     <form action = "<?= base_url() ?>cariKategori" method = "post">
                                         <div class="form-group" style="padding-top:1%;">
-                                            <input type="text" name = "keyword" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:75%;" placeholder="Nama Kategori">
+                                            <input type="text" name = "keyword" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="Nama Kategori">
                                         </div>
                                    
                                         <div class="form-group">

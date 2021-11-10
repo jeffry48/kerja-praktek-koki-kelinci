@@ -45,16 +45,16 @@
         </aside>
 
         <div class="content-wrapper">
-            <h2 style="float:left;padding-left:35%;padding-top:3%;">Update Produk</h3>
-                <div class="row" style="margin-left:31%;">
-                    <div class="col-md-5-left" style="padding-top:20%;padding-right:55%;padding-left:5.9%;">
+        <h2 style="float:left;padding-left:2%;padding-top:3%;">Update Produk</h3>
+                <div class="row" style="margin-left:2%;">
+                    <div class="col-md-5-left" style="padding-top:12%;padding-right:65%;padding-left:0%;width:150%;">
                         <div class="box">
                             <div class="box-header">
                                 <form action = "UpdateProduk" method = "post">
                                     <div class="form-group">
-                                        <input type="text" name = "namaPro" class="form-control" value="<?php echo $_SESSION['currProData']['nama_produk']?>" style="border-color: #0d74a3; box-shadow: none;width:90%;" placeholder="Nama Produk">
+                                        <input type="text" name = "namaPro" class="form-control" value="<?php echo $_SESSION['currProData']['nama_produk']?>" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="Nama Produk">
                                         <br>
-                                        <input type="text" name = "hargaPro" class="form-control" value="<?php echo $_SESSION['currProData']['harga_produk']?>"  style="border-color: #0d74a3; box-shadow: none;width:90%;" placeholder="Harga Produk">
+                                        <input type="text" name = "hargaPro" class="form-control" value="<?php echo $_SESSION['currProData']['harga_produk']?>"  style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="Harga Produk">
                                         <br>
                                         <?php 
                                             $namaKat="";
@@ -65,7 +65,7 @@
                                             };
                                         ?>
                                         Kategori: 
-                                        <select name = "katPro" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:75%;" >
+                                        <select name = "katPro" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" >
                                             <option value="" selected disabled hidden><?php echo $namaKat;?></option>
                                             <?php
                                                 for ($i=0; $i < count($_SESSION['dataKategori']); $i++) { 
