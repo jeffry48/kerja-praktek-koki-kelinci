@@ -39,6 +39,24 @@
     tr:nth-child(even) {
         background-color: #dddddd;
     }
+    @media (max-width: 800px) {
+        .row{
+            margin-left: 1%;
+            margin-right: 1%;
+        }
+        .col-md-5{
+            width: 50%;
+            float: left;
+        }
+        .col-md-6{
+            width: 50%;
+            float: left;
+        }
+        .btn{
+            margin-top: 2%;
+            margin-left: 1%;
+        }
+    }
 </style>
 <body class="hold-transition skin-blue sidebar-mini">
     <div class="wrapper">
@@ -61,74 +79,69 @@
             </div>
 
             <div class="row">
-                <div class="flexBox" style="
-                        display: flex;
-                        flex-flow: row wrap;
-                        justify-content: center;">
-                        <div class="col-md-5">
-                            <form action="<?= base_url()?>transaksi/cariPenjualan" method="POST">
-                            <input type="text" name = "no" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="Id Header">
-                                <br>
-                                <input type="text" name = "no" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="nama konsumen">                        
-                                <br>
-                                tanggal start: 
-                                <input type="date" name = "no" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="tanggal start">
-                                <br>
-                                tanggal start: 
-                                <input type="date" name = "no" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="tanggal end">                                
-                                <br>
-                                <input type="text" name = "no" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="total start">                        
-                                <br>
-                                <input type="text" name = "no" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="total end">
-                                <br>                                
-                                
-                                <select name = "no" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;">
-                                    <option value="" style="color: green;">sudah terbayar</option>
-                                    <option value="" style="color: red;">belum terbayar</option>
-                                </select>
-                                <br>
-                                <div class="row" style="margin-left: 0%;">
-                                    <input type="submit" class="btn btn-info pull-left" value = "Cari">
-                                    <button class="btn btn-info pull-left" style="margin-left: 1%;">clear</button>
-                                </div>
-                            </form>
+                <div class="col-md-5">
+                    <form action="<?= base_url()?>transaksi/cariPenjualan" method="POST">
+                    <input type="text" name = "no" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="Id Header">
+                        <br>
+                        <input type="text" name = "no" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="nama konsumen">                        
+                        <br>
+                        tanggal start: 
+                        <input type="date" name = "no" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="tanggal start">
+                        <br>
+                        tanggal start: 
+                        <input type="date" name = "no" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="tanggal end">                                
+                        <br>
+                        <input type="text" name = "no" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="total start">                        
+                        <br>
+                        <input type="text" name = "no" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="total end">
+                        <br>                                
+                        
+                        <select name = "no" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;">
+                            <option value="" style="color: green;">sudah terbayar</option>
+                            <option value="" style="color: red;">belum terbayar</option>
+                        </select>
+                        <br>
+                        <div class="row" style="margin-left: 0%;">
+                            <input type="submit" class="btn btn-info pull-left" value = "Cari">
+                            <button class="btn btn-info pull-left" style="margin-left: 1%;">clear</button>
                         </div>
-
-                        <div class="col-md-1"></div>
-                        <div class="col-md-6" style="padding-right: 5%;">
-                            <form action="<?= base_url()?>transaksi/cariDetailPenjualan" method="POST">
-                                <input type="text" name = "no" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="Id detail">
-                                <br>
-                                <input type="text" name = "no" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="id header">                        
-                                <br>
-                                <input type="text" name = "no" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="nama pesanan">
-                                <br>
-                                kategori: 
-                                <select name = "no" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;">
-                                    <option value="makanan">makanan</option>
-                                    <option value="minuman">makanan</option>
-                                </select>
-                                <br>
-                                <input type="text" name = "no" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="harga satuan start">                                
-                                <br>
-                                <input type="text" name = "no" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="harga satuan end">                        
-                                <br>
-                                <input type="text" name = "no" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="jumlah start">
-                                <br>    
-                                <input type="text" name = "no" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="jumlah end">
-                                <br>
-                                <input type="text" name = "no" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="subtotal start">                        
-                                <br>
-                                <input type="text" name = "no" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="subtotal end">
-                                <br> 
-                                <div class="row" style="margin-left: 0%;">
-                                    <input type="submit" class="btn btn-info pull-left" value = "Cari">
-                                    <button class="btn btn-info pull-left" style="margin-left: 1%;">clear</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
+                    </form>
                 </div>
+
+                <div class="col-md-1"></div>
+                    <div class="col-md-6" style="padding-right: 5%;">
+                        <form action="<?= base_url()?>transaksi/cariDetailPenjualan" method="POST">
+                            <input type="text" name = "no" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="Id detail">
+                            <br>
+                            <input type="text" name = "no" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="id header">                        
+                            <br>
+                            <input type="text" name = "no" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="nama pesanan">
+                            <br>
+                            kategori: 
+                            <select name = "no" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;">
+                                <option value="makanan">makanan</option>
+                                <option value="minuman">makanan</option>
+                            </select>
+                            <br>
+                            <input type="text" name = "no" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="harga satuan start">                                
+                            <br>
+                            <input type="text" name = "no" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="harga satuan end">                        
+                            <br>
+                            <input type="text" name = "no" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="jumlah start">
+                            <br>    
+                            <input type="text" name = "no" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="jumlah end">
+                            <br>
+                            <input type="text" name = "no" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="subtotal start">                        
+                            <br>
+                            <input type="text" name = "no" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="subtotal end">
+                            <br> 
+                            <div class="row" style="margin-left: 0%;">
+                                <input type="submit" class="btn btn-info pull-left" value = "Cari">
+                                <button class="btn btn-info pull-left" style="margin-left: 1%;">clear</button>
+                            </div>
+                        </form>
+                    </div>
+
                 <div class="row">
                     <button class="btn btn-info pull-left" style="background-color: red;">
                         <a style="color: white;" data-toggle="modal" data-target="#modalTutup">

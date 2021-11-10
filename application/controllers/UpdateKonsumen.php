@@ -20,9 +20,7 @@ class UpdateKonsumen extends CI_Controller {
         $nohp=$this->input->post('nohp');
         $update = $this->Customer->update($id,$nama,$alamat,$nohp);
         ?>
-            <!-- <script type="text/javascript">
-                alert("Berhasil Update Konsumen");
-            </script> -->
+
         <?php
         $_SESSION['success']="berhasil update customer";
         $this->session->mark_as_flash('success');

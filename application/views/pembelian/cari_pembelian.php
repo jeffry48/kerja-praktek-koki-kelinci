@@ -27,6 +27,7 @@
         font-family: arial, sans-serif;
         border-collapse: collapse;
         width: 100%;
+        overflow: auto;
     }
     th{
         background-color: white;
@@ -39,6 +40,24 @@
     
     tr:nth-child(even) {
         background-color: #dddddd;
+    }
+    @media (max-width: 800px) {
+        .row{
+            margin-left: 1%;
+            margin-right: 1%;
+        }
+        .col-md-5{
+            width: 50%;
+            float: left;
+        }
+        .col-md-6{
+            width: 50%;
+            float: left;
+        }
+        .btn{
+            margin-top: 2%;
+            margin-left: 1%;
+        }
     }
 </style>
 <body class="hold-transition skin-blue sidebar-mini">
@@ -63,11 +82,8 @@
             </div>
 
             <div class="row">
-                <div class="flexBox" style="
-                    display: flex;
-                    flex-flow: row wrap;
-                    justify-content: center;">
-                    <div class="col-md-5">
+                
+                    <div class="col-md-6">
                         <form action="<?= base_url()?>transaksi/cariPembelian" method="POST">
                             <input type="text" name = "no" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="Id Header">
                             <br>
@@ -95,7 +111,6 @@
                             </div>
                         </form>
                     </div>
-                    <div class="col-md-1"></div>
                     <div class="col-md-6" style="padding-right: 5%;">
                         <form action="<?= base_url()?>transaksi/cariDetailPembelian" method="POST">
                             <input type="text" name = "no" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="Id detail">
@@ -122,7 +137,6 @@
                             </div>
                         </form>
                     </div>
-                </div>
             </div>
             <div class="row">
                 <button class="btn btn-info pull-left" style="background-color: red;">

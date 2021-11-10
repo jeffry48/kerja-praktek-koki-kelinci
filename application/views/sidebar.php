@@ -1,5 +1,5 @@
 <html>
-    <section class="sidebar">
+    <!-- <section class="sidebar">
         <ul class="sidebar-menu" data-widget="tree">
             <li>
                 <a href="<?= base_url() ?>Home">
@@ -39,5 +39,95 @@
                 <img src="kokiKelinci.jpg" width=70% height=auto style="margin-bottom: 10%; border-radius: 100%;">
             </center>
         </div>
-    </section>
+    </section> -->
+    <aside class="main-sidebar sidebar-dark-primary elevation-4" style="position: fixed;">
+        <!-- Brand Logo -->
+        <a href="./index3.html" class="brand-link">
+            <!-- <img src="./dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8"> -->
+            <span class="brand-text font-weight-light">Koki Kelinci</span>
+        </a>
+
+        <!-- Sidebar -->
+        <div class="sidebar">
+
+            <!-- Sidebar Menu -->
+            <nav class="mt-2">
+                <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                    <!-- Add icons to the links using the .nav-icon class
+                            with font-awesome or any other icon font library -->
+                    <li class="nav-item">
+                        <a href="<?= base_url()?>home" class="nav-link">
+                            <i class="fa fa-dashboard"></i>
+                            <p>
+                                Home
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-header">Master</li>
+                    <li class="nav-item menu-open">
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="<?= base_url() ?>Pegawai" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Pegawai</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="<?= base_url()?>supply" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Supplier</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="<?= base_url() ?>konsumen" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Konsumen</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="<?= base_url() ?>kategori" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Kategori</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="<?= base_url() ?>produk" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Produk</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-header">Transaksi</li>
+                    <li class="nav-item menu-open">
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="<?= base_url() ?>/transaksi/pembelian" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Pembelian</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="<?= base_url() ?>/transaksi/penjualan" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Penjualan</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-header">Laporan</li>
+                    <li class="nav-item menu-open">
+                        <ul class="nav nav-treeview">
+                            <a href="<?= base_url() ?>laporan/laporanPerSupplier" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>laporan</p>
+                            </a>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+            <!-- /.sidebar-menu -->
+        </div>
+        <!-- /.sidebar -->
+    </aside>
 </html>

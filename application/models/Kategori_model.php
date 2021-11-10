@@ -29,10 +29,7 @@ class Kategori_model extends CI_Model
         else if($lastId>=100&&$lastId<1000){
             $newId.="0";
         }
-        $newId.=$lastId;
-
-        // var_dump($newId);
-        
+        $newId.=$lastId;        
         return $this->db->query("insert into kategori values('".$newId."', '".$namaKat."')");
     }
 
