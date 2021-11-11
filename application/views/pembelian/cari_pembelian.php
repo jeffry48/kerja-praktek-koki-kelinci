@@ -5,13 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>cari_pembelian</title>
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    
-    <link rel="stylesheet" href="<?= base_url() ?>assets/backend/css/public/adminlte/bower_components/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="<?= base_url() ?>assets/backend/css/public/adminlte/dist/css/skins/_all-skins.min.css">
-    <link rel="stylesheet" href="<?= base_url() ?>assets/backend/css/public/adminlte/bower_components/Ionicons/css/ionicons.min.css">
-    <link rel="stylesheet" href="<?= base_url() ?>assets/backend/css/public/adminlte/dist/css/AdminLTE.css">
-    <link rel="stylesheet" href="<?= base_url() ?>assets/backend/css/public/adminlte/bower_components/font-awesome/css/font-awesome.min.css">
 
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="<?= base_url() ?>assets/backend/css/adminlte/plugins/fontawesome-free/css/all.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="<?= base_url() ?>assets/backend/css/adminlte/dist/css/adminlte.min.css">
+    <link rel="stylesheet" href="<?= base_url() ?>assets/backend/css/public/adminlte/bower_components/font-awesome/css/font-awesome.min.css">
+    
 </head>
 <style>
     .row{
@@ -60,19 +62,13 @@
         }
     }
 </style>
-<body class="hold-transition skin-blue sidebar-mini">
+<body class="hold-transition sidebar-mini sidebar-collapse">
+    <?php include 'application/views/header.php' ?>
+    <?php include 'application/views/sidebar.php';?>
     <div class="wrapper">
-        <header class="main-header">
-            <?php include 'application/views/header.php' ?>
-        </header>
-        <aside class="main-sidebar">
-            <?php include 'application/views/sidebar.php';?>
-        </aside>
-
         <div class="content-wrapper">
             <div class="row">
                 <h3>Daftar Pembelian</h3>
-                
             </div>
             <div class="row">
                 <button class="btn btn-info pull-left"><a style="color: white" href="<?= base_url() ?>transaksi/keTambahPembelian">Tambah Pembelian</a></button>
@@ -82,7 +78,6 @@
             </div>
 
             <div class="row">
-                
                     <div class="col-md-6">
                         <form action="<?= base_url()?>transaksi/cariPembelian" method="POST">
                             <input type="text" name = "no" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="Id Header">
@@ -292,7 +287,6 @@
                     </tr>
                 </table>
             </div>
-            
         </div>
             
         <footer class="main-footer">
@@ -301,14 +295,16 @@
         <div class="control-sidebar-bg"></div>
     </div>
 
-    <script src="<?= base_url() ?>assets/backend/css/public/adminlte/bower_components/jquery/dist/jquery.min.js"></script>
-    <script src="<?= base_url() ?>assets/backend/css/public/adminlte/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="<?= base_url() ?>assets/backend/css/public/adminlte/bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
-    <script src="<?= base_url() ?>assets/backend/css/public/adminlte/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.js"></script>
-    <script src="<?= base_url() ?>assets/backend/css/public/adminlte/bower_components/fastclick/lib/fastclick.js"></script>
-    <script src="<?= base_url() ?>assets/backend/css/public/adminlte/dist/js/adminlte.min.js"></script>
-    <script src="<?= base_url() ?>assets/backend/css/public/adminlte/dist/js/demo.js"></script>
-
+    
+    <!-- jQuery -->
+    <script src="<?= base_url() ?>assets/backend/css/adminlte/plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="<?= base_url() ?>assets/backend/css/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- bs-custom-file-input -->
+    <script src="<?= base_url() ?>assets/backend/css/adminlte/plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="<?= base_url() ?>assets/backend/css/adminlte/dist/js/adminlte.min.js"></script>
+    <!-- Page specific script -->
     <script>
         $(document).ready(function () {
             $('.sidebar-menu').tree()
