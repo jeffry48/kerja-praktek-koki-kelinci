@@ -33,9 +33,7 @@
         }
     </style>
 </head>
-<body class="hold-transition skin-blue sidebar-mini">
-    <div class="wrapper">
-
+<body class="hold-transition skin-blue sidebar-mini sidebar-collapse">
     <header class="main-header">
             <?php include 'application/views/header.php'; ?>
         </header>
@@ -43,119 +41,96 @@
         <aside class="main-sidebar">
             <?php include 'application/views/sidebar.php';?>
         </aside>
+    <div class="wrapper">
 
         <div class="content-wrapper">
-            <!-- <div class="row" style="padding-left:20px; padding-right:20px;">
-                <div class="row">
-                    <div class="col-md-2">
-                    <div class="box box-danger">
-                        <div class="box-header">
-                            <h3 class="box-title">Search</h3>
-                        </div>
-                        <div class="box-body">
-                            <div class="form-group">
-                                <label>Status :</label>
-                                <div class="radio">
-                                    <label><input type="radio" name="edStatus" id="" value="0" onfocus="stopShow()">Belum Dikonfirmasi</label>
-                                </div>
-                                <div class="radio">
-                                    <label><input type="radio" name="edStatus" id="" value="1" onfocus="stopShow()">Tidak Disetujui</label>
-                                </div>
-                                <div class="radio">
-                                    <label><input type="radio" name="edStatus" id="" value="2" onfocus="stopShow()">Sukses</label>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label>Tanggal :</label>
-                                <input type="text" class="form-control" name="edTanggal" id="edTanggal" onfocus="stopShow()">
-                            </div>
-                            <div class="form-group">
-                                <label>Jenis :</label>
-                                <div class="radio">
-                                    <label><input type="radio" name="edJenis" id="" value = "Dine" onfocus="stopShow()">Dine In</label>
-                                </div>
-                                <div class="radio">
-                                    <label><input type="radio" name="edJenis" id="" value = "T" onfocus="stopShow()">Booking</label>
-                                </div>
-                            </div>
-    
-                            <form action="#" method="post">
-                                <button type="button" class="btn btn-info pull-right" onclick="startShow()" name="edSearch">Search</button>
-                                <button type="submit" class="btn btn-info pull-right" name="edShowAll">Show All</button>
-                            </form>
-                            <div id="konfTrans"></div>
-                            <div id="detailTrans"></div>
-                            <div id="konf"></div>
-                        </div>
-                    </div>
-                    </div>
-                    <div class="col-md-10">
-                        <div id="konfTrans"></div>
-                        <div id="detailTrans"></div>
-                        <div id="konf"></div>
-                        <div id="tes"></div>
-                    </div>
-                </div>
-            </div> -->
-            <h2 style="float:left;padding-left:2%;padding-top:3%;">Cari Customer</h3>
-                <div class="row" style="margin-left:2%;">
-                    <div class="col-md-5-left" style="padding-top:12%;padding-right:65%;padding-left:0%;width:150%;">
-                        <div class="box">
-                            <div class="box-header">
+                <section class="content-header">
+                    <div class="container-fluid">
+                        <div class="row mb-2">
+                            <div class="col-sm-6">
+                                <h1>Konsumen</h1>
+                                <br>
                                 <form action = "<?= base_url() ?>KeTambahKonsumen" method = "post">
-                                    <div class="form-group">
-                                        <input type="submit" class="btn btn-info pull-left" value = "Tambah" style="">
-                                    </div>
+                                <button type="submit" class="btn btn-primary">Tambah baru</button>
                                 </form>
-                                    <br>
-                                    <form action = "<?= base_url() ?>CariKonsumen" method = "post">
-                                        <div class="form-group" style="padding-top:6%;">
-                                            <input type="text" name = "nama" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="Nama Customer">
-                                            <br>
-                                            <input type="text" name = "alamat" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="Alamat">
-                                            <br>
-                                            <input type="text" name = "nohp" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="Nomor Telepon">
-                                        </div>
-                                    
-                                        <div class="form-group">
-                                            <input type="submit" class="btn btn-info pull-left" value = "Cari">
-                                        </div>
-                                    </form>
                             </div>
                         </div>
-                        <table>
-                            <tr>
-                                <th>Id Pelanggan</th>
-                                <th>Id Karyawan</th>
-                                <th>Nama Pelanggan</th>
-                                <th>Alamat Pelanggan</th>
-                                <th>Nomor Telepon Pelanggan</th>
-                                <th colspan="2">Action</th>
-                            </tr>
-                            <?php foreach($karyawan as $d): ?>
-                            <tr>
-                                <td><?php echo $d['id_konsumen']; ?></td>
-                                <td><?php echo $d['id_karyawan']; ?></td>
-                                <td><?php echo $d['nama_konsumen']; ?></td>
-                                <td><?php echo $d['alamat_konsumen']; ?></td>
-                                <td><?php echo $d['no_telp_konsumen']; ?></td>
-                                <td>
-                                    <form action="<?= base_url() ?>HapusKonsumen" method="post">
-                                        <input type="submit" class="btn btn-info pull-left" value = "Hapus" style="">
-                                        <input type="hidden" name="id" value="<?= $d['id_konsumen']; ?>">
+                    </div><!-- /.container-fluid -->
+                </section>
+                <section class="content">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <!-- general form elements -->
+                                <div class="card card-primary">
+                                    <div class="card-header">
+                                        <h3 class="card-title">Pencarian</h3>
+                                    </div>
+                                    <!-- /.card-header -->
+                                    <!-- form start -->
+                                    <form action = "<?= base_url() ?>CariKonsumen" method = "post">
+                                        <div class="card-body">
+                                            <div class="form-group">
+                                                <label for="nama">Nama</label>
+                                                <input type="text" class="form-control" name="nama" placeholder="Nama Konsumen">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="alamat">Alamat</label>
+                                                <input type="text" class="form-control" name="alamat" placeholder="Alamat Konsumen">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="nomorTel">Nomor Telepon</label>
+                                                <input type="text" class="form-control" name="nohp" placeholder="Nomor Telepon">
+                                            </div>
+                                            
+                                        </div>
+                                        <!-- /.card-body -->
+                                        <div class="card-footer">
+                                            <button type="submit" class="btn btn-primary">Cari</button>
+                                        </div>
                                     </form>
-                                </td>
-                                <form action="<?= base_url() ?>KeUpdateKonsumen" method="post">
-                                    <td>
-                                        <input type="submit" class="btn btn-info pull-left" value = "Update" style="">
-                                        <input type="hidden" name="id" value="<?= $d['id_konsumen']; ?>">
-                                    </td>
-                                </form>
-                            </tr>
-                            <?php endforeach; ?>
-                        </table>
-                    </div> 
-                </div>
+                                    <br>
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            <tr>
+                                                <th>Id Pelanggan</th>
+                                                <th>Id Karyawan</th>
+                                                <th>Nama Pelanggan</th>
+                                                <th>Alamat Pelanggan</th>
+                                                <th>Nomor Telepon Pelanggan</th>
+                                                <th colspan="2">Action</th>
+                                            </tr>
+                                            <?php foreach($karyawan as $d): ?>
+                                                <tr>
+                                                    <td><?php echo $d['id_konsumen']; ?></td>
+                                                    <td><?php echo $d['id_karyawan']; ?></td>
+                                                    <td><?php echo $d['nama_konsumen']; ?></td>
+                                                    <td><?php echo $d['alamat_konsumen']; ?></td>
+                                                    <td><?php echo $d['no_telp_konsumen']; ?></td>
+                                                    <td>
+                                                        <form action="<?= base_url() ?>HapusKonsumen" method="post">
+                                                            <input type="submit" class="btn btn-info pull-left" value = "Hapus" style="">
+                                                            <input type="hidden" name="id" value="<?= $d['id_konsumen']; ?>">
+                                                        </form>
+                                                    </td>
+                                                    <form action="<?= base_url() ?>KeUpdateKonsumen" method="post">
+                                                        <td>
+                                                            <input type="submit" class="btn btn-info pull-left" value = "Update" style="">
+                                                            <input type="hidden" name="id" value="<?= $d['id_konsumen']; ?>">
+                                                        </td>
+                                                    </form>
+                                                </tr>
+                                            <?php endforeach; ?>
+                                        </table>
+                                    </div>
+                                </div>
+                                <!-- /.card -->
+                            </div>
+                        </div>
+                        <!-- /.row -->
+                    </div><!-- /.container-fluid -->
+                </section>
+            </center>
         </div>
 
         <!-- <footer class="main-footer">
@@ -175,36 +150,11 @@
     <script>
         $(document).ready(function () {
             $('.sidebar-menu').tree()
-            <?php
-            if(isset($_SESSION['success'])){
-                echo '$("#myModal").modal("show");';
-            }
-            ?>
         })
 
         $(function () {
             $('#edTanggal').datepicker();
         });
     </script>
-    
-<!-- Modal -->
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="modalDetailLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-        <div class="modal-header">
-            <h5 class="modal-title" id="modalDetailLabel"></h5>
-        </div>
-        <div class="modal-body">
-        <?php 
-            echo $_SESSION['success']; 
-            $_SESSION['success']=null;
-            ?>        
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-        </div>
-        </div>
-    </div>
-    </div>
 </body>
 </html>
