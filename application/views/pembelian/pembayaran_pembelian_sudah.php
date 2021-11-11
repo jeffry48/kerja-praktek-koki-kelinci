@@ -1,147 +1,168 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>pembayaran_pembelian_sudah</title>
-    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Pembayaran Pembelian Sudah</title>
 
-    <link rel="stylesheet" href="<?= base_url() ?>assets/backend/css/public/adminlte/bower_components/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="<?= base_url() ?>assets/backend/css/public/adminlte/bower_components/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="<?= base_url() ?>assets/backend/css/public/adminlte/bower_components/Ionicons/css/ionicons.min.css">
-    <link rel="stylesheet" href="<?= base_url() ?>assets/backend/css/public/adminlte/dist/css/AdminLTE.css">
-    <link rel="stylesheet" href="<?= base_url() ?>assets/backend/css/public/adminlte/dist/css/skins/_all-skins.min.css">
+        <!-- Google Font: Source Sans Pro -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="<?= base_url() ?>assets/backend/css/adminlte/plugins/fontawesome-free/css/all.min.css">
+        <!-- Theme style -->
+        <link rel="stylesheet" href="<?= base_url() ?>assets/backend/css/adminlte/dist/css/adminlte.min.css">
+        <link rel="stylesheet" href="<?= base_url() ?>assets/backend/css/public/adminlte/bower_components/font-awesome/css/font-awesome.min.css">
 
-</head>
-<style>
-    .row{
-        margin-left: 5%;
-        margin-right: 5%;
-    }
-    table{
-        font-family: arial, sans-serif;
-        border-collapse: collapse;
-        width: 100%;
-    }
-    th{
-        background-color: white;
-    }
-    td, th {
-        border: 1px solid #dddddd;
-        text-align: left;
-        padding: 8px;
-    }
-    
-    tr:nth-child(even) {
-        background-color: #dddddd;
-    }
-</style>
-<body class="hold-transition skin-blue sidebar-mini">
-    <div class="wrapper">
-        <header class="main-header">
-            <?php include 'application/views/header.php' ?>
-        </header>
-        <aside class="main-sidebar">
-            <?php include 'application/views/sidebar.php';?>
-        </aside>
-
-        <div class="content-wrapper">
-            <div class="row">
-                <h3>Pembayaran Pembelian</h3>
-                <div>
-                    <button class="btn btn-info pull-left" style="margin-left: 1%;"><a style="color: white" href="<?= base_url()?>transaksi/kePembayaranPembelian">Kembali</a></button>
+    <style>
+        table{
+            width: 100%;
+        }
+    </style>
+    </head>
+    <body class="hold-transition sidebar-mini sidebar-collapse">
+        <?php include 'application/views/header.php'; ?>
+        <?php include 'application/views/sidebar.php';?>
+        <div class="wrapper">
+            <!-- Navbar -->
+            <!-- Content Wrapper. Contains page content -->
+            <div class="content-wrapper">
+                <!-- Content Header (Page header) -->
+                <section class="content-header">
+                    <div class="container-fluid">
+                        <div class="row mb-2">
+                            <div class="col-sm-6">
+                                <h1>Pembayaran Pembelian Sudah</h1>
+                                <br>
+                                <button type="submit" class="btn btn-primary"> <a href="<?= base_url() ?>transaksi/KePembayaranPembelian" style="color:white;">Kembali</a></button>
+                            <div>
                 </div>
+                        </div>
+                    </div><!-- /.container-fluid -->
+                </section>
+
+                <!-- Main content -->
+                <section class="content">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <!-- general form elements -->
+                                <div class="card card-primary">
+                                    <div class="card-header">
+                                        <h3 class="card-title">Pembayaran Pembelian Sudah</h3>
+                                    </div>
+                                    <!-- /.card-header -->
+                                    <!-- form start -->
+                                    <form action="<?= base_url() ?>transaksi/KeNotaPembelian" method="post">
+                                        <div class="card-body">
+                                            <div class="form-group">
+                                                <h4>id Pembelian: <span>HBL0001</span></h4>
+                                                <h4>tanggal: <span>19/9/2021</span></h4>
+                                                <h4>status: <span style="color: green;">sudah terbayar</span></h4>
+                                            </div>
+                                            <div class="form-group">
+                                                <h4>nama supplier: <span>supplier 1</span></h4>
+                                                <h4>total: <span>100000</span></h4>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <!-- /.card -->
+                            </div>
+                        </div>
+                        <div class="row">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <tr>
+                                    <th>id transaksi</th>
+                                    <th>id header</th>
+                                    <th>nama pembelian</th>
+                                    <th>harga satuan</th>
+                                    <th>jumlah</th>
+                                    <th>sub total</th>
+                                </tr>
+                                <tr>
+                                    <th>DBL0001</th>
+                                    <th>HBL0001</th>
+                                    <th>bahan 1</th>
+                                    <th>200</th>
+                                    <th>4</th>
+                                    <th>800</th>
+                                </tr>
+                                <tr>
+                                    <th>DBL0002</th>
+                                    <th>HBL0001</th>
+                                    <th>bahan 2</th>
+                                    <th>300</th>
+                                    <th>3</th>
+                                    <th>900</th>
+                                </tr>
+                            </table>
+                        </div>
+                        </div>
+                        <div class="row">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <tr>
+                                    <th>id transaksi</th>
+                                    <th>id header</th>
+                                    <th>nama pembelian</th>
+                                    <th>harga satuan</th>
+                                    <th>jumlah</th>
+                                    <th>sub total</th>
+                                </tr>
+                                <tr>
+                                    <th>DBL0001</th>
+                                    <th>HBL0001</th>
+                                    <th>bahan 1</th>
+                                    <th>200</th>
+                                    <th>4</th>
+                                    <th>800</th>
+                                </tr>
+                                <tr>
+                                    <th>DBL0002</th>
+                                    <th>HBL0001</th>
+                                    <th>bahan 2</th>
+                                    <th>300</th>
+                                    <th>3</th>
+                                    <th>900</th>
+                                </tr>
+                            </table>
+                        </div>
+                        </div>
+                        <!-- /.row -->
+                    </div><!-- /.container-fluid -->
+                </section>
+                <!-- /.content -->
             </div>
-            <br>
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="row">
-                        <h4>id Pembelian: <span>HBL0001</span></h4>
-                        <h4>tanggal: <span>19/9/2021</span></h4>
-                        <h4>status: <span style="color: green;">sudah terbayar</span></h4>
-                    </div>
+            <!-- /.content-wrapper -->
+            <!-- <footer class="main-footer">
+                <div class="float-right d-none d-sm-block">
+                    <b>Version</b> 3.2.0-rc
                 </div>
-                <div class="col-md-6">
-                    <div class="row">
-                        <h4>nama supplier: <span>supplier 1</span></h4>
-                        <h4>total: <span>100000</span></h4>
-                        <br>
-                        <br>
-                    </div>
-                </div>
-                
+                <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
+            </footer> -->
 
-
-                <div class="row">
-                    <h3>detail Pembelian</h3>
-                </div>
-                <div class="row">
-                    <table>
-                        <tr>
-                            <th>id transaksi</th>
-                            <th>id header</th>
-                            <th>nama pembelian</th>
-                            <th>harga satuan</th>
-                            <th>jumlah</th>
-                            <th>sub total</th>
-                        </tr>
-                        <tr>
-                            <th>DBL0001</th>
-                            <th>HBL0001</th>
-                            <th>bahan 1</th>
-                            <th>200</th>
-                            <th>4</th>
-                            <th>800</th>
-                        </tr>
-                        <tr>
-                            <th>DBL0002</th>
-                            <th>HBL0001</th>
-                            <th>bahan 2</th>
-                            <th>300</th>
-                            <th>3</th>
-                            <th>900</th>
-                        </tr>
-                    </table>
-                </div>
-                <br>
-                <div class="row">
-                    <h4>Riwayat pembelian</h4>
-                    <table>
-                        <tr>
-                            <th>tanggal pembayaran</th>
-                            <th>metode pembayaran</th>
-                            <th>note</th>
-                            <th>jumlah pembayaran</th>
-                        </tr>
-                        <tr>
-                            <th>aaaa</th>
-                            <th>bbbbb</th>
-                            <th>ccccc</th>
-                            <th>ddddd</th>
-                        </tr>
-                    </table>
-                </div>
-            </div>
+            <!-- Control Sidebar -->
+            <aside class="control-sidebar control-sidebar-dark">
+                <!-- Control sidebar content goes here -->
+            </aside>
+            <!-- /.control-sidebar -->
         </div>
-        <div class="control-sidebar-bg"></div>
-    </div>
+        <!-- ./wrapper -->
 
-    <script src="<?= base_url() ?>assets/backend/css/public/adminlte/bower_components/jquery/dist/jquery.min.js"></script>
-    <script src="<?= base_url() ?>assets/backend/css/public/adminlte/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="<?= base_url() ?>assets/backend/css/public/adminlte/bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
-    <script src="<?= base_url() ?>assets/backend/css/public/adminlte/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.js"></script>
-    <script src="<?= base_url() ?>assets/backend/css/public/adminlte/bower_components/fastclick/lib/fastclick.js"></script>
-    <script src="<?= base_url() ?>assets/backend/css/public/adminlte/dist/js/adminlte.min.js"></script>
-    <script src="<?= base_url() ?>assets/backend/css/public/adminlte/dist/js/demo.js"></script>
-
-    <script>
-        $(document).ready(function () {
-            $('.sidebar-menu').tree()
-        })
-
-        $(function () {
-            $('#edTanggal').datepicker();
-        });
-    </script>
-</body>
+        <!-- jQuery -->
+        <script src="<?= base_url() ?>assets/backend/css/adminlte/plugins/jquery/jquery.min.js"></script>
+        <!-- Bootstrap 4 -->
+        <script src="<?= base_url() ?>assets/backend/css/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <!-- bs-custom-file-input -->
+        <script src="<?= base_url() ?>assets/backend/css/adminlte/plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
+        <!-- AdminLTE App -->
+        <script src="<?= base_url() ?>assets/backend/css/adminlte/dist/js/adminlte.min.js"></script>
+        <!-- Page specific script -->
+        <script>
+            $(function () {
+                bsCustomFileInput.init();
+            });
+        </script>
+    </body>
 </html>
