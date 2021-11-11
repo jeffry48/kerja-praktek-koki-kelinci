@@ -11,7 +11,8 @@
         <link rel="stylesheet" href="<?= base_url() ?>assets/backend/css/adminlte/plugins/fontawesome-free/css/all.min.css">
         <!-- Theme style -->
         <link rel="stylesheet" href="<?= base_url() ?>assets/backend/css/adminlte/dist/css/adminlte.min.css">
-    
+        <link rel="stylesheet" href="<?= base_url() ?>assets/backend/css/public/adminlte/bower_components/font-awesome/css/font-awesome.min.css">
+
     </head>
     <body class="hold-transition sidebar-mini sidebar-collapse">
         <?php include 'application/views/header.php'; ?>

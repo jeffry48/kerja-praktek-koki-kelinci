@@ -42,7 +42,7 @@
     </section> -->
     <aside class="main-sidebar sidebar-dark-primary elevation-4" style="position: fixed;">
         <!-- Brand Logo -->
-        <a href="./index3.html" class="brand-link">
+        <a href="#" class="brand-link">
             <!-- <img src="./dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8"> -->
             <span class="brand-text font-weight-light">Koki Kelinci</span>
         </a>
@@ -68,31 +68,31 @@
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
                                 <a href="<?= base_url() ?>Pegawai" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
+                                    <i class="fa fa-black-tie nav-icon"></i>
                                     <p>Pegawai</p>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a href="<?= base_url()?>supply" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
+                                    <i class="fa fa-truck nav-icon"></i>
                                     <p>Supplier</p>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a href="<?= base_url() ?>konsumen" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
+                                    <i class="fa fa-users nav-icon"></i>
                                     <p>Konsumen</p>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a href="<?= base_url() ?>kategori" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
+                                    <i class="fa fa-check-circle nav-icon"></i>
                                     <p>Kategori</p>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a href="<?= base_url() ?>produk" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
+                                    <i class="fa fa-cube nav-icon"></i>
                                     <p>Produk</p>
                                 </a>
                             </li>
@@ -103,13 +103,13 @@
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
                                 <a href="<?= base_url() ?>/transaksi/pembelian" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
+                                    <i class="fa fa-shopping-cart nav-icon"></i>
                                     <p>Pembelian</p>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a href="<?= base_url() ?>/transaksi/penjualan" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
+                                    <i class="fa fa-sellsy nav-icon"></i>
                                     <p>Penjualan</p>
                                 </a>
                             </li>
@@ -119,7 +119,7 @@
                     <li class="nav-item menu-open">
                         <ul class="nav nav-treeview">
                             <a href="<?= base_url() ?>laporan/laporanPerSupplier" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
+                                <i class="fa fa-files-o nav-icon"></i>
                                 <p>laporan</p>
                             </a>
                         </ul>
