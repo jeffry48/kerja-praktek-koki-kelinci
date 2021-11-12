@@ -110,15 +110,17 @@
         </footer> -->
         <!-- <div class="control-sidebar-bg"></div> -->
     </div>
+
     <!-- jQuery -->
     <script src="<?= base_url() ?>assets/backend/css/adminlte/plugins/jquery/jquery.min.js"></script>
-    <!-- Bootstrap 4 -->
-    <script src="<?= base_url() ?>assets/backend/css/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <!-- bs-custom-file-input -->
-    <script src="<?= base_url() ?>assets/backend/css/adminlte/plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
-    <!-- AdminLTE App -->
-    <script src="<?= base_url() ?>assets/backend/css/adminlte/dist/js/adminlte.min.js"></script>
-    <!-- Page specific script -->
+        <!-- Bootstrap 4 -->
+        <script src="<?= base_url() ?>assets/backend/css/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <!-- bs-custom-file-input -->
+        <script src="<?= base_url() ?>assets/backend/css/adminlte/plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
+        <!-- AdminLTE App -->
+        <script src="<?= base_url() ?>assets/backend/css/adminlte/dist/js/adminlte.min.js"></script>
+        <!-- Page specific script -->
+
     <script>
         $(document).ready(function () {
             $('.sidebar-menu').tree()
