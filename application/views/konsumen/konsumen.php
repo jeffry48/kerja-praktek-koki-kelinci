@@ -35,13 +35,8 @@
     </style>
 </head>
 <body class="hold-transition skin-blue sidebar-mini sidebar-collapse">
-        <header class="main-header">
-            <?php include 'application/views/header.php'; ?>
-        </header>
-
-        <aside class="main-sidebar">
-            <?php include 'application/views/sidebar.php';?>
-        </aside>
+    <?php include 'application/views/header.php'; ?>
+    <?php include 'application/views/sidebar.php';?>
     <div class="wrapper">
 
         <div class="content-wrapper">
@@ -139,15 +134,15 @@
         </footer> -->
         <!-- <div class="control-sidebar-bg"></div> -->
     </div>
-
-    <script src="<?= base_url() ?>assets/backend/css/public/adminlte/bower_components/jquery/dist/jquery.min.js"></script>
-    <script src="<?= base_url() ?>assets/backend/css/public/adminlte/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="<?= base_url() ?>assets/backend/css/public/adminlte/bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
-    <script src="<?= base_url() ?>assets/backend/css/public/adminlte/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.js"></script>
-    <script src="<?= base_url() ?>assets/backend/css/public/adminlte/bower_components/fastclick/lib/fastclick.js"></script>
-    <script src="<?= base_url() ?>assets/backend/css/public/adminlte/dist/js/adminlte.min.js"></script>
-    <script src="<?= base_url() ?>assets/backend/css/public/adminlte/dist/js/demo.js"></script>
-
+    <!-- jQuery -->
+    <script src="<?= base_url() ?>assets/backend/css/adminlte/plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="<?= base_url() ?>assets/backend/css/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- bs-custom-file-input -->
+    <script src="<?= base_url() ?>assets/backend/css/adminlte/plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="<?= base_url() ?>assets/backend/css/adminlte/dist/js/adminlte.min.js"></script>
+    <!-- Page specific script -->
     <script>
         $(document).ready(function () {
             $('.sidebar-menu').tree()

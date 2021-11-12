@@ -39,7 +39,6 @@
         text-align: left;
         padding: 8px;
     }
-    
     tr:nth-child(even) {
         background-color: #dddddd;
     }
@@ -65,6 +64,7 @@
 <body class="hold-transition sidebar-mini sidebar-collapse">
     <?php include 'application/views/header.php' ?>
     <?php include 'application/views/sidebar.php';?>
+
     <div class="wrapper">
         <div class="content-wrapper">
             <div class="row">

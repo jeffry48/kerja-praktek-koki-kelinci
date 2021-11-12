@@ -115,13 +115,24 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="nav-header">Laporan</li>
+                    <!-- <li class="nav-header">Laporan</li>
                     <li class="nav-item menu-open">
                         <ul class="nav nav-treeview">
                             <a href="<?= base_url() ?>laporan/laporanPerSupplier" class="nav-link">
                                 <i class="fa fa-files-o nav-icon"></i>
                                 <p>laporan</p>
                             </a>
+                        </ul>
+                    </li> -->
+                    <li class="nav-header">Laporan</li>
+                    <li class="nav-item menu-open">
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="<?= base_url() ?>laporan/laporanPerSupplier" class="nav-link">
+                                    <i class="fa fa-files-o nav-icon"></i>
+                                    <p>Laporan</p>
+                                </a>
+                            </li>
                         </ul>
                     </li>
                 </ul>
