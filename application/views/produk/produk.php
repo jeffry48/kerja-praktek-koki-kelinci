@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Kategori</title>
+        <title>Produk</title>
 
         <!-- Google Font: Source Sans Pro -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -159,7 +159,7 @@
                                                         <td>'.$currData['id_produk'].'</td>
                                                         <td>'.$currData['nama_produk'].'</td>
                                                         <td>'.$namaKat.'</td>
-                                                        <td>'.number_format($currData['harga_produk'], 3, ".", ".").'</td>
+                                                        <td>'.number_format($currData['harga_produk'], 0, ".", ".").'</td>
                                                         <td>
                                                             <form action="HapusProduk" method="post">
                                                                 <input type="hidden" name="idPro" value="'.$currData['id_produk'].'">
@@ -221,6 +221,24 @@
                     echo '$("#myModal").modal("show");';
                 }
                 ?>
+            });
+            $('input#hargaStart').keyup(function(event) {
+                if(event.which >= 37 && event.which <= 40) return;
+                $(this).val(function(index, value) {
+                return value
+                .replace(/\D/g, "")
+                .replace(/\B(?=(\d{3})+(?!\d))/g, ".")
+                ;
+                });
+            });
+            $('input#hargaEnd').keyup(function(event) {
+                if(event.which >= 37 && event.which <= 40) return;
+                $(this).val(function(index, value) {
+                return value
+                .replace(/\D/g, "")
+                .replace(/\B(?=(\d{3})+(?!\d))/g, ".")
+                ;
+                });
             });
         </script>
         <!-- Modal -->

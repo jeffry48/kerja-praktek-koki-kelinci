@@ -99,36 +99,7 @@
                             </table>
                         </div>
                         </div>
-                        <div class="row">
-                        <div class="table-responsive">
-                            <table class="table">
-                                <tr>
-                                    <th>id transaksi</th>
-                                    <th>id header</th>
-                                    <th>nama pembelian</th>
-                                    <th>harga satuan</th>
-                                    <th>jumlah</th>
-                                    <th>sub total</th>
-                                </tr>
-                                <tr>
-                                    <th>DBL0001</th>
-                                    <th>HBL0001</th>
-                                    <th>bahan 1</th>
-                                    <th>200</th>
-                                    <th>4</th>
-                                    <th>800</th>
-                                </tr>
-                                <tr>
-                                    <th>DBL0002</th>
-                                    <th>HBL0001</th>
-                                    <th>bahan 2</th>
-                                    <th>300</th>
-                                    <th>3</th>
-                                    <th>900</th>
-                                </tr>
-                            </table>
-                        </div>
-                        </div>
+                        
                         <!-- /.row -->
                     </div><!-- /.container-fluid -->
                 </section>

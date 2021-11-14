@@ -111,6 +111,14 @@
                                                 <tr>
                                                     <td><?php echo $d['id_karyawan']; ?></td>
                                                     <td><?php echo $d['nama_karyawan']; ?></td>
+                                                    <?php
+                                                        if($d['jabatan_karyawan']=="1"){
+                                                            echo "<td>admin</td>";
+                                                        }
+                                                        else{
+                                                            echo "<td>pegawai</td>";
+                                                        }
+                                                    ?>
                                                     <td><?php echo $d['jabatan_karyawan']; ?></td>
                                                     <td><?php echo $d['alamat_karyawan']; ?></td>
                                                     <td><?php echo $d['no_telp_karyawan']; ?></td>

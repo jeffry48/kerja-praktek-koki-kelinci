@@ -14,8 +14,25 @@
         <link rel="stylesheet" href="<?= base_url() ?>assets/backend/css/public/adminlte/bower_components/font-awesome/css/font-awesome.min.css">
 
     <style>
-        table{
-            width: 100%;
+        table {
+          font-family: arial, sans-serif;
+          border-collapse: collapse;
+          width: 100%;
+        }
+        th
+        {
+            background-color: white;
+        }
+        td, th {
+          border: 1px solid #dddddd;
+          text-align: left;
+          padding: 8px;
+        }
+        tr:nth-child(even) {
+          background-color: #dddddd;
+        }
+        a{
+            color: white;
         }
     </style>
     </head>
@@ -113,6 +130,34 @@
                                             <button class="btn btn-primary"><a style="color: white" href="<?= base_url() ?>transaksi/TambahDetailPembelian">Tambah Detail Pembelian</a></button>
                                         </div>
                                     </form>
+                                    <div class="row">
+                                        <table>
+                                            <tr>
+                                                <th>id transaksi</th>
+                                                <th>id header</th>
+                                                <th>nama penjualan</th>
+                                                <th>harga satuan</th>
+                                                <th>jumlah</th>
+                                                <th>sub total</th>
+                                            </tr>
+                                            <tr>
+                                                <th>DJL0001</th>
+                                                <th>HJL0001</th>
+                                                <th>produk 123456</th>
+                                                <th>20000</th>
+                                                <th>4</th>
+                                                <th>80000</th>
+                                            </tr>
+                                            <tr>
+                                                <th>DJL0002</th>
+                                                <th>HJL0001</th>
+                                                <th>produk 2</th>
+                                                <th>300</th>
+                                                <th>3</th>
+                                                <th>900</th>
+                                            </tr>
+                                        </table>
+                                    </div>
                                 </div>
                                 <!-- /.card -->
                             </div>
