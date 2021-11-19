@@ -16,7 +16,7 @@ class cekLogin extends CI_Controller {
         $pass=$this->input->post('password');
         $cekLogin = $this->login_model->cekLogin($nama, $pass);
         $user['karyawan'] = $this->Karyawan->cekDataLogin($nama,$pass);
-        print_r($user['karyawan'][0]['id_karyawan']);
+        // print_r($user['karyawan'][0]['id_karyawan']);
         
         if($cekLogin==true){
             $this->load->helper('cookie');
@@ -27,6 +27,9 @@ class cekLogin extends CI_Controller {
                 'prefix' => ''
             );
             $this->input->set_cookie($cookie);
+            $_SESSION['loggedInId']=$user['karyawan'][0]['id_karyawan'];
+            $_SESSION['loggedInName']=$user['karyawan'][0]['nama_karyawan'];
+            // echo $_SESSION['loggedIn'];
             redirect("home");
         }
         else{

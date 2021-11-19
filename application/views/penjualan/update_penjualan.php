@@ -133,7 +133,7 @@
                                 <!-- /.card -->
                             </div>
                         </div>
-                        <div class="">
+                        <div class="table-responsive">
                         <table>
                             <tr>
                                 <th>id transaksi</th>

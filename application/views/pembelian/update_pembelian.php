@@ -14,8 +14,26 @@
         <link rel="stylesheet" href="<?= base_url() ?>assets/backend/css/public/adminlte/bower_components/font-awesome/css/font-awesome.min.css">
 
     <style>
-        table{
-            width: 100%;
+        table {
+          font-family: arial, sans-serif;
+          border-collapse: collapse;
+          width: 100%;
+          overflow: auto;
+        }
+        th
+        {
+            background-color: white;
+        }
+        td, th {
+          border: 1px solid #dddddd;
+          text-align: left;
+          padding: 8px;
+        }
+        tr:nth-child(even) {
+          background-color: #dddddd;
+        }
+        a{
+            color: white;
         }
     </style>
     </head>
@@ -61,7 +79,7 @@
                                                 <input type="text" name="id" class="form-control" id="nama" placeholder="Id Supplier">
                                             </div>
                                             <div class="form-group">
-                                                <label for="nama">Tanggal Pembayaran</label>
+                                                <label for="nama">Tanggal Transaksi</label>
                                                 <input type="date" name="tgl" class="form-control" id="nama" placeholder="Tanggal Pembayaran">
                                                 <br>
                                                 <h4>total: <span>10000000</span></h4>
@@ -85,27 +103,25 @@
                                     </div>
                                     <!-- /.card-header -->
                                     <!-- form start -->
-                                    <form action="<?= base_url() ?>transaksi/TambahDetailPembelian" method="post">
+                                    <form action="<?= base_url() ?>transaksi/updateDetailPembelian" method="post">
                                         <div class="card-body">
-                                            <div class="form-group">
+                                        <div class="form-group">
                                                 <h4>id detail: <span>DBL0006</span></h4>
-                                                <br>
+                                            </div>
+                                            <div class="form-group">
                                                 nama pembelian: 
-                                                <select name = "barang" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="pembelian">
-                                                    <option value="">bahan 1</option>
-                                                    <option value="">bahan 2</option>
-                                                    <option value="">bahan 3</option>
-                                                    <option value="">bahan 4</option>
-                                                    <option value="">bahan 5</option>
-                                                    <option value="">bahan 6</option>
-                                                </select>
-                                                <br>
-                                                <h4>harga satuan: <span>2000</span></h4>
-                                                <br>
+                                                <input type="text" name = "nama" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="nama pembelian">
+                                            </div>
+                                            <div class="form-group">
+                                                harga satuan:
+                                                <input type="text" name = "nama" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="harga satuan">
+                                            </div>
+                                            <div class="form-group">
+                                                jumlah: 
                                                 <input type="text" name = "jumlah" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="jumlah">
-                                                <br>
+                                            </div>
+                                            <div class="form-group">
                                                 <h4>subtotal: <span>8000</span></h4>
-                                                <br>
                                             </div>
                                         </div>
                                         <!-- /.card-body -->

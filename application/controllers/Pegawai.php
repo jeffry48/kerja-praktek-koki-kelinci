@@ -15,6 +15,7 @@ class Pegawai extends CI_Controller {
         // $this->load->helper('URL');
         $this->load->helper('url');
         $data['karyawan'] = $this->Karyawan->getAll();
+        // var_dump($data['karyawan']);
         // echo $data['post'];
         $this->load->view('employee/pegawai.php',$data);
     }

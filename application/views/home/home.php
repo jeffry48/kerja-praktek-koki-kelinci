@@ -59,7 +59,10 @@
                                 <!-- general form elements -->
                                 <div class="card card-primary">
                                     <div class="card-header">
-                                        <h3 class="card-title">Welcome , admin</h3>
+                                        <?php
+
+                                        ?>
+                                        <h3 class="card-title">Welcome, <?php echo $_SESSION['loggedInName']?></h3>
                                     </div>
                                     <!-- /.card-header -->
                                     <!-- form start -->

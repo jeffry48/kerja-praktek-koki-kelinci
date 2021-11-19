@@ -74,11 +74,15 @@
                                             <div class="form-group">
                                                 <h4>id header: <span>HBL0001</span></h4>
                                                 <br>
-                                                <label for="nama">Id Konsumen</label>
-                                                <input type="text" name="id" class="form-control" id="nama" placeholder="Id Konsumen">
+                                                <label for="nama">Konsumen</label>
+                                                <select name="" id="" class="form-control">
+                                                    <option value="">konsumen a</option>
+                                                    <option value="">konsumen b</option>
+                                                    <option value="">konsumen c</option>
+                                                </select>
                                             </div>
                                             <div class="form-group">
-                                                <label for="nama">Tanggal Pembayaran</label>
+                                                <label for="nama">Tanggal Transaksi</label>
                                                 <input type="date" name="tgl" class="form-control" id="nama" placeholder="Tanggal Transaksi">
                                                 <br>
                                                 <h4>total: <span>10000000</span></h4>
@@ -130,7 +134,7 @@
                                             <button class="btn btn-primary"><a style="color: white" href="<?= base_url() ?>transaksi/TambahDetailPenjualan">Tambah Detail Penjualan</a></button>
                                         </div>
                                     </form>
-                                    <div class="row">
+                                    <div class="table-responsive">
                                         <table>
                                             <tr>
                                                 <th>id transaksi</th>

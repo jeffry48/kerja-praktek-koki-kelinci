@@ -22,6 +22,7 @@
         font-family: arial, sans-serif;
         border-collapse: collapse;
         width: 100%;
+        overflow: auto;
     }
     th{
         background-color: white;

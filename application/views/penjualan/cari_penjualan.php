@@ -17,6 +17,7 @@
           font-family: arial, sans-serif;
           border-collapse: collapse;
           width: 100%;
+          overflow: auto;
         }
         th
         {
@@ -215,6 +216,7 @@
                                         </button>
                                     </div>
                                     <div class="modal-body">
+                                        <div class="table-responsive">
                                         <table>
                                             <tr>
                                                 <th>id transaksi</th>
@@ -241,6 +243,7 @@
                                                 <th>900</th>
                                             </tr>
                                         </table>
+                                        </div>
                                     </div>
                                     <div class="modal-footer">
                                         <form action="<?=base_url()?>transaksi/hapusPenjualan" method="POST">
@@ -265,6 +268,7 @@
                                             </button>
                                         </div>
                                         <div class="modal-body">
+                                            <div class="table-responsive">
                                             <table>
                                                 <tr>
                                                     <th>id transaksi</th>
@@ -291,6 +295,7 @@
                                                     <th>900</th>
                                                 </tr>
                                             </table>
+                                            </div>
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>

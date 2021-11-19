@@ -69,6 +69,10 @@
                                                 <input type="text" class="form-control" name="nama" placeholder="Nama Karyawan">
                                             </div>
                                             <div class="form-group">
+                                                <label for="nama">Password</label>
+                                                <input type="password" class="form-control" name="password" placeholder="Nama Karyawan">
+                                            </div>
+                                            <div class="form-group">
                                                 <label for="posisi">Posisi</label>
                                                 <select name="posisi" class="form-control">
                                                     <option value="Pegawai">Pegawai</option>
