@@ -14,26 +14,8 @@
         <link rel="stylesheet" href="<?= base_url() ?>assets/backend/css/public/adminlte/bower_components/font-awesome/css/font-awesome.min.css">
 
     <style>
-        table {
-          font-family: arial, sans-serif;
-          border-collapse: collapse;
-          width: 100%;
-          overflow: auto;
-        }
-        th
-        {
-            background-color: white;
-        }
-        td, th {
-          border: 1px solid #dddddd;
-          text-align: left;
-          padding: 8px;
-        }
-        tr:nth-child(even) {
-          background-color: #dddddd;
-        }
-        a{
-            color: white;
+        table{
+            width: 100%;
         }
     </style>
     </head>
@@ -49,7 +31,7 @@
                     <div class="container-fluid">
                         <div class="row mb-2">
                             <div class="col-sm-6">
-                                <h1>Update Pembelian </h1>
+                                <h1>Update Pembelian Baru</h1>
                                 <br>
                                 <button type="submit" class="btn btn-primary"> <a href="<?= base_url() ?>transaksi/Pembelian" style="color:white;">Kembali</a></button>
                             <div>
@@ -66,25 +48,27 @@
                                 <!-- general form elements -->
                                 <div class="card card-primary">
                                     <div class="card-header">
-                                        <h3 class="card-title">Update Pembelian</h3>
+                                        <h3 class="card-title">Update Pembelian Baru</h3>
                                     </div>
                                     <!-- /.card-header -->
                                     <!-- form start -->
                                     <form action="<?= base_url() ?>transaksi/UpdatePembelian" method="post">
                                         <div class="card-body">
+                                        <?php foreach($karyawan as $d): ?>
                                             <div class="form-group">
-                                                <h4>id header: <span>HBL0001</span></h4>
+                                                <!-- <h4>id header: <span>HBL0001</span></h4> -->
+                                                <input type="hidden" name="idh" value="<?php echo $d['id_hbeli']; ?>">
                                                 <br>
                                                 <label for="nama">Id Supplier</label>
-                                                <input type="text" name="id" class="form-control" id="nama" placeholder="Id Supplier">
+                                                <input type="text" name="ids" value="<?php echo $d['id_supplier'] ?>" class="form-control" id="nama" placeholder="Id Supplier">
                                             </div>
                                             <div class="form-group">
-                                                <label for="nama">Tanggal Transaksi</label>
-                                                <input type="date" name="tgl" class="form-control" id="nama" placeholder="Tanggal Pembayaran">
-                                                <br>
-                                                <h4>total: <span>10000000</span></h4>
+                                                <label for="nama">Tanggal Pembayaran</label>
+                                                <input type="date" name="tglp" value="<?php echo $d['tanggal_beli'] ?>" class="form-control" id="nama" placeholder="Tanggal Pembayaran">
+                                                <!-- <h4>total: <span>10000000</span></h4> -->
                                             </div>
                                         </div>
+                                        <?php endforeach; ?>
                                         <!-- /.card-body -->
                                         <div class="card-footer">
                                             <button type="submit" class="btn btn-primary">Update Pembelian</button>
@@ -103,65 +87,61 @@
                                     </div>
                                     <!-- /.card-header -->
                                     <!-- form start -->
-                                    <form action="<?= base_url() ?>transaksi/updateDetailPembelian" method="post">
+                                    <form action="<?= base_url() ?>transaksi/UpdateDetailPembelian" method="post">
                                         <div class="card-body">
-                                        <div class="form-group">
-                                                <h4>id detail: <span>DBL0006</span></h4>
-                                            </div>
                                             <div class="form-group">
-                                                nama pembelian: 
-                                                <input type="text" name = "nama" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="nama pembelian">
-                                            </div>
-                                            <div class="form-group">
-                                                harga satuan:
-                                                <input type="text" name = "nama" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="harga satuan">
-                                            </div>
-                                            <div class="form-group">
-                                                jumlah: 
+                                                <!-- <h4>id detail: <span>DBL0006</span></h4> -->
+                                                <br>
+                                                <label for="nama">Nama Pembelian</label> 
+                                                <input type="text" value="" name = "keterangan" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="nama pembelian">
+                                                <br>
+                                                <label for="nama">Harga Satuan</label> 
+                                                <input type="text" name = "harga" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="harga satuan">
+                                                <!-- <h4>harga satuan: <span>2000</span></h4> -->
+                                                <br>
+                                                <label for="nama">Jumlah</label>
                                                 <input type="text" name = "jumlah" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="jumlah">
-                                            </div>
-                                            <div class="form-group">
-                                                <h4>subtotal: <span>8000</span></h4>
+                                                <!-- <h4>subtotal: <span>8000</span></h4> -->
                                             </div>
                                         </div>
                                         <!-- /.card-body -->
                                         <div class="card-footer">
-                                            <button class="btn btn-primary"><a style="color: white" href="<?= base_url() ?>transaksi/UpdateDetailPembelian">Update Detail Pembelian</a></button>
+                                            <button class="btn btn-primary">Update Detail Pembelian</button>
                                         </div>
                                     </form>
+                                    <div class="table-responsive">
+                                        <table>
+                                            <tr>
+                                                <th>id transaksi</th>
+                                                <th>id header</th>
+                                                <th>nama pembelian</th>
+                                                <th>harga satuan</th>
+                                                <th>jumlah</th>
+                                                <th>sub total</th>
+                                                <th>action</th>
+                                            </tr>
+                                            <?php foreach($karyawan1 as $d): ?>
+                                            <tr>
+                                                <th><?php echo $d['id_dbeli']; ?></th>
+                                                <th><?php echo $d['id_hbeli']; ?></th>
+                                                <th><?php echo $d['nama_pembelian']; ?></th>
+                                                <th><?php echo $d['subtotal']/$d['jumlah_beli']; ?></th>
+                                                <th><?php echo $d['jumlah_beli']; ?></th>
+                                                <th><?php echo $d['subtotal']; ?></th>
+                                                <th>
+                                                    <form action="<?= base_url() ?>transaksi/SelectDetailPembelian" method="post">
+                                                        <input type="hidden" name="idd" value="<?php echo $d['id_dbeli']; ?>">
+                                                        <input type="hidden" name="idh" value="<?php echo $d['id_hbeli']; ?>">
+                                                        <button class="btn btn-info pull-left" style="margin-left: 1%;">select</button>
+                                                    </form>
+                                                </th>
+                                            </tr>
+                                            <?php endforeach; ?>
+                                        </table>
+                                    </div>
                                 </div>
                                 <!-- /.card -->
                             </div>
-                        </div>
-                        <div class="row">
-                        <div class="table-responsive">
-                            <table class="table">
-                                <tr>
-                                    <th>id transaksi</th>
-                                    <th>nama pembelian</th>
-                                    <th>harga satuan</th>
-                                    <th>jumlah</th>
-                                    <th>sub total</th>
-                                    <th>action</th>
-                                </tr>
-                                <tr>
-                                    <th>DBL0001</th>
-                                    <th>bahan 1</th>
-                                    <th>200</th>
-                                    <th>4</th>
-                                    <th>800</th>
-                                    <th><button class="btn btn-info pull-left" style="margin-left: 1%;"><a style="color: white" href="<?= base_url() ?>transaksi/KeUpdatePembelian">select</a></button></th>
-                                </tr>
-                                <tr>
-                                    <th>DBL0002</th>
-                                    <th>bahan 2</th>
-                                    <th>300</th>
-                                    <th>3</th>
-                                    <th>900</th>
-                                    <th><button class="btn btn-info pull-left" style="margin-left: 1%;">select</button></th>
-                                </tr>
-                            </table>
-                        </div>
                         </div>
                         <!-- /.row -->
                     </div><!-- /.container-fluid -->

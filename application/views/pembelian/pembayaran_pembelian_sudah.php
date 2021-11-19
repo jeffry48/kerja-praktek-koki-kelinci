@@ -14,26 +14,8 @@
         <link rel="stylesheet" href="<?= base_url() ?>assets/backend/css/public/adminlte/bower_components/font-awesome/css/font-awesome.min.css">
 
     <style>
-        table {
-          font-family: arial, sans-serif;
-          border-collapse: collapse;
-          width: 100%;
-          overflow: auto;
-        }
-        th
-        {
-            background-color: white;
-        }
-        td, th {
-          border: 1px solid #dddddd;
-          text-align: left;
-          padding: 8px;
-        }
-        tr:nth-child(even) {
-          background-color: #dddddd;
-        }
-        a{
-            color: white;
+        table{
+            width: 100%;
         }
     </style>
     </head>
@@ -72,15 +54,15 @@
                                     <!-- form start -->
                                     <form action="<?= base_url() ?>transaksi/KeNotaPembelian" method="post">
                                         <div class="card-body">
+                                        <?php foreach($karyawan as $d): ?>
                                             <div class="form-group">
-                                                <h4>id Pembelian: <span>HBL0001</span></h4>
-                                                <h4>tanggal: <span>19/9/2021</span></h4>
-                                                <h4>status: <span style="color: green;">sudah terbayar</span></h4>
+                                                <h4>id Pembelian: <span><?php echo $d['id_hbeli']; ?></span></h4><br>
+                                                <h4>tanggal: <span><?php echo $d['tanggal_beli']; ?></span></h4><br>
+                                                <h4>id supplier: <span><?php echo $d['id_supplier']; ?></span></h4><br>
+                                                <h4>status: <span style="color: green;"><?php echo $d['status_beli']; ?></span></h4><br>
+                                                <h4>total: <span><?php echo $d['total_beli']; ?></span></h4><br>
                                             </div>
-                                            <div class="form-group">
-                                                <h4>nama supplier: <span>supplier 1</span></h4>
-                                                <h4>total: <span>100000</span></h4>
-                                            </div>
+                                        <?php endforeach; ?>
                                         </div>
                                     </form>
                                 </div>
@@ -98,26 +80,19 @@
                                     <th>jumlah</th>
                                     <th>sub total</th>
                                 </tr>
-                                <tr>
-                                    <th>DBL0001</th>
-                                    <th>HBL0001</th>
-                                    <th>bahan 1</th>
-                                    <th>200</th>
-                                    <th>4</th>
-                                    <th>800</th>
-                                </tr>
-                                <tr>
-                                    <th>DBL0002</th>
-                                    <th>HBL0001</th>
-                                    <th>bahan 2</th>
-                                    <th>300</th>
-                                    <th>3</th>
-                                    <th>900</th>
-                                </tr>
+                                <?php foreach($karyawan1 as $d): ?>
+                                    <tr>
+                                        <th><?php echo $d['id_dbeli']; ?></th>
+                                        <th><?php echo $d['id_hbeli']; ?></th>
+                                        <th><?php echo $d['nama_pembelian']; ?></th>
+                                        <th><?php echo $d['subtotal']/$d['jumlah_beli']; ?></th>
+                                        <th><?php echo $d['jumlah_beli']; ?></th>
+                                        <th><?php echo $d['subtotal']; ?></th>
+                                    </tr>
+                                <?php endforeach; ?>
                             </table>
                         </div>
                         </div>
-                        
                         <!-- /.row -->
                     </div><!-- /.container-fluid -->
                 </section>

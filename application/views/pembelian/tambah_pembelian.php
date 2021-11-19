@@ -14,26 +14,8 @@
         <link rel="stylesheet" href="<?= base_url() ?>assets/backend/css/public/adminlte/bower_components/font-awesome/css/font-awesome.min.css">
 
     <style>
-        table {
-          font-family: arial, sans-serif;
-          border-collapse: collapse;
-          width: 100%;
-          overflow: auto;
-        }
-        th
-        {
-            background-color: white;
-        }
-        td, th {
-          border: 1px solid #dddddd;
-          text-align: left;
-          padding: 8px;
-        }
-        tr:nth-child(even) {
-          background-color: #dddddd;
-        }
-        a{
-            color: white;
+        table{
+            width: 100%;
         }
     </style>
     </head>
@@ -73,24 +55,15 @@
                                     <form action="<?= base_url() ?>transaksi/TambahPembelian" method="post">
                                         <div class="card-body">
                                             <div class="form-group">
-                                                <h4>id header: <span>HBL0001</span></h4>                                                
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="nama">Supplier</label>
-                                                <select name = "supplier" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="pembelian">
-                                                        <option value="">supplier 1</option>
-                                                        <option value="">supplier 2</option>
-                                                        <option value="">supplier 3</option>
-                                                        <option value="">supplier 4</option>
-                                                        <option value="">supplier 5</option>
-                                                        <option value="">supplier 6</option>
-                                                </select>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="nama">Tanggal Transaksi</label>
-                                                <input type="date" name="tgl" class="form-control" id="nama" placeholder="Tanggal Pembayaran">
+                                                <!-- <h4>id header: <span>HBL0001</span></h4> -->
                                                 <br>
-                                                <h4>total: <span>10000000</span></h4>
+                                                <label for="nama">Id Supplier</label>
+                                                <input type="text" name="ids" class="form-control" id="nama" placeholder="Id Supplier">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="nama">Tanggal Pembayaran</label>
+                                                <input type="date" name="tglp" class="form-control" id="nama" placeholder="Tanggal Pembayaran">
+                                                <!-- <h4>total: <span>10000000</span></h4> -->
                                             </div>
                                         </div>
                                         <!-- /.card-body -->
@@ -114,27 +87,23 @@
                                     <form action="<?= base_url() ?>transaksi/TambahDetailPembelian" method="post">
                                         <div class="card-body">
                                             <div class="form-group">
-                                                <h4>id detail: <span>DBL0006</span></h4>
-                                            </div>
-                                            <div class="form-group">
-                                                nama pembelian: 
-                                                <input type="text" name = "nama" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="nama pembelian">
-                                            </div>
-                                            <div class="form-group">
-                                                harga satuan:
-                                                <input type="text" name = "nama" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="harga satuan">
-                                            </div>
-                                            <div class="form-group">
-                                                jumlah: 
+                                                <!-- <h4>id detail: <span>DBL0006</span></h4> -->
+                                                <br>
+                                                <label for="nama">Nama Pembelian</label> 
+                                                <input type="text" name = "keterangan" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="nama pembelian">
+                                                <br>
+                                                <label for="nama">Harga Satuan</label> 
+                                                <input type="text" name = "harga" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="harga satuan">
+                                                <!-- <h4>harga satuan: <span>2000</span></h4> -->
+                                                <br>
+                                                <label for="nama">Jumlah</label>
                                                 <input type="text" name = "jumlah" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="jumlah">
-                                            </div>
-                                            <div class="form-group">
-                                                <h4>subtotal: <span>8000</span></h4>
+                                                <!-- <h4>subtotal: <span>8000</span></h4> -->
                                             </div>
                                         </div>
                                         <!-- /.card-body -->
                                         <div class="card-footer">
-                                            <button class="btn btn-primary"><a style="color: white" href="<?= base_url() ?>transaksi/TambahDetailPembelian">Tambah Detail Pembelian</a></button>
+                                            <button class="btn btn-primary">Tambah Detail Pembelian</button>
                                         </div>
                                     </form>
                                     <div class="table-responsive">
@@ -142,27 +111,21 @@
                                             <tr>
                                                 <th>id transaksi</th>
                                                 <th>id header</th>
-                                                <th>nama penjualan</th>
+                                                <th>nama pembelian</th>
                                                 <th>harga satuan</th>
                                                 <th>jumlah</th>
                                                 <th>sub total</th>
                                             </tr>
+                                            <?php foreach($karyawan as $d): ?>
                                             <tr>
-                                                <th>DJL0001</th>
-                                                <th>HJL0001</th>
-                                                <th>produk 123456</th>
-                                                <th>20000</th>
-                                                <th>4</th>
-                                                <th>80000</th>
+                                                <th><?php echo $d['id_dbeli']; ?></th>
+                                                <th><?php echo $d['id_hbeli']; ?></th>
+                                                <th><?php echo $d['nama_pembelian']; ?></th>
+                                                <th><?php echo $d['subtotal']/$d['jumlah_beli']; ?></th>
+                                                <th><?php echo $d['jumlah_beli']; ?></th>
+                                                <th><?php echo $d['subtotal']; ?></th>
                                             </tr>
-                                            <tr>
-                                                <th>DJL0002</th>
-                                                <th>HJL0001</th>
-                                                <th>produk 2</th>
-                                                <th>300</th>
-                                                <th>3</th>
-                                                <th>900</th>
-                                            </tr>
+                                            <?php endforeach; ?>
                                         </table>
                                     </div>
                                 </div>

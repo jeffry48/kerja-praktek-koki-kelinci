@@ -14,26 +14,8 @@
         <link rel="stylesheet" href="<?= base_url() ?>assets/backend/css/public/adminlte/bower_components/font-awesome/css/font-awesome.min.css">
 
     <style>
-        table {
-          font-family: arial, sans-serif;
-          border-collapse: collapse;
-          width: 100%;
-          overflow: auto;
-        }
-        th
-        {
-            background-color: white;
-        }
-        td, th {
-          border: 1px solid #dddddd;
-          text-align: left;
-          padding: 8px;
-        }
-        tr:nth-child(even) {
-          background-color: #dddddd;
-        }
-        a{
-            color: white;
+        table{
+            width: 100%;
         }
     </style>
     </head>
@@ -73,11 +55,18 @@
                                     <form action="<?= base_url() ?>transaksi/KeNotaPembelian" method="post">
                                         <div class="card-body">
                                             <div class="form-group">
-                                                <h4>id Pembelian: <span>HBL0001</span></h4><br>
-                                                <h4>tanggal: <span>19/9/2021</span></h4><br>
-                                                <h4>nama supplier: <span>supplier 1</span></h4><br>
-                                                <h4>status: <span style="color: red;">belum terbayar</span></h4><br>
-                                                <h4>total: <span>1600</span></h4><br>
+                                                <?php foreach($karyawan as $d): ?>
+                                                    <h4>id Pembelian: <span><?php echo $d['id_hbeli']; ?></span></h4><br>
+                                                    <h4>tanggal: <span><?php echo $d['tanggal_beli']; ?></span></h4><br>
+                                                    <h4>id supplier: <span><?php echo $d['id_supplier']; ?></span></h4><br>
+                                                    <h4>status: <span style="color: red;"><?php echo $d['status_beli']; ?></span></h4><br>
+                                                    <h4>total: <span><?php echo $d['total_beli']; ?></span></h4><br>
+                                                    <input type="hidden" name="idh" value="<?php echo $d['id_hbeli']; ?>">
+                                                    <input type="hidden" name="tgl" value="<?php echo $d['tanggal_beli']; ?>">
+                                                    <input type="hidden" name="ids" value="<?php echo $d['id_supplier']; ?>">
+                                                    <input type="hidden" name="stat" value="<?php echo $d['status_beli']; ?>">
+                                                    <input type="hidden" name="total" value="<?php echo $d['total_beli']; ?>">
+                                                <?php endforeach; ?>
                                             </div>
                                         </div>
                                         <!-- /.card-body -->
@@ -101,6 +90,9 @@
                                     <form action="<?= base_url() ?>transaksi/TambahPembayaran" method="post">
                                         <div class="card-body">
                                             <div class="form-group">
+                                            <?php foreach($karyawan as $d): ?>
+                                                <input type="hidden" name="nomh" value="<?php echo $d['total_beli']; ?>">
+                                                <input type="hidden" name="idh" value="<?php echo $d['id_hbeli']; ?>">
                                                 <label for="nama">Tanggal Pembayaran</label>
                                                 <input type="date" name="tgl" class="form-control" id="nama" placeholder="Tanggal Pembayaran">
                                                 <br>
@@ -112,10 +104,11 @@
                                                 <br>
                                                 <label for="nama">Metode Pembayaran</label>
                                                 <select name = "metode" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" >
-                                                    <option value="">transfer</option>
-                                                    <option value="">cash</option>
-                                                    <option value="">e-wallet</option>
+                                                    <option value="transfer">transfer</option>
+                                                    <option value="cash">cash</option>
+                                                    <option value="e-wallet">e-wallet</option>
                                                 </select>
+                                            <?php endforeach; ?>
                                             </div>
                                         </div>
                                         <!-- /.card-body -->
@@ -128,35 +121,28 @@
                             </div>
                         </div>
                         <div class="row">
-                            <h4>Riwayat Pembayaran</h4>
-                            <div class="table-responsive">
-                                <table class="table">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <tr>
+                                    <th>id transaksi</th>
+                                    <th>id header</th>
+                                    <th>nama pembelian</th>
+                                    <th>harga satuan</th>
+                                    <th>jumlah</th>
+                                    <th>sub total</th>
+                                </tr>
+                                <?php foreach($karyawan1 as $d): ?>
                                     <tr>
-                                        <th>id pembayaran</th>
-                                        <th>id header</th>
-                                        <th>tanggal pembayaran</th>
-                                        <th>jumlah pembayaran</th>
-                                        <th>note</th>
-                                        <th>metode pembayaran</th>
+                                        <th><?php echo $d['id_dbeli']; ?></th>
+                                        <th><?php echo $d['id_hbeli']; ?></th>
+                                        <th><?php echo $d['nama_pembelian']; ?></th>
+                                        <th><?php echo $d['subtotal']/$d['jumlah_beli']; ?></th>
+                                        <th><?php echo $d['jumlah_beli']; ?></th>
+                                        <th><?php echo $d['subtotal']; ?></th>
                                     </tr>
-                                    <tr>
-                                        <th>BYJ0001</th>
-                                        <th>HJL0001</th>
-                                        <th>bahan 1</th>
-                                        <th>200</th>
-                                        <th>note 1</th>
-                                        <th>800</th>
-                                    </tr>
-                                    <tr>
-                                        <th>DBL0002</th>
-                                        <th>HBL0001</th>
-                                        <th>bahan 2</th>
-                                        <th>300</th>
-                                        <th>note 2</th>
-                                        <th>900</th>
-                                    </tr>
-                                </table>
-                            </div>
+                                <?php endforeach; ?>
+                            </table>
+                        </div>
                         </div>
                         <!-- /.row -->
                     </div><!-- /.container-fluid -->
