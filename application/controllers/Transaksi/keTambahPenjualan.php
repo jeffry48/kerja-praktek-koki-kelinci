@@ -11,7 +11,8 @@ class keTambahPenjualan extends CI_Controller {
     {
         
         $this->load->helper('url');
-        $this->load->view('penjualan/tambah_penjualan.php');
+        $data['karyawan'] = $this->Produk_model->getAllProduk();
+        $this->load->view('penjualan/tambah_penjualan.php',$data);
         
     }
 }
