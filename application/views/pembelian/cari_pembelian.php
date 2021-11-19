@@ -138,174 +138,90 @@
                             </div>
                         </div>
                         <div class="row">
-                <button class="btn btn-info pull-left" style="background-color: red;">
-                    <a style="color: white;" data-toggle="modal" data-target="#modalTutup">
-                        Hapus Semua Data Pembelian
-                    </a>
-                </button>
-                <!-- modal -->
-                <div class="modal fade" id="modalTutup" tabindex="-1" role="dialog" aria-labelledby="modalTutupLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                    <div class="modal-header" style="background-color: red;">
-                        <h5 class="modal-title" id="modalTutup"><b>HAPUS SEMUA DATA PEMBELIAN</b></h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        Apakah anda yakin ingin menghapus semua data pembelian?
-                    </div>
-                    <div class="modal-footer">
-                        <form action="<?= base_url()?> transaksi/hapusSemuaPembelian" method="POST">
-                            <button type="button" class="btn btn-primary" data-dismiss="modal">Batal</button>
-                            <input type="submit" value="Hapus" class="btn btn-primary" style="background-color: red;">
-                        </form>
-                    </div>
-                    </div>
-                </div>
-                </div>
-            </div>
-            <div class="row">
-                <h3>Header pembelian</h3>
-                <div class="table-responsive">
-                <table class="table">
-                    <tr>
-                        <th>id transaksi</th>
-                        <th>tanggal</th>
-                        <th>total</th>
-                        <th>id supplier</th>
-                        <th>status</th>
-                        <th>action</th>
-                    </tr>
-                    <?php foreach($karyawan as $d): ?>
-                        
-                    <tr>
-                        <th><?php echo $d['id_hbeli']; ?></th>
-                        <th><?php echo $d['tanggal_beli']; ?></th>
-                        <th><?php echo $d['total_beli']; ?></th>
-                        <th><?php echo $d['id_supplier']; ?></th>
-                        <th><?php echo $d['status_beli']; ?></th>
-                        <!-- <th>HBL0001</th>
-                        <th>19/9/2021</th>
-                        <th>supplier 1</th>
-                        <th>2800</th>
-                        <th>sudah terbayar</th> -->
-                        <th>
-                            <center>
-                            <form action="<?=base_url()?>transaksi/KeUpdatePembelian" method="POST">
-                                <input type="hidden" name="idh" value="<?php echo $d['id_hbeli']; ?>">
-                                <button class="btn btn-info pull-left">update</button>
-                                <!-- <button class="btn btn-info pull-left" style="margin-left: 1%;"><a style="color: white"href="#">hapus</a></button> -->
-                            </form>
-                                <form action="<?= base_url() ?>transaksi/HapusPembelian" method="POST">
-                                <input type="hidden" name="idh" value="<?php echo $d['id_hbeli']; ?>">
-                                <button class="btn btn-info pull-left" style="margin-left:1%;">hapus</button>
+                            <h3>Header pembelian</h3>
+                            <div class="table-responsive">
+                            <table class="table">
+                                <tr>
+                                    <th>id transaksi</th>
+                                    <th>tanggal</th>
+                                    <th>total</th>
+                                    <th>id supplier</th>
+                                    <th>status</th>
+                                    <th>action</th>
+                                </tr>
+                                <?php foreach($karyawan as $d): ?>
+                                <?php echo $d['id_hbeli'];?>
+                                <tr>
+                                    <th><?php echo $d['id_hbeli']; ?></th>
+                                    <th><?php echo $d['tanggal_beli']; ?></th>
+                                    <th><?php echo $d['total_beli']; ?></th>
+                                    <th><?php echo $d['id_supplier']; ?></th>
+                                    <th><?php echo $d['status_beli']; ?></th>
+                                    <th>
+                                        <center>
+                                        <form action="<?=base_url()?>transaksi/KeUpdatePembelian" method="POST">
+                                            <input type="hidden" name="idh" value="<?php echo $d['id_hbeli']; ?>">
+                                            <button class="btn btn-info pull-left">update</button>
                                         </form>
-                                <!-- Modal -->
-                                <!-- <div class="modal fade" id="modalHapus" tabindex="-1" role="dialog" aria-labelledby="modalHapusLabel" aria-hidden="true">
-                                <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="modalHapusLabel">Hapus Pembelian</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-                                    Apakah anda yakin ingin menghapus semua data pembelian?
-                                    </div>
-                                    <div class="modal-footer">
-                                    <button type="button" class="btn btn-primary" data-dismiss="modal">batal</button>
                                         <form action="<?= base_url() ?>transaksi/HapusPembelian" method="POST">
-                                            <input type="submit" value="Hapus" class="btn btn-primary" style="background-color: red;" >
-                                            <input type="hidden" name="idh" value="<?= $d['id_hbeli']; ?>">
-                                            <input type="submit" name="idh" value="<?php echo $d['id_hbeli']; ?>">
+                                            <input type="hidden" name="idh" value="<?php echo $d['id_hbeli']; ?>">
+                                            <button class="btn btn-info pull-left" style="margin-left:1%;">hapus</button>
                                         </form>
-                                    </div>
-                                </div>
-                                </div> -->
-                                <form action="<?= base_url()?>transaksi/kePembayaranPembelian" method="POST">
-                                    <input type="hidden" name="idh" value="<?php echo $d['id_hbeli']; ?>">
-                                    <button class="btn btn-info pull-left" style="margin-left: 1%;">bayar</button>
-                                </form>
-                                <button type="button" value="<?php echo $d['id_hbeli']; ?>" class="btn btn-info pull-left" style="margin-left: 1%;" data-toggle="modal" data-target="#modalDetail">
-                                    detail
-                                </button>
-                                <!-- Modal -->
-                                <div class="modal fade" id="modalDetail" tabindex="-1" role="dialog" aria-labelledby="modalDetailLabel" aria-hidden="true">
-                                <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="modalDetailLabel">Detail pembelian</h5>
-                                        <table>
-                                            <tr>
-                                                <th>id transaksi</th>
-                                                <th>id header</th>
-                                                <th>jumlah pembelian</th>
-                                                <th>subtotal</th>
-                                                <th>id produk</th>
-                                            </tr>
-                                            <?php
-                                            // echo $d['id_hbeli'];
-                                            $sql ="SELECT * FROM dbeli where id_hbeli='".$d['id_hbeli']."'";
-                                                  $query = $this->db->query($sql); $karyawan1 = $query->result_array(); foreach($karyawan1 as $d1): ?>
-                                            <tr>
-                                                <th><?php echo $d1['id_dbeli']; ?></th>
-                                                <th><?php echo $d1['id_hbeli']; ?></th>
-                                                <th><?php echo $d1['jumlah_beli']; ?></th>
-                                                <th><?php echo $d1['subtotal']; ?></th>
-                                                <th><?php echo $d1['id_produk']; ?></th>
-                                                <th><?php echo $d['id_hbeli']; ?></th>
-                                            </tr>
-                                            <?php endforeach; ?>
-                                        </table>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
+                                        <form action="<?= base_url()?>transaksi/kePembayaranPembelian" method="POST">
+                                            <input type="hidden" name="idh" value="<?php echo $d['id_hbeli']; ?>">
+                                            <button class="btn btn-info pull-left" style="margin-left: 1%;">bayar</button>
+                                        </form>
+                                        <button type="button" class="btn btn-info pull-left" style="margin-left: 1%;" data-toggle="modal" data-target="#modalDetail<?php echo $d['id_hbeli']; ?>">
+                                            detail
                                         </button>
-                                    </div>
-                                    <div class="modal-body">
-                                    <div class="modal-body">
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-                                    </div>
-                                    </div>
-                                </div>
-                                </div>
-                            </center>
-                        </th>
-                    </tr>
-                    <?php endforeach; ?>
-                </table>
-                </div>
-            </div>
-            <div class="modal-body">
-                                                    <div class="table-responsive">
-                                                    <table class="table">
-                                                        <tr>
-                                                            <th>id transaksi</th>
-                                                            <th>id header</th>
-                                                            <th>nama pembelian</th>
-                                                            <th>harga satuan</th>
-                                                            <th>jumlah</th>
-                                                            <th>sub total</th>
-                                                        </tr>
-                                                        <?php foreach($karyawan1 as $d): ?>
-                                                        <tr>
-                                                            <th><?php echo $d1['id_dbeli']; ?></th>
-                                                            <th><?php echo $d1['id_hbeli']; ?></th>
-                                                            <th><?php echo $d1['jumlah_beli']; ?></th>
-                                                            <th><?php echo $d1['subtotal']; ?></th>
-                                                            <th><?php echo $d1['id_produk']; ?></th>
-                                                            <th><?php echo $d['id_hbeli']; ?></th>
-                                                        </tr>
-                                                        <?php endforeach; ?>
-                                                    </table>
-                                                    </div>
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="modalDetail<?php echo $d['id_hbeli']; ?>" tabindex="-1" role="dialog" aria-labelledby="modalDetailLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="modalDetailLabel">Detail pembelian</h5>
+                                                <span aria-hidden="true">&times;</span>
+                                            </div>
+                                            <div class="modal-body">
+                                            <div class="table-responsive">
+                                                <table>
+                                                    <tr>
+                                                        <th>id transaksi</th>
+                                                        <th>id header</th>
+                                                        <th>jumlah pembelian</th>
+                                                        <th>subtotal</th>
+                                                        <th>id produk</th>
+                                                    </tr>
+                                                    <?php
+                                                        $sql ="SELECT * FROM dbeli where id_hbeli='".$d['id_hbeli']."'";
+                                                        $query = $this->db->query($sql); 
+                                                        $karyawan1 = $query->result_array(); 
+                                                        foreach($karyawan1 as $d1):
+                                                    ?>
+                                                    <tr>
+                                                        <th><?php echo $d1['id_dbeli']; ?></th>
+                                                        <th><?php echo $d1['id_hbeli']; ?></th>
+                                                        <th><?php echo $d1['jumlah_beli']; ?></th>
+                                                        <th><?php echo $d1['subtotal']; ?></th>
+                                                        <th><?php echo $d1['nama_pembelian']; ?></th>
+                                                    </tr>
+                                                    <?php endforeach; ?>
+                                                </table>
                                                 </div>
-                        <!-- /.row -->
-                    </div><!-- /.container-fluid -->
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                                            </div>
+                                            </div>
+                                        </div>
+                                        </div>
+                                        </center>
+                                    </th>
+                                </tr>
+                                <?php endforeach; ?>
+                            </table>
+                            </div>
+                        </div>
                 </section>
                 <!-- /.content -->
             </div>

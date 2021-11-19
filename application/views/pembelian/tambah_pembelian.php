@@ -56,14 +56,22 @@
                                         <div class="card-body">
                                             <div class="form-group">
                                                 <!-- <h4>id header: <span>HBL0001</span></h4> -->
-                                                <br>
                                                 <label for="nama">Id Supplier</label>
-                                                <input type="text" name="ids" class="form-control" id="nama" placeholder="Id Supplier">
+                                                <select name="ids" class="form-control" id="nama" >
+                                                    <?php
+                                                        $sql ="SELECT * FROM supplier";
+                                                        $query = $this->db->query($sql); 
+                                                        $dataSup = $query->result_array();
+                                                        foreach ($dataSup as $d) {
+                                                            echo '<option value="'.$d['id_supplier'].'">'.$d['nama_supplier'].'</option>';
+                                                        }
+                                                    ?>
+                                                </select>
                                             </div>
                                             <div class="form-group">
                                                 <label for="nama">Tanggal Pembayaran</label>
                                                 <input type="date" name="tglp" class="form-control" id="nama" placeholder="Tanggal Pembayaran">
-                                                <!-- <h4>total: <span>10000000</span></h4> -->
+                                                <h4>total: <span id="total">0</span></h4>
                                             </div>
                                         </div>
                                         <!-- /.card-body -->
@@ -93,12 +101,11 @@
                                                 <input type="text" name = "keterangan" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="nama pembelian">
                                                 <br>
                                                 <label for="nama">Harga Satuan</label> 
-                                                <input type="text" name = "harga" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="harga satuan">
-                                                <!-- <h4>harga satuan: <span>2000</span></h4> -->
+                                                <input type="text" id="harga" name = "harga" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="harga satuan">
                                                 <br>
                                                 <label for="nama">Jumlah</label>
-                                                <input type="text" name = "jumlah" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="jumlah">
-                                                <!-- <h4>subtotal: <span>8000</span></h4> -->
+                                                <input type="text" id="jumlah" name = "jumlah" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="jumlah">
+                                                <h4>subtotal: <span id="subtotal">0</span></h4>
                                             </div>
                                         </div>
                                         <!-- /.card-body -->
@@ -107,7 +114,7 @@
                                         </div>
                                     </form>
                                     <div class="table-responsive">
-                                        <table>
+                                        <table id="tabelDetail">
                                             <tr>
                                                 <th>id transaksi</th>
                                                 <th>id header</th>
@@ -123,7 +130,7 @@
                                                 <th><?php echo $d['nama_pembelian']; ?></th>
                                                 <th><?php echo $d['subtotal']/$d['jumlah_beli']; ?></th>
                                                 <th><?php echo $d['jumlah_beli']; ?></th>
-                                                <th><?php echo $d['subtotal']; ?></th>
+                                                <th class="subtotals"><?php echo $d['subtotal']; ?></th>
                                             </tr>
                                             <?php endforeach; ?>
                                         </table>
@@ -166,6 +173,54 @@
             $(function () {
                 bsCustomFileInput.init();
             });
+            $(document).ready(function(){
+                var total = 0;
+                $('.subtotals').each(function () {
+                    console.log($(this).text());
+                    total+=parseInt($(this).text());
+                });
+                // $('table tfoot td').eq(index).text('Total: ' + total);
+                $('#total').text(total);
+            });
+            $('input#harga').keyup(function(event) {
+                var harga=$('#harga').val();
+                var jumlah=$('#jumlah').val();
+                harga = harga.replace(/\./g, "");
+                jumlah = jumlah.replace(/\./g, "");
+                var subtotal=parseInt(harga)*parseInt(jumlah);
+                $('#subtotal').text(subtotal.toLocaleString("id"));
+                if($('#subtotal').text()=="NaN"){
+                    $('#subtotal').text("0");
+                }
+                if(event.which >= 37 && event.which <= 40) return;
+                $(this).val(function(index, value) {
+                return value
+                .replace(/\D/g, "")
+                .replace(/\B(?=(\d{3})+(?!\d))/g, ".")
+                ;
+                });
+            });
+            $('input#jumlah').keyup(function(event) {
+                var harga=$('#harga').val();
+                var jumlah=$('#jumlah').val();
+                harga = harga.replace(/\./g, "");
+                jumlah = jumlah.replace(/\./g, "");
+                var subtotal=parseInt(harga)*parseInt(jumlah);
+                $('#subtotal').text(subtotal.toLocaleString("id"));
+                if($('#subtotal').text()=="NaN"){
+                    $('#subtotal').text("0");
+                }
+
+                if(event.which >= 37 && event.which <= 40) return;
+                $(this).val(function(index, value) {
+                return value
+                .replace(/\D/g, "")
+                .replace(/\B(?=(\d{3})+(?!\d))/g, ".")
+                ;
+                });
+            });
+
+
         </script>
     </body>
 </html>

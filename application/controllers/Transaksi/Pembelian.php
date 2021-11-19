@@ -10,8 +10,7 @@ class pembelian extends CI_Controller {
     }
 
     public function index()
-    {
-        
+    {  
         $this->load->helper('url');
         $data['karyawan'] = $this->Header_Beli->getAll();
         $data['karyawan1'] = $this->Detail_Beli->getAll();
