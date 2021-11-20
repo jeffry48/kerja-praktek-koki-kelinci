@@ -72,20 +72,17 @@
                                     <form action="<?= base_url() ?>transaksi/TambahPenjualan" method="post">
                                         <div class="card-body">
                                             <div class="form-group">
-                                                <h4>id header: <span>HBL0001</span></h4>
-                                                <br>
                                                 <label for="nama">Konsumen</label>
-                                                <select name="" id="" class="form-control">
-                                                    <option value="">konsumen a</option>
-                                                    <option value="">konsumen b</option>
-                                                    <option value="">konsumen c</option>
+                                                <select name="kons" id="" class="form-control">
+                                                    <?php foreach($karyawan1 as $d): ?>
+                                                    <option value="<?php echo $d['id_konsumen']; ?>"><?php echo $d['nama_konsumen']; ?></option>
+                                                    <?php endforeach; ?>
                                                 </select>
                                             </div>
                                             <div class="form-group">
                                                 <label for="nama">Tanggal Transaksi</label>
                                                 <input type="date" name="tgl" class="form-control" id="nama" placeholder="Tanggal Transaksi">
                                                 <br>
-                                                <h4>total: <span>10000000</span></h4>
                                             </div>
                                         </div>
                                         <!-- /.card-body -->
@@ -109,16 +106,12 @@
                                     <form action="<?= base_url() ?>transaksi/TambahDetailPenjualan" method="post">
                                         <div class="card-body">
                                             <div class="form-group">
-                                                <h4>id detail: <span>DBL0006</span></h4>
                                                 <br>
-                                                nama pesanan: 
-                                                <select name = "barang" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="nama pesanan">
-                                                    <option value="">produk 1</option>
-                                                    <option value="">produk 2</option>
-                                                    <option value="">produk 3</option>
-                                                    <option value="">produk 4</option>
-                                                    <option value="">produk 5</option>
-                                                    <option value="">produk 6</option>
+                                                <label for="nama">Nama Pesanan</label>
+                                                <select name = "produk" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="nama pesanan">
+                                                <?php foreach($karyawan2 as $d): ?>
+                                                    <option value="<?php echo $d['id_produk']; ?>"><?php echo $d['nama_produk']; ?></option>
+                                                <?php endforeach; ?>
                                                 </select>
                                                 <br>
                                                 <h4>harga satuan: <span>2000</span></h4>
@@ -127,11 +120,12 @@
                                                 <br>
                                                 <h4>subtotal: <span>8000</span></h4>
                                                 <br>
+                                                
                                             </div>
                                         </div>
                                         <!-- /.card-body -->
                                         <div class="card-footer">
-                                            <button class="btn btn-primary"><a style="color: white" href="<?= base_url() ?>transaksi/TambahDetailPenjualan">Tambah Detail Penjualan</a></button>
+                                            <button class="btn btn-primary">Tambah Detail Penjualan</button>
                                         </div>
                                     </form>
                                     <div class="table-responsive">
@@ -139,27 +133,21 @@
                                             <tr>
                                                 <th>id transaksi</th>
                                                 <th>id header</th>
-                                                <th>nama penjualan</th>
+                                                <th>id produk</th>
                                                 <th>harga satuan</th>
                                                 <th>jumlah</th>
                                                 <th>sub total</th>
                                             </tr>
+                                            <?php foreach($karyawan as $d): ?>
                                             <tr>
-                                                <th>DJL0001</th>
-                                                <th>HJL0001</th>
-                                                <th>produk 123456</th>
-                                                <th>20000</th>
-                                                <th>4</th>
-                                                <th>80000</th>
+                                                <th><?php echo $d['id_djual']; ?></th>
+                                                <th><?php echo $d['id_hjual']; ?></th>
+                                                <th><?php echo $d['id_produk']; ?></th>
+                                                <th><?php echo $d['subtotal']/$d['jumlah_jual']; ?></th>
+                                                <th><?php echo $d['jumlah_jual']; ?></th>
+                                                <th class="subtotals"><?php echo $d['subtotal']; ?></th>
                                             </tr>
-                                            <tr>
-                                                <th>DJL0002</th>
-                                                <th>HJL0001</th>
-                                                <th>produk 2</th>
-                                                <th>300</th>
-                                                <th>3</th>
-                                                <th>900</th>
-                                            </tr>
+                                            <?php endforeach; ?>
                                         </table>
                                     </div>
                                 </div>

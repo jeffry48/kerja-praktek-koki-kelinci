@@ -70,18 +70,22 @@
                                     <!-- form start -->
                                     <form action="<?= base_url() ?>transaksi/UpdatePenjualan" method="post">
                                         <div class="card-body">
+                                        <?php foreach($karyawan as $d): ?>
                                             <div class="form-group">
-                                                <h4>id header: <span>HBL0001</span></h4>
-                                                <br>
+                                                <input type="hidden" name="idh" value="<?php echo $d['id_hjual']; ?>">
                                                 <label for="nama">Id Konsumen</label>
-                                                <input type="text" name="id" class="form-control" id="nama" placeholder="Id Konsumen">
+                                                <select name="ids" id="" class="form-control">
+                                                    <?php foreach($karyawan2 as $d): ?>
+                                                    <option value="<?php echo $d['id_konsumen']; ?>"><?php echo $d['id_konsumen']; ?></option>
+                                                    <?php endforeach; ?>
+                                                </select>
                                             </div>
                                             <div class="form-group">
                                                 <label for="nama">Tanggal Transaksi</label>
-                                                <input type="date" name="tgl" class="form-control" id="nama" placeholder="Tanggal Transaksi">
+                                                <input type="date" name="tglp" class="form-control" id="nama" placeholder="Tanggal Transaksi">
                                                 <br>
-                                                <h4>total: <span>10000000</span></h4>
                                             </div>
+                                        <?php endforeach; ?>
                                         </div>
                                         <!-- /.card-body -->
                                         <div class="card-footer">
@@ -104,23 +108,19 @@
                                     <form action="<?= base_url() ?>transaksi/TambahDetailPenjualan" method="post">
                                         <div class="card-body">
                                             <div class="form-group">
-                                                <h4>id detail: <span>DBL0006</span></h4>
                                                 <br>
-                                                nama Penjualan: 
-                                                <select name = "Produk" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="Penjualan">
-                                                    <option value="">Produk 1</option>
-                                                    <option value="">Produk 2</option>
-                                                    <option value="">Produk 3</option>
-                                                    <option value="">Produk 4</option>
-                                                    <option value="">Produk 5</option>
-                                                    <option value="">Produk 6</option>
+                                                <label for="nama">Nama Pesanan</label>
+                                                <select name = "produk" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="nama pesanan">
+                                                <?php foreach($karyawan3 as $d): ?>
+                                                    <option value="<?php echo $d['id_produk']; ?>"><?php echo $d['nama_produk']; ?></option>
+                                                <?php endforeach; ?>
                                                 </select>
                                                 <br>
-                                                <h4>harga satuan: <span>2.000</span></h4>
+                                                <h4>harga satuan: <span>2000</span></h4>
                                                 <br>
                                                 <input type="text" name = "jumlah" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="jumlah">
                                                 <br>
-                                                <h4>subtotal: <span>8.000</span></h4>
+                                                <h4>subtotal: <span>8000</span></h4>
                                                 <br>
                                             </div>
                                         </div>
@@ -134,35 +134,34 @@
                             </div>
                         </div>
                         <div class="table-responsive">
-                        <table>
-                            <tr>
-                                <th>id transaksi</th>
-                                <th>id header</th>
-                                <th>nama penjualan</th>
-                                <th>harga satuan</th>
-                                <th>jumlah</th>
-                                <th>sub total</th>
-                                <th>action</th>
-                            </tr>
-                            <tr>
-                                <th>DJL0001</th>
-                                <th>HJL0001</th>
-                                <th>produk 123456</th>
-                                <th>20000</th>
-                                <th>4</th>
-                                <th>80000</th>
-                                <th><button class="btn btn-info pull-left" style="margin-left: 1%;"><a style="color: white">select</a></button></th>
-                            </tr>
-                            <tr>
-                                <th>DJL0002</th>
-                                <th>HJL0001</th>
-                                <th>produk 2</th>
-                                <th>300</th>
-                                <th>3</th>
-                                <th>900</th>
-                                <th><button class="btn btn-info pull-left" style="margin-left: 1%;"><a style="color: white">select</a></button></th>
-                            </tr>
-                        </table>
+                        <table id="tabelDetail">
+                                            <tr>
+                                                <th>id transaksi</th>
+                                                <th>id header</th>
+                                                <th>id produk</th>
+                                                <th>harga satuan</th>
+                                                <th>jumlah</th>
+                                                <th>sub total</th>
+                                                <th>action</th>
+                                            </tr>
+                                            <?php foreach($karyawan1 as $d): ?>
+                                            <tr>
+                                                <th><?php echo $d['id_djual']; ?></th>
+                                                <th><?php echo $d['id_hjual']; ?></th>
+                                                <th><?php echo $d['id_produk']; ?></th>
+                                                <th><?php echo $d['subtotal']/$d['jumlah_jual']; ?></th>
+                                                <th><?php echo $d['jumlah_jual']; ?></th>
+                                                <th class="subtotals"><?php echo $d['subtotal']; ?></th>
+                                                <th>
+                                                    <form action="<?= base_url() ?>transaksi/SelectDetailPembelian" method="post">
+                                                        <input type="hidden" name="idd" value="<?php echo $d['id_djual']; ?>">
+                                                        <input type="hidden" name="idh" value="<?php echo $d['id_hjual']; ?>">
+                                                    </form>
+                                                    <button id="<?php echo $d['id_djual']; ?>" class="btn btn-info pull-left" style="margin-left: 1%;">select</button>
+                                                </th>
+                                            </tr>
+                                            <?php endforeach; ?>
+                                        </table>
                     </div>
                         <!-- /.row -->
                     </div><!-- /.container-fluid -->
