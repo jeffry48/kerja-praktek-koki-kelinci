@@ -75,7 +75,6 @@
                                 <tr>
                                     <th>id transaksi</th>
                                     <th>id header</th>
-                                    <th>nama pembelian</th>
                                     <th>harga satuan</th>
                                     <th>jumlah</th>
                                     <th>sub total</th>
@@ -84,7 +83,6 @@
                                     <tr>
                                         <th><?php echo $d['id_dbeli']; ?></th>
                                         <th><?php echo $d['id_hbeli']; ?></th>
-                                        <th><?php echo $d['nama_pembelian']; ?></th>
                                         <th><?php echo $d['subtotal']/$d['jumlah_beli']; ?></th>
                                         <th><?php echo $d['jumlah_beli']; ?></th>
                                         <th><?php echo $d['subtotal']; ?></th>

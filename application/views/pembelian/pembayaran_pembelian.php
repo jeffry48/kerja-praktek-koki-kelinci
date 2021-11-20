@@ -124,21 +124,19 @@
                         <div class="table-responsive">
                             <table class="table">
                                 <tr>
-                                    <th>id transaksi</th>
+                                    <th>id beli</th>
                                     <th>id header</th>
-                                    <th>nama pembelian</th>
-                                    <th>harga satuan</th>
-                                    <th>jumlah</th>
-                                    <th>sub total</th>
+                                    <th>catatan</th>
+                                    <th>metode</th>
+                                    <th>nominal</th>
                                 </tr>
-                                <?php foreach($karyawan1 as $d): ?>
+                                <?php foreach($karyawan2 as $d): ?>
                                     <tr>
-                                        <th><?php echo $d['id_dbeli']; ?></th>
+                                        <th><?php echo $d['id_beli']; ?></th>
                                         <th><?php echo $d['id_hbeli']; ?></th>
-                                        <th><?php echo $d['nama_pembelian']; ?></th>
-                                        <th><?php echo $d['subtotal']/$d['jumlah_beli']; ?></th>
-                                        <th><?php echo $d['jumlah_beli']; ?></th>
-                                        <th><?php echo $d['subtotal']; ?></th>
+                                        <th><?php echo $d['note_beli']; ?></th>
+                                        <th><?php echo $d['metode_bayar']; ?></th>
+                                        <th><?php echo $d['nominal_bayar']; ?></th>
                                     </tr>
                                 <?php endforeach; ?>
                             </table>
