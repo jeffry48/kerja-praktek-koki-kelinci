@@ -12,12 +12,80 @@
         <!-- Theme style -->
         <link rel="stylesheet" href="<?= base_url() ?>assets/backend/css/adminlte/dist/css/adminlte.min.css">
         <link rel="stylesheet" href="<?= base_url() ?>assets/backend/css/public/adminlte/bower_components/font-awesome/css/font-awesome.min.css">
-
-    <style>
-        table{
-            width: 100%;
+        <style>
+        table {
+          font-family: arial, sans-serif;
+          border-collapse: collapse;
+          width: 100%;
         }
-    </style>
+        th
+        {
+            background-color: white;
+        }
+        td, th {
+          border: 1px solid #dddddd;
+          text-align: left;
+          padding: 8px;
+        }
+        
+        tr:nth-child(even) {
+          background-color: #dddddd;
+        }
+        a{
+            color: white;
+        }
+        @media (max-width: 800px) {
+            /* .row{
+                margin-left: 1%;
+                margin-right: 1%;
+            } */
+            .col-sm-6{
+                width: 50%;
+                float: left;
+            }
+            .btn{
+                margin-top: 2%;
+                /* margin-left: 1%; */
+            }
+            
+            /* Force table to not be like tables anymore */
+            table, thead, tbody, th, td, tr { 
+                display: block; 
+            }
+            
+            /* Hide table headers (but not display: none;, for accessibility) */
+            thead tr { 
+                position: absolute;
+                top: -9999px;
+                left: -9999px;
+            }
+            
+            tr { border: 1px solid #ccc; }
+            
+            td { 
+                /* Behave  like a "row" */
+                border: none;
+                border-bottom: 1px solid #eee; 
+                position: relative;
+            }
+            
+            td:before { 
+                /* Now like a table header */
+                /* position: absolute; */
+                /* Top/left values mimic padding */
+                width: 45%; 
+                padding-right: 10px; 
+                white-space: nowrap;
+            }
+
+            td:nth-of-type(1):before { content: "id transaksi"; }
+            td:nth-of-type(3):before { content: "nama pembelian"; }
+            td:nth-of-type(4):before { content: "harga satuan"; }
+            td:nth-of-type(5):before { content: "jumlah"; }
+            td:nth-of-type(6):before { content: "subtotal"; }
+            td:nth-of-type(7):before { content: "action"; }
+        }
+        </style>
     </head>
     <body class="hold-transition sidebar-mini sidebar-collapse">
         <?php include 'application/views/header.php'; ?>
@@ -31,11 +99,10 @@
                     <div class="container-fluid">
                         <div class="row mb-2">
                             <div class="col-sm-6">
-                                <h1>Update Pembelian Baru</h1>
+                                <h1>Update Pembelian</h1>
                                 <br>
                                 <button type="submit" class="btn btn-primary"> <a href="<?= base_url() ?>transaksi/Pembelian" style="color:white;">Kembali</a></button>
                             <div>
-                </div>
                         </div>
                     </div><!-- /.container-fluid -->
                 </section>
@@ -48,10 +115,68 @@
                                 <!-- general form elements -->
                                 <div class="card card-primary">
                                     <div class="card-header">
-                                        <h3 class="card-title">Update Pembelian Baru</h3>
+                                        <h3 class="card-title">Update Pembelian</h3>
                                     </div>
                                     <!-- /.card-header -->
                                     <!-- form start -->
+                                    <form action="<?= base_url() ?>transaksi/UpdateDetailPembelian" method="post">
+                                        <div class="card-body">
+                                            <div class="form-group">
+                                                <!-- <h4>id detail: <span>DBL0006</span></h4> -->
+                                                <label for="nama">Nama Pembelian</label> 
+                                                <input type="text" id="nama" name = "keterangan" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="nama pembelian">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="nama">Harga Satuan</label> 
+                                                <input type="text" id="harga" name = "harga" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="harga satuan">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="nama">Jumlah</label>
+                                                <input type="text" id="jumlah" name = "jumlah" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="jumlah">
+                                            </div>
+                                            <div class="form-group">
+                                                <h4>subtotal: <span id="subtotal">0</span></h4>
+                                            </div>
+                                        </div>
+                                        <!-- /.card-body -->
+                                        <div class="card-footer">
+                                            <button class="btn btn-primary">Update</button>
+                                        </div>
+                                    </form>
+                                    <div class="table-responsive">
+                                        <table id="tabelDetail">
+                                            <thead>
+                                            <tr>
+                                                <th>id transaksi</th>
+                                                <th>nama pembelian</th>
+                                                <th>harga satuan</th>
+                                                <th>jumlah</th>
+                                                <th>sub total</th>
+                                                <th>action</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php foreach($karyawan1 as $d): ?>
+                                                <tr>
+                                                    <td><?php echo $d['id_dbeli']; ?></td>
+                                                    <td><?php echo $d['nama_pembelian']; ?></td>
+                                                    <td><?php echo $d['subtotal']/$d['jumlah_beli']; ?></td>
+                                                    <td><?php echo $d['jumlah_beli']; ?></td>
+                                                    <td class="subtotals"><?php echo $d['subtotal']; ?></td>
+                                                    <td>
+                                                        <form action="<?= base_url() ?>transaksi/SelectDetailPembelian" method="post">
+                                                            <input type="hidden" name="idd" value="<?php echo $d['id_dbeli']; ?>">
+                                                            <input type="hidden" name="idh" value="<?php echo $d['id_hbeli']; ?>">
+                                                        </form>
+                                                        <button id="<?php echo $d['id_dbeli']; ?>" class="btn btn-info pull-left" style="margin-left: 1%;">select</button>
+                                                    </td>
+                                                </tr>
+                                                <?php endforeach; ?>
+                                            </tbody>
+                                            
+                                        </table>
+                                    </div>
+                                    
                                     <form action="<?= base_url() ?>transaksi/UpdatePembelian" method="post">
                                         <div class="card-body">
                                         <?php foreach($karyawan as $d): ?>
@@ -82,62 +207,10 @@
                             <div class="col-sm-12">
                                 <!-- general form elements -->
                                 <div class="card card-primary">
-                                    <div class="card-header">
-                                        <h3 class="card-title">Update Detail Pembelian</h3>
-                                    </div>
+                                    
                                     <!-- /.card-header -->
                                     <!-- form start -->
-                                    <form action="<?= base_url() ?>transaksi/UpdateDetailPembelian" method="post">
-                                        <div class="card-body">
-                                            <div class="form-group">
-                                                <!-- <h4>id detail: <span>DBL0006</span></h4> -->
-                                                <br>
-                                                <label for="nama">Nama Pembelian</label> 
-                                                <input type="text" id="nama" name = "keterangan" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="nama pembelian">
-                                                <br>
-                                                <label for="nama">Harga Satuan</label> 
-                                                <input type="text" id="harga" name = "harga" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="harga satuan">
-                                                <br>
-                                                <label for="nama">Jumlah</label>
-                                                <input type="text" id="jumlah" name = "jumlah" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="jumlah">
-                                                <h4>subtotal: <span id="subtotal">0</span></h4>
-                                            </div>
-                                        </div>
-                                        <!-- /.card-body -->
-                                        <div class="card-footer">
-                                            <button class="btn btn-primary">Update Detail Pembelian</button>
-                                        </div>
-                                    </form>
-                                    <div class="table-responsive">
-                                        <table id="tabelDetail">
-                                            <tr>
-                                                <th>id transaksi</th>
-                                                <th>id header</th>
-                                                <th>nama pembelian</th>
-                                                <th>harga satuan</th>
-                                                <th>jumlah</th>
-                                                <th>sub total</th>
-                                                <th>action</th>
-                                            </tr>
-                                            <?php foreach($karyawan1 as $d): ?>
-                                            <tr>
-                                                <th><?php echo $d['id_dbeli']; ?></th>
-                                                <th><?php echo $d['id_hbeli']; ?></th>
-                                                <th><?php echo $d['nama_pembelian']; ?></th>
-                                                <th><?php echo $d['subtotal']/$d['jumlah_beli']; ?></th>
-                                                <th><?php echo $d['jumlah_beli']; ?></th>
-                                                <th class="subtotals"><?php echo $d['subtotal']; ?></th>
-                                                <th>
-                                                    <form action="<?= base_url() ?>transaksi/SelectDetailPembelian" method="post">
-                                                        <input type="hidden" name="idd" value="<?php echo $d['id_dbeli']; ?>">
-                                                        <input type="hidden" name="idh" value="<?php echo $d['id_hbeli']; ?>">
-                                                    </form>
-                                                    <button id="<?php echo $d['id_dbeli']; ?>" class="btn btn-info pull-left" style="margin-left: 1%;">select</button>
-                                                </th>
-                                            </tr>
-                                            <?php endforeach; ?>
-                                        </table>
-                                    </div>
+                                    
                                 </div>
                                 <!-- /.card -->
                             </div>

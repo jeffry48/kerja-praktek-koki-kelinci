@@ -34,6 +34,71 @@
         a{
             color: white;
         }
+        .card{
+            padding: 3%;
+        }
+        @media (max-width: 800px) {
+            /* .row{
+                margin-left: 1%;
+                margin-right: 1%;
+            } */
+            .col-sm-6{
+                width: 50%;
+                float: left;
+            }
+            .btn{
+                margin-top: 2%;
+                /* margin-left: 1%; */
+            }
+            
+            /* Force table to not be like tables anymore */
+            table, thead, tbody, th, td, tr { 
+                display: block; 
+            }
+            
+            /* Hide table headers (but not display: none;, for accessibility) */
+            thead tr { 
+                position: absolute;
+                top: -9999px;
+                left: -9999px;
+            }
+            
+            tr { border: 1px solid #ccc; }
+            
+            td { 
+                /* Behave  like a "row" */
+                border: none;
+                border-bottom: 1px solid #eee; 
+                position: relative;
+            }
+            
+            td:before { 
+                /* Now like a table header */
+                /* position: absolute; */
+                /* Top/left values mimic padding */
+                
+                width: 45%; 
+                padding-right: 10px; 
+                white-space: nowrap;
+            }
+            
+            /*
+            Label the data
+            */
+            #tabelTrans td:nth-of-type(1):before { content: "Id transaksi"; }
+            #tabelTrans td:nth-of-type(2):before { content: "tanggal"; }
+            #tabelTrans td:nth-of-type(3):before { content: "total"; }
+            #tabelTrans td:nth-of-type(4):before { content: "id supplier"; }
+            #tabelTrans td:nth-of-type(5):before { content: "status"; }
+            #tabelTrans td:nth-of-type(6):before { content: "actions"; }
+
+            #tabelDetail td:nth-of-type(1):before { content: "id transaksi"; }
+            #tabelDetail td:nth-of-type(2):before { content: "id header"; }
+            #tabelDetail td:nth-of-type(3):before { content: "jumlah pembelian"; }
+            #tabelDetail td:nth-of-type(4):before { content: "subtotal"; }
+            #tabelDetail td:nth-of-type(5):before { content: "id produk"; }
+            
+        }
     </style>
     </head>
     <body class="hold-transition sidebar-mini sidebar-collapse">
@@ -59,17 +124,22 @@
                 <!-- Main content -->
                 <section class="content">
                     <div class="container-fluid">
+                    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                        Search
+                    </button>
+                    <!-- buat search -->
+                    <div class="collapse" id="collapseExample">
                         <div class="row">
                             <div class="col-sm-6">
                                 <!-- general form elements -->
                                 <div class="card card-primary">
                                     <div class="card-header">
-                                        <h3 class="card-title">Pencarian Header</h3>
+                                        <h3 class="card-title">Pencarian Transaksi</h3>
                                     </div>
                                     <!-- /.card-header -->
                                     <!-- form start -->
                                     <form action="<?= base_url()?>transaksi/cariPembelian" method="POST">
-                                        <input type="text" name = "idh" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="Id Header">
+                                        <input type="text" name = "idh" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="Id Transaksi">
                                         <br>
                                         <input type="text" name = "ids" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="Id Supplier">                        
                                         <br>
@@ -104,7 +174,7 @@
                             <div class="col-sm-6">
                                 <!-- general form elements -->
                                 <div class="card card-primary">
-                                    <div class="card-header">
+                                    <div class="card-header" style="background-color: white;">
                                         <h3 class="card-title">Pencarian Detail</h3>
                                     </div>
                                     <!-- /.card-header -->
@@ -112,7 +182,7 @@
                                     <form action="<?= base_url()?>transaksi/cariDetailPembelian" method="POST">
                                         <input type="text" name = "idd" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="Id detail">
                                         <br>
-                                        <input type="text" name = "idh" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="id header">                        
+                                        <input type="text" name = "idh" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="id Transaksi">                        
                                         <br>
                                         <input type="text" name = "nama" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="nama pembelian">
                                         <br>
@@ -137,88 +207,108 @@
                                 <!-- /.card -->
                             </div>
                         </div>
+                    </div>
                         <div class="row">
-                            <h3>Header pembelian</h3>
+                            <h3>Transaksi Pembelian</h3>
                             <div class="table-responsive">
-                            <table class="table">
-                                <tr>
-                                    <th>id transaksi</th>
-                                    <th>tanggal</th>
-                                    <th>total</th>
-                                    <th>id supplier</th>
-                                    <th>status</th>
-                                    <th>action</th>
-                                </tr>
-                                <?php foreach($karyawan as $d): ?>
-                                <?php echo $d['id_hbeli'];?>
-                                <tr>
-                                    <th><?php echo $d['id_hbeli']; ?></th>
-                                    <th><?php echo $d['tanggal_beli']; ?></th>
-                                    <th><?php echo $d['total_beli']; ?></th>
-                                    <th><?php echo $d['id_supplier']; ?></th>
-                                    <th><?php echo $d['status_beli']; ?></th>
-                                    <th>
-                                        <center>
-                                        <form action="<?=base_url()?>transaksi/KeUpdatePembelian" method="POST">
-                                            <input type="hidden" name="idh" value="<?php echo $d['id_hbeli']; ?>">
-                                            <button class="btn btn-info pull-left">update</button>
-                                        </form>
-                                        <form action="<?= base_url() ?>transaksi/HapusPembelian" method="POST">
-                                            <input type="hidden" name="idh" value="<?php echo $d['id_hbeli']; ?>">
-                                            <button class="btn btn-info pull-left" style="margin-left:1%;">hapus</button>
-                                        </form>
-                                        <form action="<?= base_url()?>transaksi/kePembayaranPembelian" method="POST">
-                                            <input type="hidden" name="idh" value="<?php echo $d['id_hbeli']; ?>">
-                                            <button class="btn btn-info pull-left" style="margin-left: 1%;">bayar</button>
-                                        </form>
-                                        <button type="button" class="btn btn-info pull-left" style="margin-left: 1%;" data-toggle="modal" data-target="#modalDetail<?php echo $d['id_hbeli']; ?>">
-                                            detail
-                                        </button>
-                                        <!-- Modal -->
-                                        <div class="modal fade" id="modalDetail<?php echo $d['id_hbeli']; ?>" tabindex="-1" role="dialog" aria-labelledby="modalDetailLabel" aria-hidden="true">
-                                        <div class="modal-dialog" role="document">
-                                            <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="modalDetailLabel">Detail pembelian</h5>
-                                                <span aria-hidden="true">&times;</span>
-                                            </div>
-                                            <div class="modal-body">
-                                            <div class="table-responsive">
-                                                <table>
-                                                    <tr>
-                                                        <th>id transaksi</th>
-                                                        <th>id header</th>
-                                                        <th>jumlah pembelian</th>
-                                                        <th>subtotal</th>
-                                                        <th>id produk</th>
-                                                    </tr>
-                                                    <?php
-                                                        $sql ="SELECT * FROM dbeli where id_hbeli='".$d['id_hbeli']."'";
-                                                        $query = $this->db->query($sql); 
-                                                        $karyawan1 = $query->result_array(); 
-                                                        foreach($karyawan1 as $d1):
-                                                    ?>
-                                                    <tr>
-                                                        <th><?php echo $d1['id_dbeli']; ?></th>
-                                                        <th><?php echo $d1['id_hbeli']; ?></th>
-                                                        <th><?php echo $d1['jumlah_beli']; ?></th>
-                                                        <th><?php echo $d1['subtotal']; ?></th>
-                                                        <th><?php echo $d1['nama_pembelian']; ?></th>
-                                                    </tr>
-                                                    <?php endforeach; ?>
-                                                </table>
+                            <table class="table" id="tabelTrans">
+                                <thead>
+                                    <tr>
+                                        <th>id transaksi</th>
+                                        <th>tanggal</th>
+                                        <th>total</th>
+                                        <th>id supplier</th>
+                                        <th>status</th>
+                                        <th>actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php foreach($karyawan as $d): ?>
+                                    <tr>
+                                        <td><?php echo $d['id_hbeli']; ?></td>
+                                        <td><?php echo $d['tanggal_beli']; ?></td>
+                                        <td><?php echo $d['total_beli']; ?></td>
+                                        <td><?php echo $d['id_supplier']; ?></td>
+                                        <td><?php echo $d['status_beli']; ?></td>
+                                        <td>
+                                            <center>
+                                            <div class="btn-group" role="group">
+                                                <div class="col-sm-3 custom">
+                                                    <!-- update -->
+                                                    <form action="<?=base_url()?>transaksi/KeUpdatePembelian" method="POST">
+                                                        <input type="hidden" name="idh" value="<?php echo $d['id_hbeli']; ?>">
+                                                        <button class="btn btn-info pull-left">update</button>
+                                                    </form>
+                                                </div>
+                                                <div class="col-sm-3 custom">
+                                                    <!-- hapus -->
+                                                    <form action="<?= base_url() ?>transaksi/HapusPembelian" method="POST">
+                                                        <input type="hidden" name="idh" value="<?php echo $d['id_hbeli']; ?>">
+                                                        <button class="btn btn-info pull-left" style="margin-left:1%;">hapus</button>
+                                                    </form>
+                                                </div>
+                                                <div class="col-sm-3 custom">
+                                                    <!-- pembayaran -->
+                                                    <form action="<?= base_url()?>transaksi/kePembayaranPembelian" method="POST">
+                                                        <input type="hidden" name="idh" value="<?php echo $d['id_hbeli']; ?>">
+                                                        <button class="btn btn-info pull-left" style="margin-left: 1%;">bayar</button>
+                                                    </form>
+                                                </div>
+                                                <div class="col-sm-3 custom">
+                                                    <!-- detail -->
+                                                    <button type="button" class="btn btn-info pull-left" style="margin-left: 1%;" data-toggle="modal" data-target="#modalDetail<?php echo $d['id_hbeli']; ?>">
+                                                        detail
+                                                    </button>
+                                                    <!-- Modal -->
+                                                    <div class="modal fade" id="modalDetail<?php echo $d['id_hbeli']; ?>" tabindex="-1" role="dialog" aria-labelledby="modalDetailLabel" aria-hidden="true">
+                                                        <div class="modal-dialog modal-xl" role="document">
+                                                            <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="modalDetailLabel">Detail pembelian</h5>
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                            <div class="table-responsive">
+                                                                <table id="tabelDetail">
+                                                                    <thead>
+                                                                        <tr>
+                                                                            <th>id transaksi</th>
+                                                                            <th>nama pembelian</th>
+                                                                            <th>jumlah pembelian</th>
+                                                                            <th>subtotal</th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                        <?php
+                                                                            $sql ="SELECT * FROM dbeli where id_hbeli='".$d['id_hbeli']."'";
+                                                                            $query = $this->db->query($sql); 
+                                                                            $karyawan1 = $query->result_array(); 
+                                                                            foreach($karyawan1 as $d1):
+                                                                        ?>
+                                                                        <tr>
+                                                                            <td><?php echo $d1['id_dbeli']; ?></td>
+                                                                            <td><?php echo $d1['nama_pembelian']; ?></th>                                                                         
+                                                                            <td><?php echo $d1['jumlah_beli']; ?></td>
+                                                                            <td><?php echo $d1['subtotal']; ?></td>
+                                                                        </tr>
+                                                                        <?php endforeach; ?>
+                                                                    </tbody>
+                                                                </table>
+                                                                </div>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                                                            </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-                                            </div>
-                                            </div>
-                                        </div>
-                                        </div>
-                                        </center>
-                                    </th>
-                                </tr>
-                                <?php endforeach; ?>
+                                            </center>
+                                        </td>
+                                    </tr>
+                                    <?php endforeach; ?>
+                                </tbody>
                             </table>
                             </div>
                         </div>
@@ -262,22 +352,22 @@
         </script>
         <!-- Modal -->
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="modalDetailLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="modalDetailLabel"></h5>
+            <div class="modal-dialog modal-xl" role="document">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalDetailLabel"></h5>
+                </div>
+                <div class="modal-body">
+                    <?php 
+                    echo $_SESSION['success']; 
+                    $_SESSION['success']=null;
+                    ?>        
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                </div>
+                </div>
             </div>
-            <div class="modal-body">
-                <?php 
-                echo $_SESSION['success']; 
-                $_SESSION['success']=null;
-                ?>        
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-            </div>
-            </div>
-        </div>
         </div>
     </body>
 </html>

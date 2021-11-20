@@ -122,6 +122,7 @@ class Detail_Beli extends CI_Model
         $data = array(
             'id_dbeli'=>$idd,
             'id_hbeli'=>$idh,
+            'nama_pembelian'=>$nama,
             'jumlah_beli'=>$jumlah,
             'subtotal'=>$subtotal
         );
@@ -130,7 +131,7 @@ class Detail_Beli extends CI_Model
 
     public function update($idd,$idh,$jumlah,$subtotal,$nama)
     {
-        return $this->db->query("update dbeli set id_hbeli = '".$idh."' ,jumlah_beli='".$jumlah."'
+        return $this->db->query("update dbeli set id_hbeli = '".$idh."' , nama_pembelian='".$nama."',jumlah_beli='".$jumlah."'
         ,subtotal='".$subtotal."' where id_dbeli='".$idd."'");
     }
 

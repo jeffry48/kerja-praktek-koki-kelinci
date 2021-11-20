@@ -57,6 +57,7 @@
                                 <!-- general form elements -->
                                 <div class="card card-primary">
                                     <div class="card-header">
+                                        <h3 class="card-title">Update Konsumen</h3>
                                     </div>
                                     <!-- /.card-header -->
                                     <!-- form start -->

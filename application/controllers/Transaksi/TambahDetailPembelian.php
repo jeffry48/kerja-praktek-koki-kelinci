@@ -60,8 +60,8 @@ class tambahDetailPembelian extends CI_Controller {
 
         $id1.=($lastId1);
         $tambah = $this->Detail_Beli->save($id,$id1,(int)$jml,(int)$jml*(int)$hrg,$ktr);
-        $_SESSION['success']="berhasil tambah detail pembelian";
-        $this->session->mark_as_flash('success');
+        // $_SESSION['success']="berhasil tambah detail pembelian";
+        // $this->session->mark_as_flash('success');
         // $data['karyawan1'] = $this->Detail_Beli->getAll();
         // $data['karyawan'] = $this->Header_Beli->getAll();
         $data['karyawan'] = $this->Detail_Beli->getByHeader($id1);
