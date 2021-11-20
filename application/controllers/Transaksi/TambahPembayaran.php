@@ -49,6 +49,7 @@ class TambahPembayaran extends CI_Controller {
         }
         else if((int)$result[0]["sum(nominal_bayar)"]+(int)$jml == (int)$nomh)
         {
+            $tambah = $this->Pembayaran_Pembelian->save($id,$idh,$tgl,$note,$met,$jml);
             $_SESSION['lunas'] = "pembayaran pembelian lunas";
             $this->session->mark_as_flash('lunas');
             $update = $this->Header_Beli->updatestatus($idh,"sudah terbayar");

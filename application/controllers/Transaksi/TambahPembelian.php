@@ -37,7 +37,7 @@ class tambahPembelian extends CI_Controller {
         $id.=($lastId);
         $query2=$this->db->query("select sum(subtotal) from dbeli where id_hbeli='".$id."'");
         $result = $query2->result_array();
-        $tambah = $this->Header_Beli->save($id,$ids,(int)$result[0]["sum(subtotal)"],$ids,"belum terbayar");
+        $tambah = $this->Header_Beli->save($id,$tglp,(int)$result[0]["sum(subtotal)"],$ids,"belum terbayar");
         ?>
         <!-- <script>
             alert("tambah pegawai berhasil");
