@@ -1,8 +1,8 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Pembayaran_Pembelian extends CI_Model
+class Pembayaran_Penjualan extends CI_Model
 {
-    private $_table = "pbeli";
+    private $_table = "pjual";
 
     public $idKonsumen;
     public $idKaryawan;
@@ -12,28 +12,28 @@ class Pembayaran_Pembelian extends CI_Model
 
     public function getAll()
     {
-        $query=$this->db->query("select * from pbeli");
-        $result = $query->result_array();
-        return $result;
-    }
-
-    public function getOneData($id)
-    {
-        $query=$this->db->query('select * from pbeli where id_beli="'.$id.'"');
+        $query=$this->db->query("select * from pjual");
         $result = $query->result_array();
         return $result;
     }
 
     public function getByHeader($id)
     {
-        $query=$this->db->query('select * from pbeli where id_hbeli="'.$id.'"');
+        $query=$this->db->query('select * from pjual where id_hjual="'.$id.'"');
+        $result = $query->result_array();
+        return $result;
+    }
+
+    public function getOneData($id)
+    {
+        $query=$this->db->query('select * from pjual where id_jual="'.$id.'"');
         $result = $query->result_array();
         return $result;
     }
 
     public function getCount()
     {
-        $query=$this->db->query("select count(*) from pbeli");
+        $query=$this->db->query("select count(*) from pjual");
         $result = $query->num_rows();
         return $result;
     }
@@ -41,13 +41,13 @@ class Pembayaran_Pembelian extends CI_Model
     public function save($idb,$idhb,$tglbeli,$note,$metode,$nom)
     {
         $data = array(
-            'id_beli'=>$idb,
-            'id_hbeli'=>$idhb,
-            'tgl_beli'=>$tglbeli,
-            'note_beli'=>$note,
-            'metode_bayar'=>$metode,
+            'id_jual'=>$idb,
+            'id_hjual'=>$idhb,
+            'tgl_jual'=>$tglbeli,
+            'note_jual'=>$note,
+            'metode_jual'=>$metode,
             'nominal_bayar'=>$nom
         );
-        $this->db->insert('pbeli',$data);
+        $this->db->insert('pjual',$data);
     }
 }
