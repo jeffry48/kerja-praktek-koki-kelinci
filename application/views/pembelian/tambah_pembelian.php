@@ -71,7 +71,7 @@
                                             <div class="form-group">
                                                 <label for="nama">Tanggal Pembayaran</label>
                                                 <input type="date" name="tglp" class="form-control" id="nama" placeholder="Tanggal Pembayaran">
-                                                <h4>total: <span id="total">0</span></h4>
+                                                
                                             </div>
                                         </div>
                                         <!-- /.card-body -->
