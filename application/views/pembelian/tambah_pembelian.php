@@ -143,7 +143,7 @@
                                             </div>    
                                             <!-- /.card-body -->
                                             <div class="card-footer">
-                                                <button type="submit" class="btn btn-primary">Tambah Detail Pembelian</button>
+                                                <button type="submit" id="detailBtn" class="btn btn-primary">Tambah</button>
                                             </div>
                                         </form>
                                         <div class="table-responsive">
@@ -247,6 +247,15 @@
                 });
                 // $('table tfoot td').eq(index).text('Total: ' + total);
                 $('#total').text(total);
+            });
+            $('#detailBtn').click(function(){
+                // alert("aaa");
+                var harga=$('#harga').val();
+                var jumlah=$('#jumlah').val();
+                harga=harga.replaceAll(".", "");
+                jumlah=jumlah.replaceAll(".", "");
+                $('#harga').val(harga);
+                $('#jumlah').val(jumlah);
             });
             $('input#harga').keyup(function(event) {
                 var harga=$('#harga').val();
