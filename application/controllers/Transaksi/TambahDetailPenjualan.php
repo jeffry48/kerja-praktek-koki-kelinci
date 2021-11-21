@@ -15,6 +15,7 @@ class tambahDetailPenjualan extends CI_Controller {
     {
         
         $this->load->helper('url');
+        $ktr=$this->input->post('keterangan');
         $idp=$this->input->post('produk');
         $jml=$this->input->post('jumlah');
         // $hrg=$this->input->post('harga');
@@ -54,7 +55,7 @@ class tambahDetailPenjualan extends CI_Controller {
         else
             $id1 .= "HJL";
         $id1.=($lastId1);
-        $tambah = $this->Detail_Jual->save($id,(int)$jml,(int)$jml*0,$idp,$id1);
+        $tambah = $this->Detail_Jual->save($id,(int)$jml,(int)$jml*0,$idp,$id1,$ktr);
         $_SESSION['success']="berhasil tambah detail penjualan";
         $this->session->mark_as_flash('success');
         $data['karyawan'] = $this->Detail_Jual->getByHeader($id1);
