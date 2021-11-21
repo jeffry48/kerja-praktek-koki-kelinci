@@ -42,7 +42,7 @@ class tambahPenjualan extends CI_Controller {
             alert("tambah pegawai berhasil");
         </script> -->
         <?php
-        $_SESSION['success']="berhasil tambah header penjualan";
+        $_SESSION['success']="berhasil tambah penjualan";
         $this->session->mark_as_flash('success');
         $data['karyawan'] = $this->Header_Jual->getAll();
         $this->load->view('penjualan/cari_penjualan.php',$data);

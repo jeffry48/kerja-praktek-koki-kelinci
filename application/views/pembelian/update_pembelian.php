@@ -262,9 +262,6 @@
                         ';
                     }
                 ?>
-
-
-
                 var total = 0;
                 $('.subtotals').each(function () {
                     console.log($(this).text());

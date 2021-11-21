@@ -43,7 +43,7 @@ class tambahPembelian extends CI_Controller {
             alert("tambah pegawai berhasil");
         </script> -->
         <?php
-        $_SESSION['success']="berhasil tambah header pembelian";
+        $_SESSION['success']="berhasil tambah pembelian";
         $this->session->mark_as_flash('success');
         $data['karyawan'] = $this->Header_Beli->getAll();
         $this->load->view('pembelian/cari_pembelian.php',$data);

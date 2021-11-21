@@ -36,6 +36,47 @@
         a{
             color: white;
         }
+        @media (max-width: 800px) {
+
+            /* Force table to not be like tables anymore */
+            table, thead, tbody, th, td, tr { 
+                display: block; 
+            }
+
+            /* Hide table headers (but not display: none;, for accessibility) */
+            thead tr { 
+                position: absolute;
+                top: -9999px;
+                left: -9999px;
+            }
+
+            tr { border: 1px solid #ccc; }
+
+            td { 
+                /* Behave  like a "row" */
+                border: none;
+                border-bottom: 1px solid #eee; 
+                position: relative;
+            }
+
+            td:before { 
+                /* Now like a table header */
+                /* position: absolute; */
+                /* Top/left values mimic padding */
+                
+                width: 45%; 
+                padding-right: 10px; 
+                white-space: nowrap;
+            }
+
+            /*
+            Label the data
+            */
+            td:nth-of-type(1):before { content: "id jual"; }
+            td:nth-of-type(2):before { content: "catatan"; }
+            td:nth-of-type(3):before { content: "metode"; }
+            td:nth-of-type(4):before { content: "nominal"; }
+        }
     </style>
     </head>
     <body class="hold-transition sidebar-mini sidebar-collapse">
@@ -78,7 +119,7 @@
                                                     <h4>id Penjualan: <span><?php echo $d['id_hjual']; ?></span></h4><br>
                                                     <h4>tanggal: <span><?php echo $d['tanggal_jual']; ?></span></h4><br>
                                                     <h4>id konsumen: <span><?php echo $d['id_konsumen']; ?></span></h4><br>
-                                                    <h4>status: <span style="color: red;"><?php echo $d['status_jual']; ?></span></h4><br>
+                                                    <h4>status: <span><?php echo $d['status_jual']; ?></span></h4><br>
                                                     <h4>total: <span><?php echo $d['total_jual']; ?></span></h4><br>
                                                     <input type="hidden" name="idh" value="<?php echo $d['id_hjual']; ?>">
                                                     <input type="hidden" name="tgl" value="<?php echo $d['tanggal_jual']; ?>">
@@ -143,22 +184,24 @@
                             <h4>Riwayat Pembayaran</h4>
                             <div class="table-responsive">
                                 <table class="table">
-                                <tr>
-                                    <th>id jual</th>
-                                    <th>id header</th>
-                                    <th>catatan</th>
-                                    <th>metode</th>
-                                    <th>nominal</th>
-                                </tr>
-                                <?php foreach($karyawan2 as $d): ?>
+                                <thead>
                                     <tr>
-                                        <th><?php echo $d['id_jual']; ?></th>
-                                        <th><?php echo $d['id_hjual']; ?></th>
-                                        <th><?php echo $d['note_jual']; ?></th>
-                                        <th><?php echo $d['metode_jual']; ?></th>
-                                        <th><?php echo $d['nominal_bayar']; ?></th>
+                                        <th>id jual</th>
+                                        <th>catatan</th>
+                                        <th>metode</th>
+                                        <th>nominal</th>
                                     </tr>
-                                <?php endforeach; ?>
+                                </thead>
+                                <tbody>
+                                    <?php foreach($karyawan2 as $d): ?>
+                                    <tr>
+                                        <td><?php echo $d['id_jual']; ?></td>
+                                        <td><?php echo $d['note_jual']; ?></td>
+                                        <td><?php echo $d['metode_jual']; ?></td>
+                                        <td><?php echo $d['nominal_bayar']; ?></td>
+                                    </tr>
+                                    <?php endforeach; ?>
+                                </tbody>
                                 </table>
                             </div>
                         </div>

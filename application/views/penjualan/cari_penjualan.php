@@ -35,6 +35,9 @@
         a{
             color: white;
         }
+        .card{
+            padding: 3%;
+        }
         @media (max-width: 800px) {
             .row{
                 margin-left: 1%;
@@ -48,6 +51,53 @@
                 margin-top: 2%;
                 margin-left: 1%;
             }
+
+            /* Force table to not be like tables anymore */
+            table, thead, tbody, th, td, tr { 
+                display: block; 
+            }
+            
+            /* Hide table headers (but not display: none;, for accessibility) */
+            thead tr { 
+                position: absolute;
+                top: -9999px;
+                left: -9999px;
+            }
+            
+            tr { border: 1px solid #ccc; }
+            
+            td { 
+                /* Behave  like a "row" */
+                border: none;
+                border-bottom: 1px solid #eee; 
+                position: relative;
+            }
+            
+            td:before { 
+                /* Now like a table header */
+                /* position: absolute; */
+                /* Top/left values mimic padding */
+                
+                width: 45%; 
+                padding-right: 10px; 
+                white-space: nowrap;
+            }
+            
+            /*
+            Label the data
+            */
+            #tabelTrans td:nth-of-type(1):before { content: "id transaksi"; }
+            #tabelTrans td:nth-of-type(2):before { content: "tanggal"; }
+            #tabelTrans td:nth-of-type(3):before { content: "total"; }
+            #tabelTrans td:nth-of-type(4):before { content: "id konsumen"; }
+            #tabelTrans td:nth-of-type(5):before { content: "status"; }
+            #tabelTrans td:nth-of-type(6):before { content: "action"; }
+
+            #tabelDetail td:nth-of-type(1):before { content: "id transaksi"; }
+            #tabelDetail td:nth-of-type(2):before { content: "id produk"; }
+            #tabelDetail td:nth-of-type(3):before { content: "subtotal"; }
+            #tabelDetail td:nth-of-type(4):before { content: "jumlah penjualan"; }
+            
         }
     </style>
     </head>
@@ -74,199 +124,199 @@
                 <!-- Main content -->
                 <section class="content">
                     <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <!-- general form elements -->
-                                <div class="card card-primary">
-                                    <div class="card-header">
-                                        <h3 class="card-title">Pencarian Header</h3>
+                        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                            Search
+                        </button>
+                        <div class="collapse" id="collapseExample">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <!-- general form elements -->
+                                    <div class="card card-primary">
+                                        <div class="card-header">
+                                            <h3 class="card-title">Pencarian</h3>
+                                        </div>
+                                        <!-- /.card-header -->
+                                        <!-- form start -->
+                                        <form action="<?= base_url()?>transaksi/cariPenjualan" method="POST">
+                                            <input type="text" name = "idh" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="Id Transaksi">
+                                            <br>
+                                            <input type="text" name = "idk" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="Id Konsumen">                        
+                                            <br>
+                                            tanggal start: 
+                                            <input type="date" name = "tgls" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="tanggal start">
+                                            <br>
+                                            tanggal end: 
+                                            <input type="date" name = "tgle" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="tanggal end">                                
+                                            <br>
+                                            <input type="text" name = "tots" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="total start">                        
+                                            <br>
+                                            <input type="text" name = "tote" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="total end">
+                                            <br>                                
+                                            
+                                            <select name = "status" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;">
+                                                <option value="sudah terbayar" style="color: green;">sudah terbayar</option>
+                                                <option value="belum terbayar" style="color: red;">belum terbayar</option>
+                                            </select>
+                                            <br>
+                                            <div class="row" style="margin-left: 0%;">
+                                                <input type="submit" class="btn btn-info pull-left" value = "Cari">
+                                                <button type="button" class="btn btn-info pull-left" style="margin-left: 1%;">clear</button>
+                                            </div>
+                                        </form>
                                     </div>
-                                    <!-- /.card-header -->
-                                    <!-- form start -->
-                                    <form action="<?= base_url()?>transaksi/cariPenjualan" method="POST">
-                                        <input type="text" name = "idh" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="Id Header">
-                                        <br>
-                                        <input type="text" name = "idk" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="Id Konsumen">                        
-                                        <br>
-                                        tanggal start: 
-                                        <input type="date" name = "tgls" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="tanggal start">
-                                        <br>
-                                        tanggal end: 
-                                        <input type="date" name = "tgle" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="tanggal end">                                
-                                        <br>
-                                        <input type="text" name = "tots" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="total start">                        
-                                        <br>
-                                        <input type="text" name = "tote" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="total end">
-                                        <br>                                
+                                    <!-- /.card -->
+                                </div>
+                                <div class="col-sm-6">
+                                    <!-- general form elements -->
+                                    <div class="card card-primary">
                                         
-                                        <select name = "status" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;">
-                                            <option value="sudah terbayar" style="color: green;">sudah terbayar</option>
-                                            <option value="belum terbayar" style="color: red;">belum terbayar</option>
-                                        </select>
-                                        <br>
-                                        <div class="row" style="margin-left: 0%;">
-                                            <input type="submit" class="btn btn-info pull-left" value = "Cari">
-                                            <button type="button" class="btn btn-info pull-left" style="margin-left: 1%;">clear</button>
-                                        </div>
-                                    </form>
-                                </div>
-                                <!-- /.card -->
-                            </div>
-                            <div class="col-sm-6">
-                                <!-- general form elements -->
-                                <div class="card card-primary">
-                                    <div class="card-header">
-                                        <h3 class="card-title">Pencarian Detail</h3>
+                                        <!-- /.card-header -->
+                                        <!-- form start -->
+                                        <form action="<?= base_url()?>transaksi/cariDetailPenjualan" method="POST">
+                                            <input type="text" name = "idd" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="Id detail">
+                                            <br>
+                                            <input type="text" name = "idp" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="Id produk">
+                                            <br>
+                                            kategori: 
+                                            <select name = "kat" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;">
+                                            <?php foreach($karyawan2 as $d): ?>
+                                                <option value="<?php echo $d['id_kategori']; ?>"><?php $d["nama_kategori"] ?></option>
+                                            <?php endforeach; ?>
+                                            </select>
+                                            <br>
+                                            <input type="text" name = "hst" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="harga satuan start">                                
+                                            <br>
+                                            <input type="text" name = "hse" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="harga satuan end">                        
+                                            <br>
+                                            <input type="text" name = "jst" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="jumlah start">
+                                            <br>    
+                                            <input type="text" name = "jse" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="jumlah end">
+                                            <br>
+                                            <input type="text" name = "sst" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="subtotal start">                        
+                                            <br>
+                                            <input type="text" name = "sse" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="subtotal end">
+                                            <br> 
+                                            <div class="row" style="margin-left: 0%;">
+                                                <input type="submit" class="btn btn-info pull-left" value = "Cari">
+                                                <button type="button" class="btn btn-info pull-left" style="margin-left: 1%;">clear</button>
+                                            </div>
+                                        </form>
                                     </div>
-                                    <!-- /.card-header -->
-                                    <!-- form start -->
-                                    <form action="<?= base_url()?>transaksi/cariDetailPenjualan" method="POST">
-                                        <input type="text" name = "idd" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="Id detail">
-                                        <br>
-                                        <input type="text" name = "idp" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="Id produk">
-                                        <br>
-                                        kategori: 
-                                        <select name = "kat" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;">
-                                        <?php foreach($karyawan2 as $d): ?>
-                                            <option value="<?php echo $d['id_kategori']; ?>"><?php $d["nama_kategori"] ?></option>
-                                        <?php endforeach; ?>
-                                        </select>
-                                        <br>
-                                        <input type="text" name = "hst" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="harga satuan start">                                
-                                        <br>
-                                        <input type="text" name = "hse" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="harga satuan end">                        
-                                        <br>
-                                        <input type="text" name = "jst" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="jumlah start">
-                                        <br>    
-                                        <input type="text" name = "jse" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="jumlah end">
-                                        <br>
-                                        <input type="text" name = "sst" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="subtotal start">                        
-                                        <br>
-                                        <input type="text" name = "sse" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="subtotal end">
-                                        <br> 
-                                        <div class="row" style="margin-left: 0%;">
-                                            <input type="submit" class="btn btn-info pull-left" value = "Cari">
-                                            <button type="button" class="btn btn-info pull-left" style="margin-left: 1%;">clear</button>
-                                        </div>
-                                    </form>
+                                    <!-- /.card -->
                                 </div>
-                                <!-- /.card -->
                             </div>
                         </div>
+
                         <div class="row">
-                <button class="btn btn-info pull-left" style="background-color: red;">
-                    <a style="color: white;" data-toggle="modal" data-target="#modalTutup">
-                        Hapus Semua Data penjualan
-                    </a>
-                </button>
-                <!-- modal -->
-                <div class="modal fade" id="modalTutup" tabindex="-1" role="dialog" aria-labelledby="modalTutupLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                    <div class="modal-header" style="background-color: red;">
-                        <h5 class="modal-title" id="modalTutup"><b>HAPUS SEMUA DATA PENJUALAN</b></h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        Apakah anda yakin ingin menghapus semua data penjualan?
-                    </div>
-                    <div class="modal-footer">
-                        <form action="<?= base_url()?> transaksi/hapusSemuaPenjualan" method="POST">
-                            <button type="button" class="btn btn-primary" data-dismiss="modal">Batal</button>
-                            <input type="submit" value="Hapus" class="btn btn-primary" style="background-color: red;">
-                        </form>
-                    </div>
-                    </div>
-                </div>
-                </div>
-            </div>
-            <div class="row">
-                <h3>Header penjualan</h3>
-                <div class="table-responsive">
-                <table>
-                    <tr>
-                        <th>id transaksi</th>
-                        <th>tanggal</th>
-                        <th>total</th>
-                        <th>id konsumen</th>
-                        <th>status</th>
-                        <th>action</th>
-                    </tr>
-                    <?php foreach($karyawan as $d): ?>
-                    <?php echo $d['id_hjual'];?>
-                    <tr>
-                        <th><?php echo $d['id_hjual']; ?></th>
-                        <th><?php echo $d['tanggal_jual']; ?></th>
-                        <th><?php echo $d['total_jual']; ?></th>
-                        <th><?php echo $d['id_konsumen']; ?></th>
-                        <th><?php echo $d['status_jual']; ?></th>
-                        <th>
-                        <center>
-                                        <form action="<?=base_url()?>transaksi/KeUpdatePenjualan" method="POST">
-                                            <input type="hidden" name="idh" value="<?php echo $d['id_hjual']; ?>">
-                                            <button class="btn btn-info pull-left">update</button>
-                                        </form>
-                                        <form action="<?= base_url() ?>transaksi/HapusPenjualan" method="POST">
-                                            <input type="hidden" name="idh" value="<?php echo $d['id_hjual']; ?>">
-                                            <button class="btn btn-info pull-left" style="margin-left:1%;">hapus</button>
-                                        </form>
-                                        <form action="<?= base_url()?>transaksi/kePembayaranPenjualan" method="POST">
-                                            <input type="hidden" name="idh" value="<?php echo $d['id_hjual']; ?>">
-                                            <button class="btn btn-info pull-left" style="margin-left: 1%;">bayar</button>
-                                        </form>
-                                        <button type="button" class="btn btn-info pull-left" style="margin-left: 1%;" data-toggle="modal" data-target="#modalDetail<?php echo $d['id_hjual']; ?>">
-                                            detail
-                                        </button>
-                                        <!-- Modal -->
-                                        <div class="modal fade" id="modalDetail<?php echo $d['id_hjual']; ?>" tabindex="-1" role="dialog" aria-labelledby="modalDetailLabel" aria-hidden="true">
-                                        <div class="modal-dialog" role="document">
-                                            <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="modalDetailLabel">Detail penjualan</h5>
-                                                <span aria-hidden="true">&times;</span>
-                                            </div>
-                                            <div class="modal-body">
-                                            <div class="table-responsive">
-                                                <table>
-                                                    <tr>
-                                                        <th>id transaksi</th>
-                                                        <th>id header</th>
-                                                        <th>jumlah penjualan</th>
-                                                        <th>subtotal</th>
-                                                        <th>id produk</th>
-                                                    </tr>
-                                                    <?php
-                                                        $sql ="SELECT * FROM djual where id_hjual='".$d['id_hjual']."'";
-                                                        $query = $this->db->query($sql); 
-                                                        $karyawan1 = $query->result_array(); 
-                                                        foreach($karyawan1 as $d1):
-                                                    ?>
-                                                    <tr>
-                                                        <th><?php echo $d1['id_djual']; ?></th>
-                                                        <th><?php echo $d1['id_hjual']; ?></th>
-                                                        <th><?php echo $d1['jumlah_jual']; ?></th>
-                                                        <th><?php echo $d1['subtotal']; ?></th>
-                                                        <th><?php echo $d1['id_produk']; ?></th>
-                                                    </tr>
-                                                    <?php endforeach; ?>
-                                                </table>
+                            <h3>Transaksi penjualan</h3>
+                            <div class="table-responsive">
+                            <table id="tabelTrans">
+                                <thead>
+                                    <tr>
+                                        <th>id transaksi</th>
+                                        <th>tanggal</th>
+                                        <th>total</th>
+                                        <th>id konsumen</th>
+                                        <th>status</th>
+                                        <th>action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php foreach($karyawan as $d): ?>
+                                    <tr>
+                                        <td><?php echo $d['id_hjual']; ?></td>
+                                        <td><?php echo $d['tanggal_jual']; ?></td>
+                                        <td><?php echo $d['total_jual']; ?></td>
+                                        <td><?php echo $d['id_konsumen']; ?></td>
+                                        <td><?php echo $d['status_jual']; ?></td>
+                                        <td>
+                                            <center>
+                                                <div class="btn-group" role="group">
+                                                    <div class="col-sm-3 custom">
+                                                        <!-- update -->
+                                                        <form action="<?=base_url()?>transaksi/KeUpdatePenjualan" method="POST">
+                                                            <input type="hidden" name="idh" value="<?php echo $d['id_hjual']; ?>">
+                                                            <button class="btn btn-info pull-left">update</button>
+                                                        </form>
+                                                    </div>
+                                                    <div class="col-sm-3 custom">
+                                                        <!-- hapus -->
+                                                        <form action="<?= base_url() ?>transaksi/HapusPenjualan" method="POST">
+                                                            <input type="hidden" name="idh" value="<?php echo $d['id_hjual']; ?>">
+                                                            <button class="btn btn-info pull-left" style="margin-left:1%;">hapus</button>
+                                                        </form>
+                                                    </div>
+                                                    <div class="col-sm-3 custom">
+                                                        <!-- bayar -->
+                                                        <form action="<?= base_url()?>transaksi/kePembayaranPenjualan" method="POST">
+                                                            <input type="hidden" name="idh" value="<?php echo $d['id_hjual']; ?>">
+                                                            <button class="btn btn-info pull-left" style="margin-left: 1%;">bayar</button>
+                                                        </form>
+                                                    </div>
+                                                    <div class="col-sm-3 custom">
+                                                        <!-- detail -->
+                                                        <button type="button" class="btn btn-info pull-left" style="margin-left: 1%;" data-toggle="modal" data-target="#modalDetail<?php echo $d['id_hjual']; ?>">
+                                                            detail
+                                                        </button>
+                                                        <!-- Modal detail -->
+                                                        <div class="modal fade" id="modalDetail<?php echo $d['id_hjual']; ?>" tabindex="-1" role="dialog" aria-labelledby="modalDetailLabel" aria-hidden="true">
+                                                        <div class="modal-dialog modal-xl" role="document">
+                                                            <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="modalDetailLabel">Detail penjualan</h5>
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                            <div class="table-responsive">
+                                                                <table id="tabelDetail">
+                                                                    <thead>
+                                                                        <tr>
+                                                                            <th>id transaksi</th>
+                                                                            <th>nama produk</th>
+                                                                            <th>jumlah penjualan</th>
+                                                                            <th>subtotal</th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                        <?php
+                                                                            $sql ="SELECT * FROM djual where id_hjual='".$d['id_hjual']."'";
+                                                                            $query = $this->db->query($sql); 
+                                                                            $karyawan1 = $query->result_array(); 
+                                                                            foreach($karyawan1 as $d1):
+                                                                                $sql2="SELECT * FROM produk WHERE id_produk='".$d1['id_produk']."'";
+                                                                                $query2 = $this->db->query($sql2); 
+                                                                                $p=$query2->result_array();
+                                                                        ?>
+                                                                        <tr>
+                                                                                <td><?php echo $d1['id_djual']; ?></td>
+                                                                                <td><?php echo $p[0]['nama_produk']; ?></td>
+                                                                                <td><?php echo $d1['jumlah_jual']; ?></td>
+                                                                                <td><?php echo $d1['subtotal']; ?></td>
+                                                                        </tr>
+                                                                        <?php 
+                                                                            endforeach; 
+                                                                        ?>
+                                                                    </tbody>
+                                                                    
+                                                                </table>
+                                                                </div>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                                                            </div>
+                                                            </div>
+                                                        </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-                                            </div>
-                                            </div>
-                                        </div>
-                                        </div>
-                                        </center>
-                        </th>
-                    </tr>
-                    <?php endforeach; ?>
-                </table>
-                </div>
-            </div>
+                                            </center>
+                                        </td>
+                                    </tr>
+                                    <?php endforeach; ?>
+                                </tbody>
+                            </table>
+                            </div>
+                        </div>
                         <!-- /.row -->
                     </div><!-- /.container-fluid -->
                 </section>
