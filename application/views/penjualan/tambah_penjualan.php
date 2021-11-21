@@ -107,6 +107,9 @@
                                         <div class="card-body">
                                             <div class="form-group">
                                                 <br>
+                                                <label for="nama">Nama Penjualan</label> 
+                                                <input type="text" name = "keterangan" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="nama penjualan">
+                                                <br>
                                                 <label for="nama">Nama Pesanan</label>
                                                 <select name = "produk" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="nama pesanan">
                                                 <?php foreach($karyawan2 as $d): ?>
@@ -133,19 +136,29 @@
                                             <tr>
                                                 <th>id transaksi</th>
                                                 <th>id header</th>
+                                                <th>nama penjualan</th>
                                                 <th>id produk</th>
                                                 <th>harga satuan</th>
                                                 <th>jumlah</th>
                                                 <th>sub total</th>
+                                                <th>action</th>
                                             </tr>
                                             <?php foreach($karyawan as $d): ?>
                                             <tr>
                                                 <th><?php echo $d['id_djual']; ?></th>
                                                 <th><?php echo $d['id_hjual']; ?></th>
+                                                <th><?php echo $d['nama_penjualan']; ?></th>
                                                 <th><?php echo $d['id_produk']; ?></th>
                                                 <th><?php echo $d['subtotal']/$d['jumlah_jual']; ?></th>
                                                 <th><?php echo $d['jumlah_jual']; ?></th>
                                                 <th class="subtotals"><?php echo $d['subtotal']; ?></th>
+                                                <td>
+                                                    <form action="<?= base_url() ?>transaksi/HapusDetailPenjualan" method="post">
+                                                        <input type="hidden" name="idh" value="<?php echo $d['id_hjual']; ?>">
+                                                        <input type="hidden" name="idd" value="<?php echo $d['id_djual']; ?>">
+                                                        <button class="btn btn-primary" style="background-color: red;">Cancel</button>
+                                                    </form>
+                                                </td>
                                             </tr>
                                             <?php endforeach; ?>
                                         </table>

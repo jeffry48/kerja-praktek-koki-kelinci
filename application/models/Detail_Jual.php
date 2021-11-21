@@ -117,14 +117,15 @@ class Detail_Jual extends CI_Model
         return $result;
     }
 
-    public function save($idd,$jumlah,$subtotal,$idp,$idh)
+    public function save($idd,$jumlah,$subtotal,$idp,$idh,$ktr)
     {
         $data = array(
             'id_djual'=>$idd,
             'jumlah_jual'=>$jumlah,
             'subtotal'=>$subtotal,
             'id_produk'=>$idp,
-            'id_hjual'=>$idh
+            'id_hjual'=>$idh,
+            'nama_penjualan'=>$ktr
         );
         $this->db->insert('djual',$data);
     }
