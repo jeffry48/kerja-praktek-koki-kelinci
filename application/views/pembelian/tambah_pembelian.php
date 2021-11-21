@@ -168,7 +168,13 @@
                                                         <td><?php echo $d['subtotal']/$d['jumlah_beli']; ?></td>
                                                         <td><?php echo $d['jumlah_beli']; ?></td>
                                                         <td class="subtotals"><?php echo $d['subtotal']; ?></td>
-                                                        <td><button class="btn btn-primary" style="background-color: red;"><a href="">Cancel</a></button></td>
+                                                        <td>
+                                                        <form action="<?= base_url() ?>transaksi/HapusDetailPembelian" method="post">
+                                                        <input type="hidden" name="idh" value="<?php echo $d['id_hbeli']; ?>">
+                                                        <input type="hidden" name="idd" value="<?php echo $d['id_dbeli']; ?>">
+                                                        <button class="btn btn-primary" style="background-color: red;">Cancel</button>
+                                                        </form>
+                                                        </td>
                                                     </tr>
                                                     <?php endforeach; ?>
                                                 </tbody>
