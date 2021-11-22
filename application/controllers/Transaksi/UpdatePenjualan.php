@@ -17,8 +17,9 @@ class Updatepenjualan extends CI_Controller {
         $tglp=$this->input->post('tglp');
         $update = $this->Header_Jual->updatesuppliertglp($idh,$ids,$tglp);
         // $update1 = $this->Detail_Beli->updateheader($idh,$ids,$tglp);
-        $data['karyawan'] = $this->Header_Jual->getOneData($idh);
-        $data['karyawan1'] = $this->Detail_Jual->getByHeader($idh);
-        $this->load->view('penjualan/cari_penjualan.php',$data);
+        // $data['karyawan'] = $this->Header_Jual->getOneData($idh);
+        // $data['karyawan1'] = $this->Detail_Jual->getByHeader($idh);
+        // $this->load->view('penjualan/cari_penjualan.php',$data);
+        redirect('transaksi/penjualan');
     }
 }

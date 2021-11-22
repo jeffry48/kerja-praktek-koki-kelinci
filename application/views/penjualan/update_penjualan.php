@@ -111,7 +111,7 @@
                                 </div>
                                 <!-- /.card-header -->
                                 <!-- form start -->
-                                <form action="<?= base_url() ?>transaksi/TambahDetailPenjualan" method="post">
+                                <form action="<?= base_url() ?>transaksi/updateDetailPenjualan" method="post">
                                     <div class="card-body">
                                         <div class="form-group">
                                             <label for="nama">Nama Pesanan</label>
@@ -122,7 +122,7 @@
                                             </select>
                                         </div>
                                         <div class="form-group">
-                                            <h5>harga satuan: <span id="harga">0</span></h5>
+                                            <h5>harga satuan: <span id="hargaPro">0</span></h5>
                                         </div>
                                         <div class="form-group">
                                             <label for="nama">Jumlah Pesanan</label>
@@ -134,7 +134,9 @@
                                     </div>
                                     <!-- /.card-body -->
                                     <div class="card-footer">
-                                        <button class="btn btn-primary"><a style="color: white" href="<?= base_url() ?>transaksi/UpdateDetailPenjualan">Update</a></button>
+                                        <input type="hidden" name="idd" id="idDetail" value="">
+                                        <input type="hidden" name="idh" id="idHeader" value="">
+                                        <button class="btn btn-primary"><a style="color: white">Update</a></button>
                                     </div>
                                 </form>
                                 <div class="table-responsive">
@@ -158,11 +160,7 @@
                                                 <td><?php echo $d['jumlah_jual']; ?></td>
                                                 <td class="subtotals"><?php echo $d['subtotal']; ?></td>
                                                 <td>
-                                                    <form action="<?= base_url() ?>transaksi/SelectDetailPembelian" method="post">
-                                                        <input type="hidden" name="idd" value="<?php echo $d['id_djual']; ?>">
-                                                        <input type="hidden" name="idh" value="<?php echo $d['id_hjual']; ?>">
-                                                        <button id="<?php echo $d['id_djual']; ?>" class="btn btn-primary" >select</button>
-                                                    </form>
+                                                    <button id="<?php echo $d['id_djual']; ?>" class="btn btn-primary" >select</button>
                                                 </td>
                                             </tr>
                                             <?php endforeach; ?>
@@ -241,17 +239,18 @@
                             $("#nama").val("'.$p[0]['id_produk'].'").change();
                             $("#harga").text("'.$p[0]['harga_produk'].'");
                             $("#jumlah").val("'.$d['jumlah_jual'].'");
+                            $("#idDetail").val("'.$d['id_djual'].'");
+                            $("#idHeader").val("'.$d['id_hjual'].'");
                         });
                         ';
                     }
                 ?>
-                var total = 0;
-                $('.subtotals').each(function () {
-                    console.log($(this).text());
-                    total+=parseInt($(this).text());
-                });
+                // var total = 0;
+                // $('.subtotals').each(function () {
+                //     total+=parseInt($(this).text());
+                // });
                 // $('table tfoot td').eq(index).text('Total: ' + total);
-                $('#total').text(total);
+                // $('#total').text(total);
             });
             $('#nama').change(function(event) {
                 var idPro=$(this).val();
@@ -261,11 +260,11 @@
                     data:{idPro:idPro},
                     success:function(data){
                         var hasil=jQuery.parseJSON(data);
-                        console.log(hasil[0]['harga_produk']);
+                        // console.log(hasil[0]['harga_produk']);
                         var hasil2=hasil[0]['harga_produk'].replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-                        $('#harga').text(hasil2);
+                        $('#hargaPro').text(hasil2);
                         
-                        var harga=$('#harga').text();
+                        var harga=$('#hargaPro').text();
                         var jumlah=$('#jumlah').val();
                         harga = harga.replace(/\./g, "");
                         jumlah = jumlah.replace(/\./g, "");

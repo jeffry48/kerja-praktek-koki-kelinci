@@ -173,7 +173,7 @@
                                         <!-- /.card-header -->
                                         <!-- form start -->
                                         <form action="<?= base_url()?>transaksi/cariDetailPenjualan" method="POST">
-                                            <input type="text" name = "idd" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="Id detail">
+                                            <input type="text" name = "idd" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="Id ">
                                             <br>
                                             <input type="text" name = "idp" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="Id produk">
                                             <br>

@@ -129,11 +129,10 @@ class Detail_Jual extends CI_Model
         $this->db->insert('djual',$data);
     }
 
-    public function update($idd,$idh,$jumlah,$subtotal,$idp)
+    public function update($jumlah,$subtotal,$idp, $idd)
     {
-        return $this->db->query("update djual set id_hjual = '".$idh."' ,jumlah_jual='".$jumlah."'
-        ,subtotal='".$subtotal."',id_produk
-        ='".$idp."' where id_djual='".$idd."'");
+        return $this->db->query("update djual set jumlah_jual='".$jumlah."',
+        subtotal='".$subtotal."',id_produk='".$idp."' where id_djual='".$idd."'");
     }
 
     public function updateheader($idd,$idh)

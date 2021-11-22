@@ -129,10 +129,10 @@ class Detail_Beli extends CI_Model
         $this->db->insert('dbeli',$data);
     }
 
-    public function update($idd,$idh,$jumlah,$subtotal,$nama)
+    public function update($nama, $jumlah, $subtotal, $idd)
     {
-        return $this->db->query("update dbeli set id_hbeli = '".$idh."' , nama_pembelian='".$nama."',jumlah_beli='".$jumlah."'
-        ,subtotal='".$subtotal."' where id_dbeli='".$idd."'");
+        return $this->db->query("update dbeli set nama_pembelian='".$nama."',jumlah_beli=".$jumlah."
+        ,subtotal=".$subtotal." where id_dbeli='".$idd."'");
     }
 
     public function updateheader($idd,$idh)

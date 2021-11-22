@@ -140,7 +140,9 @@
                                         </div>
                                         <!-- /.card-body -->
                                         <div class="card-footer">
-                                            <button class="btn btn-primary">Update</button>
+                                            <input type="hidden" name="idh" id="idHeader" value="">
+                                            <input type="hidden" name="idd" id="idDetail" value="">
+                                            <button class="btn btn-primary" id="detailBtn">Update</button>
                                         </div>
                                     </form>
                                     <div class="table-responsive">
@@ -185,7 +187,16 @@
                                                 <input type="hidden" name="idh" value="<?php echo $d['id_hbeli']; ?>">
                                                 <br>
                                                 <label for="nama">Id Supplier</label>
-                                                <input type="text" name="ids" value="<?php echo $d['id_supplier'] ?>" class="form-control" placeholder="Id Supplier">
+                                                <select name="ids" class="form-control" id="nama" >
+                                                    <?php
+                                                        $sql ="SELECT * FROM supplier";
+                                                        $query = $this->db->query($sql); 
+                                                        $dataSup = $query->result_array();
+                                                        foreach ($dataSup as $ds) {
+                                                            echo '<option value="'.$ds['id_supplier'].'">'.$ds['nama_supplier'].'</option>';
+                                                        }
+                                                    ?>
+                                                </select>
                                             </div>
                                             <div class="form-group">
                                                 <label for="nama">Tanggal Pembayaran</label>
@@ -257,8 +268,9 @@
                             $("#nama").val("'.$d['nama_pembelian'].'");
                             $("#harga").val("'.$d['subtotal']/$d['jumlah_beli'].'");
                             $("#jumlah").val("'.$d['jumlah_beli'].'");
+                            $("#idDetail").val("'.$d['id_dbeli'].'");
+                            $("#idHeader").val("'.$d['id_hbeli'].'");
                         });
-                        console.log("aaa");
                         ';
                     }
                 ?>
@@ -269,6 +281,15 @@
                 });
                 // $('table tfoot td').eq(index).text('Total: ' + total);
                 $('#total').text(total);
+            });
+            $('#detailBtn').click(function(){
+                // alert("aaa");
+                var harga=$('#harga').val();
+                var jumlah=$('#jumlah').val();
+                harga=harga.replaceAll(".", "");
+                jumlah=jumlah.replaceAll(".", "");
+                $('#harga').val(harga);
+                $('#jumlah').val(jumlah);
             });
             $('input#harga').keyup(function(event) {
                 var harga=$('#harga').val();

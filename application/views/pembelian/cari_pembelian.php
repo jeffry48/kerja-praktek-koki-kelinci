@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Kategori</title>
+        <title>cari_pembelian</title>
 
         <!-- Google Font: Source Sans Pro -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -94,9 +94,10 @@
 
             #tabelDetail td:nth-of-type(1):before { content: "id transaksi"; }
             #tabelDetail td:nth-of-type(2):before { content: "id header"; }
-            #tabelDetail td:nth-of-type(3):before { content: "jumlah pembelian"; }
-            #tabelDetail td:nth-of-type(4):before { content: "subtotal"; }
-            #tabelDetail td:nth-of-type(5):before { content: "id produk"; }
+            #tabelDetail td:nth-of-type(3):before { content: "harga"; }
+            #tabelDetail td:nth-of-type(4):before { content: "jumlah pembelian"; }
+            #tabelDetail td:nth-of-type(5):before { content: "subtotal"; }
+            #tabelDetail td:nth-of-type(6):before { content: "id produk"; }
             
         }
     </style>
@@ -274,6 +275,7 @@
                                                                         <tr>
                                                                             <th>id transaksi</th>
                                                                             <th>nama pembelian</th>
+                                                                            <th>harga</th>
                                                                             <th>jumlah pembelian</th>
                                                                             <th>subtotal</th>
                                                                         </tr>
@@ -288,6 +290,7 @@
                                                                         <tr>
                                                                             <td><?php echo $d1['id_dbeli']; ?></td>
                                                                             <td><?php echo $d1['nama_pembelian']; ?></th>                                                                         
+                                                                            <td><?php echo (int)$d1['subtotal']/(int)$d1['jumlah_beli']; ?></td>
                                                                             <td><?php echo $d1['jumlah_beli']; ?></td>
                                                                             <td><?php echo $d1['subtotal']; ?></td>
                                                                         </tr>
