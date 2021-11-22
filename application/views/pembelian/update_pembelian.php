@@ -119,8 +119,33 @@
                                     </div>
                                     <!-- /.card-header -->
                                     <!-- form start -->
-                                    <form action="<?= base_url() ?>transaksi/UpdateDetailPembelian" method="post">
-                                        <div class="card-body">
+                                    
+                                    <div class="card-body">
+                                        <form action="<?= base_url() ?>transaksi/UpdatePembelian" id="formUpdate" method="post">
+                                            <?php foreach($karyawan as $d): ?>
+                                                <div class="form-group">
+                                                    <!-- <h4>id header: <span>HBL0001</span></h4> -->
+                                                    <input type="hidden" name="idh" value="<?php echo $d['id_hbeli']; ?>">
+                                                    <br>
+                                                    <label for="nama">Id Supplier</label>
+                                                    <select name="ids" class="form-control" id="ids" >
+                                                        <?php
+                                                            $sql ="SELECT * FROM supplier";
+                                                            $query = $this->db->query($sql); 
+                                                            $dataSup = $query->result_array();
+                                                            foreach ($dataSup as $ds) {
+                                                                echo '<option value="'.$ds['id_supplier'].'">'.$ds['nama_supplier'].'</option>';
+                                                            }
+                                                        ?>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="nama">Tanggal Pembayaran</label>
+                                                    <input type="date" id="tglBeli" name="tglp" value="<?php echo $d['tanggal_beli'] ?>" class="form-control" placeholder="Tanggal Pembayaran">
+                                                </div>
+                                            <?php endforeach; ?>
+                                        </form>
+                                        <form action="<?= base_url() ?>transaksi/UpdateDetailPembelian" method="post">
                                             <div class="form-group">
                                                 <!-- <h4>id detail: <span>DBL0006</span></h4> -->
                                                 <label for="nama">Nama Pembelian</label> 
@@ -142,9 +167,11 @@
                                         <div class="card-footer">
                                             <input type="hidden" name="idh" id="idHeader" value="">
                                             <input type="hidden" name="idd" id="idDetail" value="">
+                                            <input type="hidden" id="hideIdSup" name="idSup">
+                                            <input type="hidden" id="hideTglBeli" name="tglBeli">
                                             <button class="btn btn-primary" id="detailBtn">Update</button>
-                                        </div>
-                                    </form>
+                                        </form>
+                                    </div>
                                     <div class="table-responsive">
                                         <table id="tabelDetail">
                                             <thead>
@@ -175,41 +202,13 @@
                                                 </tr>
                                                 <?php endforeach; ?>
                                             </tbody>
-                                            
                                         </table>
                                     </div>
-                                    
-                                    <form action="<?= base_url() ?>transaksi/UpdatePembelian" method="post">
-                                        <div class="card-body">
-                                        <?php foreach($karyawan as $d): ?>
-                                            <div class="form-group">
-                                                <!-- <h4>id header: <span>HBL0001</span></h4> -->
-                                                <input type="hidden" name="idh" value="<?php echo $d['id_hbeli']; ?>">
-                                                <br>
-                                                <label for="nama">Id Supplier</label>
-                                                <select name="ids" class="form-control" id="nama" >
-                                                    <?php
-                                                        $sql ="SELECT * FROM supplier";
-                                                        $query = $this->db->query($sql); 
-                                                        $dataSup = $query->result_array();
-                                                        foreach ($dataSup as $ds) {
-                                                            echo '<option value="'.$ds['id_supplier'].'">'.$ds['nama_supplier'].'</option>';
-                                                        }
-                                                    ?>
-                                                </select>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="nama">Tanggal Pembayaran</label>
-                                                <input type="date" name="tglp" value="<?php echo $d['tanggal_beli'] ?>" class="form-control" placeholder="Tanggal Pembayaran">
-                                                <h4>total: <span id="total">0</span></h4>
-                                            </div>
-                                        </div>
-                                        <?php endforeach; ?>
-                                        <!-- /.card-body -->
-                                        <div class="card-footer">
-                                            <button type="submit" class="btn btn-primary">Update Pembelian</button>
-                                        </div>
-                                    </form>
+                                    <!-- /.card-body -->
+                                    <div class="card-footer">
+                                        <h4>total: <span id="total">0</span></h4>
+                                        <button type="submit" id="updateBtn" class="btn btn-primary">Update Pembelian</button>
+                                    </div>
                                 </div>
                                 <!-- /.card -->
                             </div>
@@ -281,8 +280,23 @@
                 });
                 // $('table tfoot td').eq(index).text('Total: ' + total);
                 $('#total').text(total);
+
+                <?php
+                    if(isset($idSup)){
+                        echo '$("#ids").val("'.$idSup.'").change();';
+                    }
+                    if(isset($tglBeli)){
+                        echo '$("#tglBeli").val("'.$tglBeli.'");';
+                    }
+                ?>
+            });
+            $('#updateBtn').click(function(){
+                $('#formUpdate').submit();
             });
             $('#detailBtn').click(function(){
+                $('#hideIdSup').val($('#ids').val());
+                $('#hideTglBeli').val($('#tglBeli').val());
+
                 // alert("aaa");
                 var harga=$('#harga').val();
                 var jumlah=$('#jumlah').val();

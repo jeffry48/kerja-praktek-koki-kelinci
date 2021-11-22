@@ -160,14 +160,12 @@
                                             <option value="belum terbayar" style="color: red;">belum terbayar</option>
                                         </select>
                                         <br>
-                                        <input type="submit" class="btn btn-info pull-left" value = "Cari">
                                         <div class="row" style="margin-left: 0%;">
-                                            
+                                            <input type="submit" class="btn btn-info pull-left" value = "Cari">
+                                            <button class="btn btn-info pull-left" style="margin-left: 1%;">clear</button>
                                         </div>
                                     </form>
-                                    <div class="row" style="margin-left: 0%;">
-                                        <button class="btn btn-info pull-left" style="margin-left: 1%;">clear</button>
-                                    </div>
+
                                     
                                 </div>
                                 <!-- /.card -->
@@ -200,8 +198,8 @@
                                         <input type="text" name = "sse" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="subtotal end">
                                         <br> 
                                         <div class="row" style="margin-left: 0%;">
-                                        <input type="submit" class="btn btn-info pull-left" value = "Cari">
-                                            <button class="btn btn-info pull-left" style="margin-left: 1%;">clear</button>
+                                            <input type="submit" class="btn btn-info pull-left" value = "Cari">
+                                            <button type="button" class="btn btn-info pull-left" style="margin-left: 1%;">clear</button>
                                         </div>
                                     </form>
                                 </div>

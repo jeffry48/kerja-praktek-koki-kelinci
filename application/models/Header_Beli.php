@@ -144,6 +144,11 @@ class Header_Beli extends CI_Model
         return $this->db->query("update hbeli set status_beli='".$status."'
         where id_hbeli='".$idhb."'");
     }
+    public function updateTotal($idh,$total)
+    {
+        return $this->db->query("update hbeli set total_beli=".$total."
+        where id_hbeli='".$idh."'");
+    }
 
     public function delete($id)
     {

@@ -112,32 +112,50 @@
                                     </div>
                                     <!-- /.card-header -->
                                     <!-- form start -->
-                                    <form action="<?= base_url() ?>transaksi/TambahDetailPenjualan" method="post">
-                                        <div class="card-body">
+                                    <div class="card-body">
+                                        <form id="formTambahJual" action="<?= base_url() ?>transaksi/TambahPenjualan" method="post">
                                             <div class="form-group">
-                                                <label for="nama">Nama Pesanan</label>
-                                                <select name = "produk" id="nama" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="nama pesanan">
-                                                    <?php foreach($karyawan2 as $d): ?>
-                                                        <option value="<?php echo $d['id_produk']; ?>"><?php echo $d['nama_produk']; ?></option>
+                                                <label for="nama">Konsumen</label>
+                                                <select name="kons" id="idKon" class="form-control">
+                                                    <?php foreach($karyawan1 as $d): ?>
+                                                    <option value="<?php echo $d['id_konsumen']; ?>"><?php echo $d['nama_konsumen']; ?></option>
                                                     <?php endforeach; ?>
                                                 </select>
                                             </div>
                                             <div class="form-group">
-                                                <h5>harga satuan: <span id="hargaPro">0</span></h5>
+                                                <label for="nama">Tanggal Transaksi</label>
+                                                <input type="date" name="tgl" class="form-control" id="tgl" placeholder="Tanggal Transaksi">
                                             </div>
-                                            <div class="form-group">
-                                                <label for="jumlah">Jumlah Penjualan</label>
-                                                <input type="text" id="jumlah" name = "jumlah" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="jumlah">
-                                            </div>
-                                            <div class="form-group">
-                                                <h4>subtotal: <span id="subtotal">0</span></h4>
-                                            </div>
-                                        </div>
                                         <!-- /.card-body -->
-                                        <div class="card-footer">
-                                            <button class="btn btn-primary">Tambah</button>
-                                        </div>
-                                    </form>
+                                        </form>
+                                        <form action="<?= base_url() ?>transaksi/TambahDetailPenjualan" method="post">
+                                                <div class="form-group">
+                                                    <label for="nama">Nama Pesanan</label>
+                                                    <select name = "produk" id="nama" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="nama pesanan">
+                                                        <?php foreach($karyawan2 as $d): ?>
+                                                            <option value="<?php echo $d['id_produk']; ?>"><?php echo $d['nama_produk']; ?></option>
+                                                        <?php endforeach; ?>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group">
+                                                    <h5>harga satuan: <span id="hargaPro">0</span></h5>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="jumlah">Jumlah Penjualan</label>
+                                                    <input type="text" id="jumlah" name = "jumlah" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="jumlah">
+                                                </div>
+                                                <div class="form-group">
+                                                    <h4>subtotal: <span id="subtotal">0</span></h4>
+                                                </div>
+                                            <!-- /.card-body -->
+                                            <div class="card-footer">
+                                                <input type="hidden" id="hideIdKon" name="idKon">
+                                                <input type="hidden" id="hideTglJual" name="tglJual">
+                                                <button id="detailBtn" class="btn btn-primary">Tambah</button>
+                                            </div>
+                                        </form>
+                                    </div>
+
                                     <div class="table-responsive">
                                         <table>
                                             <thead>
@@ -162,36 +180,22 @@
                                                         <form action="<?= base_url() ?>transaksi/HapusDetailPenjualan" method="post">
                                                             <input type="hidden" name="idh" value="<?php echo $d['id_hjual']; ?>">
                                                             <input type="hidden" name="idd" value="<?php echo $d['id_djual']; ?>">
-                                                            <button class="btn btn-primary" style="background-color: red;">Cancel</button>
+                                                            
+                                                            <input type="hidden" id="<?php echo $d['id_djual']; ?>IdKon" name="idKon">
+                                                            <input type="hidden" id="<?php echo $d['id_djual']; ?>TglJual" name="tglJual">
+                                                            <button class="btn btn-primary" id="<?php echo $d['id_djual']; ?>" style="background-color: red;">Cancel</button>
                                                         </form>
                                                     </td>
                                                 </tr>
                                                 <?php endforeach; ?>
                                             </tbody>
                                         </table>
-                                        <form action="<?= base_url() ?>transaksi/TambahPenjualan" method="post">
-                                            <div class="card-body">
-                                                <div class="form-group">
-                                                    <label for="nama">Konsumen</label>
-                                                    <select name="kons" id="" class="form-control">
-                                                        <?php foreach($karyawan1 as $d): ?>
-                                                        <option value="<?php echo $d['id_konsumen']; ?>"><?php echo $d['nama_konsumen']; ?></option>
-                                                        <?php endforeach; ?>
-                                                    </select>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="nama">Tanggal Transaksi</label>
-                                                    <input type="date" name="tgl" class="form-control" id="nama" placeholder="Tanggal Transaksi">
-                                                </div>
-                                                <div class="form-group">
-                                                    <h4>total: <span id="total">0</span></h4>
-                                                </div>
+                                        <div class="card-footer">
+                                            <div class="form-group">
+                                                <h4>total: <span id="total">0</span></h4>
                                             </div>
-                                            <!-- /.card-body -->
-                                            <div class="card-footer">
-                                                <button type="submit" class="btn btn-primary">Tambah Penjualan</button>
-                                            </div>
-                                        </form>
+                                            <button type="submit" id="tambahBtn" class="btn btn-primary">Tambah Penjualan</button>
+                                        </div>
                                     </div>
                                 </div>
                                 <!-- /.card -->
@@ -238,16 +242,29 @@
                     total+=parseInt($(this).text());
                 });
                 $('#total').text(total);
+
+                <?php
+                    if(isset($idKon)){
+                        echo '$("#idKon").val("'.$idKon.'").change();';
+                    }
+                    if(isset($tglJual)){
+                        echo '$("#tgl").val("'.$tglJual.'");';
+                    }
+                ?>
             });
-            // $('#detailBtn').click(function(){
-            //     // alert("aaa");
-            //     var harga=$('#harga').val();
-            //     var jumlah=$('#jumlah').val();
-            //     harga=harga.replaceAll(".", "");
-            //     jumlah=jumlah.replaceAll(".", "");
-            //     $('#harga').val(harga);
-            //     $('#jumlah').val(jumlah);
-            // });
+            $('#detailBtn').click(function(){
+                $('#hideIdKon').val($('#idKon').val());
+                $('#hideTglJual').val($('#tgl').val());
+            });
+            <?php
+                foreach ($karyawan as $d ) {
+                    echo '$("#'.$d['id_djual'].'").click(function(){
+                        $("#'.$d['id_djual'].'IdKon").val($("#idKon").val());
+                        $("#'.$d['id_djual'].'TglJual").val($("#tgl").val());
+                    });
+                    ';
+                }
+            ?>
             $('#nama').change(function(event) {
                 var idPro=$(this).val();
                 $.ajax({
@@ -272,6 +289,9 @@
                     }
                 });
                 return false;
+            });
+            $('#tambahBtn').click(function(){
+                $('#formTambahJual').submit();
             });
             $('input#jumlah').keyup(function(event) {
                 var harga=$('#hargaPro').text();

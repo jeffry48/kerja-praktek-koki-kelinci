@@ -20,6 +20,11 @@ class updateDetailPembelian extends CI_Controller {
         $subtotal=(int)$harga*(int)$jumlah;
 
         $this->Detail_Beli->update($nama, $jumlah, $subtotal, $idd);
+
+        $data['idSup']=$this->input->post('idSup');
+        $data['tglBeli']=$this->input->post('tglBeli');
+
+
         $data['karyawan'] = $this->Header_Beli->getOneData($idh);
         $data['karyawan1'] = $this->Detail_Beli->getByHeader($idh);
         $this->load->view('pembelian/update_pembelian.php',$data);

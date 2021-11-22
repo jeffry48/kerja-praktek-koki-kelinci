@@ -61,6 +61,10 @@ class tambahDetailPenjualan extends CI_Controller {
         $data['karyawan'] = $this->Detail_Jual->getByHeader($id1);
         $data['karyawan1'] = $this->Customer->getAll();
         $data['karyawan2'] = $this->Produk_model->getAllProduk();
+
+        $data['idKon']=$this->input->post('idKon');
+        $data['tglJual']=$this->input->post('tglJual');
+
         $this->load->view('penjualan/tambah_penjualan.php',$data);
     }
 }

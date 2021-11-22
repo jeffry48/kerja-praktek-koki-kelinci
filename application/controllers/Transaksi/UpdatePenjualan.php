@@ -20,6 +20,12 @@ class Updatepenjualan extends CI_Controller {
         // $data['karyawan'] = $this->Header_Jual->getOneData($idh);
         // $data['karyawan1'] = $this->Detail_Jual->getByHeader($idh);
         // $this->load->view('penjualan/cari_penjualan.php',$data);
+
+        $query2=$this->db->query("select sum(subtotal) from djual where id_hjual='".$idh."'");
+        $result = $query2->result_array();
+        $total=(int)$result[0]["sum(subtotal)"];
+        $this->Header_Jual->updateTotal($idh,$total);
+        
         redirect('transaksi/penjualan');
     }
 }

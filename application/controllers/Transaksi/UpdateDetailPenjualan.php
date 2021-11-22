@@ -30,6 +30,13 @@ class updateDetailPenjualan extends CI_Controller {
         $data['karyawan3'] = $this->Produk_model->getAllProduk();
         // $data['karyawan'] = $this->Header_Beli->getOneData($idh);
         // $data['karyawan1'] = $this->Detail_Beli->getByHeader($idh);
+
+        $data['idKon']=$this->input->post('idKon');
+        $data['tglJual']=$this->input->post('tglJual');
+
+        // var_dump($data['idKon']);
+        // var_dump($data['tglJual']);
+
         $this->load->view('penjualan/update_penjualan.php',$data);
         
     }

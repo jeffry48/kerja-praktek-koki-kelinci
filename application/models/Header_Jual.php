@@ -144,6 +144,11 @@ class Header_Jual extends CI_Model
         return $this->db->query("update hjual set status_jual='".$status."'
         where id_hjual='".$idhb."'");
     }
+    public function updateTotal($idhb,$total)
+    {
+        return $this->db->query("update hjual set total_jual='".$total."'
+        where id_hjual='".$idhb."'");
+    }
 
     public function delete($id)
     {

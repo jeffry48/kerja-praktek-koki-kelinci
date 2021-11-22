@@ -17,6 +17,13 @@ class hapusDetailPembelian extends CI_Controller {
         $idd=$this->input->post('idd');
         $idh=$this->input->post('idh');
         $this->Detail_Beli->delete($idd);
+
+        $data['idSup']=$this->input->post('idSup');
+        $data['tglBeli']=$this->input->post('tglBeli');
+
+        var_dump($data['idSup']);
+        var_dump($data['tglBeli']);
+
         $data['karyawan'] = $this->Detail_Beli->getByHeader($idh);
         $this->load->view('pembelian/tambah_pembelian.php',$data);
     }

@@ -124,6 +124,28 @@
                                     <!-- /.card-header -->
                                     <!-- form start -->
                                     <div class="card-body">
+                                        <form id="formTambahBeli" action="<?= base_url() ?>transaksi/TambahPembelian" method="post">
+                                            <div class="form-group">
+                                                <!-- <h4>id header: <span>HBL0001</span></h4> -->
+                                                <label for="nama">Id Supplier</label>
+                                                <select name="ids" class="form-control" id="idSup" >
+                                                    <?php
+                                                        $sql ="SELECT * FROM supplier";
+                                                        $query = $this->db->query($sql); 
+                                                        $dataSup = $query->result_array();
+                                                        foreach ($dataSup as $d) {
+                                                            echo '<option value="'.$d['id_supplier'].'">'.$d['nama_supplier'].'</option>';
+                                                        }
+                                                    ?>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="nama">Tanggal Pembayaran</label>
+                                                <input type="date" name="tglp" class="form-control" id="tglBeli" placeholder="Tanggal Pembayaran">
+                                            </div>
+                                            <!-- /.card-body -->
+                                            
+                                        </form>
                                         <form action="<?= base_url() ?>transaksi/TambahDetailPembelian" method="post">
                                             <div class="form-group">
                                                 <!-- <h4>id detail: <span>DBL0006</span></h4> -->
@@ -143,6 +165,8 @@
                                             </div>    
                                             <!-- /.card-body -->
                                             <div class="card-footer">
+                                                <input type="hidden" id="hideIdSup" name="idSup">
+                                                <input type="hidden" id="hideTglBeli" name="tglBeli">
                                                 <button type="submit" id="detailBtn" class="btn btn-primary">Tambah</button>
                                             </div>
                                         </form>
@@ -170,43 +194,27 @@
                                                         <td class="subtotals"><?php echo $d['subtotal']; ?></td>
                                                         <td>
                                                         <form action="<?= base_url() ?>transaksi/HapusDetailPembelian" method="post">
-                                                        <input type="hidden" name="idh" value="<?php echo $d['id_hbeli']; ?>">
-                                                        <input type="hidden" name="idd" value="<?php echo $d['id_dbeli']; ?>">
-                                                        <button class="btn btn-primary" style="background-color: red;">Cancel</button>
+                                                            <input type="hidden" name="idh" value="<?php echo $d['id_hbeli']; ?>">
+                                                            <input type="hidden" name="idd" value="<?php echo $d['id_dbeli']; ?>">
+
+                                                            <input type="hidden" id="<?php echo $d['id_dbeli']; ?>IdSup" name="idSup">
+                                                            <input type="hidden" id="<?php echo $d['id_dbeli']; ?>TglBeli" name="tglBeli">
+                                                            <button class="btn btn-primary" id="<?php echo $d['id_dbeli']; ?>" style="background-color: red;">Cancel</button>
                                                         </form>
+
                                                         </td>
                                                     </tr>
                                                     <?php endforeach; ?>
                                                 </tbody>
                                             </table>
                                         </div>
+                                        <div class="form-group">
+                                            <h4>Total: <span id="total">0</span></h4>
+                                        </div>
                                     </div>
-                                    <form action="<?= base_url() ?>transaksi/TambahPembelian" method="post">
-                                        <div class="card-body">
-                                            <div class="form-group">
-                                                <!-- <h4>id header: <span>HBL0001</span></h4> -->
-                                                <label for="nama">Id Supplier</label>
-                                                <select name="ids" class="form-control" id="nama" >
-                                                    <?php
-                                                        $sql ="SELECT * FROM supplier";
-                                                        $query = $this->db->query($sql); 
-                                                        $dataSup = $query->result_array();
-                                                        foreach ($dataSup as $d) {
-                                                            echo '<option value="'.$d['id_supplier'].'">'.$d['nama_supplier'].'</option>';
-                                                        }
-                                                    ?>
-                                                </select>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="nama">Tanggal Pembayaran</label>
-                                                <input type="date" name="tglp" class="form-control" id="nama" placeholder="Tanggal Pembayaran">
-                                            </div>
-                                        </div>
-                                        <!-- /.card-body -->
-                                        <div class="card-footer">
-                                            <button type="submit" class="btn btn-primary">Tambah Pembelian</button>
-                                        </div>
-                                    </form>
+                                    <div class="card-footer">
+                                        <button type="submit" form="formTambahBeli" id="tambahBeli" class="btn btn-primary">Tambah Pembelian</button>
+                                    </div>
                                 </div>
                                 <!-- /.card -->
                             </div>
@@ -248,14 +256,30 @@
             $(document).ready(function(){
                 var total = 0;
                 $('.subtotals').each(function () {
-                    console.log($(this).text());
+                    // console.log($(this).text());
                     total+=parseInt($(this).text());
                 });
                 // $('table tfoot td').eq(index).text('Total: ' + total);
                 $('#total').text(total);
+
+                <?php
+                    if(isset($idSup)){
+                        echo '$("#idSup").val("'.$idSup.'").change();';
+                    }
+                    if(isset($tglBeli)){
+                        echo '$("#tglBeli").val("'.$tglBeli.'");';
+                    }
+                ?>
+            });
+            
+
+            $('#tambahBeli').click(function(){
+                $("#formTambahBeli").submit();
             });
             $('#detailBtn').click(function(){
-                // alert("aaa");
+                $('#hideIdSup').val($('#idSup').val());
+                $('#hideTglBeli').val($('#tglBeli').val());
+
                 var harga=$('#harga').val();
                 var jumlah=$('#jumlah').val();
                 harga=harga.replaceAll(".", "");
@@ -263,6 +287,16 @@
                 $('#harga').val(harga);
                 $('#jumlah').val(jumlah);
             });
+            <?php
+                foreach ($karyawan as $d ) {
+                    echo '$("#'.$d['id_dbeli'].'").click(function(){
+                        $("#'.$d['id_dbeli'].'IdSup").val($("#idSup").val());
+                        $("#'.$d['id_dbeli'].'TglBeli").val($("#tglBeli").val());
+                    });
+                    ';
+                }
+            ?>
+
             $('input#harga').keyup(function(event) {
                 var harga=$('#harga').val();
                 var jumlah=$('#jumlah').val();
