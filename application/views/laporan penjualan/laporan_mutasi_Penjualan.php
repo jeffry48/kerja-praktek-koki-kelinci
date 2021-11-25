@@ -144,11 +144,7 @@
                             <?php include 'application/views/nav_header_laporan.php'?>
                         </div>
                         <div class="col-sm-12">
-                            <form action="<?=base_url()?>laporan/buatLaporanMutasipenjualan" method="POST">
-                                <div class="card-body">
-                                    <input type="submit" value="buat laporan"  class="btn btn-info pull-left">
-                                </div>
-                            </form>
+                            
                         </div>
                         <div class="row" style="padding: 2%;">
                             <div class="col-md-6">
@@ -158,18 +154,22 @@
                                         <tr>
                                             <th>id transaksi</th>
                                             <th>tanggal</th>
-                                            <th>nama konsumen</th>
+                                            <th>id konsumen</th>
                                             <th>total</th>
                                             <th>status</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td>HJL0001</td>
-                                            <td>19/9/2021</td>
-                                            <td>konsumen 1</td>
-                                            <td>2800</td>
-                                            <td>sudah terbayar</td>
+                                            <?php foreach($karyawan as $d): ?>
+                                            <tr>
+                                                <td><?php echo $d['id_hjual']; ?></td>
+                                                <td><?php echo $d['tanggal_jual']; ?></td>
+                                                <td><?php echo $d['id_konsumen']; ?></td>
+                                                <td><?php echo $d['total_jual']; ?></td>
+                                                <td><?php echo $d['status_jual']; ?></td>
+                                            </tr>
+                                            <?php endforeach; ?>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -182,31 +182,22 @@
                                             <th>id detail</th>
                                             <th>id transaksi</th>
                                             <th>nama pesanan</th>
-                                            <th>kategori</th>
                                             <th>harga satuan</th>
                                             <th>jumlah</th>
                                             <th>subtotal</th>
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        <?php foreach($karyawan1 as $d): ?>
                                         <tr>
-                                            <td>DJL0001</td>
-                                            <td>HJL0001</td>
-                                            <td>makanan 1</td>
-                                            <td>makanan</td>
-                                            <td>2000</td>
-                                            <td>4</td>
-                                            <td>8000</td>
+                                            <td><?php echo $d['id_djual']; ?></td>
+                                            <td><?php echo $d['id_hjual']; ?></td>
+                                            <td><?php echo $d['nama_penjualan']; ?></th>                                                                         
+                                            <td><?php echo (int)$d['subtotal']/(int)$d['jumlah_jual']; ?></td>
+                                            <td><?php echo $d['jumlah_jual']; ?></td>
+                                            <td><?php echo $d['subtotal']; ?></td>
                                         </tr>
-                                        <tr>
-                                            <td>DJL0002</td>
-                                            <td>HJL0001</td>
-                                            <td>makanan 2</td>
-                                            <td>makanan</td>
-                                            <td>3000</td>
-                                            <td>4</td>
-                                            <td>12000</td>
-                                        </tr>
+                                        <?php endforeach; ?>
                                     </tbody>
                                 </table>
                             </div>

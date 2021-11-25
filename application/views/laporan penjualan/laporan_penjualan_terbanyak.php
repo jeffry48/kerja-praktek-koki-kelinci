@@ -141,11 +141,11 @@
                             <form action="<?=base_url()?>laporan/buatLaporanPenjualanterbanyak" method="POST">
                                     <div class="form-group">
                                         <label for="nama">tanggal start:</label>
-                                        <input type="date" name = "no" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;">
+                                        <input type="date" name = "tgs" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;">
                                     </div>
                                     <div class="form-group">
-                                        tanggal end: 
-                                        <input type="date" name="" id=""class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;">
+                                        <label for="nama">tanggal end:</label> 
+                                        <input type="date" name="tge" id=""class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;">
                                     </div>
                                 </div>
                                 <!-- /.card-body -->
@@ -170,32 +170,21 @@
                                         <tr>
                                             <th>id transaksi</th>
                                             <th>nama pesanan</th>
-                                            <th>nama customer</th>
-                                            <th>kategori</th>
                                             <th>harga satuan</th>
                                             <th>jumlah barang</th>
                                             <th>subtotal</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>aaaaaa</td>
-                                            <td>aaaaaa </td>
-                                            <td>aaaaaa </td>
-                                            <td>aaaaaa </td>
-                                            <td>aaaaaa </td>
-                                            <td>aaaaaa </td>
-                                            <td>aaaaaa</td>
-                                        </tr>
-                                        <tr>
-                                            <td>aaaaaa</td>
-                                            <td>aaaaaa </td>
-                                            <td>aaaaaa </td>
-                                            <td>aaaaaa </td>
-                                            <td>aaaaaa </td>
-                                            <td>aaaaaa </td>
-                                            <td>aaaaaa</td>
-                                        </tr>
+                                        <?php foreach($karyawan1 as $d): ?>
+                                            <tr>
+                                                <td><?php echo $d['id_djual']; ?></td>
+                                                <td><?php echo $d['nama_penjualan']; ?></th>                                                                         
+                                                <td><?php echo (int)$d['subtotal']/(int)$d['jumlah_jual']; ?></td>
+                                                <td><?php echo $d['jumlah_jual']; ?></td>
+                                                <td><?php echo $d['subtotal']; ?></td>
+                                            </tr>
+                                        <?php endforeach; ?>
                                     </tbody>
 
 
