@@ -142,19 +142,19 @@
                                     <div class="card-body">
                                         <div class="form-group">
                                             <label for="nama">Nama Supplier</label>
-                                            <select name="" id="" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;">
-                                                <option value="SUP0001">aupplier1</option>
-                                                <option value="SUP0002">supplier2</option>
-                                                <option value="SUP0003">supplier3</option>
+                                            <select name="ids" id="" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;">
+                                                <?php foreach($karyawan as $d): ?>
+                                                    <option value="<?php echo $d['id_supplier']; ?>"><?php echo $d['nama_supplier']; ?></option>
+                                                <?php endforeach; ?>
                                             </select>
                                         </div>
                                         <div class="form-group">
                                             <label for="nama">tanggal start: </label>
-                                            <input type="date" name = "no" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;">
+                                            <input type="date" name = "tgs" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;">
                                         </div>
                                         <div class="form-group">
                                             <label for="nama">tanggal end: </label>
-                                            <input type="date" name = "no" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;">
+                                            <input type="date" name = "tge" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;">
 
                                         </div>
                                     </div>
@@ -183,13 +183,15 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            <?php foreach($karyawan1 as $d): ?>
                                             <tr>
-                                                <td>aaaaaa</td>
-                                                <td>aaaaaa </td>
-                                                <td>aaaaaa </td>
-                                                <td>aaaaaa </td>
-                                                <td>aaaaaa</td>
+                                                <td><?php echo $d['id_dbeli']; ?></td>
+                                                <td><?php echo $d['nama_pembelian']; ?></th>                                                                         
+                                                <td><?php echo (int)$d['subtotal']/(int)$d['jumlah_beli']; ?></td>
+                                                <td><?php echo $d['jumlah_beli']; ?></td>
+                                                <td><?php echo $d['subtotal']; ?></td>
                                             </tr>
+                                            <?php endforeach; ?>
                                         </tbody>
 
                                     </table>

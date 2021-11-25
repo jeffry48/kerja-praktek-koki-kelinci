@@ -141,11 +141,7 @@
                             <?php include 'application/views/nav_header_laporan.php'?>
                         </div>
                         <div class="col-sm-12">
-                            <form action="<?=base_url()?>laporan/buatLaporanMutasiPembelian" method="POST">
-                                <div class="card-body">
-                                    <input type="submit" value="buat laporan"  class="btn btn-info pull-left">
-                                </div>
-                            </form>
+                            
                         </div>
                         <div class="row" style="padding: 2%;">
                             <div class="col-md-6">
@@ -155,19 +151,21 @@
                                         <tr>
                                             <th>id transaksi</th>
                                             <th>tanggal</th>
-                                            <th>nama supplier</th>
+                                            <th>id supplier</th>
                                             <th>total</th>
                                             <th>status</th>
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        <?php foreach($karyawan as $d): ?>
                                         <tr>
-                                            <td>HBL0001</td>
-                                            <td>19/9/2021</td>
-                                            <td>supplier 1</td>
-                                            <td>2800</td>
-                                            <td>sudah terbayar</td>
+                                            <td><?php echo $d['id_hbeli']; ?></td>
+                                            <td><?php echo $d['tanggal_beli']; ?></td>
+                                            <td><?php echo $d['id_supplier']; ?></td>
+                                            <td><?php echo $d['total_beli']; ?></td>
+                                            <td><?php echo $d['status_beli']; ?></td>
                                         </tr>
+                                        <?php endforeach; ?>
                                     </tbody>
                                 </table>
                             </div>
@@ -193,14 +191,16 @@
                                             <td>4</td>
                                             <td>800</td>
                                         </tr>
+                                        <?php foreach($karyawan1 as $d): ?>
                                         <tr>
-                                            <td>DBL0002</td>
-                                            <td>HBL0001</td>
-                                            <td>bahan 2</td>
-                                            <td>300</td>
-                                            <td>3</td>
-                                            <td>900</td>
+                                            <td><?php echo $d['id_dbeli']; ?></td>
+                                            <td><?php echo $d['id_hbeli']; ?></td>
+                                            <td><?php echo $d['nama_pembelian']; ?></th>                                                                         
+                                            <td><?php echo (int)$d['subtotal']/(int)$d['jumlah_beli']; ?></td>
+                                            <td><?php echo $d['jumlah_beli']; ?></td>
+                                            <td><?php echo $d['subtotal']; ?></td>
                                         </tr>
+                                        <?php endforeach; ?>
                                     </tbody>
                                     
                                 </table>
