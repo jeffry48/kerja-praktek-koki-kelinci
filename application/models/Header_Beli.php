@@ -23,85 +23,33 @@ class Header_Beli extends CI_Model
         $result = $query->result_array();
         return $result;
     }
-
-    public function getFromSearch($id,$ids,$tanggals,$tanggale,$totals,$totale,$status)
+    public function searchHead($id,$ids,$tanggals,$tanggale,$totals,$totale,$status)
     {
+        if($id==null){
+            $id="HBL";
+        }
+        if($ids==null){
+            $ids="SU";
+        }
+        if($tanggals==null){
+            $tanggals='2000-1-1';
+        }
+        if($tanggale==null){
+            $tanggale='2030-12-31';
+        }
+        if($totals==null){
+            $totals="0";
+        }
+        if($totale==null){
+            $totale="999999999999999999";
+        }
         $query = "";
-        if($id != null && $ids == null && $tanggals == null && $tanggale == null && $totals == null && $totale == null && $status == null)
-        {
-            return $query=$this->db->query('select * from hbeli where id_hbeli="'.$id.'"')->result_array();
-        }
-        else if($id == null && $ids != null && $tanggals == null && $tanggale == null && $totals == null && $totale == null && $status == null)
-        {
-            return $query=$this->db->query('select * from hbeli where id_supplier="'.$ids.'"')->result_array();
-        }
-        else if($id == null && $ids == null && $tanggals != null && $tanggale == null && $totals == null && $totale == null && $status == null)
-        {
-            return $query=$this->db->query('select * from hbeli where tanggal_beli="'.$tanggals.'"')->result_array();
-        }
-        else if($id == null && $ids == null && $tanggals == null && $tanggale != null && $totals == null && $totale == null && $status == null)
-        {
-            $query=$this->db->query('select * from hbeli where tanggal_beli="'.$tanggale.'"');
-        }
-        else if($id == null && $ids == null && $tanggals == null && $tanggale == null && $totals != null && $totale == null && $status == null)
-        {
-            $query=$this->db->query('select * from hbeli where total_beli="'.$totals.'"');
-        }
-        else if($id == null && $ids == null && $tanggals == null && $tanggale == null && $totals == null && $totale != null && $status == null)
-        {
-            $query=$this->db->query('select * from hbeli where total_beli="'.$totale.'"');
-        }
-        else if($id == null && $ids == null && $tanggals == null && $tanggale == null && $totals == null && $totale == null && $status != null)
-        {
-            $query=$this->db->query('select * from hbeli where status_beli="'.$status.'"');
-        }
-        else if($id != null && $ids == null && $tanggals == null && $tanggale == null && $totals != null && $totale != null && $status == null)
-        {
-            $query=$this->db->query('select * from hbeli where id_hbeli="'.$id.'" and total_beli >="'.$totals.'" and total_beli<="'.$totale.'"');
-        }
-        else if($id == null && $ids != null &&  $tanggals == null && $tanggale == null && $totals != null && $totale != null && $status == null)
-        {
-            $query=$this->db->query('select * from hbeli where id_supplier="'.$ids.'" and total_beli >="'.$totals.'" and total_beli<="'.$totale.'"');
-        }
-        else if($id == null && $ids == null && $tanggals == null && $tanggale == null && $totals != null && $totale != null && $status != null)
-        {
-            $query=$this->db->query('select * from hbeli where status_beli="'.$status.'" and total_beli >="'.$totals.'" and total_beli<="'.$totale.'"');
-        }
-        else if($id != null && $ids != null && $tanggals == null && $tanggale == null && $totals != null && $totale != null && $status != null)
-        {
-            $query=$this->db->query('select * from hbeli where id_hbeli="'.$id.'" and id_supplier="'.$ids.'" and total_beli >="'.$totals.'" and total_beli<="'.$totale.'" and status_beli="'.$status.'"');
-        }
-        else if($id == null && $ids == null && $tanggals != null && $tanggale != null && $totals != null && $totale == null && $status == null)
-        {
-            $query=$this->db->query('select * from hbeli where tanggal_beli between "'.$tanggals.'" and "'.$tanggale.'" and total_beli="'.$totals.'"');
-        }
-        else if($id == null && $ids == null && $tanggals != null && $tanggale != null && $totals == null && $totale != null && $status == null)
-        {
-            $query=$this->db->query('select * from hbeli where tanggal_beli between "'.$tanggals.'" and "'.$tanggale.'" and total_beli ="'.$totale.'"');
-        }
-        else if($id == null && $ids == null && $tanggals != null && $tanggale != null && $totals == null && $totale == null && $status != null)
-        {
-            $query=$this->db->query('select * from hbeli where tanggal_beli between "'.$tanggals.'" and "'.$tanggale.'" and status_beli ="'.$status.'"');
-        }
-        else if($id != null && $ids == null && $tanggals != null && $tanggale != null && $totals != null && $totale != null && $status == null)
-        {
-            $query=$this->db->query('select * from hbeli where id_hbeli="'.$id.'" and tanggal_beli between "'.$tanggals.'" and "'.$tanggale.'" and total_beli >="'.$totals.'" and total_beli<="'.$totale.'"');
-        }
-        else if($id == null && $ids != null &&  $tanggals != null && $tanggale != null && $totals != null && $totale != null && $status == null)
-        {
-            $query=$this->db->query('select * from hbeli where id_supplier="'.$ids.'" and tanggal_beli between "'.$tanggals.'" and "'.$tanggale.'" and total_beli >="'.$totals.'" and total_beli<="'.$totale.'"');
-        }
-        else if($id == null && $ids == null && $tanggals != null && $tanggale != null && $totals != null && $totale != null && $status != null)
-        {
-            $query=$this->db->query('select * from hbeli where tanggal_beli between "'.$tanggals.'" and "'.$tanggale.'" and total_beli >="'.$totals.'" and total_beli<="'.$totale.'" and status_beli="'.$status.'"');
-        }
-        else if($id != null && $ids != null && $tanggals != null && $tanggale != null && $totals != null && $totale != null && $status != null)
-        {
-            $query=$this->db->query('select * from hbeli where id_hbeli="'.$id.'" and id_supplier="'.$ids.'" and tanggal_beli between "'.$tanggals.'" and "'.$tanggale.'" and total_beli >="'.$totals.'" and total_beli<="'.$totale.'" and status_beli ="'.$status.'"');
-        }
-        // $result = $query->result_array();
-        // $results = $query->result();
-        // return $query;
+
+        $query=$this->db->query('select * from hbeli 
+                                where id_hbeli like "%'.$id.'%" and id_supplier like "%'.$ids.'%" and 
+                                tanggal_beli between "'.$tanggals.'" and "'.$tanggale.'" and 
+                                total_beli between '.$totals.' and '.$totale.' and 
+                                status_beli="'.$status.'"');
         $result = $query->result_array();
         return $result;
     }

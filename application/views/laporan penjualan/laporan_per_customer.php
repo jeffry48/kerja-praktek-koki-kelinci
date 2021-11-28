@@ -141,7 +141,7 @@
                                     <div class="card-body">
                                         <div class="form-group">
                                             <label for="nama">Nama Konsumen</label>
-                                            <select name="ids" id="" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;">
+                                            <select name="ids" id="idKon" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;">
                                                 <?php foreach($karyawan as $d): ?>
                                                     <option value="<?php echo $d['id_konsumen']; ?>"><?php echo $d['nama_konsumen']; ?></option>
                                                 <?php endforeach; ?>
@@ -164,10 +164,10 @@
                                 </form>
                                 <div style="margin-left: 2%;">
                                     <div class="row">
-                                        <h4>id customer: <span>CUS00000000</span></h4>
+                                        <h4>id customer: <span id="spanKon">CUS00000000</span></h4>
                                     </div>
                                     <div class="row">
-                                        <h4>total: <span>0000000000</span></h4>
+                                        <h4>total: <span id="total">0000000000</span></h4>
                                     </div>
                                 </div>
                                 <div class="table-responsive">
@@ -185,10 +185,15 @@
                                             <?php foreach($karyawan1 as $d): ?>
                                             <tr>
                                                 <td><?php echo $d['id_djual']; ?></td>
-                                                <td><?php echo $d['nama_penjualan']; ?></th>                                                                         
+                                                <?php
+                                                $sql3 ="SELECT * FROM produk where id_produk='".$d['id_produk']."'";
+                                                $query3 = $this->db->query($sql3); 
+                                                $currProduk = $query3->result_array(); 
+                                                ?>
+                                                <td><?php echo $currProduk[0]['nama_produk']; ?></th>                                                                         
                                                 <td><?php echo (int)$d['subtotal']/(int)$d['jumlah_jual']; ?></td>
                                                 <td><?php echo $d['jumlah_jual']; ?></td>
-                                                <td><?php echo $d['subtotal']; ?></td>
+                                                <td class="subtotals"><?php echo $d['subtotal']; ?></td>
                                             </tr>
                                             <?php endforeach; ?>
                                         </tbody>
@@ -234,6 +239,19 @@
                     echo '$("#myModal").modal("show");';
                 }
                 ?>
+
+                var total=0;
+                $('.subtotals').each(function () {
+                    console.log($(this).text());
+                    total+=parseInt($(this).text());
+                });
+                $('#total').text(total);
+            });
+
+            $('#idKon').change(function(){
+                var idKon=$(this).val();
+                console.log(idKon);
+                $('#spanKon').text(idKon);
             });
         </script>
         <!-- Modal -->

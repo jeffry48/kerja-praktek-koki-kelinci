@@ -23,85 +23,34 @@ class Header_Jual extends CI_Model
         $result = $query->result_array();
         return $result;
     }
-
-    public function getFromSearch($id,$ids,$tanggals,$tanggale,$totals,$totale,$status)
+    public function searchHead($idh,$idk,$tgls,$tgle,$tots,$tote,$stat)
     {
+        if($idh==null){
+            $idh="HBL";
+        }
+        if($idk==null){
+            $idk="CU";
+        }
+        if($tgls==null){
+            $tgls='2000-1-1';
+        }
+        if($tgle==null){
+            $tgle='2030-12-31';
+        }
+        if($tots==null){
+            $tots="0";
+        }
+        if($tote==null){
+            $tote="999999999999999999";
+        }
         $query = "";
-        if($id != null && $ids == null && $tanggals == null && $tanggale == null && $totals == null && $totale == null && $status == null)
-        {
-            return $query=$this->db->query('select * from hjual where id_hjual="'.$id.'"')->result_array();
-        }
-        else if($id == null && $ids != null && $tanggals == null && $tanggale == null && $totals == null && $totale == null && $status == null)
-        {
-            return $query=$this->db->query('select * from hjual where id_konsumen="'.$ids.'"')->result_array();
-        }
-        else if($id == null && $ids == null && $tanggals != null && $tanggale == null && $totals == null && $totale == null && $status == null)
-        {
-            return $query=$this->db->query('select * from hjual where tanggal_jual="'.$tanggals.'"')->result_array();
-        }
-        else if($id == null && $ids == null && $tanggals == null && $tanggale != null && $totals == null && $totale == null && $status == null)
-        {
-            $query=$this->db->query('select * from hjual where tanggal_jual="'.$tanggale.'"');
-        }
-        else if($id == null && $ids == null && $tanggals == null && $tanggale == null && $totals != null && $totale == null && $status == null)
-        {
-            $query=$this->db->query('select * from hjual where total_jual="'.$totals.'"');
-        }
-        else if($id == null && $ids == null && $tanggals == null && $tanggale == null && $totals == null && $totale != null && $status == null)
-        {
-            $query=$this->db->query('select * from hjual where total_jual="'.$totale.'"');
-        }
-        else if($id == null && $ids == null && $tanggals == null && $tanggale == null && $totals == null && $totale == null && $status != null)
-        {
-            $query=$this->db->query('select * from hjual where status_jual="'.$status.'"');
-        }
-        else if($id != null && $ids == null && $tanggals == null && $tanggale == null && $totals != null && $totale != null && $status == null)
-        {
-            $query=$this->db->query('select * from hjual where id_hjual="'.$id.'" and total_jual >="'.$totals.'" and total_jual<="'.$totale.'"');
-        }
-        else if($id == null && $ids != null &&  $tanggals == null && $tanggale == null && $totals != null && $totale != null && $status == null)
-        {
-            $query=$this->db->query('select * from hjual where id_supplier="'.$ids.'" and total_jual >="'.$totals.'" and total_jual<="'.$totale.'"');
-        }
-        else if($id == null && $ids == null && $tanggals == null && $tanggale == null && $totals != null && $totale != null && $status != null)
-        {
-            $query=$this->db->query('select * from hjual where status_jual="'.$status.'" and total_jual >="'.$totals.'" and total_jual<="'.$totale.'"');
-        }
-        else if($id != null && $ids != null && $tanggals == null && $tanggale == null && $totals != null && $totale != null && $status != null)
-        {
-            $query=$this->db->query('select * from hjual where id_hjual="'.$id.'" and id_supplier="'.$ids.'" and total_jual >="'.$totals.'" and total_jual<="'.$totale.'" and status_jual="'.$status.'"');
-        }
-        else if($id == null && $ids == null && $tanggals != null && $tanggale != null && $totals != null && $totale == null && $status == null)
-        {
-            $query=$this->db->query('select * from hjual where tanggal_jual between "'.$tanggals.'" and "'.$tanggale.'" and total_jual="'.$totals.'"');
-        }
-        else if($id == null && $ids == null && $tanggals != null && $tanggale != null && $totals == null && $totale != null && $status == null)
-        {
-            $query=$this->db->query('select * from hjual where tanggal_jual between "'.$tanggals.'" and "'.$tanggale.'" and total_jual ="'.$totale.'"');
-        }
-        else if($id == null && $ids == null && $tanggals != null && $tanggale != null && $totals == null && $totale == null && $status != null)
-        {
-            $query=$this->db->query('select * from hjual where tanggal_jual between "'.$tanggals.'" and "'.$tanggale.'" and status_jual ="'.$status.'"');
-        }
-        else if($id != null && $ids == null && $tanggals != null && $tanggale != null && $totals != null && $totale != null && $status == null)
-        {
-            $query=$this->db->query('select * from hjual where id_hjual="'.$id.'" and tanggal_jual between "'.$tanggals.'" and "'.$tanggale.'" and total_jual >="'.$totals.'" and total_jual<="'.$totale.'"');
-        }
-        else if($id == null && $ids != null &&  $tanggals != null && $tanggale != null && $totals != null && $totale != null && $status == null)
-        {
-            $query=$this->db->query('select * from hjual where id_supplier="'.$ids.'" and tanggal_jual between "'.$tanggals.'" and "'.$tanggale.'" and total_jual >="'.$totals.'" and total_jual<="'.$totale.'"');
-        }
-        else if($id == null && $ids == null && $tanggals != null && $tanggale != null && $totals != null && $totale != null && $status != null)
-        {
-            $query=$this->db->query('select * from hjual where tanggal_jual between "'.$tanggals.'" and "'.$tanggale.'" and total_jual >="'.$totals.'" and total_jual<="'.$totale.'" and status_jual="'.$status.'"');
-        }
-        else if($id != null && $ids != null && $tanggals != null && $tanggale != null && $totals != null && $totale != null && $status != null)
-        {
-            $query=$this->db->query('select * from hjual where id_hjual="'.$id.'" and id_supplier="'.$ids.'" and tanggal_jual between "'.$tanggals.'" and "'.$tanggale.'" and total_jual >="'.$totals.'" and total_jual<="'.$totale.'" and status_jual ="'.$status.'"');
-        }
-        // $result = $query->result_array();
-        // $results = $query->result();
-        // return $query;
+
+        $query=$this->db->query('select * from hjual 
+                                where id_hjual like "%'.$idh.'%" and id_konsumen like "%'.$idk.'%" and 
+                                tanggal_jual between "'.$tgls.'" and "'.$tgle.'" and 
+                                total_jual between '.$tots.' and '.$tote.' and 
+                                status_jual="'.$stat.'"');
+
         $result = $query->result_array();
         return $result;
     }

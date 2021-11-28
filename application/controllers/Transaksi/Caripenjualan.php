@@ -15,13 +15,13 @@ class cariPenjualan extends CI_Controller {
         $this->load->helper('url');
         // $this->load->view('penjualan/.php');
         $idh=$this->input->post('idh');
-        $ids=$this->input->post('ids');
+        $idk=$this->input->post('idk');
         $tgls=$this->input->post('tgls');
         $tgle=$this->input->post('tgle');
         $tots=$this->input->post('tots');
         $tote=$this->input->post('tote');
         $stat=$this->input->post('status');
-        $data['karyawan'] = $this->Header_Jual->getFromSearch($idh,$ids,$tgls,$tgle,$tots,$tote,$stat);
+        $data['karyawan'] = $this->Header_Jual->searchHead($idh,$idk,$tgls,$tgle,$tots,$tote,$stat);
         $this->load->view('penjualan/cari_penjualan.php',$data);
     }
 }

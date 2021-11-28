@@ -142,7 +142,7 @@
                                     <div class="card-body">
                                         <div class="form-group">
                                             <label for="nama">Nama Supplier</label>
-                                            <select name="ids" id="" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;">
+                                            <select name="ids" id="idSup" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;">
                                                 <?php foreach($karyawan as $d): ?>
                                                     <option value="<?php echo $d['id_supplier']; ?>"><?php echo $d['nama_supplier']; ?></option>
                                                 <?php endforeach; ?>
@@ -165,10 +165,10 @@
                                 </form>
                                 <div style="margin-left: 2%;">
                                     <div class="row">
-                                        <h4>id supplier: <span>SUP00000000</span></h4>
+                                        <h4>id supplier: <span id="spanSup"></span></h4>
                                     </div>
                                     <div class="row">
-                                        <h4>total: <span>0000000000</span></h4>
+                                        <h4>total: <span id="total">0</span></h4>
                                     </div>
                                 </div>
                                 <div class="table-responsive">
@@ -189,7 +189,7 @@
                                                 <td><?php echo $d['nama_pembelian']; ?></th>                                                                         
                                                 <td><?php echo (int)$d['subtotal']/(int)$d['jumlah_beli']; ?></td>
                                                 <td><?php echo $d['jumlah_beli']; ?></td>
-                                                <td><?php echo $d['subtotal']; ?></td>
+                                                <td class="subtotals"><?php echo $d['subtotal']; ?></td>
                                             </tr>
                                             <?php endforeach; ?>
                                         </tbody>
@@ -236,7 +236,20 @@
                     echo '$("#myModal").modal("show");';
                 }
                 ?>
+
+                var total=0;
+                $('.subtotals').each(function () {
+                    console.log($(this).text());
+                    total+=parseInt($(this).text());
+                });
+                $('#total').text(total);
             });
+            $('#idSup').change(function(){
+                var idSup=$(this).val();
+                console.log(idSup);
+                $('#spanSup').text(idSup);
+            });
+                
         </script>
         <!-- Modal -->
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="modalDetailLabel" aria-hidden="true">

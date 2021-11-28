@@ -165,8 +165,6 @@
                                             <button class="btn btn-info pull-left" style="margin-left: 1%;">clear</button>
                                         </div>
                                     </form>
-
-                                    
                                 </div>
                                 <!-- /.card -->
                             </div>

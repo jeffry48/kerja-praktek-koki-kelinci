@@ -155,13 +155,13 @@
                             </form>
                             <div style="margin-left: 2%;">
                                 <div class="row">
-                                    <h4>id supplier: <span>aaaaaaaaaa</span></h4>
+                                    <h4>id supplier: <span id="idSup"></span></h4>
                                 </div>
                                 <div class="row">
-                                    <h4>nama supplier: <span>aaaaaaaaaa</span></h4>
+                                    <h4>nama supplier: <span id="namaSup"></span></h4>
                                 </div>
                                 <div class="row">
-                                    <h4>total: <span>0000000000</span></h4>
+                                    <h4>total: <span id="total"></span></h4>
                                 </div>
                             </div>
                             <div class="table-responsive">
@@ -183,7 +183,7 @@
                                                 <td><?php echo $d['nama_pembelian']; ?></th>                                                                         
                                                 <td><?php echo (int)$d['subtotal']/(int)$d['jumlah_beli']; ?></td>
                                                 <td><?php echo $d['jumlah_beli']; ?></td>
-                                                <td><?php echo $d['subtotal']; ?></td>
+                                                <td class="subtotals"><?php echo $d['subtotal']; ?></td>
                                             </tr>
                                             <?php endforeach; ?>
                                     </tbody>
@@ -228,6 +228,22 @@
                     echo '$("#myModal").modal("show");';
                 }
                 ?>
+
+                var total=0;
+                $('.subtotals').each(function () {
+                    console.log($(this).text());
+                    total+=parseInt($(this).text());
+                });
+                $('#idSup').text('<?php echo $supplier[0]['id_supplier']?>');
+                <?php
+                    $sql3 ="SELECT * FROM supplier where id_supplier='".$supplier[0]['id_supplier']."'";
+                    $query3 = $this->db->query($sql3); 
+                    $currSup = $query3->result_array(); 
+                ?>
+                $('#namaSup').text("<?php echo $currSup[0]['nama_supplier']?>");
+                $('#total').text(total);
+
+
             });
         </script>
         <!-- Modal -->

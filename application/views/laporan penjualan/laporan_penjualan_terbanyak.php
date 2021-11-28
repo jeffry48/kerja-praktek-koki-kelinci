@@ -155,13 +155,13 @@
                             </form>
                             <div style="margin-left: 2%;">
                                 <div class="row" >
-                                    <h4>id produk: <span>PRO0001</span></h4>
+                                    <h4>id konsumen: <span id="idKon">PRO0001</span></h4>
                                 </div>
                                 <div class="row" >
-                                    <h4>nama produk: <span>aaaaaaaaaa</span></h4>
+                                    <h4>nama konsumen: <span id="namaKon">aaaaaaaaaa</span></h4>
                                 </div>
                                 <div class="row">
-                                    <h4>total: <span>0000000000</span></h4>
+                                    <h4>total: <span id="total">0000000000</span></h4>
                                 </div>
                             </div>
                             <div class="table-responsive">
@@ -179,10 +179,15 @@
                                         <?php foreach($karyawan1 as $d): ?>
                                             <tr>
                                                 <td><?php echo $d['id_djual']; ?></td>
-                                                <td><?php echo $d['nama_penjualan']; ?></th>                                                                         
+                                                <?php
+                                                $sql3 ="SELECT * FROM produk where id_produk='".$d['id_produk']."'";
+                                                $query3 = $this->db->query($sql3); 
+                                                $currProduk = $query3->result_array(); 
+                                                ?>
+                                                <td><?php echo $currProduk[0]['nama_produk']; ?></th>                                                                         
                                                 <td><?php echo (int)$d['subtotal']/(int)$d['jumlah_jual']; ?></td>
                                                 <td><?php echo $d['jumlah_jual']; ?></td>
-                                                <td><?php echo $d['subtotal']; ?></td>
+                                                <td class="subtotals"><?php echo $d['subtotal']; ?></td>
                                             </tr>
                                         <?php endforeach; ?>
                                     </tbody>
@@ -229,6 +234,21 @@
                     echo '$("#myModal").modal("show");';
                 }
                 ?>
+
+                
+                var total=0;
+                $('.subtotals').each(function () {
+                    console.log($(this).text());
+                    total+=parseInt($(this).text());
+                });
+                $('#idKon').text('<?php echo $konsumen[0]['id_konsumen']?>');
+                <?php
+                    $sql3 ="SELECT * FROM konsumen where id_konsumen='".$konsumen[0]['id_konsumen']."'";
+                    $query3 = $this->db->query($sql3); 
+                    $currKon = $query3->result_array(); 
+                ?>
+                $('#namaKon').text("<?php echo $currKon[0]['nama_konsumen']?>");
+                $('#total').text(total);
             });
         </script>
         <!-- Modal -->

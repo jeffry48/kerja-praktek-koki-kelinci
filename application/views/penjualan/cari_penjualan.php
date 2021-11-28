@@ -179,8 +179,13 @@
                                             <br>
                                             kategori: 
                                             <select name = "kat" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;">
-                                            <?php foreach($karyawan2 as $d): ?>
-                                                <option value="<?php echo $d['id_kategori']; ?>"><?php $d["nama_kategori"] ?></option>
+                                                <?php 
+                                                $sql3 ="SELECT * FROM kategori";
+                                                $query3 = $this->db->query($sql3); 
+                                                $kategoriArr = $query3->result_array(); 
+                                                foreach($kategoriArr as $d3): 
+                                                ?>
+                                                <option value="<?php echo $d3['id_kategori']; ?>"><?php echo $d3["nama_kategori"] ?></option>
                                             <?php endforeach; ?>
                                             </select>
                                             <br>

@@ -190,9 +190,14 @@
                                     <tbody>
                                         <?php foreach($karyawan1 as $d): ?>
                                         <tr>
+                                            <?php
+                                                $sql ="SELECT * FROM produk where id_produk='".$d['id_produk']."'";
+                                                $query = $this->db->query($sql); 
+                                                $hasilPro = $query->result_array(); 
+                                            ?>
                                             <td><?php echo $d['id_djual']; ?></td>
                                             <td><?php echo $d['id_hjual']; ?></td>
-                                            <td><?php echo $d['nama_penjualan']; ?></th>                                                                         
+                                            <td><?php echo $hasilPro[0]['nama_produk']; ?></th>                                                                         
                                             <td><?php echo (int)$d['subtotal']/(int)$d['jumlah_jual']; ?></td>
                                             <td><?php echo $d['jumlah_jual']; ?></td>
                                             <td><?php echo $d['subtotal']; ?></td>
