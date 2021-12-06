@@ -11,7 +11,7 @@ class laporanPembelianterbanyak extends CI_Controller {
     {
         
         $this->load->helper('url');
-        $data['karyawan1'] = $this->Detail_Beli->getAll();
+        $data['karyawan1'] = $this->Detail_Beli->getAllDateDesc();
         $this->load->view('laporan pembelian/laporan_pembelian_terbanyak.php',$data);
         
     }

@@ -26,6 +26,10 @@ class buatLaporanPembelianTerbanyak extends CI_Controller {
         // var_dump($result[0]);
         $data['karyawan1'] = $result2;
         $data['supplier']=$result;
+
+        $_SESSION['startDate']=$tgls;
+        $_SESSION['endDate']=$tgle;
+
         $this->load->view('laporan pembelian/laporan_pembelian_terbanyak.php',$data);
     }
 }

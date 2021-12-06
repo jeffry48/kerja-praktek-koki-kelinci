@@ -16,6 +16,12 @@ class Header_Beli extends CI_Model
         $result = $query->result_array();
         return $result;
     }
+    public function getAllDateDesc()
+    {
+        $query=$this->db->query("select * from hbeli order by tanggal_beli desc");
+        $result = $query->result_array();
+        return $result;
+    }
 
     public function getOneData($id)
     {
@@ -23,7 +29,8 @@ class Header_Beli extends CI_Model
         $result = $query->result_array();
         return $result;
     }
-    public function searchHead($id,$ids,$tanggals,$tanggale,$totals,$totale,$status)
+    public function search($id,$ids,$tanggals,$tanggale,$totals,$totale,$status, 
+                            $idd, $nama, $hst, $hse, $jst, $jse, $sst, $sse)
     {
         if($id==null){
             $id="HBL";
@@ -43,14 +50,45 @@ class Header_Beli extends CI_Model
         if($totale==null){
             $totale="999999999999999999";
         }
+        if($idd==null){
+            $idd="DBL";
+        }
+        if($nama==null){
+            $nama="";
+        }
+        if($hst==null){
+            $hst="0";
+        }
+        if($hse==null){
+            $hse="9999999999999999";
+        }
+        if($jst==null){
+            $jst="0";
+        }
+        if($jse==null){
+            $jse="999999999999999";
+        }
+        if($sst==null){
+            $sst="0";
+        }
+        if($sse==null){
+            $sse="9999999999999";
+        }
         $query = "";
 
-        $query=$this->db->query('select * from hbeli 
-                                where id_hbeli like "%'.$id.'%" and id_supplier like "%'.$ids.'%" and 
-                                tanggal_beli between "'.$tanggals.'" and "'.$tanggale.'" and 
-                                total_beli between '.$totals.' and '.$totale.' and 
-                                status_beli="'.$status.'"');
+        $query=$this->db->query('select * from dbeli d
+                                join hbeli h on d.id_hbeli=h.id_hbeli
+                                where h.id_hbeli like "%'.$id.'%" and h.id_supplier like "%'.$ids.'%" and 
+                                h.tanggal_beli between "'.$tanggals.'" and "'.$tanggale.'" and 
+                                h.total_beli between '.$totals.' and '.$totale.' and 
+                                h.status_beli="'.$status.'" and 
+                                d.id_dbeli like "%'.$idd.'%" and 
+                                d.nama_pembelian like "%'.$nama.'%" and 
+                                d.subtotal/d.jumlah_beli between '.$jst.' and '.$jse.' and 
+                                d.subtotal between '.$sst.' and '.$sse.'
+                                order by h.tanggal_beli desc');
         $result = $query->result_array();
+        
         return $result;
     }
 

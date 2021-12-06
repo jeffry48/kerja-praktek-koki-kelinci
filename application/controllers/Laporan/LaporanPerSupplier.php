@@ -13,7 +13,7 @@ class laporanPerSupplier extends CI_Controller {
     {
         $this->load->helper('url');
         $data['karyawan'] = $this->Supplier->getAll();
-        $data['karyawan1'] = $this->Detail_Beli->getAll();
+        $data['karyawan1'] = $this->Detail_Beli->getAllDateDesc();
         $this->load->view('laporan pembelian/laporan_per_supplier.php',$data);
     }
 }

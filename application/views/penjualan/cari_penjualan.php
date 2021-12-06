@@ -94,9 +94,10 @@
             #tabelTrans td:nth-of-type(6):before { content: "action"; }
 
             #tabelDetail td:nth-of-type(1):before { content: "id transaksi"; }
-            #tabelDetail td:nth-of-type(2):before { content: "id produk"; }
-            #tabelDetail td:nth-of-type(3):before { content: "subtotal"; }
-            #tabelDetail td:nth-of-type(4):before { content: "jumlah penjualan"; }
+            #tabelDetail td:nth-of-type(2):before { content: "nama produk"; }
+            #tabelDetail td:nth-of-type(3):before { content: "jumlah penjualan"; }
+            #tabelDetail td:nth-of-type(4):before { content: "harga satuan"; }
+            #tabelDetail td:nth-of-type(5):before { content: "subtotal"; }
             
         }
     </style>
@@ -129,85 +130,81 @@
                         </button>
                         <div class="collapse" id="collapseExample">
                             <div class="row">
-                                <div class="col-sm-6">
-                                    <!-- general form elements -->
+                                <div class="col-sm-12">
                                     <div class="card card-primary">
-                                        <div class="card-header">
+                                        <div class="card-header" style="margin-left: -3%; margin-top: -3%; margin-right: -3%;">
                                             <h3 class="card-title">Pencarian</h3>
                                         </div>
-                                        <!-- /.card-header -->
-                                        <!-- form start -->
+                                        <br>
                                         <form action="<?= base_url()?>transaksi/cariPenjualan" method="POST">
-                                            <input type="text" name = "idh" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="Id Transaksi">
-                                            <br>
-                                            <input type="text" name = "idk" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="Id Konsumen">                        
-                                            <br>
-                                            tanggal start: 
-                                            <input type="date" name = "tgls" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="tanggal start">
-                                            <br>
-                                            tanggal end: 
-                                            <input type="date" name = "tgle" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="tanggal end">                                
-                                            <br>
-                                            <input type="text" name = "tots" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="total start">                        
-                                            <br>
-                                            <input type="text" name = "tote" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="total end">
-                                            <br>                                
-                                            
-                                            <select name = "status" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;">
-                                                <option value="sudah terbayar" style="color: green;">sudah terbayar</option>
-                                                <option value="belum terbayar" style="color: red;">belum terbayar</option>
-                                            </select>
-                                            <br>
-                                            <div class="row" style="margin-left: 0%;">
-                                                <input type="submit" class="btn btn-info pull-left" value = "Cari">
-                                                <button type="button" class="btn btn-info pull-left" style="margin-left: 1%;">clear</button>
+                                            <div class="col-sm-6" style="float: left;">
+                                                <input type="text" name = "idh" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="Id Transaksi">
+                                                <br>
+                                                <input type="text" name = "idk" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="Id Konsumen">                        
+                                                <br>
+                                                tanggal start: 
+                                                <input type="date" name = "tgls" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="tanggal start">
+                                                <br>
+                                                tanggal end: 
+                                                <input type="date" name = "tgle" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="tanggal end">                                
+                                                <br>
+                                                <input type="text" name = "tots" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="total start">                        
+                                                <br>
+                                                <input type="text" name = "tote" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="total end">
+                                                <br>                                
+                                                
+                                                <select name = "status" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;">
+                                                    <option value="sudah terbayar" style="color: green;">sudah terbayar</option>
+                                                    <option value="belum terbayar" style="color: red;">belum terbayar</option>
+                                                </select>
+                                                <br>
                                             </div>
-                                        </form>
-                                    </div>
-                                    <!-- /.card -->
-                                </div>
-                                <div class="col-sm-6">
-                                    <!-- general form elements -->
-                                    <div class="card card-primary">
-                                        
-                                        <!-- /.card-header -->
-                                        <!-- form start -->
-                                        <form action="<?= base_url()?>transaksi/cariDetailPenjualan" method="POST">
-                                            <input type="text" name = "idd" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="Id ">
-                                            <br>
-                                            <input type="text" name = "idp" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="Id produk">
-                                            <br>
-                                            kategori: 
-                                            <select name = "kat" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;">
+                                            <div class="col-sm-6" style="float: left;">
+                                                <input type="text" name = "idd" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="Id ">
+                                                <br>
+                                                nama produk: 
+                                                <select name = "idp" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;">
+                                                    <option  value=""> All</option>
                                                 <?php 
-                                                $sql3 ="SELECT * FROM kategori";
-                                                $query3 = $this->db->query($sql3); 
-                                                $kategoriArr = $query3->result_array(); 
-                                                foreach($kategoriArr as $d3): 
-                                                ?>
-                                                <option value="<?php echo $d3['id_kategori']; ?>"><?php echo $d3["nama_kategori"] ?></option>
-                                            <?php endforeach; ?>
-                                            </select>
-                                            <br>
-                                            <input type="text" name = "hst" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="harga satuan start">                                
-                                            <br>
-                                            <input type="text" name = "hse" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="harga satuan end">                        
-                                            <br>
-                                            <input type="text" name = "jst" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="jumlah start">
-                                            <br>    
-                                            <input type="text" name = "jse" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="jumlah end">
-                                            <br>
-                                            <input type="text" name = "sst" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="subtotal start">                        
-                                            <br>
-                                            <input type="text" name = "sse" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="subtotal end">
-                                            <br> 
-                                            <div class="row" style="margin-left: 0%;">
+                                                    $sql3 ="SELECT * FROM produk";
+                                                    $query3 = $this->db->query($sql3); 
+                                                    $kategoriArr = $query3->result_array(); 
+                                                    foreach($kategoriArr as $d3): 
+                                                    ?>
+                                                    <option value="<?php echo $d3['id_produk']; ?>"><?php echo $d3["nama_produk"] ?></option>
+                                                <?php endforeach; ?>      
+                                                </select>                                          
+                                                <br>
+                                                kategori: 
+                                                <select name = "kat" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;">
+                                                    <option value=""> All</option>
+                                                    <?php 
+                                                    $sql3 ="SELECT * FROM kategori";
+                                                    $query3 = $this->db->query($sql3); 
+                                                    $kategoriArr = $query3->result_array(); 
+                                                    foreach($kategoriArr as $d3): 
+                                                    ?>
+                                                    <option value="<?php echo $d3['id_kategori']; ?>"><?php echo $d3["nama_kategori"] ?></option>
+                                                <?php endforeach; ?>
+                                                </select>
+                                                <br>
+                                                <input type="text" name = "hst" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="harga satuan start">                                
+                                                <br>
+                                                <input type="text" name = "hse" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="harga satuan end">                        
+                                                <br>
+                                                <input type="text" name = "jst" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="jumlah start">
+                                                <br>    
+                                                <input type="text" name = "jse" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="jumlah end">
+                                                <br>
+                                                <input type="text" name = "sst" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="subtotal start">                        
+                                                <br>
+                                                <input type="text" name = "sse" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="subtotal end">
+                                            </div>
+                                            <div class="card-footer">
                                                 <input type="submit" class="btn btn-info pull-left" value = "Cari">
-                                                <button type="button" class="btn btn-info pull-left" style="margin-left: 1%;">clear</button>
                                             </div>
                                         </form>
                                     </div>
-                                    <!-- /.card -->
                                 </div>
                             </div>
                         </div>
@@ -231,7 +228,7 @@
                                     <tr>
                                         <td><?php echo $d['id_hjual']; ?></td>
                                         <td><?php echo $d['tanggal_jual']; ?></td>
-                                        <td><?php echo $d['total_jual']; ?></td>
+                                        <td style="text-align: right;">Rp <?php echo number_format($d['total_jual'], 0, ".", "."); ?></td>
                                         <td><?php echo $d['id_konsumen']; ?></td>
                                         <td><?php echo $d['status_jual']; ?></td>
                                         <td>
@@ -279,6 +276,7 @@
                                                                             <th>id transaksi</th>
                                                                             <th>nama produk</th>
                                                                             <th>jumlah penjualan</th>
+                                                                            <th>harga satuan</th>
                                                                             <th>subtotal</th>
                                                                         </tr>
                                                                     </thead>
@@ -295,8 +293,9 @@
                                                                         <tr>
                                                                                 <td><?php echo $d1['id_djual']; ?></td>
                                                                                 <td><?php echo $p[0]['nama_produk']; ?></td>
-                                                                                <td><?php echo $d1['jumlah_jual']; ?></td>
-                                                                                <td><?php echo $d1['subtotal']; ?></td>
+                                                                                <td><?php echo number_format($d1['jumlah_jual'], 0, ".", "."); ?></td>
+                                                                                <td style="text-align: right;">Rp <?php echo number_format($d1['subtotal']/$d1['jumlah_jual'], 0, ".", "."); ?></td>
+                                                                                <td style="text-align: right;">Rp <?php echo number_format($d1['subtotal'], 0, ".", "."); ?></td>
                                                                         </tr>
                                                                         <?php 
                                                                             endforeach; 

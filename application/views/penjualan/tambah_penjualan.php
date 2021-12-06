@@ -124,7 +124,7 @@
                                             </div>
                                             <div class="form-group">
                                                 <label for="nama">Tanggal Transaksi</label>
-                                                <input type="date" name="tgl" class="form-control" id="tgl" placeholder="Tanggal Transaksi">
+                                                <input type="date" name="tgl" value="<?php echo date('Y-m-d'); ?>" class="form-control" id="tgl" placeholder="Tanggal Transaksi">
                                             </div>
                                         <!-- /.card-body -->
                                         </form>
@@ -145,7 +145,7 @@
                                                     <input type="text" id="jumlah" name = "jumlah" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="jumlah">
                                                 </div>
                                                 <div class="form-group">
-                                                    <h4>subtotal: <span id="subtotal">0</span></h4>
+                                                    <h4>subtotal: Rp <span id="subtotal">0</span></h4>
                                                 </div>
                                             <!-- /.card-body -->
                                             <div class="card-footer">
@@ -173,9 +173,9 @@
                                                 <tr>
                                                     <td><?php echo $d['id_djual']; ?></td>
                                                     <td><?php echo $d['id_produk']; ?></td>
-                                                    <td><?php echo $d['subtotal']/$d['jumlah_jual']; ?></td>
-                                                    <td><?php echo $d['jumlah_jual']; ?></td>
-                                                    <td class="subtotals"><?php echo $d['subtotal']; ?></td>
+                                                    <td style="text-align: right;">Rp <?php echo number_format($d['subtotal']/$d['jumlah_jual'], 0, ".", "."); ?></td>
+                                                    <td><?php echo number_format($d['jumlah_jual'], 0, ".", "."); ?></td>
+                                                    <td style="text-align: right;">Rp <span class="subtotals"><?php echo number_format($d['subtotal'], 0, ".", "."); ?></span></td>
                                                     <td>
                                                         <form action="<?= base_url() ?>transaksi/HapusDetailPenjualan" method="post">
                                                             <input type="hidden" name="idh" value="<?php echo $d['id_hjual']; ?>">
@@ -192,7 +192,7 @@
                                         </table>
                                         <div class="card-footer">
                                             <div class="form-group">
-                                                <h4>total: <span id="total">0</span></h4>
+                                                <h4>total: Rp <span id="total">0</span></h4>
                                             </div>
                                             <button type="submit" id="tambahBtn" class="btn btn-primary">Tambah Penjualan</button>
                                         </div>
@@ -238,10 +238,12 @@
             $(document).ready(function(){
                 var total = 0;
                 $('.subtotals').each(function () {
-                    console.log($(this).text());
-                    total+=parseInt($(this).text());
+                    // console.log($(this).text());
+                    var currSub=$(this).text();
+                    currSub=currSub.replaceAll(".", "");
+                    total+=parseInt(currSub);
                 });
-                $('#total').text(total);
+                $('#total').text(total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."));
 
                 <?php
                     if(isset($idKon)){
@@ -251,10 +253,41 @@
                         echo '$("#tgl").val("'.$tglJual.'");';
                     }
                 ?>
+
+                var idPro=$('#nama').val();
+                $.ajax({
+                    type:"post", 
+                    url: '<?php echo base_url()."ajax/ubahHargaTambahPenjualan"?>',
+                    data:{idPro:idPro},
+                    success:function(data){
+                        var hasil=jQuery.parseJSON(data);
+                        // console.log(hasil[0]['harga_produk']);
+                        var hasil2=hasil[0]['harga_produk'].replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+                        $('#hargaPro').text(hasil2);
+                        
+                        var harga=$('#hargaPro').text();
+                        var jumlah=$('#jumlah').val();
+                        harga = harga.replace(/\./g, "");
+                        jumlah = jumlah.replace(/\./g, "");
+                        var subtotal=parseInt(harga)*parseInt(jumlah);
+                        $('#subtotal').text(subtotal.toLocaleString("id"));
+                        if($('#subtotal').text()=="NaN"){
+                            $('#subtotal').text("0");
+                        }
+                    }
+                });
+                return false;
             });
             $('#detailBtn').click(function(){
                 $('#hideIdKon').val($('#idKon').val());
                 $('#hideTglJual').val($('#tgl').val());
+
+                var harga=$('#harga').val();
+                var jumlah=$('#jumlah').val();
+                harga=harga.replaceAll(".", "");
+                jumlah=jumlah.replaceAll(".", "");
+                $('#harga').val(harga);
+                $('#jumlah').val(jumlah);
             });
             <?php
                 foreach ($karyawan as $d ) {

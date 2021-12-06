@@ -132,9 +132,14 @@
                                                 <?php foreach($karyawan as $d): ?>
                                                     <h4>id Pembelian: <span><?php echo $d['id_hbeli']; ?></span></h4><br>
                                                     <h4>tanggal: <span><?php echo $d['tanggal_beli']; ?></span></h4><br>
-                                                    <h4>id supplier: <span><?php echo $d['id_supplier']; ?></span></h4><br>
+                                                    <?php
+                                                        $sql ="SELECT * FROM supplier where id_supplier='".$d['id_supplier']."'";
+                                                        $query = $this->db->query($sql); 
+                                                        $supplier = $query->result_array(); 
+                                                    ?>
+                                                    <h4>nama supplier: <span><?php echo $supplier[0]['nama_supplier']; ?></span></h4><br>
                                                     <h4>status: <span><?php echo $d['status_beli']; ?></span></h4><br>
-                                                    <h4>total: <span><?php echo $d['total_beli']; ?></span></h4><br>
+                                                    <h4>total: Rp <span><?php echo number_format($d['total_beli'], 0, ".", "."); ?></span></h4><br>
                                                     <input type="hidden" name="idh" value="<?php echo $d['id_hbeli']; ?>">
                                                     <input type="hidden" name="tgl" value="<?php echo $d['tanggal_beli']; ?>">
                                                     <input type="hidden" name="ids" value="<?php echo $d['id_supplier']; ?>">
@@ -145,7 +150,7 @@
                                         </div>
                                         <!-- /.card-body -->
                                         <div class="card-footer">
-                                            <button type="submit" class="btn btn-primary">Print Nota</button>
+                                            <button type="submit" class="btn btn-primary">Nota</button>
                                         </div>
                                     </form>
                                 </div>
@@ -168,10 +173,10 @@
                                                 <input type="hidden" name="nomh" value="<?php echo $d['total_beli']; ?>">
                                                 <input type="hidden" name="idh" value="<?php echo $d['id_hbeli']; ?>">
                                                 <label for="nama">Tanggal Pembayaran</label>
-                                                <input type="date" name="tgl" class="form-control" id="nama" placeholder="Tanggal Pembayaran">
+                                                <input type="date" name="tgl" value="<?php echo date('Y-m-d'); ?>" class="form-control" id="nama" placeholder="Tanggal Pembayaran">
                                                 <br>
                                                 <label for="nama">Jumlah Bayar</label>
-                                                <input type="text" name = "jumlah" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="jumlah pembayaran">
+                                                <input type="text" name = "jumlah" id="bayar" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="jumlah pembayaran">
                                                 <br>
                                                 <label for="nama">Note ( optional )</label>
                                                 <input type="text" name = "note" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="note(optional)">
@@ -187,7 +192,7 @@
                                         </div>
                                         <!-- /.card-body -->
                                         <div class="card-footer">
-                                            <button class="btn btn-primary"><a style="color: white">Bayar</a></button>
+                                            <button class="btn btn-primary"><a id="bayarBtn" style="color: white">Bayar</a></button>
                                         </div>
                                     </form>
                                 </div>
@@ -199,8 +204,7 @@
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th>id beli</th>
-                                        <th>id header</th>
+                                        <th>id pembayaran</th>
                                         <th>catatan</th>
                                         <th>metode</th>
                                         <th>nominal</th>
@@ -210,10 +214,9 @@
                                     <?php foreach($karyawan2 as $d): ?>
                                         <tr>
                                             <td><?php echo $d['id_beli']; ?></td>
-                                            <td><?php echo $d['id_hbeli']; ?></td>
                                             <td><?php echo $d['note_beli']; ?></td>
                                             <td><?php echo $d['metode_bayar']; ?></td>
-                                            <td><?php echo $d['nominal_bayar']; ?></td>
+                                            <td style="text-align: right;">Rp <?php echo number_format($d['nominal_bayar'], 0, ".", "."); ?></td>
                                         </tr>
                                     <?php endforeach; ?>
                                 </tbody>

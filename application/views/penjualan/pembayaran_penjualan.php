@@ -118,9 +118,14 @@
                                                 <?php foreach($karyawan as $d): ?>
                                                     <h4>id Penjualan: <span><?php echo $d['id_hjual']; ?></span></h4><br>
                                                     <h4>tanggal: <span><?php echo $d['tanggal_jual']; ?></span></h4><br>
-                                                    <h4>id konsumen: <span><?php echo $d['id_konsumen']; ?></span></h4><br>
+                                                    <?php
+                                                        $sql2="SELECT * FROM konsumen WHERE id_konsumen='".$d['id_konsumen']."'";
+                                                        $query2 = $this->db->query($sql2); 
+                                                        $konsumen=$query2->result_array();
+                                                    ?>
+                                                    <h4>nama konsumen: <span><?php echo $konsumen[0]["nama_konsumen"]; ?></span></h4><br>
                                                     <h4>status: <span><?php echo $d['status_jual']; ?></span></h4><br>
-                                                    <h4>total: <span><?php echo $d['total_jual']; ?></span></h4><br>
+                                                    <h4>total: Rp <span><?php echo number_format($d['total_jual'], 0, ".", "."); ?></span></h4><br>
                                                     <input type="hidden" name="idh" value="<?php echo $d['id_hjual']; ?>">
                                                     <input type="hidden" name="tgl" value="<?php echo $d['tanggal_jual']; ?>">
                                                     <input type="hidden" name="ids" value="<?php echo $d['id_konsumen']; ?>">
@@ -131,7 +136,7 @@
                                         </div>
                                         <!-- /.card-body -->
                                         <div class="card-footer">
-                                            <button type="submit" class="btn btn-primary">Print Nota</button>
+                                            <button type="submit" class="btn btn-primary">Nota</button>
                                         </div>
                                     </form>
                                 </div>
@@ -154,10 +159,10 @@
                                                 <input type="hidden" name="nomh" value="<?php echo $d['total_jual']; ?>">
                                                 <input type="hidden" name="idh" value="<?php echo $d['id_hjual']; ?>">
                                                 <label for="nama">Tanggal Pembayaran</label>
-                                                <input type="date" name="tgl" class="form-control" id="nama" placeholder="Tanggal Pembayaran">
+                                                <input type="date" value="<?php echo date('Y-m-d'); ?>" name="tgl" class="form-control" id="nama" placeholder="Tanggal Pembayaran">
                                                 <br>
                                                 <label for="nama">Jumlah Bayar</label>
-                                                <input type="text" name = "jumlah" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="jumlah pembayaran">
+                                                <input type="text" name = "jumlah" id="bayar" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="jumlah pembayaran">
                                                 <br>
                                                 <label for="nama">Note ( optional )</label>
                                                 <input type="text" name = "note" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="note(optional)">
@@ -238,6 +243,15 @@
         <script>
             $(function () {
                 bsCustomFileInput.init();
+            });
+            $('input#bayar').keyup(function(event) {
+                if(event.which >= 37 && event.which <= 40) return;
+                $(this).val(function(index, value) {
+                return value
+                .replace(/\D/g, "")
+                .replace(/\B(?=(\d{3})+(?!\d))/g, ".")
+                ;
+                });
             });
         </script>
     </body>

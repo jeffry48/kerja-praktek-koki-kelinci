@@ -27,6 +27,10 @@ class buatLaporanPenjualanterbanyak extends CI_Controller {
 
         $data['karyawan1'] = $result2;
         $data['konsumen'] = $result;
+
+        $_SESSION['startDate']=$tgls;
+        $_SESSION['endDate']=$tgle;
+
         $this->load->view('laporan penjualan/laporan_penjualan_terbanyak.php',$data);
     }
 }

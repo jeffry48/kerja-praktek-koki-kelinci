@@ -25,6 +25,9 @@ class buatLaporanperCustomer extends CI_Controller {
 
         $data['karyawan1'] = $result;
 
+        $_SESSION['startDate']=$tgls;
+        $_SESSION['endDate']=$tgle;
+
         $this->load->view('laporan penjualan/laporan_per_customer.php',$data);
     }
 }

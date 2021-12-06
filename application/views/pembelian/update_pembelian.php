@@ -189,9 +189,9 @@
                                                 <tr>
                                                     <td><?php echo $d['id_dbeli']; ?></td>
                                                     <td><?php echo $d['nama_pembelian']; ?></td>
-                                                    <td><?php echo $d['subtotal']/$d['jumlah_beli']; ?></td>
+                                                    <td style="text-align: right;">Rp <?php echo number_format($d['subtotal']/$d['jumlah_beli'], 0, ".", "."); ?></td>
                                                     <td><?php echo $d['jumlah_beli']; ?></td>
-                                                    <td class="subtotals"><?php echo $d['subtotal']; ?></td>
+                                                    <td style="text-align: right;">Rp <span class="subtotals"><?php echo number_format($d['subtotal'], 0, ".", "."); ?></span></td>
                                                     <td>
                                                         <form action="<?= base_url() ?>transaksi/SelectDetailPembelian" method="post">
                                                             <input type="hidden" name="idd" value="<?php echo $d['id_dbeli']; ?>">
@@ -206,7 +206,7 @@
                                     </div>
                                     <!-- /.card-body -->
                                     <div class="card-footer">
-                                        <h4>total: <span id="total">0</span></h4>
+                                        <h4>total:Rp <span id="total">0</span></h4>
                                         <button type="submit" id="updateBtn" class="btn btn-primary">Update Pembelian</button>
                                     </div>
                                 </div>
@@ -275,12 +275,11 @@
                 ?>
                 var total = 0;
                 $('.subtotals').each(function () {
-                    console.log($(this).text());
-                    total+=parseInt($(this).text());
+                    var currSub=$(this).text();
+                    currSub=currSub.replaceAll(".", "");
+                    total+=parseInt(currSub);
                 });
-                // $('table tfoot td').eq(index).text('Total: ' + total);
-                $('#total').text(total);
-
+                $('#total').text(total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."));
                 <?php
                     if(isset($idSup)){
                         echo '$("#ids").val("'.$idSup.'").change();';

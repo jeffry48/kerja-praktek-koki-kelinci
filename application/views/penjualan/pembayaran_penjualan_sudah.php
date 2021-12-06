@@ -118,9 +118,14 @@
                                                 <div class="form-group">
                                                     <h4>id Penjualan: <span><?php echo $d['id_hjual']; ?></span></h4><br>
                                                     <h4>tanggal: <span><?php echo $d['tanggal_jual']; ?></span></h4><br>
-                                                    <h4>id konsumen: <span><?php echo $d['id_konsumen']; ?></span></h4><br>
+                                                    <?php
+                                                        $sql2="SELECT * FROM konsumen WHERE id_konsumen='".$d['id_konsumen']."'";
+                                                        $query2 = $this->db->query($sql2); 
+                                                        $konsumen=$query2->result_array();
+                                                    ?>
+                                                    <h4>nama konsumen: <span><?php echo $konsumen[0]['nama_konsumen']; ?></span></h4><br>
                                                     <h4>status: <span><?php echo $d['status_jual']; ?></span></h4><br>
-                                                    <h4>total: <span><?php echo $d['total_jual']; ?></span></h4><br>
+                                                    <h4>total:Rp <span><?php echo number_format($d['total_jual'], 0, ".", "."); ?></span></h4><br>
                                                 </div>
                                             <?php endforeach; ?>
                                         </div>
@@ -145,9 +150,9 @@
                                     <?php foreach($karyawan1 as $d): ?>
                                         <tr>
                                             <td><?php echo $d['id_djual']; ?></td>
-                                            <td><?php echo $d['subtotal']/$d['jumlah_jual']; ?></td>
-                                            <td><?php echo $d['jumlah_jual']; ?></td>
-                                            <td><?php echo $d['subtotal']; ?></td>
+                                            <td style="text-align: right;">Rp <?php echo number_format($d['subtotal']/$d['jumlah_jual'], 0, ".", "."); ?></td>
+                                            <td><?php echo number_format($d['jumlah_jual'], 0, ".", "."); ?></td>
+                                            <td style="text-align: right;">Rp <?php echo number_format($d['subtotal'], 0, ".", "."); ?></td>
                                         </tr>
                                     <?php endforeach; ?>
                                     </tbody>

@@ -34,6 +34,60 @@
         a{
             color: white;
         }
+                        
+        @media (max-width: 800px) {
+            /* .row{
+                margin-left: 1%;
+                margin-right: 1%;
+            } */
+            .col-sm-6{
+                width: 50%;
+                float: left;
+            }
+            .btn{
+                margin-top: 2%;
+                /* margin-left: 1%; */
+            }
+            
+            /* Force table to not be like tables anymore */
+            table, thead, tbody, th, td, tr { 
+                display: block; 
+            }
+            
+            /* Hide table headers (but not display: none;, for accessibility) */
+            thead tr { 
+                position: absolute;
+                top: -9999px;
+                left: -9999px;
+            }
+            
+            tr { border: 1px solid #ccc; }
+            
+            td { 
+                /* Behave  like a "row" */
+                border: none;
+                border-bottom: 1px solid #eee; 
+                position: relative;
+            }
+            
+            td:before { 
+                /* Now like a table header */
+                /* position: absolute; */
+                /* Top/left values mimic padding */
+                
+                width: 45%; 
+                padding-right: 10px; 
+                white-space: nowrap;
+            }
+            
+            /*
+            Label the data
+            */
+            td:nth-of-type(1):before { content: "Id Kategori"; }
+            td:nth-of-type(2):before { content: "Nama Kategori	"; }
+            td:nth-of-type(3):before { content: "Action"; }
+            
+        }
     </style>
     </head>
     <body class="hold-transition sidebar-mini sidebar-collapse">
@@ -82,57 +136,71 @@
                                     </form>
                                     <div class="table-responsive">
                                         <table>
-                                            <tr>
-                                                <th>Id Kategori</th>
-                                                <th>Nama Kategori</th>
-                                                <th colspan="2">Action</th>
-                                            </tr>
-                                            <?php
-                                                if (isset($_SESSION['hasilSearchkat'])) {
-                                                    for ($i=0; $i < count($_SESSION['hasilSearchkat']); $i++) { 
-                                                        $currData=$_SESSION['hasilSearchkat'][$i];
-                                                        echo '
-                                                        <tr>
-                                                            <td>'.$currData['id_kategori'].'</td>
-                                                            <td>'.$currData['nama_kategori'].'</td>
-                                                            <td>
-                                                                <form action="HapusKategori" method="post">
-                                                                    <input type="hidden" name="idKat" value="'.$currData['id_kategori'].'">
-                                                                    <input type="submit" class="btn btn-info pull-left" value = "Hapus" >
-                                                                </form>
-                                                            </td>
-                                                            <form action="keUpdateKategori" method="post">
+                                            <thead>
+                                                <tr>
+                                                    <th>Id Kategori</th>
+                                                    <th>Nama Kategori</th>
+                                                    <th colspan="2">Action</th>
+                                                </tr>                                                
+                                            </thead>
+                                            <tbody>
+                                                <?php
+                                                    if (isset($_SESSION['hasilSearchkat'])) {
+                                                        for ($i=0; $i < count($_SESSION['hasilSearchkat']); $i++) { 
+                                                            $currData=$_SESSION['hasilSearchkat'][$i];
+                                                            echo '
+                                                            <tr>
+                                                                <td>'.$currData['id_kategori'].'</td>
+                                                                <td>'.$currData['nama_kategori'].'</td>
                                                                 <td>
-                                                                    <input type="submit" class="btn btn-info pull-left" value = "Update" >
-                                                                    <input type="hidden" name="idKat" value="'.$currData['id_kategori'].'">
-                                                                </td>
-                                                            </form>
-                                                        </tr>';
+                                                                    <div class="btn-group">
+                                                                        <div class="col-sm-6">
+                                                                            <form action="HapusKategori" method="post">
+                                                                                <input type="hidden" name="idKat" value="'.$currData['id_kategori'].'">
+                                                                                <input type="submit" class="btn btn-info pull-left" value = "Hapus" >
+                                                                            </form>
+                                                                        </div>
+                                                                        <div class="col-sm-6">
+                                                                            <form action="keUpdateKategori" method="post">
+                                                                                <input type="submit" class="btn btn-info pull-left" value = "Update" >
+                                                                                <input type="hidden" name="idKat" value="'.$currData['id_kategori'].'">
+                                                                            </form>
+                                                                        </div>
+                                                                    </div>
+    =                                                            </td>
+                                                            </tr>';
+                                                        }
                                                     }
-                                                }
-                                                else{
-                                                    for ($i=0; $i < count($_SESSION['dataKategori']); $i++) { 
-                                                        $currData=$_SESSION['dataKategori'][$i];
-                                                        echo '
-                                                        <tr>
-                                                            <td>'.$currData['id_kategori'].'</td>
-                                                            <td>'.$currData['nama_kategori'].'</td>
-                                                            <td>
-                                                                <form action="HapusKategori" method="post">
-                                                                    <input type="hidden" name="idKat" value="'.$currData['id_kategori'].'">
-                                                                    <input type="submit" class="btn btn-info pull-left" value = "Hapus" >
-                                                                </form>
-                                                            </td>
-                                                            <form action="keUpdateKategori" method="post">
+                                                    else{
+                                                        for ($i=0; $i < count($_SESSION['dataKategori']); $i++) { 
+                                                            $currData=$_SESSION['dataKategori'][$i];
+                                                            echo '
+                                                            <tr>
+                                                                <td>'.$currData['id_kategori'].'</td>
+                                                                <td>'.$currData['nama_kategori'].'</td>
                                                                 <td>
-                                                                    <input type="submit" class="btn btn-info pull-left" value = "Update" >
-                                                                    <input type="hidden" name="idKat" value="'.$currData['id_kategori'].'">
+                                                                    <div class="btn-group">
+                                                                        <div class="col-sm-6">
+                                                                            <form action="HapusKategori" method="post">
+                                                                                <input type="hidden" name="idKat" value="'.$currData['id_kategori'].'">
+                                                                                <input type="submit" class="btn btn-info pull-left" value = "Hapus" >
+                                                                            </form>                                                                        
+                                                                        </div>
+                                                                        <div class="col-sm-6">
+                                                                            <form action="keUpdateKategori" method="post">
+                                                                                <input type="submit" class="btn btn-info pull-left" value = "Update" >
+                                                                                <input type="hidden" name="idKat" value="'.$currData['id_kategori'].'">
+                                                                            </form>
+                                                                        </div>
+                                                                    </div>
+
                                                                 </td>
-                                                            </form>
-                                                        </tr>';
+
+                                                            </tr>';
+                                                        }
                                                     }
-                                                }
-                                            ?>
+                                                ?>                                                
+                                            </tbody>
                                         </table>
                                     </div>
                                 </div>

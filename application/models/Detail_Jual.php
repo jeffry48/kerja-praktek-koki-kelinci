@@ -16,6 +16,14 @@ class Detail_Jual extends CI_Model
         $result = $query->result_array();
         return $result;
     }
+    public function getAllDateDesc()
+    {
+        $query=$this->db->query("select * from djual d
+                                join hjual h on h.id_hjual=d.id_hjual
+                                order by h.tanggal_jual desc");
+        $result = $query->result_array();
+        return $result;
+    }
 
     public function getOneData($id)
     {

@@ -140,14 +140,14 @@
                                                 </select>
                                             </div>
                                             <div class="form-group">
-                                                <h5>harga satuan: <span id="hargaPro">0</span></h5>
+                                                <h5>harga satuan: Rp <span id="hargaPro">0</span></h5>
                                             </div>
                                             <div class="form-group">
                                                 <label for="nama">Jumlah Pesanan</label>
                                                 <input type="text" id="jumlah" name = "jumlah" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="jumlah">
                                             </div>
                                             <div class="form-group">
-                                                <h4>subtotal: <span id="subtotal">0</span></h4>
+                                                <h4>subtotal: Rp <span id="subtotal">0</span></h4>
                                             </div>
                                         </div>
                                         <!-- /.card-body -->
@@ -178,9 +178,9 @@
                                             <tr>
                                                 <td><?php echo $d['id_djual']; ?></td>
                                                 <td><?php echo $d['id_produk']; ?></td>
-                                                <td><?php echo $d['subtotal']/$d['jumlah_jual']; ?></td>
-                                                <td><?php echo $d['jumlah_jual']; ?></td>
-                                                <td class="subtotals"><?php echo $d['subtotal']; ?></td>
+                                                <td style="text-align: right;">Rp <?php echo number_format($d['subtotal']/$d['jumlah_jual'], 0, ".", "."); ?></td>
+                                                <td><?php echo number_format($d['jumlah_jual'], 0, ".", "."); ?></td>
+                                                <td style="text-align: right;">Rp <span class="subtotals"><?php echo number_format($d['subtotal'], 0, ".", "."); ?></span></td>
                                                 <td>
                                                     <button id="<?php echo $d['id_djual']; ?>" class="btn btn-primary" >select</button>
                                                 </td>
@@ -264,6 +264,13 @@
             $('#detailBtn').click(function(){
                 $('#hideIdKon').val($('#idKon').val());
                 $('#hideTglJual').val($('#tgl').val());
+
+                var harga=$('#harga').val();
+                var jumlah=$('#jumlah').val();
+                harga=harga.replaceAll(".", "");
+                jumlah=jumlah.replaceAll(".", "");
+                $('#harga').val(harga);
+                $('#jumlah').val(jumlah);
             });
             $('#updateBtn').click(function(){
                 $('#formUpdateJual').submit();

@@ -14,8 +14,8 @@ class penjualan extends CI_Controller {
     {
         
         $this->load->helper('url');
-        $data['karyawan'] = $this->Header_Jual->getAll();
-        $data['karyawan1'] = $this->Detail_Jual->getAll();
+        $data['karyawan'] = $this->Header_Jual->getAllDateDesc();
+        $data['karyawan1'] = $this->Detail_Jual->getAllDateDesc();
         $data['karyawan2'] = $this->Kategori_model->getAllKategori();
         $this->load->view('penjualan/cari_penjualan.php',$data);
         

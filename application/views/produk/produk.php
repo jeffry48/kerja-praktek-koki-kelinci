@@ -35,6 +35,63 @@
         a{
             color: white;
         }
+                
+        @media (max-width: 800px) {
+            /* .row{
+                margin-left: 1%;
+                margin-right: 1%;
+            } */
+            .col-sm-6{
+                width: 50%;
+                float: left;
+            }
+            .btn{
+                margin-top: 2%;
+                /* margin-left: 1%; */
+            }
+            
+            /* Force table to not be like tables anymore */
+            table, thead, tbody, th, td, tr { 
+                display: block; 
+            }
+            
+            /* Hide table headers (but not display: none;, for accessibility) */
+            thead tr { 
+                position: absolute;
+                top: -9999px;
+                left: -9999px;
+            }
+            
+            tr { border: 1px solid #ccc; }
+            
+            td { 
+                /* Behave  like a "row" */
+                border: none;
+                border-bottom: 1px solid #eee; 
+                position: relative;
+                text-align: left;
+            }
+            
+            td:before { 
+                /* Now like a table header */
+                /* position: absolute; */
+                /* Top/left values mimic padding */
+                
+                width: 45%; 
+                padding-right: 10px; 
+                white-space: nowrap;
+            }
+            
+            /*
+            Label the data
+            */
+            td:nth-of-type(1):before { content: "Id Produk"; }
+            td:nth-of-type(2):before { content: "Nama Produk"; }
+            td:nth-of-type(3):before { content: "Kategori Produk"; }
+            td:nth-of-type(4):before { content: "Harga Produk"; }
+            td:nth-of-type(5):before { content: "Action"; }
+            
+        }
     </style>
     </head>
     <body class="hold-transition sidebar-mini sidebar-collapse">
@@ -107,76 +164,91 @@
                                     </form>
                                     <div class="table-responsive">
                                         <table>
-                                            <tr>
-                                                <th>Id Produk</th>
-                                                <th>Nama Produk</th>
-                                                <th>Kategori Produk</th>
-                                                <th>Harga Produk</th>
-                                                <th colspan="2" style="align-items: center;">Action</th>
-                                            </tr>
-                                            <?php
-                                            if (isset($_SESSION['hasilSearchPro'])) {
-                                                for ($i=0; $i < count($_SESSION['hasilSearchPro']); $i++) { 
-                                                    $currData=$_SESSION['hasilSearchPro'][$i];
-                                                    $namaKat="";
-                                                    for ($j=0; $j < count($_SESSION['dataKategori']); $j++) { 
-                                                        if($currData['id_kategori']==$_SESSION['dataKategori'][$j]['id_kategori']){
-                                                            $namaKat=$_SESSION['dataKategori'][$j]['nama_kategori'];
+                                            <thead>
+                                                <tr>
+                                                    <th>Id Produk</th>
+                                                    <th>Nama Produk</th>
+                                                    <th>Kategori Produk</th>
+                                                    <th>Harga Produk</th>
+                                                    <th colspan="2" style="align-items: center;">Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+
+                                                <?php
+                                                if (isset($_SESSION['hasilSearchPro'])) {
+                                                    for ($i=0; $i < count($_SESSION['hasilSearchPro']); $i++) { 
+                                                        $currData=$_SESSION['hasilSearchPro'][$i];
+                                                        $namaKat="";
+                                                        for ($j=0; $j < count($_SESSION['dataKategori']); $j++) { 
+                                                            if($currData['id_kategori']==$_SESSION['dataKategori'][$j]['id_kategori']){
+                                                                $namaKat=$_SESSION['dataKategori'][$j]['nama_kategori'];
+                                                            }
                                                         }
-                                                    }
-                                                    echo '
-                                                    <tr>
-                                                        <td>'.$currData['id_produk'].'</td>
-                                                        <td>'.$currData['nama_produk'].'</td>
-                                                        <td>'.$namaKat.'</td>
-                                                        <td>'.$currData['harga_produk'].'</td>
-                                                        <td>
-                                                            <form action="HapusProduk" method="post">
-                                                                <input type="hidden" name="idPro" value="'.$currData['id_produk'].'">
-                                                                <input type="submit" class="btn btn-info pull-left" value = "Hapus" >
-                                                            </form>
-                                                        </td>
-                                                        <form action="keUpdateProduk" method="post">
+                                                        echo '
+                                                        <tr>
+                                                            <td>'.$currData['id_produk'].'</td>
+                                                            <td>'.$currData['nama_produk'].'</td>
+                                                            <td>'.$namaKat.'</td>
+                                                            <td style="text-align: right;">Rp '.number_format($currData['harga_produk'], 0, ".", ".").'</td>
                                                             <td>
-                                                                <input type="hidden" name="idPro" value="'.$currData['id_produk'].'">
-                                                                <input type="submit" class="btn btn-info pull-left" value = "Update" >
+                                                                <div class="btn-group">
+                                                                    <div class="col-sm-6">
+                                                                        <form action="HapusProduk" method="post">
+                                                                            <input type="hidden" name="idPro" value="'.$currData['id_produk'].'">
+                                                                            <input type="submit" class="btn btn-info pull-left" value = "Hapus" >
+                                                                        </form>                                                                    
+                                                                    </div>
+                                                                    <div class="col-sm-6">
+                                                                        <form action="keUpdateProduk" method="post">
+                                                                            <input type="hidden" name="idPro" value="'.$currData['id_produk'].'">
+                                                                            <input type="submit" class="btn btn-info pull-left" value = "Update" >
+                                                                        </form>
+                                                                    </div>
+                                                                </div>
                                                             </td>
-                                                        </form>
-                                                    </tr>';
+                                                        </tr>';
+                                                    }
                                                 }
-                                            }
-                                            else{
-                                                for ($i=0; $i < count($_SESSION['dataProduk']); $i++) { 
-                                                    $currData=$_SESSION['dataProduk'][$i];
-                                                    $namaKat="";
-                                                    for ($j=0; $j < count($_SESSION['dataKategori']); $j++) { 
-                                                        if($currData['id_kategori']==$_SESSION['dataKategori'][$j]['id_kategori']){
-                                                            $namaKat=$_SESSION['dataKategori'][$j]['nama_kategori'];
+                                                else{
+                                                    for ($i=0; $i < count($_SESSION['dataProduk']); $i++) { 
+                                                        $currData=$_SESSION['dataProduk'][$i];
+                                                        $namaKat="";
+                                                        for ($j=0; $j < count($_SESSION['dataKategori']); $j++) { 
+                                                            if($currData['id_kategori']==$_SESSION['dataKategori'][$j]['id_kategori']){
+                                                                $namaKat=$_SESSION['dataKategori'][$j]['nama_kategori'];
+                                                            }
                                                         }
-                                                    }
-                                                    echo '
-                                                    <tr>
-                                                        <td>'.$currData['id_produk'].'</td>
-                                                        <td>'.$currData['nama_produk'].'</td>
-                                                        <td>'.$namaKat.'</td>
-                                                        <td>'.number_format($currData['harga_produk'], 0, ".", ".").'</td>
-                                                        <td>
-                                                            <form action="HapusProduk" method="post">
-                                                                <input type="hidden" name="idPro" value="'.$currData['id_produk'].'">
-                                                                <input type="submit" class="btn btn-info pull-left" value = "Hapus" >
-                                                            </form>
-                                                        </td>
-                                                        <form action="keUpdateProduk" method="post">
+                                                        
+                                                        echo '
+                                                        <tr>
+                                                            <td>'.$currData['id_produk'].'</td>
+                                                            <td>'.$currData['nama_produk'].'</td>
+                                                            <td>'.$namaKat.'</td>
+                                                            <td style="text-align: right;">Rp '.number_format($currData['harga_produk'], 0, ".", ".").'</td>
                                                             <td>
-                                                                <input type="hidden" name="idPro" value="'.$currData['id_produk'].'">
-                                                                <input type="submit" class="btn btn-info pull-left" value = "Update" >
+                                                                <div class="btn-group">
+                                                                    <div class="col-sm-6">
+                                                                        <form action="HapusProduk" method="post">
+                                                                            <input type="hidden" name="idPro" value="'.$currData['id_produk'].'">
+                                                                            <input type="submit" class="btn btn-info pull-left" value = "Hapus" >
+                                                                        </form>
+                                                                    </div>
+                                                                    <div class="col-sm-6">
+                                                                        <form action="keUpdateProduk" method="post">
+                                                                            <input type="hidden" name="idPro" value="'.$currData['id_produk'].'">
+                                                                            <input type="submit" class="btn btn-info pull-left" value = "Update" >
+                                                                        </form>
+                                                                    </div>
+                                                                </div>
                                                             </td>
-                                                        </form>
-                                                    </tr>';
+                                                        </tr>';
+                                                    }
                                                 }
-                                            }
-                                                
-                                            ?>
+                                                    
+                                                ?>
+                                            </tbody>
+
                                         </table>
                                     </div>
                                 </div>

@@ -19,7 +19,25 @@ class cariPembelian extends CI_Controller {
         $tots=$this->input->post('tots');
         $tote=$this->input->post('tote');
         $stat=$this->input->post('status');
-        $data['karyawan'] = $this->Header_Beli->searchHead($idh,$ids,$tgls,$tgle,$tots,$tote,$stat);
+
+        $idd=$this->input->post('idd');
+        $nama=$this->input->post('nama');
+        $hst=$this->input->post('hst');
+        $hse=$this->input->post('hse');
+        $jst=$this->input->post('jst');
+        $jse=$this->input->post('jse');
+        $sst=$this->input->post('sst');
+        $sse=$this->input->post('sse');
+        $resultHead=$this->Header_Beli->search($idh,$ids,$tgls,$tgle,$tots,$tote,$stat, 
+                                                    $idd, $nama, $hst, $hse, $jst, $jse, $sst, $sse);
+        $data['karyawan']=[];
+        foreach ($resultHead as $p) {
+            $getData=$this->Header_Beli->getOneData($p['id_hbeli']);
+            array_push($data['karyawan'], $getData[0]);
+        }
+        // var_dump($data['karyawan'][0]);
+        // var_dump($resultHead);
+        
         $this->load->view('pembelian/cari_pembelian.php',$data);
     }
 }

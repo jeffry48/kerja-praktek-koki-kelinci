@@ -16,6 +16,14 @@ class Detail_Beli extends CI_Model
         $result = $query->result_array();
         return $result;
     }
+    public function getAllDateDesc()
+    {
+        $query=$this->db->query("select * from dbeli d
+                                join hbeli h on h.id_hbeli=d.id_hbeli
+                                order by h.tanggal_beli desc");
+        $result = $query->result_array();
+        return $result;
+    }
 
     public function getOneData($id)
     {

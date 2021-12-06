@@ -16,6 +16,12 @@ class Header_Jual extends CI_Model
         $result = $query->result_array();
         return $result;
     }
+    public function getAllDateDesc()
+    {
+        $query=$this->db->query("select * from hjual order by tanggal_jual desc");
+        $result = $query->result_array();
+        return $result;
+    }
 
     public function getOneData($id)
     {
@@ -23,10 +29,11 @@ class Header_Jual extends CI_Model
         $result = $query->result_array();
         return $result;
     }
-    public function searchHead($idh,$idk,$tgls,$tgle,$tots,$tote,$stat)
+    public function searchHead($idh,$idk,$tgls,$tgle,$tots,$tote,$stat, 
+                    $idd, $idp, $kat, $hst, $hse, $jst, $jse, $sst, $sse)
     {
         if($idh==null){
-            $idh="HBL";
+            $idh="HJL";
         }
         if($idk==null){
             $idk="CU";
@@ -43,14 +50,52 @@ class Header_Jual extends CI_Model
         if($tote==null){
             $tote="999999999999999999";
         }
+        if($idd==null){
+            $idd="DJL";
+        }
+        if($idp==null){
+            $idp="PR";
+        }
+        if($kat==null){
+            $kat="KT";
+        }
+        if($hst==null){
+            $hst="0";
+        }
+        if($hse==null){
+            $hse="9999999999999999";
+        }
+        if($jst==null){
+            $jst="0";
+        }
+        if($jse==null){
+            $jse="999999999999999";
+        }
+        if($sst==null){
+            $sst="0";
+        }
+        if($sse==null){
+            $sse="9999999999999";
+        }
         $query = "";
+        // var_dump($resultKat[1]);
 
-        $query=$this->db->query('select * from hjual 
-                                where id_hjual like "%'.$idh.'%" and id_konsumen like "%'.$idk.'%" and 
-                                tanggal_jual between "'.$tgls.'" and "'.$tgle.'" and 
-                                total_jual between '.$tots.' and '.$tote.' and 
-                                status_jual="'.$stat.'"');
-
+        
+        $query=$this->db->query('select * from djual d 
+                                join hjual h on d.id_hjual=h.id_hjual
+                                join produk p on p.id_produk=d.id_produk
+                                where h.id_hjual like "%'.$idh.'%" and 
+                                h.id_konsumen like "%'.$idk.'%" and 
+                                h.tanggal_jual between "'.$tgls.'" and "'.$tgle.'" and 
+                                h.total_jual between '.$tots.' and '.$tote.' and 
+                                h.status_jual like "'.$stat.'" and 
+                                d.id_djual like "%'.$idd.'%" and 
+                                d.id_produk like "%'.$idp.'%" and 
+                                d.subtotal/d.jumlah_jual between '.$hst.' and '.$hse.' and 
+                                d.jumlah_jual between '.$jst.' and '.$jse.' and
+                                d.subtotal between '.$sst.' and '.$sse.' and 
+                                (p.id_kategori like "%'.$kat.'%" and p.id_produk like "%'.$idp.'%")
+                                order by h.tanggal_jual desc');
         $result = $query->result_array();
         return $result;
     }

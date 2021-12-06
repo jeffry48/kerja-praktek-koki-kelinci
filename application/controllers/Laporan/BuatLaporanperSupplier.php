@@ -20,11 +20,15 @@ class buatLaporanperSupplier extends CI_Controller {
         $tgls=$this->input->post('tgs');
         $tgle=$this->input->post('tge');
 
-        $query=$this->db->query('select * from dbeli d join hbeli h on h.id_hbeli = d.id_hbeli 
-        and h.id_supplier = "'.$ids.'" and h.tanggal_beli between "'.$tgls.'" and "'.$tgle.'"');
+        $query=$this->db->query('select * from dbeli d 
+        join hbeli h on h.id_hbeli = d.id_hbeli and h.id_supplier = "'.$ids.'" and 
+        h.tanggal_beli between "'.$tgls.'" and "'.$tgle.'"');
         $result = $query->result_array();
 
         $data['karyawan1'] = $result;
+
+        $_SESSION['startDate']=$tgls;
+        $_SESSION['endDate']=$tgle;
         
         $this->load->view('laporan pembelian/laporan_per_supplier.php',$data);
     }

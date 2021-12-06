@@ -99,7 +99,7 @@
                     <div class="container-fluid">
                         <div class="row mb-2">
                             <div class="col-sm-6">
-                                <h1>Pembayaran Pembelian Sudah</h1>
+                                <h1>Detail Transaksi</h1>
                                 <br>
                                 <button type="submit" class="btn btn-primary"> <a href="<?= base_url() ?>transaksi/KePembayaranPembelian" style="color:white;">Kembali</a></button>
                             <div>
@@ -116,7 +116,7 @@
                                 <!-- general form elements -->
                                 <div class="card card-primary">
                                     <div class="card-header">
-                                        <h3 class="card-title">Pembayaran Pembelian Sudah</h3>
+                                        <h3 class="card-title">Detail Transaksi</h3>
                                     </div>
                                     <!-- /.card-header -->
                                     <!-- form start -->
@@ -126,9 +126,14 @@
                                             <div class="form-group">
                                                 <h4>id Pembelian: <span><?php echo $d['id_hbeli']; ?></span></h4><br>
                                                 <h4>tanggal: <span><?php echo $d['tanggal_beli']; ?></span></h4><br>
-                                                <h4>id supplier: <span><?php echo $d['id_supplier']; ?></span></h4><br>
+                                                <?php
+                                                    $sql ="SELECT * FROM supplier where id_supplier='".$d['id_supplier']."'";
+                                                    $query = $this->db->query($sql); 
+                                                    $supplier = $query->result_array(); 
+                                                ?>
+                                                <h4>id supplier: <span><?php echo $supplier[0]['nama_supplier']; ?></span></h4><br>
                                                 <h4>status: <span><?php echo $d['status_beli']; ?></span></h4><br>
-                                                <h4>total: <span><?php echo $d['total_beli']; ?></span></h4><br>
+                                                <h4>total: Rp <span><?php echo number_format($d['total_beli'], 0, ".", "."); ?></span></h4><br>
                                             </div>
                                         <?php endforeach; ?>
                                         </div>
@@ -152,9 +157,9 @@
                                     <?php foreach($karyawan1 as $d): ?>
                                         <tr>
                                             <td><?php echo $d['id_dbeli']; ?></td>
-                                            <td><?php echo $d['subtotal']/$d['jumlah_beli']; ?></th>
+                                            <td style="text-align: right;">Rp <?php echo number_format($d['subtotal']/$d['jumlah_beli'], 0, ".", "."); ?></th>
                                             <td><?php echo $d['jumlah_beli']; ?></td>
-                                            <td><?php echo $d['subtotal']; ?></td>
+                                            <td style="text-align: right;">Rp <?php echo number_format($d['subtotal'], 0, ".", "."); ?></td>
                                         </tr>
                                     <?php endforeach; ?>
                                 </tbody>

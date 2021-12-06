@@ -150,12 +150,11 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="nama">tanggal start: </label>
-                                            <input type="date" name = "tgs" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;">
+                                            <input type="date" name = "tgs" value="<?php echo date('Y-m-d'); ?>" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;">
                                         </div>
                                         <div class="form-group">
                                             <label for="nama">tanggal end: </label>
-                                            <input type="date" name = "tge" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;">
-
+                                            <input type="date" name = "tge" value="<?php echo date('Y-m-d'); ?>" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;">
                                         </div>
                                     </div>
                                     <!-- /.card-body -->
@@ -165,17 +164,29 @@
                                 </form>
                                 <div style="margin-left: 2%;">
                                     <div class="row">
-                                        <h4>id supplier: <span id="spanSup"></span></h4>
+                                        <h4>nama supplier: <span id="spanSup"></span></h4>
                                     </div>
                                     <div class="row">
-                                        <h4>total: <span id="total">0</span></h4>
+                                        <h4>total: Rp <span id="total">0</span></h4>
                                     </div>
+                                    <?php
+                                        if (isset($_SESSION['startDate'])&&isset($_SESSION['endDate'])) {
+                                            echo '
+                                            <div class="row">
+                                                <h4>Laporan dimulai dari tanggal '.$_SESSION['startDate'].' sampai tanggal '.$_SESSION['endDate'].'</h4>
+                                            </div>';
+                                        }
+                                        $_SESSION['startDate']=null;
+                                        $_SESSION['endDate']=null;
+                                    ?>
                                 </div>
                                 <div class="table-responsive">
                                     <table>
                                         <thead>
                                             <tr>
                                                 <th>id transaksi</th>
+                                                <th>nama supplier</th>
+                                                <th>tanggal pembelian</th>
                                                 <th>nama pembelian</th>
                                                 <th>harga satuan</th>
                                                 <th>jumlah bahan</th>
@@ -186,10 +197,20 @@
                                             <?php foreach($karyawan1 as $d): ?>
                                             <tr>
                                                 <td><?php echo $d['id_dbeli']; ?></td>
+                                                <?php
+                                                    $sql3 ="select s.nama_supplier, h.tanggal_beli from supplier s
+                                                            join hbeli h on h.id_supplier=s.id_supplier
+                                                            join dbeli d on d.id_hbeli=h.id_hbeli
+                                                            where d.id_dbeli='".$d['id_dbeli']."'";
+                                                    $query3 = $this->db->query($sql3); 
+                                                    $currSup = $query3->result_array(); 
+                                                ?>
+                                                <td><?php echo $currSup[0]['nama_supplier']; ?></td>
+                                                <td><?php echo $currSup[0]['tanggal_beli']; ?></td>
                                                 <td><?php echo $d['nama_pembelian']; ?></th>                                                                         
-                                                <td><?php echo (int)$d['subtotal']/(int)$d['jumlah_beli']; ?></td>
-                                                <td><?php echo $d['jumlah_beli']; ?></td>
-                                                <td class="subtotals"><?php echo $d['subtotal']; ?></td>
+                                                <td style="text-align: right;">Rp <?php echo number_format((int)$d['subtotal']/(int)$d['jumlah_beli'], 0, ".", "."); ?></td>
+                                                <td><?php echo number_format($d['jumlah_beli'], 0, ".", ".") ; ?></td>
+                                                <td style="text-align: right;">Rp <span class="subtotals"><?php echo number_format($d['subtotal'], 0, ".", "."); ?></span></td>
                                             </tr>
                                             <?php endforeach; ?>
                                         </tbody>
@@ -236,18 +257,22 @@
                     echo '$("#myModal").modal("show");';
                 }
                 ?>
+                var namaSup=$('#idSup option:selected').text();
+                $('#spanSup').text(namaSup);
+
 
                 var total=0;
                 $('.subtotals').each(function () {
-                    console.log($(this).text());
-                    total+=parseInt($(this).text());
+                    var currSub=$(this).text();
+                    var currSub2=currSub.replaceAll(".", "");
+                    total+=parseInt(currSub2);
                 });
-                $('#total').text(total);
+                $('#total').text(total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."));
             });
             $('#idSup').change(function(){
-                var idSup=$(this).val();
-                console.log(idSup);
-                $('#spanSup').text(idSup);
+                var namaSup=$('#idSup option:selected').text();
+                console.log(namaSup);
+                $('#spanSup').text(namaSup);
             });
                 
         </script>

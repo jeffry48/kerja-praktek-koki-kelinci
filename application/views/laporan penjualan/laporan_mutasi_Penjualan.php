@@ -143,70 +143,82 @@
                         <div class="row">
                             <?php include 'application/views/nav_header_laporan.php'?>
                         </div>
-                        <div class="col-sm-12">
-                            
-                        </div>
-                        <div class="row" style="padding: 2%;">
-                            <div class="col-md-6">
-                                <h3>Penjualan</h3>
-                                <table id="headJual">
-                                    <thead>
-                                        <tr>
-                                            <th>id transaksi</th>
-                                            <th>tanggal</th>
-                                            <th>id konsumen</th>
-                                            <th>total</th>
-                                            <th>status</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <?php foreach($karyawan as $d): ?>
+                        
+                        
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <form action="<?= base_url()?>laporan/buatLaporanMutasipenjualan" method="POST">
+                                    <div class="card-body">
+                                        <div class="form-group">
+                                            <label for="nama">tanggal start: </label>
+                                            <input type="date" name = "tgs" value="<?php echo date('Y-m-d'); ?>" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="nama">tanggal end: </label>
+                                            <input type="date" name = "tge" value="<?php echo date('Y-m-d'); ?>" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;">
+                                        </div>
+                                    </div>
+                                    <!-- /.card-body -->
+                                    <div class="card-footer">
+                                        <input type="submit" value="buat laporan" class="btn btn-info pull-left" >
+                                    </div>
+                                </form>
+                                <div style="margin-left: 2%;">
+                                <?php
+                                    if (isset($_SESSION['startDate'])&&isset($_SESSION['endDate'])) {
+                                        echo '
+                                        <div class="row">
+                                            <h4>Laporan dimulai dari tanggal '.$_SESSION['startDate'].' sampai tanggal '.$_SESSION['endDate'].'</h4>
+                                        </div>';
+                                    }
+                                    $_SESSION['startDate']=null;
+                                    $_SESSION['endDate']=null;
+                                ?>
+                                </div>
+                                <div class="table-responsive">
+                                    <table>
+                                        <thead>
                                             <tr>
-                                                <td><?php echo $d['id_hjual']; ?></td>
-                                                <td><?php echo $d['tanggal_jual']; ?></td>
-                                                <td><?php echo $d['id_konsumen']; ?></td>
-                                                <td><?php echo $d['total_jual']; ?></td>
-                                                <td><?php echo $d['status_jual']; ?></td>
+                                                <th>id transaksi</th>
+                                                <th>nama customer</th>
+                                                <th>tanggal penjualan</th>
+                                                <th>nama pesanan</th>
+                                                <th>harga satuan</th>
+                                                <th>jumlah pesanan</th>
+                                                <th>subtotal</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php foreach($karyawan1 as $d): ?>
+                                            <tr>
+                                                <td><?php echo $d['id_djual']; ?></td>
+                                                <?php
+                                                    $sql4 ="select k.nama_konsumen, h.tanggal_jual from konsumen k
+                                                    join hjual h on h.id_konsumen=k.id_konsumen
+                                                    join djual d on d.id_hjual=h.id_hjual
+                                                    where d.id_djual='".$d['id_djual']."'";
+                                                    $query4 = $this->db->query($sql4); 
+                                                    $currCustomer = $query4->result_array(); 
+                                                ?>
+                                                <td><?php echo $currCustomer[0]['nama_konsumen']; ?></td>
+                                                <td><?php echo $currCustomer[0]['tanggal_jual']; ?></td>
+                                                <?php
+                                                    $sql3 ="SELECT * FROM produk where id_produk='".$d['id_produk']."'";
+                                                    $query3 = $this->db->query($sql3); 
+                                                    $currProduk = $query3->result_array(); 
+                                                ?>
+                                                <td><?php echo $currProduk[0]['nama_produk']; ?></th>                                                                         
+                                                <td style="text-align: right;">Rp <?php echo number_format((int)$d['subtotal']/(int)$d['jumlah_jual'], 0, ".", "."); ?></td>
+                                                <td><?php echo number_format($d['jumlah_jual'], 0, ".", "."); ?></td>
+                                                <td style="text-align: right;">Rp <span class="subtotals"><?php echo number_format($d['subtotal'], 0, ".", "."); ?></span></td>
                                             </tr>
                                             <?php endforeach; ?>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div class="col-md-6">
-                                <h3>Detail</h3>
-                                <table id="detJual">
-                                    <thead>
-                                        <tr>
-                                            <th>id detail</th>
-                                            <th>id transaksi</th>
-                                            <th>nama pesanan</th>
-                                            <th>harga satuan</th>
-                                            <th>jumlah</th>
-                                            <th>subtotal</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php foreach($karyawan1 as $d): ?>
-                                        <tr>
-                                            <?php
-                                                $sql ="SELECT * FROM produk where id_produk='".$d['id_produk']."'";
-                                                $query = $this->db->query($sql); 
-                                                $hasilPro = $query->result_array(); 
-                                            ?>
-                                            <td><?php echo $d['id_djual']; ?></td>
-                                            <td><?php echo $d['id_hjual']; ?></td>
-                                            <td><?php echo $hasilPro[0]['nama_produk']; ?></th>                                                                         
-                                            <td><?php echo (int)$d['subtotal']/(int)$d['jumlah_jual']; ?></td>
-                                            <td><?php echo $d['jumlah_jual']; ?></td>
-                                            <td><?php echo $d['subtotal']; ?></td>
-                                        </tr>
-                                        <?php endforeach; ?>
-                                    </tbody>
-                                </table>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
+                        
                         <!-- /.row -->
                     </div><!-- /.container-fluid -->
                 </section>

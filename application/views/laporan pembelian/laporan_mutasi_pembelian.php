@@ -140,70 +140,75 @@
                         <div class="row">
                             <?php include 'application/views/nav_header_laporan.php'?>
                         </div>
-                        <div class="col-sm-12">
-                            
-                        </div>
-                        <div class="row" style="padding: 2%;">
-                            <div class="col-md-6">
-                                <h3>Pembelian</h3>
-                                <table id="headBeli">
-                                    <thead>
-                                        <tr>
-                                            <th>id transaksi</th>
-                                            <th>tanggal</th>
-                                            <th>id supplier</th>
-                                            <th>total</th>
-                                            <th>status</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php foreach($karyawan as $d): ?>
-                                        <tr>
-                                            <td><?php echo $d['id_hbeli']; ?></td>
-                                            <td><?php echo $d['tanggal_beli']; ?></td>
-                                            <td><?php echo $d['id_supplier']; ?></td>
-                                            <td><?php echo $d['total_beli']; ?></td>
-                                            <td><?php echo $d['status_beli']; ?></td>
-                                        </tr>
-                                        <?php endforeach; ?>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div class="col-md-6">
-                                <h3>Detail</h3>
-                                <table id="detBeli">
-                                    <thead>
-                                        <tr>
-                                            <th>id detail</th>
-                                            <th>id transaksi</th>
-                                            <th>nama pembelian</th>
-                                            <th>harga satuan</th>
-                                            <th>jumlah</th>
-                                            <th>sub total</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>DBL0001</td>
-                                            <td>HBL0001</td>
-                                            <td>bahan 1</td>
-                                            <td>200</td>
-                                            <td>4</td>
-                                            <td>800</td>
-                                        </tr>
-                                        <?php foreach($karyawan1 as $d): ?>
-                                        <tr>
-                                            <td><?php echo $d['id_dbeli']; ?></td>
-                                            <td><?php echo $d['id_hbeli']; ?></td>
-                                            <td><?php echo $d['nama_pembelian']; ?></th>                                                                         
-                                            <td><?php echo (int)$d['subtotal']/(int)$d['jumlah_beli']; ?></td>
-                                            <td><?php echo $d['jumlah_beli']; ?></td>
-                                            <td><?php echo $d['subtotal']; ?></td>
-                                        </tr>
-                                        <?php endforeach; ?>
-                                    </tbody>
-                                    
-                                </table>
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <form action="<?= base_url()?>laporan/buatLaporanMutasipembelian" method="POST">
+                                    <div class="card-body">
+                                        <div class="form-group">
+                                            <label for="nama">tanggal start: </label>
+                                            <input type="date" name = "tgs" value="<?php echo date('Y-m-d'); ?>" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="nama">tanggal end: </label>
+                                            <input type="date" name = "tge" value="<?php echo date('Y-m-d'); ?>" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;">
+                                        </div>
+                                    </div>
+                                    <!-- /.card-body -->
+                                    <div class="card-footer">
+                                        <input type="submit" value="buat laporan" class="btn btn-info pull-left" >
+                                    </div>
+                                </form>
+
+                                <div style="margin-left: 2%;">
+                                <?php
+                                    if (isset($_SESSION['startDate'])&&isset($_SESSION['endDate'])) {
+                                        echo '
+                                        <div class="row">
+                                            <h4>Laporan dimulai dari tanggal '.$_SESSION['startDate'].' sampai tanggal '.$_SESSION['endDate'].'</h4>
+                                        </div>';
+                                    }
+                                    $_SESSION['startDate']=null;
+                                    $_SESSION['endDate']=null;
+                                ?>
+                                </div>
+                                <div class="table-responsive">
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th>id transaksi</th>
+                                                <th>nama supplier</th>
+                                                <th>tanggal pembelian</th>
+                                                <th>nama pembelian</th>
+                                                <th>harga satuan</th>
+                                                <th>jumlah bahan</th>
+                                                <th>subtotal</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php foreach($karyawan1 as $d): ?>
+                                            <tr>
+                                                <td><?php echo $d['id_dbeli']; ?></td>
+                                                <?php
+                                                    $sql3 ="select s.nama_supplier, h.tanggal_beli from supplier s
+                                                            join hbeli h on h.id_supplier=s.id_supplier
+                                                            join dbeli d on d.id_hbeli=h.id_hbeli
+                                                            where d.id_dbeli='".$d['id_dbeli']."'";
+                                                    $query3 = $this->db->query($sql3); 
+                                                    $currSup = $query3->result_array(); 
+                                                ?>
+                                                <td><?php echo $currSup[0]['nama_supplier']; ?></td>
+                                                <td><?php echo $currSup[0]['tanggal_beli']; ?></td>
+                                                <td><?php echo $d['nama_pembelian']; ?></th>                                                                         
+                                                <td style="text-align: right;">Rp <?php echo number_format((int)$d['subtotal']/(int)$d['jumlah_beli'], 0, ".", "."); ?></td>
+                                                <td><?php echo number_format($d['jumlah_beli'], 0, ".", ".") ; ?></td>
+                                                <td style="text-align: right;">Rp <span class="subtotals"><?php echo number_format($d['subtotal'], 0, ".", "."); ?></span></td>
+                                            </tr>
+                                            <?php endforeach; ?>
+                                        </tbody>
+
+                                    </table>
+                                </div>
                             </div>
                         </div>
                                     

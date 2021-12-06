@@ -140,8 +140,8 @@
                                                 </select>
                                             </div>
                                             <div class="form-group">
-                                                <label for="nama">Tanggal Pembayaran</label>
-                                                <input type="date" name="tglp" class="form-control" id="tglBeli" placeholder="Tanggal Pembayaran">
+                                                <label for="nama">Tanggal Pembelian</label>
+                                                <input type="date" name="tglp" value="<?php echo date('Y-m-d'); ?>" class="form-control" id="tglBeli" placeholder="Tanggal Pembayaran">
                                             </div>
                                             <!-- /.card-body -->
                                             
@@ -175,7 +175,6 @@
                                                 <thead>
                                                     <tr>
                                                         <th>id transaksi</th>
-                                                        <th>id header</th>
                                                         <th>nama pembelian</th>
                                                         <th>harga satuan</th>
                                                         <th>jumlah</th>
@@ -187,21 +186,19 @@
                                                     <?php foreach($karyawan as $d): ?>
                                                     <tr>
                                                         <td><?php echo $d['id_dbeli']; ?></td>
-                                                        <td><?php echo $d['id_hbeli']; ?></td>
                                                         <td><?php echo $d['nama_pembelian']; ?></td>
-                                                        <td><?php echo $d['subtotal']/$d['jumlah_beli']; ?></td>
+                                                        <td style="text-align: right;">Rp <?php echo number_format($d['subtotal']/$d['jumlah_beli'], 0, ".", "."); ?></td>
                                                         <td><?php echo $d['jumlah_beli']; ?></td>
-                                                        <td class="subtotals"><?php echo $d['subtotal']; ?></td>
+                                                        <td style="text-align: right;">Rp <span class="subtotals"><?php echo number_format($d['subtotal'], 0, ".", "."); ?></span></td>
                                                         <td>
-                                                        <form action="<?= base_url() ?>transaksi/HapusDetailPembelian" method="post">
-                                                            <input type="hidden" name="idh" value="<?php echo $d['id_hbeli']; ?>">
-                                                            <input type="hidden" name="idd" value="<?php echo $d['id_dbeli']; ?>">
+                                                            <form action="<?= base_url() ?>transaksi/HapusDetailPembelian" method="post">
+                                                                <input type="hidden" name="idh" value="<?php echo $d['id_hbeli']; ?>">
+                                                                <input type="hidden" name="idd" value="<?php echo $d['id_dbeli']; ?>">
 
-                                                            <input type="hidden" id="<?php echo $d['id_dbeli']; ?>IdSup" name="idSup">
-                                                            <input type="hidden" id="<?php echo $d['id_dbeli']; ?>TglBeli" name="tglBeli">
-                                                            <button class="btn btn-primary" id="<?php echo $d['id_dbeli']; ?>" style="background-color: red;">Cancel</button>
-                                                        </form>
-
+                                                                <input type="hidden" id="<?php echo $d['id_dbeli']; ?>IdSup" name="idSup">
+                                                                <input type="hidden" id="<?php echo $d['id_dbeli']; ?>TglBeli" name="tglBeli">
+                                                                <button class="btn btn-primary" id="<?php echo $d['id_dbeli']; ?>" style="background-color: red;">Cancel</button>
+                                                            </form>
                                                         </td>
                                                     </tr>
                                                     <?php endforeach; ?>
@@ -209,7 +206,7 @@
                                             </table>
                                         </div>
                                         <div class="form-group">
-                                            <h4>Total: <span id="total">0</span></h4>
+                                            <h4>Total: Rp <span id="total">0</span></h4>
                                         </div>
                                     </div>
                                     <div class="card-footer">
@@ -257,10 +254,13 @@
                 var total = 0;
                 $('.subtotals').each(function () {
                     // console.log($(this).text());
-                    total+=parseInt($(this).text());
+                    var currSub=$(this).text();
+                    currSub=currSub.replaceAll(".", "");
+                    total+=parseInt(currSub);
                 });
-                // $('table tfoot td').eq(index).text('Total: ' + total);
-                $('#total').text(total);
+                $('#total').text(total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."));
+
+                
 
                 <?php
                     if(isset($idSup)){

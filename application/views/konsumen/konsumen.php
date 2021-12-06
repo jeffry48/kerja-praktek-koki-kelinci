@@ -32,6 +32,62 @@
         tr:nth-child(even) {
           background-color: #dddddd;
         }
+                
+        @media (max-width: 800px) {
+            /* .row{
+                margin-left: 1%;
+                margin-right: 1%;
+            } */
+            .col-sm-6{
+                width: 50%;
+                float: left;
+            }
+            .btn{
+                margin-top: 2%;
+                /* margin-left: 1%; */
+            }
+            
+            /* Force table to not be like tables anymore */
+            table, thead, tbody, th, td, tr { 
+                display: block; 
+            }
+            
+            /* Hide table headers (but not display: none;, for accessibility) */
+            thead tr { 
+                position: absolute;
+                top: -9999px;
+                left: -9999px;
+            }
+            
+            tr { border: 1px solid #ccc; }
+            
+            td { 
+                /* Behave  like a "row" */
+                border: none;
+                border-bottom: 1px solid #eee; 
+                position: relative;
+            }
+            
+            td:before { 
+                /* Now like a table header */
+                /* position: absolute; */
+                /* Top/left values mimic padding */
+                
+                width: 45%; 
+                padding-right: 10px; 
+                white-space: nowrap;
+            }
+            
+            /*
+            Label the data
+            */
+            td:nth-of-type(1):before { content: "Id Pelanggan"; }
+            td:nth-of-type(2):before { content: "Nama Pelanggan"; }
+            td:nth-of-type(3):before { content: "Alamat Pelanggan"; }
+            td:nth-of-type(4):before { content: "Nomor Telepon Pelanggan"; }
+            td:nth-of-type(5):before { content: "Action"; }
+            
+        }
     </style>
 </head>
 <body class="hold-transition skin-blue sidebar-mini sidebar-collapse">
@@ -89,35 +145,45 @@
                                     <br>
                                     <div class="table-responsive">
                                         <table class="table">
-                                            <tr>
-                                                <th>Id Pelanggan</th>
-                                                <th>Id Karyawan</th>
-                                                <th>Nama Pelanggan</th>
-                                                <th>Alamat Pelanggan</th>
-                                                <th>Nomor Telepon Pelanggan</th>
-                                                <th colspan="2">Action</th>
-                                            </tr>
-                                            <?php foreach($karyawan as $d): ?>
+                                            <thead>
                                                 <tr>
-                                                    <td><?php echo $d['id_konsumen']; ?></td>
-                                                    <td><?php echo $d['id_karyawan']; ?></td>
-                                                    <td><?php echo $d['nama_konsumen']; ?></td>
-                                                    <td><?php echo $d['alamat_konsumen']; ?></td>
-                                                    <td><?php echo $d['no_telp_konsumen']; ?></td>
-                                                    <td>
-                                                        <form action="<?= base_url() ?>HapusKonsumen" method="post">
-                                                            <input type="submit" class="btn btn-info pull-left" value = "Hapus" style="">
-                                                            <input type="hidden" name="id" value="<?= $d['id_konsumen']; ?>">
-                                                        </form>
-                                                    </td>
-                                                    <form action="<?= base_url() ?>KeUpdateKonsumen" method="post">
-                                                        <td>
-                                                            <input type="submit" class="btn btn-info pull-left" value = "Update" style="">
-                                                            <input type="hidden" name="id" value="<?= $d['id_konsumen']; ?>">
-                                                        </td>
-                                                    </form>
+                                                    <th>Id Pelanggan</th>
+                                                    <th>Nama Pelanggan</th>
+                                                    <th>Alamat Pelanggan</th>
+                                                    <th>Nomor Telepon Pelanggan</th>
+                                                    <th colspan="2">Action</th>
                                                 </tr>
-                                            <?php endforeach; ?>
+                                            </thead>
+                                            <tbody>
+                                                <?php foreach($karyawan as $d): ?>
+                                                    <tr>
+                                                        <td><?php echo $d['id_konsumen']; ?></td>
+                                                        <td><?php echo $d['nama_konsumen']; ?></td>
+                                                        <td><?php echo $d['alamat_konsumen']; ?></td>
+                                                        <td><?php echo $d['no_telp_konsumen']; ?></td>
+                                                        <td>
+                                                            <div class="btn-group">
+                                                                <div class="col-sm-6">
+                                                                    <form action="<?= base_url() ?>HapusKonsumen" method="post">
+                                                                        <input type="submit" class="btn btn-info pull-left" value = "Hapus" style="">
+                                                                        <input type="hidden" name="id" value="<?= $d['id_konsumen']; ?>">
+                                                                    </form>
+                                                                </div>
+                                                                <div class="col-sm-6">
+                                                                    <form action="<?= base_url() ?>KeUpdateKonsumen" method="post">
+                                                                        <input type="submit" class="btn btn-info pull-left" value = "Update" style="">
+                                                                        <input type="hidden" name="id" value="<?= $d['id_konsumen']; ?>">
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                            
+
+                                                        </td>
+                                                    </tr>
+                                                <?php endforeach; ?>
+                                            </tbody>
+
+
                                         </table>
                                     </div>
                                 </div>
