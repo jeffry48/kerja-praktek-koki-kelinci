@@ -48,6 +48,6 @@ class tambahPembelian extends CI_Controller {
         $data['karyawan'] = $this->Header_Beli->getAll();
         // $this->load->view('pembelian/cari_pembelian.php',$data);
         $_SESSION['data']=$data;
-        redirect(base_url()."transaksi/TambahPembelian");
+        redirect($this->config->item('backend_server_url')."transaksi/pembelian");
     }
 }

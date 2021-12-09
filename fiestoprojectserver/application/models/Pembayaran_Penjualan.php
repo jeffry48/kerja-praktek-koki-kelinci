@@ -50,4 +50,9 @@ class Pembayaran_Penjualan extends CI_Model
         );
         $this->db->insert('pjual',$data);
     }
+    public function deleteByHeader($idh)
+    {
+        $query=$this->db->query("delete from pjual where id_hjual='".$idh."'");
+        return $query;
+    }
 }

@@ -114,7 +114,7 @@
                             <div class="col-sm-6">
                                 <h1>Pembayaran Pembelian </h1>
                                 <br>
-                                <button type="submit" class="btn btn-primary"> <a href="<?= base_url() ?>transaksi/Pembelian" style="color:white;">Kembali</a></button>
+                                <button type="submit" class="btn btn-primary"> <a href="<?= $this->config->item('backend_server_url') ?>transaksi/Pembelian" style="color:white;">Kembali</a></button>
                             <div>
                 </div>
                         </div>
@@ -133,7 +133,7 @@
                                     </div>
                                     <!-- /.card-header -->
                                     <!-- form start -->
-                                    <form action="<?= base_url() ?>transaksi/KeNotaPembelian" method="post">
+                                    <form action="<?= $this->config->item('backend_server_url') ?>transaksi/KeNotaPembelian" method="post">
                                         <div class="card-body">
                                             <div class="form-group">
                                                 <?php foreach($karyawan as $d): ?>
@@ -173,7 +173,7 @@
                                     </div>
                                     <!-- /.card-header -->
                                     <!-- form start -->
-                                    <form action="<?= base_url() ?>transaksi/TambahPembayaran" method="post">
+                                    <form action="<?= $this->config->item('backend_server_url') ?>transaksi/TambahPembayaran" method="post">
                                         <div class="card-body">
                                             <div class="form-group">
                                             <?php foreach($karyawan as $d): ?>

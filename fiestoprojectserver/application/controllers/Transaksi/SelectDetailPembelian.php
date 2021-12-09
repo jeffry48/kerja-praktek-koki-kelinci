@@ -31,6 +31,5 @@ class SelectDetailPembelian extends CI_Controller {
         $data['jml'] = $jml;
         $data['hrg'] = $hrg;
         $this->load->view('pembelian/update_pembelian.php',$data);
-        // redirect('pembeliancari_pembelian');
     }
 }

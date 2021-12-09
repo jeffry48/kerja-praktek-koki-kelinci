@@ -26,6 +26,6 @@ class Updatepenjualan extends CI_Controller {
         $total=(int)$result[0]["sum(subtotal)"];
         $this->Header_Jual->updateTotal($idh,$total);
         
-        redirect('transaksi/penjualan');
+        return redirect($this->config->item('backend_server_url')."transaksi/penjualan");
     }
 }

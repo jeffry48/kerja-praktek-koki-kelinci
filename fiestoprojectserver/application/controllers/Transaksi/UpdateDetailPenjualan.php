@@ -37,7 +37,8 @@ class updateDetailPenjualan extends CI_Controller {
         // var_dump($data['idKon']);
         // var_dump($data['tglJual']);
 
-        $this->load->view('penjualan/update_penjualan.php',$data);
-        
+        // $this->load->view('penjualan/update_penjualan.php',$data);
+        $_SESSION['data']=$data;
+        return redirect(base_url()."transaksi/UpdateDetailPenjualan");
     }
 }

@@ -27,6 +27,6 @@ class Updatepembelian extends CI_Controller {
         $total=(int)$result[0]["sum(subtotal)"];
         $this->Header_Beli->updateTotal($idh, $total);
         
-        redirect("transaksi/pembelian");
+        return redirect($this->config->item('backend_server_url')."transaksi/pembelian");
     }
 }

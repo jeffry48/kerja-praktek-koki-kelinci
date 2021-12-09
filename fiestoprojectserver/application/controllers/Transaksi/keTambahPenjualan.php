@@ -35,7 +35,9 @@ class keTambahPenjualan extends CI_Controller {
         $data['karyawan'] = $this->Detail_Jual->getByHeader($id1);
         $data['karyawan1'] = $this->Customer->getAll();
         $data['karyawan2'] = $this->Produk_model->getAllProduk();
-        $this->load->view('penjualan/tambah_penjualan.php',$data);
+        // $this->load->view('penjualan/tambah_penjualan.php',$data);
+        $_SESSION['data']=$data;
+        return redirect(base_url()."transaksi/keTambahPenjualan");
         
     }
 }

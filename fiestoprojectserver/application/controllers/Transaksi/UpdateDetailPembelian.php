@@ -27,6 +27,8 @@ class updateDetailPembelian extends CI_Controller {
 
         $data['karyawan'] = $this->Header_Beli->getOneData($idh);
         $data['karyawan1'] = $this->Detail_Beli->getByHeader($idh);
-        $this->load->view('pembelian/update_pembelian.php',$data);
+        // $this->load->view('pembelian/update_pembelian.php',$data);
+        $_SESSION['data']=$data;
+        redirect(base_url()."transaksi/UpdateDetailPembelian");
     }
 }

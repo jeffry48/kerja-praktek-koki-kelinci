@@ -149,7 +149,7 @@
                                         <h3 class="card-title">Pencarian Transaksi</h3>
                                     </div>
                                     <br>
-                                    <form action="<?= base_url()?>transaksi/cariPembelian" method="POST">
+                                    <form action="<?= $this->config->item('backend_server_url')?>transaksi/cariPembelian" method="POST">
                                         <div class="col-sm-6" style="float: left;">
                                             <!-- /.card-header -->
                                             <!-- form start -->
@@ -233,14 +233,14 @@
                                             </div>
                                             <div class="col-sm-3 custom">
                                                 <!-- hapus -->
-                                                <form action="<?= base_url() ?>transaksi/HapusPembelian" method="POST">
+                                                <form action="<?= $this->config->item('backend_server_url') ?>transaksi/HapusPembelian" method="POST">
                                                     <input type="hidden" name="idh" value="<?php echo $d['id_hbeli']; ?>">
                                                     <button class="btn btn-info pull-left" style="margin-left:1%;">hapus</button>
                                                 </form>
                                             </div>
                                             <div class="col-sm-3 custom">
                                                 <!-- pembayaran -->
-                                                <form action="<?= base_url()?>transaksi/kePembayaranPembelian" method="POST">
+                                                <form action="<?= $this->config->item('backend_server_url')?>transaksi/kePembayaranPembelian" method="POST">
                                                     <input type="hidden" name="idh" value="<?php echo $d['id_hbeli']; ?>">
                                                     <button class="btn btn-info pull-left" style="margin-left: 1%;">bayar</button>
                                                 </form>

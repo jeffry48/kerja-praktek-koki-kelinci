@@ -24,7 +24,9 @@ class keNotaPenjualan extends CI_Controller {
         $data['ids'] = $ids;
         $data['stat'] = $stat;
         $data['total'] = $total;
-        $this->load->view('penjualan/pembayaran_penjualan_sudah.php',$data);
+        // $this->load->view('penjualan/pembayaran_penjualan_sudah.php',$data);
+        $_SESSION['data']=$data;
+        return redirect(base_url()."transaksi/KeNotaPenjualan");
         
     }
 }

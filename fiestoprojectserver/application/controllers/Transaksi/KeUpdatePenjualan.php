@@ -13,14 +13,15 @@ class keUpdatePenjualan extends CI_Controller {
 
     public function index()
     {
-        
         $this->load->helper('url');
         $idh=$this->input->post('idh');
         $data['karyawan'] = $this->Header_Jual->getOneData($idh);
         $data['karyawan1'] = $this->Detail_Jual->getByHeader($idh);
         $data['karyawan2'] = $this->Customer->getAll();
         $data['karyawan3'] = $this->Produk_model->getAllProduk();
-        $this->load->view('penjualan/update_penjualan.php',$data);
+        // $this->load->view('penjualan/update_penjualan.php',$data);
+        $_SESSION['data']=$data;
+        return redirect(base_url()."transaksi/KeUpdatePenjualan");
     }
 }
 ?>

@@ -60,6 +60,8 @@ class TambahPelunasan extends CI_Controller {
         $data['karyawan'] = $this->Header_Jual->getOneData($idh);
         $data['karyawan1'] = $this->Detail_Jual->getByHeader($idh);
         $data['karyawan2'] = $this->Pembayaran_Penjualan->getByHeader($idh);
-        $this->load->view('penjualan/pembayaran_penjualan.php',$data);
+        // $this->load->view('penjualan/pembayaran_penjualan.php',$data);
+        $_SESSION['data']=$data;
+        return redirect(base_url()."transaksi/TambahPelunasan");
     }
 }

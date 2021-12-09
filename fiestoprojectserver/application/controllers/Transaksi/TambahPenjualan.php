@@ -45,6 +45,7 @@ class tambahPenjualan extends CI_Controller {
         $_SESSION['success']="berhasil tambah penjualan";
         $this->session->mark_as_flash('success');
         $data['karyawan'] = $this->Header_Jual->getAll();
-        $this->load->view('penjualan/cari_penjualan.php',$data);
-    }
+        // $this->load->view('penjualan/cari_penjualan.php',$data);
+        $_SESSION['data']=$data;
+        redirect($this->config->item('backend_server_url')."transaksi/penjualan");    }
 }

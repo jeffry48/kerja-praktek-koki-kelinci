@@ -38,6 +38,8 @@ class cariPembelian extends CI_Controller {
         // var_dump($data['karyawan'][0]);
         // var_dump($resultHead);
         
-        $this->load->view('pembelian/cari_pembelian.php',$data);
+        // $this->load->view('pembelian/cari_pembelian.php',$data);
+        $_SESSION['data']=$data;
+        return redirect(base_url()."transaksi/cariPembelian");
     }
 }

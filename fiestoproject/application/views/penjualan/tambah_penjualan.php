@@ -99,7 +99,7 @@
                             <div class="col-sm-6">
                                 <h1>Tambah Penjualan Baru</h1>
                                 <br>
-                                <button type="submit" class="btn btn-primary"> <a href="<?= base_url() ?>transaksi/Penjualan" style="color:white;">Kembali</a></button>
+                                <button type="submit" class="btn btn-primary"> <a href="<?= $this->config->item('backend_server_url') ?>transaksi/Penjualan" style="color:white;">Kembali</a></button>
                             <div>
                 </div>
                         </div>
@@ -119,7 +119,7 @@
                                     <!-- /.card-header -->
                                     <!-- form start -->
                                     <div class="card-body">
-                                        <form id="formTambahJual" action="<?= base_url() ?>transaksi/TambahPenjualan" method="post">
+                                        <form id="formTambahJual" action="<?= $this->config->item('backend_server_url') ?>transaksi/TambahPenjualan" method="post">
                                             <div class="form-group">
                                                 <label for="nama">Konsumen</label>
                                                 <select name="kons" id="idKon" class="form-control">
@@ -134,7 +134,7 @@
                                             </div>
                                         <!-- /.card-body -->
                                         </form>
-                                        <form action="<?= base_url() ?>transaksi/TambahDetailPenjualan" method="post">
+                                        <form action="<?= $this->config->item('backend_server_url') ?>transaksi/TambahDetailPenjualan" method="post">
                                                 <div class="form-group">
                                                     <label for="nama">Nama Pesanan</label>
                                                     <select name = "produk" id="nama" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="nama pesanan">
@@ -183,7 +183,7 @@
                                                     <td><?php echo number_format($d['jumlah_jual'], 0, ".", "."); ?></td>
                                                     <td class="harga">Rp <span class="subtotals"><?php echo number_format($d['subtotal'], 0, ".", "."); ?></span></td>
                                                     <td>
-                                                        <form action="<?= base_url() ?>transaksi/HapusDetailPenjualan" method="post">
+                                                        <form action="<?= $this->config->item('backend_server_url') ?>transaksi/HapusDetailPenjualan" method="post">
                                                             <input type="hidden" name="idh" value="<?php echo $d['id_hjual']; ?>">
                                                             <input type="hidden" name="idd" value="<?php echo $d['id_djual']; ?>">
                                                             

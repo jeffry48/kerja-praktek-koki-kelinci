@@ -101,7 +101,7 @@
             #tabelTrans td:nth-of-type(1):before { content: "id transaksi"; }
             #tabelTrans td:nth-of-type(2):before { content: "tanggal"; }
             #tabelTrans td:nth-of-type(3):before { content: "total"; }
-            #tabelTrans td:nth-of-type(4):before { content: "id konsumen"; }
+            #tabelTrans td:nth-of-type(4):before { content: "nama konsumen"; }
             #tabelTrans td:nth-of-type(5):before { content: "status"; }
             #tabelTrans td:nth-of-type(6):before { content: "action"; }
 
@@ -128,7 +128,7 @@
                             <div class="col-sm-6">
                                 <h1>Daftar Penjualan</h1>
                                 <br>
-                                <button type="submit" id="tambahBtn" class="btn btn-primary"> <a href="<?= base_url() ?>transaksi/keTambahpenjualan">Tambah Penjualan</a></button>
+                                <button type="submit" id="tambahBtn" class="btn btn-primary"> <a href="<?= $this->config->item('backend_server_url')?>transaksi/keTambahpenjualan">Tambah Penjualan</a></button>
                             </div>
                         </div>
                     </div><!-- /.container-fluid -->
@@ -148,7 +148,7 @@
                                             <h3 class="card-title">Pencarian</h3>
                                         </div>
                                         <br>
-                                        <form action="<?= base_url()?>transaksi/cariPenjualan" method="POST">
+                                        <form action="<?= $this->config->item('backend_server_url')?>transaksi/cariPenjualan" method="POST">
                                             <div class="col-sm-6" style="float: left;">
                                                 <input type="text" name = "idh" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="Id Transaksi">
                                                 <br>
@@ -230,7 +230,7 @@
                                         <th>id transaksi</th>
                                         <th>tanggal</th>
                                         <th>total</th>
-                                        <th>id konsumen</th>
+                                        <th>nama konsumen</th>
                                         <th>status</th>
                                         <th>action</th>
                                     </tr>
@@ -238,31 +238,36 @@
                                 <tbody>
                                     <?php foreach($karyawan as $d): ?>
                                     <tr>
+                                        <?php
+                                            $sql2="SELECT * FROM konsumen WHERE id_konsumen='".$d['id_konsumen']."'";
+                                            $query2 = $this->db->query($sql2); 
+                                            $konsumen=$query2->result_array();
+                                        ?>
                                         <td><?php echo $d['id_hjual']; ?></td>
                                         <td><?php echo $d['tanggal_jual']; ?></td>
                                         <td class="harga">Rp <?php echo number_format($d['total_jual'], 0, ".", "."); ?></td>
-                                        <td><?php echo $d['id_konsumen']; ?></td>
+                                        <td><?php echo $konsumen[0]['nama_konsumen']; ?></td>
                                         <td><?php echo $d['status_jual']; ?></td>
                                         <td>
                                             <center>
                                                 <div class="btn-group" role="group">
                                                     <div class="col-sm-3 custom">
                                                         <!-- update -->
-                                                        <form action="<?=base_url()?>transaksi/KeUpdatePenjualan" method="POST">
+                                                        <form action="<?=$this->config->item('backend_server_url')?>transaksi/KeUpdatePenjualan" method="POST">
                                                             <input type="hidden" name="idh" value="<?php echo $d['id_hjual']; ?>">
                                                             <button class="btn btn-info pull-left">update</button>
                                                         </form>
                                                     </div>
                                                     <div class="col-sm-3 custom">
                                                         <!-- hapus -->
-                                                        <form action="<?= base_url() ?>transaksi/HapusPenjualan" method="POST">
+                                                        <form action="<?= $this->config->item('backend_server_url') ?>transaksi/HapusPenjualan" method="POST">
                                                             <input type="hidden" name="idh" value="<?php echo $d['id_hjual']; ?>">
                                                             <button class="btn btn-info pull-left" style="margin-left:1%;">hapus</button>
                                                         </form>
                                                     </div>
                                                     <div class="col-sm-3 custom">
                                                         <!-- bayar -->
-                                                        <form action="<?= base_url()?>transaksi/kePembayaranPenjualan" method="POST">
+                                                        <form action="<?= $this->config->item('backend_server_url')?>transaksi/kePembayaranPenjualan" method="POST">
                                                             <input type="hidden" name="idh" value="<?php echo $d['id_hjual']; ?>">
                                                             <button class="btn btn-info pull-left" style="margin-left: 1%;">bayar</button>
                                                         </form>

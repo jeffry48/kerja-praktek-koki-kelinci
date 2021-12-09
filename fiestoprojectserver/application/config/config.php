@@ -27,6 +27,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $config['base_encryption'] = "fiestopr0j3cts3rv3r";
 $config['base_app'] = "fiestoproject";
 $config['base_url'] = 'http://' . $_SERVER['HTTP_HOST'] . '/' . $config['base_app'] . '/';
+$config['backend_server_url'] = 'http://' . $_SERVER['HTTP_HOST'] . '/fiestoprojectserver/';
+
 //$config['base_url']    = 'http://'.$_SERVER['HTTP_HOST'].'/';
 
 /*

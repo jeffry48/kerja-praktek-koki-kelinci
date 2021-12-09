@@ -1,5 +1,5 @@
 <?php
-class pembelian extends CI_Controller {
+class cariPembelian extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
@@ -8,8 +8,9 @@ class pembelian extends CI_Controller {
     }
 
     public function index()
-    {  
+    {
         $this->load->helper('url');
+
         $data=$_SESSION['data'];
         $this->load->view('pembelian/cari_pembelian.php',$data);
     }

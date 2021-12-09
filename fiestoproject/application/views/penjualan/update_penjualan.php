@@ -76,7 +76,7 @@
             Label the data
             */
             td:nth-of-type(1):before { content: "id transaksi"; }
-            td:nth-of-type(2):before { content: "id produk"; }
+            td:nth-of-type(2):before { content: "nama produk"; }
             td:nth-of-type(3):before { content: "harga satuan"; }
             td:nth-of-type(4):before { content: "jumlah"; }
             td:nth-of-type(5):before { content: "sub total"; }
@@ -98,7 +98,7 @@
                             <div class="col-sm-6">
                                 <h1>Update Penjualan </h1>
                                 <br>
-                                <button type="submit" class="btn btn-primary"> <a href="<?= base_url() ?>transaksi/Penjualan" style="color:white;">Kembali</a></button>
+                                <button type="submit" class="btn btn-primary"> <a href="<?= $this->config->item('backend_server_url') ?>transaksi/Penjualan" style="color:white;">Kembali</a></button>
                             <div>
                 </div>
                         </div>
@@ -118,7 +118,7 @@
                                 <!-- /.card-header -->
                                 <!-- form start -->
                                 <div class="card-body">
-                                    <form id="formUpdateJual" action="<?= base_url() ?>transaksi/UpdatePenjualan" method="post">
+                                    <form id="formUpdateJual" action="<?= $this->config->item('backend_server_url') ?>transaksi/UpdatePenjualan" method="post">
                                         <?php foreach($karyawan as $d): ?>
                                             <div class="form-group">
                                                 <input type="hidden" name="idh" value="<?php echo $d['id_hjual']; ?>">
@@ -136,7 +136,7 @@
                                             </div>
                                         <?php endforeach; ?>
                                     </form>
-                                    <form action="<?= base_url() ?>transaksi/updateDetailPenjualan" method="post">
+                                    <form action="<?= $this->config->item('backend_server_url') ?>transaksi/updateDetailPenjualan" method="post">
                                             <div class="form-group">
                                                 <label for="nama">Nama Pesanan</label>
                                                 <select name = "produk" id="nama" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;" placeholder="nama pesanan">
@@ -172,7 +172,7 @@
                                         <thead>
                                             <tr>
                                                 <th>id transaksi</th>
-                                                <th>id produk</th>
+                                                <th>nama produk</th>
                                                 <th>harga satuan</th>
                                                 <th>jumlah</th>
                                                 <th>sub total</th>
@@ -182,8 +182,13 @@
                                         <tbody>
                                             <?php foreach($karyawan1 as $d): ?>
                                             <tr>
+                                                <?php
+                                                    $sql2="SELECT * FROM produk WHERE id_produk='".$d['id_produk']."'";
+                                                    $query2 = $this->db->query($sql2); 
+                                                    $currProduk=$query2->result_array();
+                                                ?>
                                                 <td><?php echo $d['id_djual']; ?></td>
-                                                <td><?php echo $d['id_produk']; ?></td>
+                                                <td><?php echo $currProduk[0]['nama_produk']; ?></td>
                                                 <td class="harga">Rp <?php echo number_format($d['subtotal']/$d['jumlah_jual'], 0, ".", "."); ?></td>
                                                 <td><?php echo number_format($d['jumlah_jual'], 0, ".", "."); ?></td>
                                                 <td class="harga">Rp <span class="subtotals"><?php echo number_format($d['subtotal'], 0, ".", "."); ?></span></td>

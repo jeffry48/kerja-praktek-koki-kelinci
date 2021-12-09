@@ -28,6 +28,9 @@ class hapusDetailPenjualan extends CI_Controller {
         $data['idKon']=$this->input->post('idKon');
         $data['tglJual']=$this->input->post('tglJual');
 
-        $this->load->view('penjualan/tambah_penjualan.php',$data);
+        // $this->load->view('penjualan/tambah_penjualan.php',$data);
+        $_SESSION['data']=$data;
+        return redirect(base_url()."transaksi/HapusDetailPenjualan");
+
     }
 }

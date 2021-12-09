@@ -50,4 +50,9 @@ class Pembayaran_Pembelian extends CI_Model
         );
         $this->db->insert('pbeli',$data);
     }
+    public function deleteByHeader($idh)
+    {
+        $query=$this->db->query("delete from pbeli where id_hbeli='".$idh."'");
+        return $query;
+    }
 }

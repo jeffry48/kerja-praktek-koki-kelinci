@@ -16,6 +16,8 @@ class kePembayaranPembelian extends CI_Controller {
         $data['karyawan'] = $this->Header_Beli->getOneData($idh);
         $data['karyawan1'] = $this->Detail_Beli->getByHeader($idh);
         $data['karyawan2'] = $this->Pembayaran_Pembelian->getByHeader($idh);
-        $this->load->view('pembelian/pembayaran_pembelian.php',$data);
+        // $this->load->view('pembelian/pembayaran_pembelian.php',$data);
+        $_SESSION['data']=$data;
+        return redirect(base_url()."transaksi/kePembayaranPembelian");
     }
 }

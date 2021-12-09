@@ -99,9 +99,9 @@
                     <div class="container-fluid">
                         <div class="row mb-2">
                             <div class="col-sm-6">
-                                <h1>Pembayaran penjualan Sudah</h1>
+                                <h1></h1>
                                 <br>
-                                <button type="submit" class="btn btn-primary"> <a href="<?= base_url() ?>transaksi/KePembayaranpenjualan" style="color:white;">Kembali</a></button>
+                                <button type="submit" class="btn btn-primary"> <a href="<?= $this->config->item('backend_server_url') ?>transaksi/penjualan" style="color:white;">Kembali</a></button>
                             <div>
                 </div>
                         </div>
@@ -120,7 +120,7 @@
                                     </div>
                                     <!-- /.card-header -->
                                     <!-- form start -->
-                                    <form action="<?= base_url() ?>transaksi/KeNotapenjualan" method="post">
+                                    <form action="<?= $this->config->item('backend_server_url') ?>transaksi/KeNotapenjualan" method="post">
                                         <div class="card-body">
                                             <?php foreach($karyawan as $d): ?>
                                                 <div class="form-group">

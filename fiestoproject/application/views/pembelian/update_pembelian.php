@@ -108,7 +108,7 @@
                             <div class="col-sm-6">
                                 <h1>Update Pembelian</h1>
                                 <br>
-                                <button type="submit" class="btn btn-primary"> <a href="<?= base_url() ?>transaksi/Pembelian" style="color:white;">Kembali</a></button>
+                                <button type="submit" class="btn btn-primary"> <a href="<?= $this->config->item('backend_server_url')?>transaksi/Pembelian" style="color:white;">Kembali</a></button>
                             <div>
                         </div>
                     </div><!-- /.container-fluid -->
@@ -128,7 +128,7 @@
                                     <!-- form start -->
                                     
                                     <div class="card-body">
-                                        <form action="<?= base_url() ?>transaksi/UpdatePembelian" id="formUpdate" method="post">
+                                        <form action="<?= $this->config->item('backend_server_url') ?>transaksi/UpdatePembelian" id="formUpdate" method="post">
                                             <?php foreach($karyawan as $d): ?>
                                                 <div class="form-group">
                                                     <!-- <h4>id header: <span>HBL0001</span></h4> -->
@@ -152,7 +152,7 @@
                                                 </div>
                                             <?php endforeach; ?>
                                         </form>
-                                        <form action="<?= base_url() ?>transaksi/UpdateDetailPembelian" method="post">
+                                        <form action="<?= $this->config->item('backend_server_url') ?>transaksi/UpdateDetailPembelian" method="post">
                                             <div class="form-group">
                                                 <!-- <h4>id detail: <span>DBL0006</span></h4> -->
                                                 <label for="nama">Nama Pembelian</label> 
@@ -200,7 +200,7 @@
                                                     <td><?php echo $d['jumlah_beli']; ?></td>
                                                     <td class="harga">Rp <span class="subtotals"><?php echo number_format($d['subtotal'], 0, ".", "."); ?></span></td>
                                                     <td>
-                                                        <form action="<?= base_url() ?>transaksi/SelectDetailPembelian" method="post">
+                                                        <form action="<?= $this->config->item('backend_server_url') ?>transaksi/SelectDetailPembelian" method="post">
                                                             <input type="hidden" name="idd" value="<?php echo $d['id_dbeli']; ?>">
                                                             <input type="hidden" name="idh" value="<?php echo $d['id_hbeli']; ?>">
                                                         </form>

@@ -63,7 +63,7 @@
                                     </div>
                                     <!-- /.card-header -->
                                     <!-- form start -->
-                                    <form action="<?= base_url() ?>UbahPass" method="post">
+                                    <form action="<?= $this->config->item('backend_server_url') ?>UbahPass" method="post">
                                         <div class="card-body">
                                             <div class="form-group">
                                                 <label for="nama">Password Lama</label>
