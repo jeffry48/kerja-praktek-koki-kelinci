@@ -1,0 +1,158 @@
+FEATURE LIST
+
+m_suppliers
+    Manajemen Supplier
+    Tambah Data Supplier Baru
+    Ubah Data Supplier
+    Hapus Data Supplier
+    Cari Data Supplier
+
+m_customers > is_special tinyint(1)
+    Manajemen Konsumen
+    Tambah Data Konsumen Baru
+    Ubah Data Konsumen
+    Hapus Data Konsumen
+    Cari Data Konsumen
+
+m_products
+    Manajemen Produk
+    Tambah Data Produk Baru
+    Ubah Data Produk
+    Hapus Data Produk
+    Cari Data Produk
+
+m_units
+    Manajemen Unit
+    Tambah Data Unit Baru
+    Ubah Data Unit
+    Hapus Data Unit
+    Cari Data Unit
+
+m_tags
+    Manajemen Tag
+    Tambah Data Tag Baru
+    Ubah Data Tag
+    Hapus Data Tag
+    Cari Data Tag
+
+t_book_keepings
+    Manajemen Kas Kecil
+    Tambah Data Kas Kecil Baru
+    Ubah Data Kas Kecil
+    Hapus Data Kas Kecil
+    Cari Data Kas Kecil
+
+t_purchases
+    Manajemen Pembelian (COGSV)
+    Tambah Data Pembelian Baru
+    Ubah Data Pembelian
+    Hapus Data Pembelian
+    Cari Data Pembelian
+    Pembayaran Pembelian
+    Tutup Data Pembelian
+
+t_purchase_returns
+    Manajemen Retur Pembelian (COGSV)
+    Tambah Data Retur Pembelian Baru
+    Ubah Data Retur  Pembelian
+    Hapus Data Retur Pembelian
+    Cari Data Retur Pembelian
+    Pengembalian Dana Retur Pembelian
+    Tutup Data Retur Pembelian
+    Print Nota Retur Pembelian 
+
+t_sales
+    Manajemen Penjualan (COGSV)
+    Tambah Data Penjualan Baru
+    Ubah Data Penjualan
+    Hapus Data Penjualan
+    Cari Data Penjualan
+    Pembayaran Data Penjualan
+    Tutup Data Penjualan
+    Print Nota Penjualan 
+
+t_sale_returns
+    Manajemen Retur Penjualan (COGSV)
+    Tambah Data Retur Penjualan Baru
+    Ubah Data Retur  Penjualan
+    Hapus Data Retur Penjualan
+    Cari Data Retur Penjualan
+    Pengembalian Dana Retur Penjualan
+    Tutup Data Retur Penjualan
+    Print Retur Penjualan 
+
+t_notes
+    Manajemen Catatan Khusus Barang
+    Tambah Data Catatan Khusus Barang Baru
+    Ubah Data Catatan Khusus Barang
+    Hapus Data Catatan Khusus Barang
+    Cari Data Catatan Khusus Barang
+    Tutup Data Catatan Khusus Barang
+
+Laporan
+    Mutasi per transaksi per Periode
+    Mutasi per tanggal bayar per Periode
+    Penjualan per Periode
+    Pembelian per Periode
+    Kas Kecil per Periode
+    Side Job per Periode
+    Penagihan Utang Konsumen per Periode
+    Pembayaran Utang Supplier per Periode
+
+s_users
+    Manajemen Karyawan
+    Login Karyawan
+    Tambah Data Karyawan Baru
+    Ubah Data Karyawan
+    Hapus Data Karyawan
+    Cari Data Karyawan
+
+BUSINESS DESCRIPTION
+
+PEMBELIAN BARANG DARI SUPPLIER
+1. Perusahaan beli barang ke supplier.
+2. Ada 2 macam pengiriman barang, 1 barang dikirim langsung ke perusahaan, 2 barang dikirim langsung ke customer perusahaan.
+3. Nota bukti pengiriman barang akan dikirim kepada perusahaan.
+4. Pembayaran ke supplier akan dilakukan 30 hari setelah proses pengiriman barang dari perusahaan ke customer dilakukan.
+5. Cross check nota yang terbayar dilakukan bersama dengan supplier apabila, nota sudah benar, maka pembayaran akan dilakukan terbagi dalam beberapa kali pembayaran dalam 1 bulan.
+6. Bukti nota terbayar lunas akan dikirimkan kepada perusahaan.
+
+RETUR BARANG KE SUPPLIER
+1. Barang bisa di retur ke supplier ketika expired.
+2. Ada 2 macam pengiriman barang retur, 1 barang dikirim langsung dari perusahaan, 2 barang dikirim langsung dari customer perusahaan.
+3. Proses retur tidak akan berhubungan langsung dengan uang (apabila waktu pembelian pertama menggunakan nota 0095 maka pembayaran dilakukan untuk nota 0095, nota pengiriman retur 0103 akan digunakan dengan nominal 0)
+4. Ada 2 macam pengiriman barang retur, 1 barang dikirim langsung ke perusahaan, 2 barang dikirim langsung ke customer perusahaan.
+
+PENJUALAN BARANG KE CUSTOMER
+1. Perusahaan mendapatkan purchase order (dari penawaran ke customer atau request dari customer) dan dibuat nota.
+2. Ada 2 macam pengiriman barang, 1 barang dikirim langsung dari perusahaan,  2 barang dikirim langsung dari supplier.
+3. Setiap nota akan menghasilkan 1 atau lebih surat jalan (1 surat jalan HANYA BISA memiliki 1 nota) (untuk kasus khusus, request 1 surat jalan bisa 2 nota bisa dibuatkan 1 nota 1 surat jalan).
+4. Penagihan pembayaran ke custome akan dilakukan 35 hari setelah proses pengiriman barang dari perusahaan ke customer dilakukan.
+5. Nota akan dianggap lunas setelah seluruh tagihan selesai terbayar.
+
+RETUR BARANG DARI CUSTOMER
+1. Barang bisa di retur ke customer ketika expired atau rusak.
+2. Apabila sudah terbukti rusak atau expired, maka barang akan dikirimkan ke perusahaan.
+3. Proses retur tidak akan berhubungan langsung dengan uang (apabila waktu pembelian pertama menggunakan nota 0095 maka pembayaran dilakukan untuk nota 0095, nota pengiriman retur 0103 akan digunakan dengan nominal 0)
+4. Ada 2 macam pengiriman barang retur, 1 barang dikirim langsung ke customer, 2 barang dikirim langsung dari supplier.
+
+PENCATATAN KAS KECIL
+1. Setiap supir akan diberikan kas kecil yang akan digunakan untuk biaya2 selama pengiriman (parkir, tol, bensin, dll) yang akan WAJIB dicatat secara pribadi oleh setiap supir.
+2. Apabila terjadi hal yang dianggap kurang wajar maka catatan pribadi setiap supir dapat di cek.
+3. Uang kas kecil juga dapat digunakan untuk membayar biaya lain yang ditimbulkan perusahaan (pengiriman barang belum dibayar dan langsung diterima oleh perusahaan).
+
+SIDE JOB
+1. Apabila ada customer yang butuh bantuan untuk menjualkan barang (dalam alasan apa pun) maka bisa dibantu oleh perusaahaan, namun diluar kegiatan jual-beli barang utama.
+2. Perusahaan dapat membantu mencarikan customer pembeli.
+3. Perusahaan memastikan barang terkirim dari customer penjual sampai ke customer pembeli.
+4. Customer pembeli melakukan pembayaran terhadap barang ke perusahaan.
+5. Perusahaan melakukan pembayaran terhadap barang ke customer penjual.
+
+CATATAN BARANG
+1. Sewaktu melakukan stock opname atau pengecekan barang total, untuk barang yang tidak ditemukan / hilang dapat dibuatkan catatan barang hilang.
+2. Sewaktu melakukan stock opname atau pengecekan barang total, untuk barang yang tidak dalam keadaaan baik dapat dibuatkan catatan barang rusak.
+
+TAMBAHAN SPESIFIKASI
+1. Akan ada konsumen UMUM & konsumen KHUSUS dimana konsumen ini akan menandakan mayoritas transaksi yang akan dilakukan terhadap konsumen tersebut. Apabila konsumen UMUM akan sesekali melakukan transaksi KHUSUS, maka tidak harus merubah pada data konsumen namun bisa langsung diubah ketika melakukan transaksi.
+2. Laporan mutasi akan dibagi menjadi 2 yaitu mutasi per transaksi per periode dan mutasi per tanggal bayar per periode.
+3. Setiap laporan akan disajikan dalam bentuk PDF (F4 & A4), sedangkan surat - surat penunjang pengiriman dan tagihan akan disajikan dalam bentuk PDF (A5) disesuaikan dengan rangkap yang diperlukan. Print amplop juga akan diberikan untuk amplop kecil & amplop besar dalam bentuk PDF.

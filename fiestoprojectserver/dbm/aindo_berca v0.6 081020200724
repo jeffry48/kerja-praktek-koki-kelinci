@@ -1,0 +1,959 @@
+-- phpMyAdmin SQL Dump
+-- version 4.9.5
+-- https://www.phpmyadmin.net/
+--
+-- Host: localhost:3306
+-- Generation Time: Oct 08, 2020 at 08:24 AM
+-- Server version: 10.2.33-MariaDB-cll-lve
+-- PHP Version: 7.3.6
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `junaidi_bercainv`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ci_sessions`
+--
+
+CREATE TABLE `ci_sessions` (
+  `id` varchar(128) NOT NULL,
+  `ip_address` varchar(45) NOT NULL,
+  `timestamp` int(10) UNSIGNED NOT NULL DEFAULT 0,
+  `data` blob NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `logs`
+--
+
+CREATE TABLE `logs` (
+  `id` int(20) NOT NULL,
+  `time` datetime NOT NULL,
+  `username` varchar(20) NOT NULL,
+  `activity` text NOT NULL,
+  `system_log_id` int(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `m_hsg_principals`
+--
+
+CREATE TABLE `m_hsg_principals` (
+  `id` int(11) NOT NULL,
+  `name` varchar(50) NOT NULL DEFAULT '',
+  `location` int(11) NOT NULL DEFAULT 1,
+  `deleted` tinyint(1) NOT NULL DEFAULT 0,
+  `deleted_by` varchar(20) NOT NULL DEFAULT 'system',
+  `deleted_date` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `created_by` varchar(20) NOT NULL DEFAULT 'system',
+  `created_date` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `modified_by` varchar(20) NOT NULL DEFAULT 'system',
+  `modified_date` datetime NOT NULL DEFAULT '0000-00-00 00:00:00'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `m_hsg_principals`
+--
+
+INSERT INTO `m_hsg_principals` (`id`, `name`, `location`, `deleted`, `deleted_by`, `deleted_date`, `created_by`, `created_date`, `modified_by`, `modified_date`) VALUES
+(1, 'Philips Ind.commercial', 1, 0, 'system', '0000-00-00 00:00:00', 'system', '0000-00-00 00:00:00', 'system', '0000-00-00 00:00:00'),
+(2, 'GCX', 1, 0, 'system', '0000-00-00 00:00:00', 'system', '0000-00-00 00:00:00', 'system', '0000-00-00 00:00:00'),
+(3, 'Philips', 1, 0, 'system', '0000-00-00 00:00:00', 'system', '0000-00-00 00:00:00', 'system', '0000-00-00 00:00:00'),
+(4, 'Steris', 1, 0, 'system', '0000-00-00 00:00:00', 'system', '0000-00-00 00:00:00', 'system', '0000-00-00 00:00:00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `m_hsg_products`
+--
+
+CREATE TABLE `m_hsg_products` (
+  `id` int(11) NOT NULL,
+  `location` int(11) NOT NULL DEFAULT 1,
+  `hsg_principal` int(11) NOT NULL DEFAULT 0,
+  `name` varchar(255) NOT NULL DEFAULT '',
+  `product_number` varchar(50) NOT NULL DEFAULT '',
+  `quantity` int(11) NOT NULL DEFAULT 0,
+  `notes` varchar(255) NOT NULL DEFAULT '',
+  `deleted` tinyint(1) NOT NULL DEFAULT 0,
+  `deleted_by` varchar(20) NOT NULL DEFAULT 'system',
+  `deleted_date` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `created_by` varchar(20) NOT NULL DEFAULT 'system',
+  `created_date` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `modified_by` varchar(20) NOT NULL DEFAULT 'system',
+  `modified_date` datetime NOT NULL DEFAULT '0000-00-00 00:00:00'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `m_hsg_products`
+--
+
+INSERT INTO `m_hsg_products` (`id`, `location`, `hsg_principal`, `name`, `product_number`, `quantity`, `notes`, `deleted`, `deleted_by`, `deleted_date`, `created_by`, `created_date`, `modified_by`, `modified_date`) VALUES
+(1, 1, 1, 'Central CMS200 (16beds) - 863352', '863352', 2, '', 0, 'system', '0000-00-00 00:00:00', 'system', '0000-00-00 00:00:00', 'admin', '2020-10-06 14:52:14'),
+(2, 1, 1, 'Central PIIC IX 16 beds with caregiver - 866389', '866389', 1, '', 0, 'system', '0000-00-00 00:00:00', 'system', '0000-00-00 00:00:00', 'system', '0000-00-00 00:00:00'),
+(3, 1, 1, 'Central PIIC IX 16 beds ecat- 866389', '866389', 1, '', 0, 'system', '0000-00-00 00:00:00', 'system', '0000-00-00 00:00:00', 'system', '0000-00-00 00:00:00'),
+(4, 1, 3, 'Lumify S4-1 Bundle (Sector) - FUS6884', 'FUS6884', 4, '', 0, 'system', '0000-00-00 00:00:00', 'system', '0000-00-00 00:00:00', 'system', '0000-00-00 00:00:00'),
+(5, 1, 4, 'CMAX T2L Table Configuration - CMAXT2L413W', 'CMAXT2L413W', 1, '', 0, 'system', '0000-00-00 00:00:00', 'system', '0000-00-00 00:00:00', 'system', '0000-00-00 00:00:00'),
+(6, 1, 4, 'CMAX Table with Accessories - CMAXS2L413W', 'CMAXS2L413W', 1, '', 0, 'system', '0000-00-00 00:00:00', 'system', '0000-00-00 00:00:00', 'system', '0000-00-00 00:00:00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `m_isg_principals`
+--
+
+CREATE TABLE `m_isg_principals` (
+  `id` int(11) NOT NULL,
+  `name` varchar(50) NOT NULL DEFAULT '',
+  `location` int(11) NOT NULL DEFAULT 1,
+  `deleted` tinyint(1) NOT NULL DEFAULT 0,
+  `deleted_by` varchar(20) NOT NULL DEFAULT 'system',
+  `deleted_date` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `created_by` varchar(20) NOT NULL DEFAULT 'system',
+  `created_date` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `modified_by` varchar(20) NOT NULL DEFAULT 'system',
+  `modified_date` datetime NOT NULL DEFAULT '0000-00-00 00:00:00'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `m_isg_principals`
+--
+
+INSERT INTO `m_isg_principals` (`id`, `name`, `location`, `deleted`, `deleted_by`, `deleted_date`, `created_by`, `created_date`, `modified_by`, `modified_date`) VALUES
+(1, 'AGILENT TECHNOLOGIES', 1, 0, 'system', '0000-00-00 00:00:00', 'admin', '2020-10-06 14:03:02', 'admin', '2020-10-06 14:03:02');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `m_isg_products`
+--
+
+CREATE TABLE `m_isg_products` (
+  `id` int(11) NOT NULL,
+  `location` int(11) NOT NULL DEFAULT 1,
+  `isg_principal` int(11) NOT NULL DEFAULT 0,
+  `name` varchar(255) NOT NULL DEFAULT '',
+  `product_number` varchar(50) NOT NULL DEFAULT '',
+  `quantity` int(11) NOT NULL DEFAULT 0,
+  `notes` varchar(255) NOT NULL DEFAULT '',
+  `deleted` tinyint(1) NOT NULL DEFAULT 0,
+  `deleted_by` varchar(20) NOT NULL DEFAULT 'system',
+  `deleted_date` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `created_by` varchar(20) NOT NULL DEFAULT 'system',
+  `created_date` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `modified_by` varchar(20) NOT NULL DEFAULT 'system',
+  `modified_date` datetime NOT NULL DEFAULT '0000-00-00 00:00:00'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `m_isg_products`
+--
+
+INSERT INTO `m_isg_products` (`id`, `location`, `isg_principal`, `name`, `product_number`, `quantity`, `notes`, `deleted`, `deleted_by`, `deleted_date`, `created_by`, `created_date`, `modified_by`, `modified_date`) VALUES
+(1, 1, 1, '58 Vial,screw,2ml,clr,cert,100PK', '5182-0714', 0, '', 0, 'system', '0000-00-00 00:00:00', 'admin', '2020-10-06 14:04:29', 'admin', '2020-10-06 14:04:29'),
+(2, 1, 1, '58 Blue screw caps 100/PK', '5182-0717', 0, '', 0, 'system', '0000-00-00 00:00:00', 'admin', '2020-10-06 14:08:06', 'admin', '2020-10-06 14:08:06'),
+(3, 1, 1, '58 Liner O-Ring, Non-Stick 10PK', '5188-5365', 2, '', 0, 'system', '0000-00-00 00:00:00', 'admin', '2020-10-06 14:13:36', 'deisg', '2020-10-06 20:58:40');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `m_warehouses`
+--
+
+CREATE TABLE `m_warehouses` (
+  `id` int(11) NOT NULL,
+  `name` varchar(20) NOT NULL DEFAULT '',
+  `location` int(11) NOT NULL DEFAULT 1,
+  `deleted` tinyint(1) NOT NULL DEFAULT 0,
+  `deleted_by` varchar(20) NOT NULL DEFAULT 'system',
+  `deleted_date` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `created_by` varchar(20) NOT NULL DEFAULT 'system',
+  `created_date` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `modified_by` varchar(20) NOT NULL DEFAULT 'system',
+  `modified_date` datetime NOT NULL DEFAULT '0000-00-00 00:00:00'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `m_warehouses`
+--
+
+INSERT INTO `m_warehouses` (`id`, `name`, `location`, `deleted`, `deleted_by`, `deleted_date`, `created_by`, `created_date`, `modified_by`, `modified_date`) VALUES
+(1, '021-DM', 1, 0, 'system', '0000-00-00 00:00:00', 'system', '0000-00-00 00:00:00', 'system', '0000-00-00 00:00:00'),
+(2, '021-AM62', 1, 0, 'system', '0000-00-00 00:00:00', 'admin', '2020-10-06 14:20:30', 'admin', '2020-10-06 14:20:30'),
+(3, '031-KT24', 1, 0, 'system', '0000-00-00 00:00:00', 'admin', '2020-10-06 14:56:17', 'admin', '2020-10-06 14:56:17'),
+(4, '031-TGS2H', 1, 0, 'system', '0000-00-00 00:00:00', 'admin', '2020-10-06 14:56:45', 'admin', '2020-10-06 14:56:45');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `system_logs`
+--
+
+CREATE TABLE `system_logs` (
+  `id` int(20) NOT NULL,
+  `time` datetime NOT NULL,
+  `username` varchar(20) NOT NULL,
+  `activity` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `s_field_requirements`
+--
+
+CREATE TABLE `s_field_requirements` (
+  `id` int(11) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `module` varchar(30) NOT NULL,
+  `required` tinyint(1) NOT NULL DEFAULT 0,
+  `min_length` int(5) NOT NULL,
+  `max_length` int(5) NOT NULL,
+  `superedit` tinyint(1) NOT NULL,
+  `type` tinyint(1) NOT NULL COMMENT '1:field, 2:combobox, 3:textarea, 4:image, 5:radio, 6:checkbox',
+  `deleted` tinyint(1) NOT NULL DEFAULT 0,
+  `deleted_date` datetime NOT NULL,
+  `created_by` varchar(20) NOT NULL,
+  `created_date` datetime NOT NULL,
+  `modified_by` varchar(20) NOT NULL,
+  `modified_date` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `s_locations`
+--
+
+CREATE TABLE `s_locations` (
+  `id` int(11) NOT NULL,
+  `location_group` tinyint(2) NOT NULL,
+  `code` varchar(20) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `address` varchar(255) NOT NULL,
+  `phone` varchar(255) NOT NULL,
+  `notes` text NOT NULL,
+  `deleted` tinyint(1) NOT NULL DEFAULT 0,
+  `deleted_by` varchar(50) NOT NULL,
+  `deleted_date` datetime NOT NULL,
+  `created_by` varchar(20) NOT NULL,
+  `created_date` datetime NOT NULL,
+  `modified_by` varchar(20) NOT NULL,
+  `modified_date` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `s_locations`
+--
+
+INSERT INTO `s_locations` (`id`, `location_group`, `code`, `name`, `address`, `phone`, `notes`, `deleted`, `deleted_by`, `deleted_date`, `created_by`, `created_date`, `modified_by`, `modified_date`) VALUES
+(0, 0, 'LOC0000000000', 'Location Global', 'Address, Address', 'Phone, Phone', 'no notes', 0, '', '0000-00-00 00:00:00', 'admin', '2017-01-01 00:00:00', 'admin', '2017-01-01 00:00:00'),
+(1, 0, 'LOC0000000001', 'Location 1', 'Address 1a, Address 1b', 'Phone 1a, Phone 1b', 'no notes', 0, '', '0000-00-00 00:00:00', 'admin', '2017-01-01 00:00:00', 'admin', '2017-01-01 00:00:00'),
+(2, 0, 'LOC0000000001', 'Location 2', 'Address 2a, Address 2b', 'Phone 2a, Phone 2b', 'no notes', 0, '', '0000-00-00 00:00:00', 'admin', '2017-01-01 00:00:00', 'admin', '2017-01-01 00:00:00'),
+(3, 0, 'LOC0000000001', 'Location 3', 'Address 3a, Address 3b', 'Phone 3a, Phone 3b', 'no notes', 0, '', '0000-00-00 00:00:00', 'admin', '2017-01-01 00:00:00', 'admin', '2017-01-01 00:00:00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `s_permissions`
+--
+
+CREATE TABLE `s_permissions` (
+  `id` int(11) NOT NULL,
+  `banned_page_name` varchar(50) NOT NULL,
+  `superadmin` tinyint(1) NOT NULL DEFAULT 0,
+  `manager` tinyint(1) NOT NULL DEFAULT 0,
+  `hsgdataentry` tinyint(1) NOT NULL DEFAULT 1,
+  `isgdataentry` tinyint(1) NOT NULL DEFAULT 1,
+  `report` tinyint(1) NOT NULL DEFAULT 1
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `s_permissions`
+--
+
+INSERT INTO `s_permissions` (`id`, `banned_page_name`, `superadmin`, `manager`, `hsgdataentry`, `isgdataentry`, `report`) VALUES
+(1, 'manage_warehouse', 0, 0, 0, 0, 1),
+(2, 'add_warehouse', 0, 0, 0, 0, 1),
+(3, 'superedit_warehouse', 0, 0, 1, 1, 1),
+(4, 'edit_warehouse', 0, 0, 1, 1, 1),
+(5, 'delete_warehouse', 0, 0, 1, 1, 1),
+(6, 'view_warehouse', 0, 0, 0, 0, 1),
+(7, 'manage_hsg_principal', 0, 0, 0, 1, 1),
+(8, 'add_hsg_principal', 0, 0, 0, 1, 1),
+(9, 'superedit_hsg_principal', 0, 0, 1, 1, 1),
+(10, 'edit_hsg_principal', 0, 0, 1, 1, 1),
+(11, 'delete_hsg_principal', 0, 0, 1, 1, 1),
+(12, 'view_hsg_principal', 0, 0, 1, 1, 1),
+(13, 'manage_hsg_product', 0, 0, 0, 1, 1),
+(14, 'add_hsg_product', 0, 0, 0, 1, 1),
+(15, 'superedit_hsg_product', 0, 0, 1, 1, 1),
+(16, 'edit_hsg_product', 0, 0, 1, 1, 1),
+(17, 'delete_hsg_product', 0, 0, 1, 1, 1),
+(18, 'view_hsg_product', 0, 0, 0, 1, 1),
+(19, 'manage_hsg_product_in', 0, 0, 0, 1, 1),
+(20, 'add_hsg_product_in', 0, 0, 0, 1, 1),
+(21, 'superedit_hsg_product_in', 0, 0, 1, 1, 1),
+(22, 'edit_hsg_product_in', 0, 0, 1, 1, 1),
+(23, 'delete_hsg_product_in', 0, 0, 1, 1, 1),
+(24, 'view_hsg_product_in', 0, 0, 0, 1, 1),
+(25, 'manage_hsg_product_out', 0, 0, 0, 1, 1),
+(26, 'add_hsg_product_out', 0, 0, 0, 1, 1),
+(27, 'superedit_hsg_product_out', 0, 0, 1, 1, 1),
+(28, 'edit_hsg_product_out', 0, 0, 1, 1, 1),
+(29, 'delete_hsg_product_out', 0, 0, 1, 1, 1),
+(30, 'view_hsg_product_out', 0, 0, 0, 1, 1),
+(31, 'manage_isg_principal', 0, 0, 1, 0, 1),
+(32, 'add_isg_principal', 0, 0, 1, 0, 1),
+(33, 'superedit_isg_principal', 0, 0, 1, 1, 1),
+(34, 'edit_isg_principal', 0, 0, 1, 1, 1),
+(35, 'delete_isg_principal', 0, 0, 1, 1, 1),
+(36, 'view_isg_principal', 0, 0, 1, 0, 1),
+(37, 'manage_isg_product', 0, 0, 1, 0, 1),
+(38, 'add_isg_product', 0, 0, 1, 0, 1),
+(39, 'superedit_isg_product', 0, 0, 1, 1, 1),
+(40, 'edit_isg_product', 0, 0, 1, 1, 1),
+(41, 'delete_isg_product', 0, 0, 1, 1, 1),
+(42, 'view_isg_product', 0, 0, 1, 0, 1),
+(43, 'manage_isg_product_in', 0, 0, 1, 0, 1),
+(44, 'add_isg_product_in', 0, 0, 1, 0, 1),
+(45, 'superedit_isg_product_in', 0, 0, 1, 1, 1),
+(46, 'edit_isg_product_in', 0, 0, 1, 1, 1),
+(47, 'delete_isg_product_in', 0, 0, 1, 1, 1),
+(48, 'view_isg_product_in', 0, 0, 1, 0, 1),
+(49, 'manage_isg_product_out', 0, 0, 1, 0, 1),
+(50, 'add_isg_product_out', 0, 0, 1, 0, 1),
+(51, 'superedit_isg_product_out', 0, 0, 1, 1, 1),
+(52, 'edit_isg_product_out', 0, 0, 1, 1, 1),
+(53, 'delete_isg_product_out', 0, 0, 1, 1, 1),
+(54, 'view_isg_product_out', 0, 0, 1, 0, 1),
+(55, 'manage_user', 0, 0, 1, 1, 1),
+(56, 'add_user', 0, 0, 1, 1, 1),
+(57, 'superedit_user', 0, 0, 1, 1, 1),
+(58, 'edit_user', 0, 0, 1, 1, 1),
+(59, 'delete_user', 0, 0, 1, 1, 1),
+(60, 'view_user', 0, 0, 1, 1, 1),
+(61, 'manage_report/product_name/type/hsg', 0, 0, 0, 1, 0),
+(62, 'manage_report/product_name/type/isg', 0, 0, 1, 0, 0),
+(63, 'manage_report/product_name', 0, 0, 1, 1, 0),
+(64, 'manage_report/serial_number/type/hsg', 0, 0, 0, 1, 0),
+(65, 'manage_report/serial_number/type/isg', 0, 0, 1, 0, 0),
+(66, 'manage_report/serial_number', 0, 0, 1, 1, 0),
+(67, 'manage_report/obsolete_product/type/hsg', 0, 0, 0, 1, 0),
+(68, 'manage_report/obsolete_product/type/isg', 0, 0, 1, 0, 0),
+(69, 'manage_report/obsolete_product', 0, 0, 1, 1, 0),
+(70, 'manage_backup_restore', 0, 1, 1, 1, 1),
+(71, 'manage_log', 0, 1, 1, 1, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `s_roles`
+--
+
+CREATE TABLE `s_roles` (
+  `id` int(11) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `identifier` varchar(20) NOT NULL,
+  `deleted` tinyint(1) NOT NULL DEFAULT 0,
+  `deleted_by` varchar(20) NOT NULL,
+  `deleted_date` datetime NOT NULL,
+  `created_by` varchar(20) NOT NULL,
+  `created_date` datetime NOT NULL,
+  `modified_by` varchar(20) NOT NULL,
+  `modified_date` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `s_roles`
+--
+
+INSERT INTO `s_roles` (`id`, `name`, `identifier`, `deleted`, `deleted_by`, `deleted_date`, `created_by`, `created_date`, `modified_by`, `modified_date`) VALUES
+(1, 'Super Administrator', 'superadmin', 0, '', '0000-00-00 00:00:00', 'system', '2014-01-01 00:00:00', 'system', '2014-01-01 00:00:00'),
+(2, 'Manager', 'manager', 0, '', '0000-00-00 00:00:00', 'system', '2014-01-01 00:00:00', 'admin', '2014-01-01 00:00:00'),
+(3, 'Data Entry HSG', 'hsgdataentry', 0, '', '0000-00-00 00:00:00', 'system', '2014-01-01 00:00:00', 'admin', '2014-01-01 00:00:00'),
+(4, 'Data Entry ISG', 'isgdataentry', 0, '', '0000-00-00 00:00:00', 'system', '2014-01-01 00:00:00', 'admin', '2014-01-01 00:00:00'),
+(5, 'Report', 'report', 0, '', '0000-00-00 00:00:00', 'system', '2014-01-01 00:00:00', 'admin', '2014-01-01 00:00:00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `s_settings`
+--
+
+CREATE TABLE `s_settings` (
+  `id` int(11) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `value` text NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `s_settings`
+--
+
+INSERT INTO `s_settings` (`id`, `name`, `value`) VALUES
+(1, 'maintenance_mode', '0'),
+(2, 'lpb_date_warning_low', '2'),
+(3, 'lpb_date_warning_medium', '3'),
+(4, 'lpb_date_warning_high', '5'),
+(5, 'warranty_expiration_date_warning_low', '1'),
+(6, 'warranty_expiration_date_warning_medium', '3'),
+(7, 'warranty_expiration_date_warning_high', '5');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `s_users`
+--
+
+CREATE TABLE `s_users` (
+  `id` int(11) NOT NULL,
+  `location` int(11) NOT NULL DEFAULT 1,
+  `username` varchar(50) NOT NULL,
+  `password` varchar(100) NOT NULL,
+  `role` int(11) NOT NULL DEFAULT 0,
+  `last_login_date` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `status` varchar(20) NOT NULL DEFAULT 'status_pending' COMMENT 'status_pending, status_active, status_inactive',
+  `deleted` tinyint(1) NOT NULL DEFAULT 0,
+  `deleted_by` varchar(20) NOT NULL DEFAULT 'system',
+  `deleted_date` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `created_by` varchar(20) NOT NULL DEFAULT 'system',
+  `created_date` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `modified_by` varchar(20) NOT NULL DEFAULT 'system',
+  `modified_date` datetime NOT NULL DEFAULT '0000-00-00 00:00:00'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `s_users`
+--
+
+INSERT INTO `s_users` (`id`, `location`, `username`, `password`, `role`, `last_login_date`, `status`, `deleted`, `deleted_by`, `deleted_date`, `created_by`, `created_date`, `modified_by`, `modified_date`) VALUES
+(1, 1, 'admin', '68cac1844877f9740b5d04b795e90db4', 1, '2020-10-08 07:16:35', 'status_active', 0, '', '0000-00-00 00:00:00', 'system', '2017-01-01 00:00:00', 'admin', '2020-10-08 07:16:35'),
+(2, 1, 'manager', '4a455ae139a84e7409c57833d08578a5', 2, '2020-10-08 07:21:49', 'status_active', 0, '', '0000-00-00 00:00:00', 'system', '2017-01-01 00:00:00', 'manager', '2020-10-08 07:21:49'),
+(3, 1, 'dehsg', '4a455ae139a84e7409c57833d08578a5', 3, '2020-10-07 23:40:18', 'status_active', 0, '', '0000-00-00 00:00:00', 'system', '2017-01-01 00:00:00', 'dehsg', '2020-10-07 23:40:18'),
+(4, 1, 'deisg', '4a455ae139a84e7409c57833d08578a5', 4, '2020-10-06 21:42:19', 'status_active', 0, '', '0000-00-00 00:00:00', 'system', '2017-01-01 00:00:00', 'deisg', '2020-10-06 21:42:19'),
+(5, 1, 'report', '4a455ae139a84e7409c57833d08578a5', 5, '2020-10-07 23:47:46', 'status_active', 0, '', '0000-00-00 00:00:00', 'system', '2017-01-01 00:00:00', 'report', '2020-10-07 23:47:46');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `s_user_details`
+--
+
+CREATE TABLE `s_user_details` (
+  `id` int(11) NOT NULL,
+  `location` int(11) NOT NULL DEFAULT 1,
+  `code` varchar(50) NOT NULL,
+  `user` int(11) NOT NULL DEFAULT 0,
+  `name` varchar(50) NOT NULL,
+  `address` varchar(255) NOT NULL,
+  `phone` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `notes` text NOT NULL,
+  `birthdate` date NOT NULL,
+  `photo` varchar(20) NOT NULL,
+  `deleted` tinyint(1) NOT NULL DEFAULT 0,
+  `deleted_by` varchar(20) NOT NULL,
+  `deleted_date` datetime NOT NULL,
+  `created_by` varchar(20) NOT NULL,
+  `created_date` datetime NOT NULL,
+  `modified_by` varchar(20) NOT NULL,
+  `modified_date` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `t_hsg_product_ins`
+--
+
+CREATE TABLE `t_hsg_product_ins` (
+  `id` int(11) NOT NULL,
+  `location` int(11) NOT NULL DEFAULT 1,
+  `hsg_product` int(11) NOT NULL DEFAULT 0,
+  `code` varchar(20) NOT NULL DEFAULT '',
+  `date` date NOT NULL DEFAULT '0000-00-00',
+  `fast_code` varchar(50) NOT NULL DEFAULT '',
+  `purchase_order_number` varchar(50) NOT NULL DEFAULT '',
+  `lpb_code` varchar(50) NOT NULL DEFAULT '',
+  `lpb_date` date NOT NULL DEFAULT '0000-00-00',
+  `quantity` int(11) NOT NULL DEFAULT 0,
+  `locked` tinyint(1) NOT NULL DEFAULT 0,
+  `deleted` tinyint(1) NOT NULL DEFAULT 0,
+  `deleted_by` varchar(20) NOT NULL DEFAULT 'system',
+  `deleted_date` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `created_by` varchar(20) NOT NULL DEFAULT 'system',
+  `created_date` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `modified_by` varchar(20) NOT NULL DEFAULT 'system',
+  `modified_date` datetime NOT NULL DEFAULT '0000-00-00 00:00:00'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `t_hsg_product_ins`
+--
+
+INSERT INTO `t_hsg_product_ins` (`id`, `location`, `hsg_product`, `code`, `date`, `fast_code`, `purchase_order_number`, `lpb_code`, `lpb_date`, `quantity`, `locked`, `deleted`, `deleted_by`, `deleted_date`, `created_by`, `created_date`, `modified_by`, `modified_date`) VALUES
+(1, 1, 1, '702252', '2020-01-01', '702252', '', '', '2020-10-01', 3, 0, 0, 'system', '0000-00-00 00:00:00', 'system', '0000-00-00 00:00:00', 'system', '0000-00-00 00:00:00'),
+(2, 1, 2, '792492', '2020-01-01', '792492', '', '', '2020-10-01', 1, 0, 0, 'system', '0000-00-00 00:00:00', 'system', '0000-00-00 00:00:00', 'system', '0000-00-00 00:00:00'),
+(3, 1, 3, '792072', '2020-01-01', '792072', '', '', '2020-10-02', 1, 0, 0, 'system', '0000-00-00 00:00:00', 'system', '0000-00-00 00:00:00', 'system', '0000-00-00 00:00:00'),
+(4, 1, 4, '702319', '2020-01-01', '702319', '', '', '2020-10-02', 4, 0, 0, 'system', '0000-00-00 00:00:00', 'system', '0000-00-00 00:00:00', 'system', '0000-00-00 00:00:00'),
+(5, 1, 5, '550477', '2020-01-01', '550477', '', '', '2020-10-03', 1, 0, 0, 'system', '0000-00-00 00:00:00', 'system', '0000-00-00 00:00:00', 'system', '0000-00-00 00:00:00'),
+(6, 1, 6, '550478', '2020-01-01', '550478', '', '', '2020-10-03', 1, 0, 0, 'system', '0000-00-00 00:00:00', 'system', '0000-00-00 00:00:00', 'system', '0000-00-00 00:00:00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `t_hsg_product_items`
+--
+
+CREATE TABLE `t_hsg_product_items` (
+  `id` int(11) NOT NULL,
+  `location` int(11) NOT NULL DEFAULT 1,
+  `selected_hsg_product_in` int(11) NOT NULL DEFAULT 0,
+  `selected_hsg_product_out` int(11) NOT NULL DEFAULT 0,
+  `warehouse` int(11) NOT NULL DEFAULT 0,
+  `serial_number` varchar(20) NOT NULL DEFAULT '',
+  `warranty_expiration_date` date NOT NULL DEFAULT '0000-00-00',
+  `hsg_product_in` int(11) NOT NULL DEFAULT 0,
+  `hsg_product_in_by` varchar(20) NOT NULL DEFAULT '',
+  `hsg_product_in_date` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `hsg_product_out` int(11) NOT NULL DEFAULT 0,
+  `hsg_product_out_by` varchar(20) NOT NULL DEFAULT '',
+  `hsg_product_out_date` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `deleted` tinyint(1) NOT NULL DEFAULT 0,
+  `deleted_by` varchar(20) NOT NULL DEFAULT 'system',
+  `deleted_date` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `created_by` varchar(20) NOT NULL DEFAULT 'system',
+  `created_date` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `modified_by` varchar(20) NOT NULL DEFAULT 'system',
+  `modified_date` datetime NOT NULL DEFAULT '0000-00-00 00:00:00'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `t_hsg_product_items`
+--
+
+INSERT INTO `t_hsg_product_items` (`id`, `location`, `selected_hsg_product_in`, `selected_hsg_product_out`, `warehouse`, `serial_number`, `warranty_expiration_date`, `hsg_product_in`, `hsg_product_in_by`, `hsg_product_in_date`, `hsg_product_out`, `hsg_product_out_by`, `hsg_product_out_date`, `deleted`, `deleted_by`, `deleted_date`, `created_by`, `created_date`, `modified_by`, `modified_date`) VALUES
+(1, 1, 1, 1, 1, 'CN62001242', '0000-00-00', 1, 'admin', '2020-07-22 00:00:00', 1, 'admin', '2020-10-06 14:52:14', 0, 'system', '0000-00-00 00:00:00', 'system', '0000-00-00 00:00:00', 'admin', '2020-10-06 14:52:14'),
+(2, 1, 1, 0, 1, 'CN62001243', '0000-00-00', 1, 'admin', '2020-07-22 00:00:00', 0, '', '0000-00-00 00:00:00', 0, 'system', '0000-00-00 00:00:00', 'system', '0000-00-00 00:00:00', 'system', '0000-00-00 00:00:00'),
+(3, 1, 1, 0, 1, 'CN62001244', '0000-00-00', 1, 'admin', '2020-07-22 00:00:00', 0, '', '0000-00-00 00:00:00', 0, 'system', '0000-00-00 00:00:00', 'system', '0000-00-00 00:00:00', 'system', '0000-00-00 00:00:00'),
+(4, 1, 2, 0, 1, '612V-1VNP-5', '0000-00-00', 2, 'admin', '2020-04-13 00:00:00', 0, '', '0000-00-00 00:00:00', 0, 'system', '0000-00-00 00:00:00', 'system', '0000-00-00 00:00:00', 'system', '0000-00-00 00:00:00'),
+(5, 1, 3, 0, 1, '0B3D-1AHM-J', '0000-00-00', 3, 'admin', '2019-10-16 00:00:00', 0, '', '0000-00-00 00:00:00', 0, 'system', '0000-00-00 00:00:00', 'system', '0000-00-00 00:00:00', 'system', '0000-00-00 00:00:00'),
+(6, 1, 4, 0, 1, 'US420L1853', '0000-00-00', 4, 'admin', '2020-08-06 00:00:00', 0, '', '0000-00-00 00:00:00', 0, 'system', '0000-00-00 00:00:00', 'system', '0000-00-00 00:00:00', 'system', '0000-00-00 00:00:00'),
+(7, 1, 4, 0, 1, 'US520L1067', '0000-00-00', 4, 'admin', '2020-08-06 00:00:00', 0, '', '0000-00-00 00:00:00', 0, 'system', '0000-00-00 00:00:00', 'system', '0000-00-00 00:00:00', 'system', '0000-00-00 00:00:00'),
+(8, 1, 4, 0, 1, 'US520L1068', '0000-00-00', 4, 'admin', '2020-08-06 00:00:00', 0, '', '0000-00-00 00:00:00', 0, 'system', '0000-00-00 00:00:00', 'system', '0000-00-00 00:00:00', 'system', '0000-00-00 00:00:00'),
+(9, 1, 4, 0, 1, 'US520L1069', '0000-00-00', 4, 'admin', '2020-08-06 00:00:00', 0, '', '0000-00-00 00:00:00', 0, 'system', '0000-00-00 00:00:00', 'system', '0000-00-00 00:00:00', 'system', '0000-00-00 00:00:00'),
+(10, 1, 5, 0, 1, '65312', '0000-00-00', 5, 'admin', '2017-10-11 00:00:00', 0, '', '0000-00-00 00:00:00', 0, 'system', '0000-00-00 00:00:00', 'system', '0000-00-00 00:00:00', 'system', '0000-00-00 00:00:00'),
+(11, 1, 6, 0, 1, '62730', '0000-00-00', 6, 'admin', '2017-10-11 00:00:00', 0, '', '0000-00-00 00:00:00', 0, 'system', '0000-00-00 00:00:00', 'system', '0000-00-00 00:00:00', 'system', '0000-00-00 00:00:00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `t_hsg_product_outs`
+--
+
+CREATE TABLE `t_hsg_product_outs` (
+  `id` int(11) NOT NULL,
+  `location` int(11) NOT NULL DEFAULT 1,
+  `hsg_product` int(11) NOT NULL DEFAULT 0,
+  `code` varchar(20) NOT NULL DEFAULT '',
+  `date` date NOT NULL DEFAULT '0000-00-00',
+  `fast_code` varchar(50) NOT NULL DEFAULT '',
+  `sales_order_number` varchar(50) NOT NULL DEFAULT '',
+  `quantity` int(11) NOT NULL DEFAULT 0,
+  `locked` tinyint(1) NOT NULL DEFAULT 0,
+  `deleted` tinyint(1) NOT NULL DEFAULT 0,
+  `deleted_by` varchar(20) NOT NULL DEFAULT 'system',
+  `deleted_date` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `created_by` varchar(20) NOT NULL DEFAULT 'system',
+  `created_date` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `modified_by` varchar(20) NOT NULL DEFAULT 'system',
+  `modified_date` datetime NOT NULL DEFAULT '0000-00-00 00:00:00'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `t_hsg_product_outs`
+--
+
+INSERT INTO `t_hsg_product_outs` (`id`, `location`, `hsg_product`, `code`, `date`, `fast_code`, `sales_order_number`, `quantity`, `locked`, `deleted`, `deleted_by`, `deleted_date`, `created_by`, `created_date`, `modified_by`, `modified_date`) VALUES
+(1, 1, 1, 'HPDO0000001', '2020-10-06', 'FC-62001242', 'SO-62001242', 1, 0, 0, 'system', '0000-00-00 00:00:00', 'admin', '2020-10-06 14:52:14', 'admin', '2020-10-06 14:52:14');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `t_isg_product_ins`
+--
+
+CREATE TABLE `t_isg_product_ins` (
+  `id` int(11) NOT NULL,
+  `location` int(11) NOT NULL DEFAULT 1,
+  `isg_product` int(11) NOT NULL DEFAULT 0,
+  `code` varchar(20) NOT NULL DEFAULT '',
+  `date` date NOT NULL DEFAULT '0000-00-00',
+  `fast_code` varchar(50) NOT NULL DEFAULT '',
+  `purchase_order_number` varchar(50) NOT NULL DEFAULT '',
+  `lpb_code` varchar(50) NOT NULL DEFAULT '',
+  `lpb_date` date NOT NULL DEFAULT '0000-00-00',
+  `quantity` int(11) NOT NULL DEFAULT 0,
+  `locked` tinyint(1) NOT NULL DEFAULT 0,
+  `deleted` tinyint(1) NOT NULL DEFAULT 0,
+  `deleted_by` varchar(20) NOT NULL DEFAULT 'system',
+  `deleted_date` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `created_by` varchar(20) NOT NULL DEFAULT 'system',
+  `created_date` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `modified_by` varchar(20) NOT NULL DEFAULT 'system',
+  `modified_date` datetime NOT NULL DEFAULT '0000-00-00 00:00:00'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `t_isg_product_ins`
+--
+
+INSERT INTO `t_isg_product_ins` (`id`, `location`, `isg_product`, `code`, `date`, `fast_code`, `purchase_order_number`, `lpb_code`, `lpb_date`, `quantity`, `locked`, `deleted`, `deleted_by`, `deleted_date`, `created_by`, `created_date`, `modified_by`, `modified_date`) VALUES
+(1, 1, 3, 'IPDI0000001', '2020-10-06', 'FC-5188-5365', 'PO-5188-5365', 'LPB-5188-5365', '2020-10-01', 3, 0, 0, 'system', '0000-00-00 00:00:00', 'deisg', '2020-10-06 20:58:21', 'deisg', '2020-10-06 20:58:21');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `t_isg_product_items`
+--
+
+CREATE TABLE `t_isg_product_items` (
+  `id` int(11) NOT NULL,
+  `location` int(11) NOT NULL DEFAULT 1,
+  `selected_isg_product_in` int(11) NOT NULL DEFAULT 0,
+  `selected_isg_product_out` int(11) NOT NULL DEFAULT 0,
+  `warehouse` int(11) NOT NULL DEFAULT 0,
+  `serial_number` varchar(20) NOT NULL DEFAULT '',
+  `warranty_expiration_date` date NOT NULL DEFAULT '0000-00-00',
+  `isg_product_in` int(11) NOT NULL DEFAULT 0,
+  `isg_product_in_by` varchar(20) NOT NULL DEFAULT '',
+  `isg_product_in_date` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `isg_product_out` int(11) NOT NULL DEFAULT 0,
+  `isg_product_out_by` varchar(20) NOT NULL DEFAULT '',
+  `isg_product_out_date` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `deleted` tinyint(1) NOT NULL DEFAULT 0,
+  `deleted_by` varchar(20) NOT NULL DEFAULT 'system',
+  `deleted_date` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `created_by` varchar(20) NOT NULL DEFAULT 'system',
+  `created_date` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `modified_by` varchar(20) NOT NULL DEFAULT 'system',
+  `modified_date` datetime NOT NULL DEFAULT '0000-00-00 00:00:00'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `t_isg_product_items`
+--
+
+INSERT INTO `t_isg_product_items` (`id`, `location`, `selected_isg_product_in`, `selected_isg_product_out`, `warehouse`, `serial_number`, `warranty_expiration_date`, `isg_product_in`, `isg_product_in_by`, `isg_product_in_date`, `isg_product_out`, `isg_product_out_by`, `isg_product_out_date`, `deleted`, `deleted_by`, `deleted_date`, `created_by`, `created_date`, `modified_by`, `modified_date`) VALUES
+(1, 1, 3, 0, 2, '5188-5365-1', '2020-10-01', 1, 'deisg', '2020-10-06 20:58:20', 0, '', '0000-00-00 00:00:00', 0, 'system', '0000-00-00 00:00:00', 'deisg', '2020-10-06 20:58:20', 'deisg', '2020-10-06 20:58:20'),
+(2, 1, 3, 3, 2, '5188-5365-2', '2020-10-03', 1, 'deisg', '2020-10-06 20:58:20', 1, 'deisg', '2020-10-06 20:58:40', 0, 'system', '0000-00-00 00:00:00', 'deisg', '2020-10-06 20:58:20', 'deisg', '2020-10-06 20:58:40'),
+(3, 1, 3, 0, 2, '5188-5365-3', '2020-10-05', 1, 'deisg', '2020-10-06 20:58:21', 0, '', '0000-00-00 00:00:00', 0, 'system', '0000-00-00 00:00:00', 'deisg', '2020-10-06 20:58:21', 'deisg', '2020-10-06 20:58:21');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `t_isg_product_outs`
+--
+
+CREATE TABLE `t_isg_product_outs` (
+  `id` int(11) NOT NULL,
+  `location` int(11) NOT NULL DEFAULT 1,
+  `isg_product` int(11) NOT NULL DEFAULT 0,
+  `code` varchar(20) NOT NULL DEFAULT '',
+  `date` date NOT NULL DEFAULT '0000-00-00',
+  `fast_code` varchar(50) NOT NULL DEFAULT '',
+  `sales_order_number` varchar(50) NOT NULL DEFAULT '',
+  `quantity` int(11) NOT NULL DEFAULT 0,
+  `locked` tinyint(1) NOT NULL DEFAULT 0,
+  `deleted` tinyint(1) NOT NULL DEFAULT 0,
+  `deleted_by` varchar(20) NOT NULL DEFAULT 'system',
+  `deleted_date` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `created_by` varchar(20) NOT NULL DEFAULT 'system',
+  `created_date` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `modified_by` varchar(20) NOT NULL DEFAULT 'system',
+  `modified_date` datetime NOT NULL DEFAULT '0000-00-00 00:00:00'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `t_isg_product_outs`
+--
+
+INSERT INTO `t_isg_product_outs` (`id`, `location`, `isg_product`, `code`, `date`, `fast_code`, `sales_order_number`, `quantity`, `locked`, `deleted`, `deleted_by`, `deleted_date`, `created_by`, `created_date`, `modified_by`, `modified_date`) VALUES
+(1, 1, 3, 'IPDO0000001', '2020-10-06', 'FC-5188-5365', 'SO-5188-5365', 1, 0, 0, 'system', '0000-00-00 00:00:00', 'deisg', '2020-10-06 20:58:40', 'deisg', '2020-10-06 20:58:40');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `ci_sessions`
+--
+ALTER TABLE `ci_sessions`
+  ADD KEY `ci_sessions_timestamp` (`timestamp`);
+
+--
+-- Indexes for table `logs`
+--
+ALTER TABLE `logs`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `m_hsg_principals`
+--
+ALTER TABLE `m_hsg_principals`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `m_hsg_products`
+--
+ALTER TABLE `m_hsg_products`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `m_isg_principals`
+--
+ALTER TABLE `m_isg_principals`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `m_isg_products`
+--
+ALTER TABLE `m_isg_products`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `m_warehouses`
+--
+ALTER TABLE `m_warehouses`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `system_logs`
+--
+ALTER TABLE `system_logs`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `s_field_requirements`
+--
+ALTER TABLE `s_field_requirements`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `s_locations`
+--
+ALTER TABLE `s_locations`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `s_permissions`
+--
+ALTER TABLE `s_permissions`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `s_roles`
+--
+ALTER TABLE `s_roles`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `s_settings`
+--
+ALTER TABLE `s_settings`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `s_users`
+--
+ALTER TABLE `s_users`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `s_user_details`
+--
+ALTER TABLE `s_user_details`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `t_hsg_product_ins`
+--
+ALTER TABLE `t_hsg_product_ins`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `t_hsg_product_items`
+--
+ALTER TABLE `t_hsg_product_items`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `t_hsg_product_outs`
+--
+ALTER TABLE `t_hsg_product_outs`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `t_isg_product_ins`
+--
+ALTER TABLE `t_isg_product_ins`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `t_isg_product_items`
+--
+ALTER TABLE `t_isg_product_items`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `t_isg_product_outs`
+--
+ALTER TABLE `t_isg_product_outs`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `logs`
+--
+ALTER TABLE `logs`
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `m_hsg_principals`
+--
+ALTER TABLE `m_hsg_principals`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `m_hsg_products`
+--
+ALTER TABLE `m_hsg_products`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `m_isg_principals`
+--
+ALTER TABLE `m_isg_principals`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `m_isg_products`
+--
+ALTER TABLE `m_isg_products`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `m_warehouses`
+--
+ALTER TABLE `m_warehouses`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `system_logs`
+--
+ALTER TABLE `system_logs`
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `s_field_requirements`
+--
+ALTER TABLE `s_field_requirements`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `s_locations`
+--
+ALTER TABLE `s_locations`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `s_permissions`
+--
+ALTER TABLE `s_permissions`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
+
+--
+-- AUTO_INCREMENT for table `s_roles`
+--
+ALTER TABLE `s_roles`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `s_settings`
+--
+ALTER TABLE `s_settings`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `s_users`
+--
+ALTER TABLE `s_users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `s_user_details`
+--
+ALTER TABLE `s_user_details`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `t_hsg_product_ins`
+--
+ALTER TABLE `t_hsg_product_ins`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT for table `t_hsg_product_items`
+--
+ALTER TABLE `t_hsg_product_items`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT for table `t_hsg_product_outs`
+--
+ALTER TABLE `t_hsg_product_outs`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `t_isg_product_ins`
+--
+ALTER TABLE `t_isg_product_ins`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `t_isg_product_items`
+--
+ALTER TABLE `t_isg_product_items`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `t_isg_product_outs`
+--
+ALTER TABLE `t_isg_product_outs`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

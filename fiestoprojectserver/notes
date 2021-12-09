@@ -1,0 +1,15 @@
+DROP TABLE IF EXISTS `m_departments`;
+CREATE TABLE `m_departments` (
+  `id` int(11) NOT NULL,
+  `name` varchar(50) NOT NULL DEFAULT '',
+  `location` int(11) NOT NULL DEFAULT 1,
+  `deleted` tinyint(1) NOT NULL DEFAULT 0,
+  `deleted_by` varchar(20) NOT NULL DEFAULT 'system',
+  `deleted_date` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `created_by` varchar(20) NOT NULL DEFAULT 'system',
+  `created_date` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `modified_by` varchar(20) NOT NULL DEFAULT 'system',
+  `modified_date` datetime NOT NULL DEFAULT '0000-00-00 00:00:00'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+ALTER TABLE `m_departments` ADD PRIMARY KEY (`id`);
+ALTER TABLE `m_departments` MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;

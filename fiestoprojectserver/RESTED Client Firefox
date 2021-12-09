@@ -1,0 +1,364 @@
+{
+  "id": "df95bca2-9936-4872-95a2-b3ed1dd6d0de",
+  "name": "fiesto_api",
+  "requests": [
+    {
+      "id": "8352fef4-085c-4088-9d84-c253dff550bd",
+      "collectionId": "df95bca2-9936-4872-95a2-b3ed1dd6d0de",
+      "method": "POST",
+      "url": "localhost/fiesto_api/unit/delete_data",
+      "headers": "Content-Type: application/x-www-form-urlencoded\n",
+      "dataMode": "urlencoded",
+      "data": [
+        {
+          "key": "auth_username",
+          "value": "manager",
+          "type": "text",
+          "enabled": true
+        },
+        {
+          "key": "auth_password",
+          "value": "68cac1844877f9740b5d04b795e90db4",
+          "type": "text",
+          "enabled": true
+        },
+        {
+          "key": "auth_token",
+          "value": "xyz-token",
+          "type": "text",
+          "enabled": true
+        },
+        {
+          "key": "auth_location",
+          "value": "1",
+          "type": "text",
+          "enabled": true
+        },
+        {
+          "key": "id",
+          "value": "4",
+          "type": "text",
+          "enabled": true
+        }
+      ],
+      "rawModeData": []
+    },
+    {
+      "id": "0256f40b-cc03-42dd-94b1-f1dc19b01803",
+      "collectionId": "df95bca2-9936-4872-95a2-b3ed1dd6d0de",
+      "method": "POST",
+      "url": "localhost/fiesto_api/unit/edit_data",
+      "headers": "Content-Type: application/x-www-form-urlencoded\n",
+      "dataMode": "urlencoded",
+      "data": [
+        {
+          "key": "auth_username",
+          "value": "manager",
+          "type": "text",
+          "enabled": true
+        },
+        {
+          "key": "auth_password",
+          "value": "68cac1844877f9740b5d04b795e90db4",
+          "type": "text",
+          "enabled": true
+        },
+        {
+          "key": "auth_token",
+          "value": "xyz-token",
+          "type": "text",
+          "enabled": true
+        },
+        {
+          "key": "auth_location",
+          "value": "1",
+          "type": "text",
+          "enabled": true
+        },
+        {
+          "key": "name",
+          "value": "HUNDRED",
+          "type": "text",
+          "enabled": true
+        },
+        {
+          "key": "conversion",
+          "value": "100",
+          "type": "text",
+          "enabled": true
+        },
+        {
+          "key": "metric",
+          "value": "KG",
+          "type": "text",
+          "enabled": true
+        },
+        {
+          "key": "id",
+          "value": "4",
+          "type": "text",
+          "enabled": true
+        }
+      ],
+      "rawModeData": []
+    },
+    {
+      "id": "9b60e913-e992-4e18-8749-f6ba107d6ddf",
+      "collectionId": "df95bca2-9936-4872-95a2-b3ed1dd6d0de",
+      "method": "POST",
+      "url": "localhost/fiesto_api/unit/add_data",
+      "headers": "Content-Type: application/x-www-form-urlencoded\n",
+      "dataMode": "urlencoded",
+      "data": [
+        {
+          "key": "auth_username",
+          "value": "manager",
+          "type": "text",
+          "enabled": true
+        },
+        {
+          "key": "auth_password",
+          "value": "68cac1844877f9740b5d04b795e90db4",
+          "type": "text",
+          "enabled": true
+        },
+        {
+          "key": "auth_token",
+          "value": "xyz-token",
+          "type": "text",
+          "enabled": true
+        },
+        {
+          "key": "auth_location",
+          "value": "1",
+          "type": "text",
+          "enabled": true
+        },
+        {
+          "key": "name",
+          "value": "HUNDRED",
+          "type": "text",
+          "enabled": true
+        },
+        {
+          "key": "conversion",
+          "value": "1",
+          "type": "text",
+          "enabled": true
+        },
+        {
+          "key": "metric",
+          "value": "KG",
+          "type": "text",
+          "enabled": true
+        }
+      ],
+      "rawModeData": []
+    },
+    {
+      "id": "ba1114b9-0183-4e81-ac7d-18679340fd79",
+      "collectionId": "df95bca2-9936-4872-95a2-b3ed1dd6d0de",
+      "method": "POST",
+      "url": "localhost/fiesto_api/unit/get_single_data",
+      "headers": "Content-Type: application/x-www-form-urlencoded\n",
+      "dataMode": "urlencoded",
+      "data": [
+        {
+          "key": "auth_username",
+          "value": "manager",
+          "type": "text",
+          "enabled": true
+        },
+        {
+          "key": "auth_password",
+          "value": "68cac1844877f9740b5d04b795e90db4",
+          "type": "text",
+          "enabled": true
+        },
+        {
+          "key": "auth_token",
+          "value": "xyz-token",
+          "type": "text",
+          "enabled": true
+        },
+        {
+          "key": "auth_location",
+          "value": "1",
+          "type": "text",
+          "enabled": true
+        },
+        {
+          "key": "id",
+          "value": "2",
+          "type": "text",
+          "enabled": true
+        }
+      ],
+      "rawModeData": []
+    },
+    {
+      "id": "5663e97e-aad1-4140-af58-dc4bee8303e6",
+      "collectionId": "df95bca2-9936-4872-95a2-b3ed1dd6d0de",
+      "method": "POST",
+      "url": "localhost/fiesto_api/unit/get_list_data",
+      "headers": "Content-Type: application/x-www-form-urlencoded\n",
+      "dataMode": "urlencoded",
+      "data": [
+        {
+          "key": "auth_username",
+          "value": "manager",
+          "type": "text",
+          "enabled": true
+        },
+        {
+          "key": "auth_password",
+          "value": "68cac1844877f9740b5d04b795e90db4",
+          "type": "text",
+          "enabled": true
+        },
+        {
+          "key": "auth_token",
+          "value": "xyz-token",
+          "type": "text",
+          "enabled": true
+        },
+        {
+          "key": "auth_location",
+          "value": "1",
+          "type": "text",
+          "enabled": true
+        }
+      ],
+      "rawModeData": []
+    },
+    {
+      "id": "ee25d854-4e3b-4cd5-946a-597d1f34d4a6",
+      "collectionId": "df95bca2-9936-4872-95a2-b3ed1dd6d0de",
+      "method": "POST",
+      "url": "localhost/fiesto_api/utility/change_password",
+      "headers": "Content-Type: application/x-www-form-urlencoded\n",
+      "dataMode": "urlencoded",
+      "data": [
+        {
+          "key": "auth_username",
+          "value": "manager",
+          "type": "text",
+          "enabled": true
+        },
+        {
+          "key": "auth_password",
+          "value": "21232f297a57a5a743894a0e4a801fc3",
+          "type": "text",
+          "enabled": true
+        },
+        {
+          "key": "auth_token",
+          "value": "xyz-token",
+          "type": "text",
+          "enabled": true
+        },
+        {
+          "key": "old_password",
+          "value": "21232f297a57a5a743894a0e4a801fc3",
+          "type": "text",
+          "enabled": true
+        },
+        {
+          "key": "new_password",
+          "value": "68cac1844877f9740b5d04b795e90db4",
+          "type": "text",
+          "enabled": true
+        },
+        {
+          "key": "retype_password",
+          "value": "68cac1844877f9740b5d04b795e90db4",
+          "type": "text",
+          "enabled": true
+        },
+        {
+          "key": "auth_location",
+          "value": "1",
+          "type": "text",
+          "enabled": true
+        }
+      ],
+      "rawModeData": []
+    },
+    {
+      "id": "847704cc-1936-4308-85ee-26818394d0d8",
+      "collectionId": "df95bca2-9936-4872-95a2-b3ed1dd6d0de",
+      "method": "POST",
+      "url": "localhost/fiesto_api/utility/change_password",
+      "headers": "Content-Type: application/x-www-form-urlencoded\n",
+      "dataMode": "urlencoded",
+      "data": [
+        {
+          "key": "auth_username",
+          "value": "manager",
+          "type": "text",
+          "enabled": true
+        },
+        {
+          "key": "auth_password",
+          "value": "68cac1844877f9740b5d04b795e90db4",
+          "type": "text",
+          "enabled": true
+        },
+        {
+          "key": "auth_token",
+          "value": "xyz-token",
+          "type": "text",
+          "enabled": true
+        },
+        {
+          "key": "old_password",
+          "value": "68cac1844877f9740b5d04b795e90db4",
+          "type": "text",
+          "enabled": true
+        },
+        {
+          "key": "new_password",
+          "value": "21232f297a57a5a743894a0e4a801fc3",
+          "type": "text",
+          "enabled": true
+        },
+        {
+          "key": "retype_password",
+          "value": "21232f297a57a5a743894a0e4a801fc3",
+          "type": "text",
+          "enabled": true
+        },
+        {
+          "key": "auth_location",
+          "value": "1",
+          "type": "text",
+          "enabled": true
+        }
+      ],
+      "rawModeData": []
+    },
+    {
+      "id": "f8308aba-2ff7-47d9-86eb-f0892ab9ce83",
+      "collectionId": "df95bca2-9936-4872-95a2-b3ed1dd6d0de",
+      "method": "POST",
+      "url": "localhost/fiesto_api/kelola/login",
+      "headers": "Content-Type: application/x-www-form-urlencoded\n",
+      "dataMode": "urlencoded",
+      "data": [
+        {
+          "key": "username",
+          "value": "admin",
+          "type": "text",
+          "enabled": true
+        },
+        {
+          "key": "password",
+          "value": "68cac1844877f9740b5d04b795e90db4",
+          "type": "text",
+          "enabled": true
+        }
+      ],
+      "rawModeData": []
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+
+UPDATE s_permissions SET employee = 1 WHERE module IN ('user', 'backup_restore', 'log');
+UPDATE s_permissions SET employee = 1 WHERE banned_page_name LIKE 'delete%';
+UPDATE s_permissions SET employee = 1 WHERE banned_page_name LIKE 'close%';
+UPDATE s_permissions SET employee = 1 WHERE banned_page_name LIKE 'unclose%';
