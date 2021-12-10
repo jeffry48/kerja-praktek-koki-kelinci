@@ -32,25 +32,25 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="<?= base_url()?>supply" class="nav-link">
+                                <a href="<?= $this->config->item('backend_server_url')?>supply" class="nav-link">
                                     <i class="fa fa-truck nav-icon"></i>
                                     <p>Supplier</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="<?= base_url() ?>konsumen" class="nav-link">
+                                <a href="<?= $this->config->item('backend_server_url') ?>konsumen" class="nav-link">
                                     <i class="fa fa-users nav-icon"></i>
                                     <p>Konsumen</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="<?= base_url() ?>kategori" class="nav-link">
+                                <a href="<?= $this->config->item('backend_server_url') ?>kategori" class="nav-link">
                                     <i class="fa fa-check-circle nav-icon"></i>
                                     <p>Kategori</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="<?= base_url() ?>produk" class="nav-link">
+                                <a href="<?= $this->config->item('backend_server_url') ?>produk" class="nav-link">
                                     <i class="fa fa-cube nav-icon"></i>
                                     <p>Produk</p>
                                 </a>
