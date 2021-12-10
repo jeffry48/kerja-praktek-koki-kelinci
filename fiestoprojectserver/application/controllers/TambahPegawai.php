@@ -50,6 +50,7 @@ class TambahPegawai extends CI_Controller {
         $this->session->mark_as_flash('success');
         $data['karyawan'] = $this->Karyawan->getAll();
         // $this->load->view('employee/pegawai.php',$data);
-        redirect('pegawai');
+        $_SESSION['data']=$data;
+        return redirect(base_url()."TambahPegawai");
     }
 }

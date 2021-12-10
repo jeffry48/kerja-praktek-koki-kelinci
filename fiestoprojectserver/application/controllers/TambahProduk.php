@@ -17,6 +17,8 @@ class TambahProduk extends CI_Controller {
         $this->produk_model->insertNewPro($namaKat, $hargaPro, $katPro);
         $_SESSION['success']="berhasil tambah produk";
         $this->session->mark_as_flash('success');
-        redirect("produk");
+        $data['karyawan'] = $this->produk_model->getAllProduk();
+        $_SESSION['dataProduk']=$data;
+        return redirect(base_url()."TambahProduk");
     }
 }

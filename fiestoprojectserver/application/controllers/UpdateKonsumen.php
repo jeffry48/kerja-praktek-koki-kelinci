@@ -25,7 +25,8 @@ class UpdateKonsumen extends CI_Controller {
         $_SESSION['success']="berhasil update customer";
         $this->session->mark_as_flash('success');
         $data['karyawan'] = $this->Customer->getAll();
-        $this->load->view('konsumen/konsumen.php',$data);
+        $_SESSION['data']=$data;
+        return redirect(base_url()."UpdateKonsumen");
         
     }
 }

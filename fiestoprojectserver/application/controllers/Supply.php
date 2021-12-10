@@ -11,12 +11,9 @@ class Supply extends CI_Controller {
 
     public function index()
     {
-        // redirect(base_url() . 'login');
-        // $this->load->helper('URL');
         $this->load->helper('url');
         $data['karyawan'] = $this->Supplier->getAll();
-        // echo $data['post'];
-        $this->load->view('supplier/supplier.php',$data);
-        
+        $_SESSION['data']=$data;
+        return redirect(base_url()."Supply");
     }
 }

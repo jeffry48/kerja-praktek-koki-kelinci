@@ -40,8 +40,8 @@ class TambahSupplier extends CI_Controller {
         <?php
         $_SESSION['success']="berhasil tambah supplier";
         $this->session->mark_as_flash('success');
-        $this->load->helper('url');
         $data['karyawan'] = $this->Supplier->getAll();
-        $this->load->view('supplier/supplier.php',$data);
+        $_SESSION['data']=$data;
+        return redirect(base_url()."TambahSupplier");
     }
 }

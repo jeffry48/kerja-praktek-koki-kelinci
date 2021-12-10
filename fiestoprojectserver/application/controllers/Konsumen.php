@@ -15,8 +15,8 @@ class Konsumen extends CI_Controller {
         // $this->load->helper('URL');
         $this->load->helper('url');
         $data['karyawan'] = $this->Customer->getAll();
-        // echo $data['post'];
-        $this->load->view('konsumen/konsumen.php',$data);
+        $_SESSION['data']=$data;
+        return redirect(base_url()."Konsumen");
         
     }
 }

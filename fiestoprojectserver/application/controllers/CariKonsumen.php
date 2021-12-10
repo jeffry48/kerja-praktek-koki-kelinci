@@ -19,7 +19,8 @@ class CariKonsumen extends CI_Controller {
         $alamat=$this->input->post('alamat');
         $nohp=$this->input->post('nohp');
         $data['karyawan'] = $this->Customer->getFromSearch($nama,$alamat,$nohp);
-        $this->load->view('konsumen/konsumen.php',$data);
+        $_SESSION['data']=$data;
+        return redirect(base_url()."CariKonsumen");
     }
 
 }
