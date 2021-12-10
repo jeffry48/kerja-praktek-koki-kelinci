@@ -13,7 +13,9 @@ class keUpdateKategori extends CI_Controller {
 
         $_SESSION['currKatData']=$this->kategori_model->getByIdkat($idKat);
         $this->load->helper('url');
-        $this->load->view('kategori/updatekategori.php');
+        // $this->load->view('kategori/updatekategori.php');
+        // var_dump($_SESSION['currKatData']);
+        redirect(base_url()."keUpdateKategori");
         
     }
 }

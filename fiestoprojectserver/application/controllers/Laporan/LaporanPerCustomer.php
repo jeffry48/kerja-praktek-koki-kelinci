@@ -14,7 +14,9 @@ class laporanPerCustomer extends CI_Controller {
         $this->load->helper('url');
         $data['karyawan'] = $this->Customer->getAll();
         $data['karyawan1'] = $this->Detail_Jual->getAllDateDesc();
-        $this->load->view('laporan penjualan/laporan_per_customer.php',$data);
+        // $this->load->view('laporan penjualan/laporan_per_customer.php',$data);
+        $_SESSION['data']=$data;
+        return redirect(base_url()."laporan/LaporanPerCustomer");
         
     }
 }

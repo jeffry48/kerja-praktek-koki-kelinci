@@ -29,6 +29,8 @@ class buatLaporanperCustomer extends CI_Controller {
         $_SESSION['startDate']=$tgls;
         $_SESSION['endDate']=$tgle;
 
-        $this->load->view('laporan penjualan/laporan_per_customer.php',$data);
+        // $this->load->view('laporan penjualan/laporan_per_customer.php',$data);
+        $_SESSION['data']=$data;
+        return redirect(base_url()."laporan/BuatLaporanPerCustomer");
     }
 }

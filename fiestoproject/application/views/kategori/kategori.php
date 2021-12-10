@@ -122,7 +122,7 @@
                                     </div>
                                     <!-- /.card-header -->
                                     <!-- form start -->
-                                    <form action="<?= base_url() ?>cariKategori" method="post">
+                                    <form action="<?= $this->config->item('backend_server_url') ?>cariKategori" method="post">
                                         <div class="card-body">
                                             <div class="form-group">
                                                 <label for="nama">Nama Kategori</label>
@@ -167,9 +167,10 @@
                                                                             </form>
                                                                         </div>
                                                                     </div>
-    =                                                            </td>
+                                                                </td>
                                                             </tr>';
                                                         }
+                                                        $_SESSION['hasilSearchkat']=null;
                                                     }
                                                     else{
                                                         for ($i=0; $i < count($_SESSION['dataKategori']); $i++) { 
@@ -181,13 +182,13 @@
                                                                 <td>
                                                                     <div class="btn-group">
                                                                         <div class="col-sm-6">
-                                                                            <form action="HapusKategori" method="post">
+                                                                            <form action="'.$this->config->item('backend_server_url').'HapusKategori" method="post">
                                                                                 <input type="hidden" name="idKat" value="'.$currData['id_kategori'].'">
                                                                                 <input type="submit" class="btn btn-info pull-left" value = "Hapus" >
                                                                             </form>                                                                        
                                                                         </div>
                                                                         <div class="col-sm-6">
-                                                                            <form action="keUpdateKategori" method="post">
+                                                                            <form action="'.$this->config->item('backend_server_url').'keUpdateKategori" method="post">
                                                                                 <input type="submit" class="btn btn-info pull-left" value = "Update" >
                                                                                 <input type="hidden" name="idKat" value="'.$currData['id_kategori'].'">
                                                                             </form>

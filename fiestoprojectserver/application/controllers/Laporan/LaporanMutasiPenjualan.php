@@ -21,6 +21,8 @@ class laporanMutasiPenjualan extends CI_Controller {
         $trans = $query3->result_array();
         $data['karyawan1']=$trans;
 
-        $this->load->view('laporan penjualan/laporan_mutasi_penjualan.php',$data);
+        // $this->load->view('laporan penjualan/laporan_mutasi_penjualan.php',$data);
+        $_SESSION['data']=$data;
+        return redirect(base_url()."laporan/LaporanMutasiPenjualan");
     }
 }

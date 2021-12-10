@@ -49,7 +49,7 @@
                                     </div>
                                     <!-- /.card-header -->
                                     <!-- form start -->
-                                    <form action="<?= base_url() ?>UpdateProduk" method="post">
+                                    <form action="<?= $this->config->item('backend_server_url') ?>UpdateProduk" method="post">
                                         <div class="card-body">
                                             <div class="form-group">
                                                 <label for="nama">Nama Produk</label>
@@ -57,7 +57,7 @@
                                             </div>
                                             <div class="form-group">
                                                 <label for="nama">Harga Produk</label>
-                                                <input type="text" value="<?php echo $_SESSION['currProData']['harga_produk']?>" name="hargaPro" class="form-control" id="nama" placeholder="Harga Produk">
+                                                <input type="text" value="<?php echo $_SESSION['currProData']['harga_produk']?>" name="hargaPro" class="form-control" id="hargaPro" placeholder="Harga Produk">
                                             </div>
                                             <?php 
                                                 $namaKat="";
@@ -89,7 +89,7 @@
                                         <!-- /.card-body -->
                                         <div class="card-footer">
                                             <input type="hidden" name="idPro" value="<?php echo $_SESSION['currProData']['id_produk']?>">
-                                            <button type="submit" class="btn btn-primary">Update Produk</button>
+                                            <button type="submit" id="updateBtn" class="btn btn-primary">Update Produk</button>
                                         </div>
                                         
                                     </form>
@@ -139,6 +139,11 @@
                 .replace(/\B(?=(\d{3})+(?!\d))/g, ".")
                 ;
                 });
+            });
+            $('#updateBtn').click(function(){
+                var harga=$('#hargaPro').val();
+                harga=harga.replaceAll(".", "");
+                $('#hargaPro').val(harga);
             });
         </script>
     </body>

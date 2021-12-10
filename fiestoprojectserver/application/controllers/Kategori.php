@@ -13,6 +13,7 @@ class Kategori extends CI_Controller {
         $_SESSION['dataKategori'] = $allKat;
         // var_dump($allKat);
         $this->load->helper('url');
-        $this->load->view('kategori/kategori.php');
+        // $this->load->view('kategori/kategori.php');
+        return redirect(base_url()."kategori");
     }
 }

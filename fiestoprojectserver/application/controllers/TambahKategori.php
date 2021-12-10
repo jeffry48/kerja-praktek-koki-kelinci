@@ -15,6 +15,6 @@ class TambahKategori extends CI_Controller {
         $this->kategori_model->insertNewKat($namaKat);
         $_SESSION['success']="berhasil tambah kategori";
         $this->session->mark_as_flash('success');
-        redirect("kategori");
+        redirect($this->config->item('backend_server_url')."kategori");
     }
 }

@@ -148,7 +148,7 @@
                         
                         <div class="row">
                             <div class="col-sm-12">
-                                <form action="<?= base_url()?>laporan/buatLaporanMutasipenjualan" method="POST">
+                                <form action="<?= $this->config->item('backend_server_url')?>laporan/buatLaporanMutasipenjualan" method="POST">
                                     <div class="card-body">
                                         <div class="form-group">
                                             <label for="nama">tanggal start: </label>

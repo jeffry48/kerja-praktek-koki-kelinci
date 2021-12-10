@@ -31,6 +31,8 @@ class buatLaporanperSupplier extends CI_Controller {
         $_SESSION['startDate']=$tgls;
         $_SESSION['endDate']=$tgle;
         
-        $this->load->view('laporan pembelian/laporan_per_supplier.php',$data);
+        // $this->load->view('laporan pembelian/laporan_per_supplier.php',$data);
+        $_SESSION['data']=$data;
+        return redirect(base_url()."laporan/BuatLaporanperSupplier");
     }
 }

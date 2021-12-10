@@ -33,6 +33,8 @@ class buatLaporanPembelianTerbanyak extends CI_Controller {
         $_SESSION['endDate']=$tgle;
         
 
-        $this->load->view('laporan pembelian/laporan_pembelian_terbanyak.php',$data);
+        // $this->load->view('laporan pembelian/laporan_pembelian_terbanyak.php',$data);
+        $_SESSION['data']=$data;
+        return redirect(base_url()."laporan/BuatLaporanPembelianTerbanyak");
     }
 }

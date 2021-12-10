@@ -144,7 +144,7 @@
                             <?php include 'application/views/nav_header_laporan.php'?>
                         </div>
                         <div class="col-sm-12">
-                            <form action="<?=base_url()?>laporan/buatLaporanPembelianTerbanyak" method="POST">
+                            <form action="<?=$this->config->item('backend_server_url')?>laporan/buatLaporanPembelianTerbanyak" method="POST">
                                 <div class="card-body">
                                     <div class="form-group">
                                         <label for="nama">tanggal start:</label>

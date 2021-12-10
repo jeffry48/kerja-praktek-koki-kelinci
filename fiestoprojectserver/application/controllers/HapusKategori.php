@@ -11,6 +11,6 @@ class HapusKategori extends CI_Controller {
     {
         $idKat=$this->input->post('idKat');
         $this->kategori_model->deleteKat($idKat);
-        redirect("kategori");
+        redirect($this->config->item('backend_server_url')."kategori");
     }
 }

@@ -15,6 +15,7 @@ class keUpdateProduk extends CI_Controller {
         $idPro=$this->input->post('idPro');
         $_SESSION['currProData']=$this->produk_model->getByIdPro($idPro);
         $this->load->helper('url');
-        $this->load->view('produk/updateproduk.php');
+        // $this->load->view('produk/updateproduk.php');
+        return redirect(base_url()."keUpdateProduk");
     }
 }

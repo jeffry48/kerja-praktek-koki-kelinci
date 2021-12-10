@@ -1,5 +1,6 @@
 <?php
-class keTambahProduk extends CI_Controller {
+class laporanMutasiPenjualan extends CI_Controller {
+
     public function __construct() {
         parent::__construct();
         $this->load->library('session');
@@ -8,7 +9,9 @@ class keTambahProduk extends CI_Controller {
     public function index()
     {
         $this->load->helper('url');
-        $this->load->view('produk/tambahproduk.php');
-        
+
+        $data=$_SESSION['data'];
+        $this->load->view('laporan penjualan/laporan_mutasi_penjualan.php',$data);
+    
     }
 }

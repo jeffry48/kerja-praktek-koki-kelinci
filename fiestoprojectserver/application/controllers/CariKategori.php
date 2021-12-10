@@ -12,7 +12,7 @@ class cariKategori extends CI_Controller {
     {
         $keyword=$this->input->post('keyword');
         $_SESSION['hasilSearchkat'] = $this->kategori_model->searchKat($keyword);
-        $this->session->mark_as_flash('hasilSearchkat');
-        redirect("kategori");
+        // var_dump($_SESSION['hasilSearchkat']);
+        redirect($this->config->item('backend_server_url')."kategori");
     }
 }

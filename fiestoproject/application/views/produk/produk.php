@@ -108,7 +108,7 @@
                             <div class="col-sm-6">
                                 <h1>Produk</h1>
                                 <br>
-                                <button type="submit" class="btn btn-primary"> <a href="<?= base_url() ?>keTambahProduk">Tambah baru</a></button>
+                                <button type="submit" class="btn btn-primary"> <a href="<?= $this->config->item('backend_server_url') ?>keTambahProduk">Tambah baru</a></button>
                             </div>
                         </div>
                     </div><!-- /.container-fluid -->
@@ -126,7 +126,7 @@
                                     </div>
                                     <!-- /.card-header -->
                                     <!-- form start -->
-                                    <form action="<?= base_url() ?>CariProduk" method="post">
+                                    <form action="<?= $this->config->item('backend_server_url') ?>CariProduk" method="post">
                                         <div class="card-body">
                                             <div class="form-group">
                                                 <label for="keyword">Nama Produk</label>
@@ -194,13 +194,13 @@
                                                             <td>
                                                                 <div class="btn-group">
                                                                     <div class="col-sm-6">
-                                                                        <form action="HapusProduk" method="post">
+                                                                        <form action="'.$this->config->item('backend_server_url').'HapusProduk" method="post">
                                                                             <input type="hidden" name="idPro" value="'.$currData['id_produk'].'">
                                                                             <input type="submit" class="btn btn-info pull-left" value = "Hapus" >
                                                                         </form>                                                                    
                                                                     </div>
                                                                     <div class="col-sm-6">
-                                                                        <form action="keUpdateProduk" method="post">
+                                                                        <form action="'.$this->config->item('backend_server_url').'keUpdateProduk" method="post">
                                                                             <input type="hidden" name="idPro" value="'.$currData['id_produk'].'">
                                                                             <input type="submit" class="btn btn-info pull-left" value = "Update" >
                                                                         </form>
@@ -229,13 +229,13 @@
                                                             <td>
                                                                 <div class="btn-group">
                                                                     <div class="col-sm-6">
-                                                                        <form action="HapusProduk" method="post">
+                                                                        <form action="'.$this->config->item('backend_server_url').'HapusProduk" method="post">
                                                                             <input type="hidden" name="idPro" value="'.$currData['id_produk'].'">
                                                                             <input type="submit" class="btn btn-info pull-left" value = "Hapus" >
                                                                         </form>
                                                                     </div>
                                                                     <div class="col-sm-6">
-                                                                        <form action="keUpdateProduk" method="post">
+                                                                        <form action="'.$this->config->item('backend_server_url').'keUpdateProduk" method="post">
                                                                             <input type="hidden" name="idPro" value="'.$currData['id_produk'].'">
                                                                             <input type="submit" class="btn btn-info pull-left" value = "Update" >
                                                                         </form>

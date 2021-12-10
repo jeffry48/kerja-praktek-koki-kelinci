@@ -144,7 +144,7 @@
                         </div>
                         <div class="row">
                             <div class="col-sm-12">
-                                <form action="<?= base_url()?>laporan/buatLaporanPerCustomer" method="POST">
+                                <form action="<?= $this->config->item('backend_server_url')?>laporan/buatLaporanPerCustomer" method="POST">
                                     <div class="card-body">
                                         <div class="form-group">
                                             <label for="nama">Nama Konsumen</label>

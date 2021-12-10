@@ -10,7 +10,7 @@ class HapusProduk extends CI_Controller {
     {
         $idPro=$this->input->post('idPro');
         $this->produk_model->deletePro($idPro);
-        redirect('produk');
+        redirect($this->config->item('backend_server_url').'produk');
         
     }
 }

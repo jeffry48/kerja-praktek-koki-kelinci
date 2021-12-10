@@ -27,6 +27,8 @@ class BuatlaporanMutasiPenjualan extends CI_Controller {
         $_SESSION['startDate']=$tgls;
         $_SESSION['endDate']=$tgle;
 
-        $this->load->view('laporan penjualan/laporan_mutasi_penjualan.php',$data);
+        // $this->load->view('laporan penjualan/laporan_mutasi_penjualan.php',$data);
+        $_SESSION['data']=$data;
+        return redirect(base_url()."laporan/BuatlaporanMutasiPenjualan");
     }
 }

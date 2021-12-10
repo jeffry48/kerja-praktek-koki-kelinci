@@ -44,13 +44,13 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="<?= base_url() ?>kategori" class="nav-link">
+                                <a href="<?= $this->config->item('backend_server_url') ?>kategori" class="nav-link">
                                     <i class="fa fa-check-circle nav-icon"></i>
                                     <p>Kategori</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="<?= base_url() ?>produk" class="nav-link">
+                                <a href="<?= $this->config->item('backend_server_url') ?>produk" class="nav-link">
                                     <i class="fa fa-cube nav-icon"></i>
                                     <p>Produk</p>
                                 </a>
@@ -74,20 +74,11 @@
                             </li>
                         </ul>
                     </li>
-                    <!-- <li class="nav-header">Laporan</li>
-                    <li class="nav-item menu-open">
-                        <ul class="nav nav-treeview">
-                            <a href="<?= base_url() ?>laporan/laporanPerSupplier" class="nav-link">
-                                <i class="fa fa-files-o nav-icon"></i>
-                                <p>laporan</p>
-                            </a>
-                        </ul>
-                    </li> -->
                     <li class="nav-header">Laporan</li>
                     <li class="nav-item menu-open">
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="<?= base_url() ?>laporan/laporanPerSupplier" class="nav-link">
+                                <a href="<?= $this->config->item('backend_server_url') ?>laporan/laporanPerSupplier" class="nav-link">
                                     <i class="fa fa-files-o nav-icon"></i>
                                     <p>Laporan</p>
                                 </a>

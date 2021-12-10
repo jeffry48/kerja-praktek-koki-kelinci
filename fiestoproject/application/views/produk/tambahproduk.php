@@ -68,7 +68,7 @@
                                     </div>
                                     <!-- /.card-header -->
                                     <!-- form start -->
-                                    <form action="<?= base_url() ?>TambahProduk" method="post">
+                                    <form action="<?= $this->config->item('backend_server_url') ?>TambahProduk" method="post">
                                         <div class="card-body">
                                             <div class="form-group">
                                                 <label for="namaPro">Nama Produk</label>
@@ -95,7 +95,7 @@
 
                                         <!-- /.card-body -->
                                         <div class="card-footer">
-                                            <button type="submit" class="btn btn-primary">Tambah Produk</button>
+                                            <button type="submit" id="tambahBtn" class="btn btn-primary">Tambah Produk</button>
                                         </div>
                                         
                                     </form>
@@ -145,6 +145,11 @@
                 .replace(/\B(?=(\d{3})+(?!\d))/g, ".")
                 ;
                 });
+            });
+            $('#tambahBtn').click(function(){
+                var harga=$('#hargaPro').val();
+                harga=harga.replaceAll(".", "");
+                $('#hargaPro').val(harga);
             });
         </script>
     </body>

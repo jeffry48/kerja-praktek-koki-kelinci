@@ -23,6 +23,8 @@ class laporanMutasipembelian extends CI_Controller {
         $trans = $query3->result_array(); 
         $data['karyawan1']=$trans;
 
-        $this->load->view('laporan pembelian/laporan_mutasi_pembelian.php',$data);
+        // $this->load->view('laporan pembelian/laporan_mutasi_pembelian.php',$data);
+        $_SESSION['data']=$data;
+        return redirect(base_url()."laporan/LaporanMutasiPembelian");
     }
 }

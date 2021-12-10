@@ -12,7 +12,8 @@ class laporanPembelianterbanyak extends CI_Controller {
         
         $this->load->helper('url');
         $data['karyawan1'] = $this->Detail_Beli->getAllDateDesc();
-        $this->load->view('laporan pembelian/laporan_pembelian_terbanyak.php',$data);
-        
+        // $this->load->view('laporan pembelian/laporan_pembelian_terbanyak.php',$data);
+        $_SESSION['data']=$data;
+        return redirect(base_url()."laporan/LaporanPembelianTerbanyak");
     }
 }

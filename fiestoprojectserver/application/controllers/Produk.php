@@ -17,7 +17,8 @@ class Produk extends CI_Controller {
         $_SESSION['dataKategori'] = $allKat;
 
         $this->load->helper('url');
-        $this->load->view('produk/produk.php');
+        // $this->load->view('produk/produk.php');
+        return redirect(base_url()."produk");
         
     }
 }

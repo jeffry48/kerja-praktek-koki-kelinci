@@ -1,5 +1,6 @@
 <?php
-class keTambahProduk extends CI_Controller {
+class Kategori extends CI_Controller {
+
     public function __construct() {
         parent::__construct();
         $this->load->library('session');
@@ -7,8 +8,8 @@ class keTambahProduk extends CI_Controller {
 
     public function index()
     {
+        // var_dump($allKat);
         $this->load->helper('url');
-        $this->load->view('produk/tambahproduk.php');
-        
+        $this->load->view('kategori/kategori.php');
     }
 }

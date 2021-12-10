@@ -17,6 +17,6 @@ class TambahProduk extends CI_Controller {
         $this->produk_model->insertNewPro($namaKat, $hargaPro, $katPro);
         $_SESSION['success']="berhasil tambah produk";
         $this->session->mark_as_flash('success');
-        redirect("produk");
+        redirect($this->config->item('backend_server_url')."produk");
     }
 }

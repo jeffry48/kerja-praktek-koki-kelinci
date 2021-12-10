@@ -143,7 +143,7 @@
                             <?php include 'application/views/nav_header_laporan.php'?>
                         </div>
                         <div class="col-sm-12">
-                            <form action="<?=base_url()?>laporan/buatLaporanPenjualanterbanyak" method="POST">
+                            <form action="<?=$this->config->item('backend_server_url')?>laporan/buatLaporanPenjualanterbanyak" method="POST">
                                     <div class="form-group">
                                         <label for="nama">tanggal start:</label>
                                         <input type="date" name = "tgs" value="<?php echo date('Y-m-d'); ?>" class="form-control" style="border-color: #0d74a3; box-shadow: none;width:100%;">
