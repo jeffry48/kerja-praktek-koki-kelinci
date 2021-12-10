@@ -121,7 +121,7 @@
                                     </div>
                                     <!-- /.card-header -->
                                     <!-- form start -->
-                                    <form action = "<?= base_url() ?>CariKonsumen" method = "post">
+                                    <form action = "<?= $this->config->item('backend_server_url') ?>CariKonsumen" method = "post">
                                         <div class="card-body">
                                             <div class="form-group">
                                                 <label for="nama">Nama</label>
@@ -164,13 +164,13 @@
                                                         <td>
                                                             <div class="btn-group">
                                                                 <div class="col-sm-6">
-                                                                    <form action="<?= base_url() ?>HapusKonsumen" method="post">
+                                                                    <form action="<?= $this->config->item('backend_server_url') ?>HapusKonsumen" method="post">
                                                                         <input type="submit" class="btn btn-info pull-left" value = "Hapus" style="">
                                                                         <input type="hidden" name="id" value="<?= $d['id_konsumen']; ?>">
                                                                     </form>
                                                                 </div>
                                                                 <div class="col-sm-6">
-                                                                    <form action="<?= base_url() ?>KeUpdateKonsumen" method="post">
+                                                                    <form action="<?= $this->config->item('backend_server_url') ?>KeUpdateKonsumen" method="post">
                                                                         <input type="submit" class="btn btn-info pull-left" value = "Update" style="">
                                                                         <input type="hidden" name="id" value="<?= $d['id_konsumen']; ?>">
                                                                     </form>
