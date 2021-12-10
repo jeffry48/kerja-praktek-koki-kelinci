@@ -13,7 +13,8 @@ class HapusSupplier extends CI_Controller {
         $id=$this->input->post('id');
         $this->Supplier->delete($id);
         $data['karyawan'] = $this->Supplier->getAll();
-        $this->load->view('supplier/supplier.php',$data);
+        $_SESSION['data']=$data;
+        return redirect(base_url()."HapusSupplier");
     }
 
 }

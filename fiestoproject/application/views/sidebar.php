@@ -32,13 +32,13 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="<?= base_url()?>supply" class="nav-link">
+                                <a href="<?= $this->config->item('backend_server_url')?>supply" class="nav-link">
                                     <i class="fa fa-truck nav-icon"></i>
                                     <p>Supplier</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="<?= base_url() ?>konsumen" class="nav-link">
+                                <a href="<?= $this->config->item('backend_server_url') ?>konsumen" class="nav-link">
                                     <i class="fa fa-users nav-icon"></i>
                                     <p>Konsumen</p>
                                 </a>

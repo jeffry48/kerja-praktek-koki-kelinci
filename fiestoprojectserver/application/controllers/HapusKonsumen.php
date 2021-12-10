@@ -13,6 +13,7 @@ class HapusKonsumen extends CI_Controller {
         $id=$this->input->post('id');
         $this->Customer->delete($id);
         $data['karyawan'] = $this->Customer->getAll();
-        $this->load->view('konsumen/konsumen.php',$data);
+        $_SESSION['data']=$data;
+        return redirect(base_url()."HapusKonsumen");
     }
 }

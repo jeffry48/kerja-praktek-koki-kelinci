@@ -27,6 +27,7 @@ class UpdatePegawai extends CI_Controller {
         $_SESSION['success']="berhasil update pegawai";
         $this->session->mark_as_flash('success');
         $data['karyawan'] = $this->Karyawan->getAll();
-        $this->load->view('employee/pegawai.php',$data);
+        $_SESSION['data']=$data;
+        return redirect(base_url()."UpdatePegawai");
     }
 }

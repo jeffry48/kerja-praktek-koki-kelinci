@@ -21,6 +21,7 @@ class CariPegawai extends CI_Controller {
         $jk=$this->input->post('jk');
         $nohp=$this->input->post('nohp');
         $data['karyawan'] = $this->Karyawan->getFromSearch($nama,$posisi,$alamat,$nohp,$jk);
-        $this->load->view('employee/pegawai.php',$data);
+        $_SESSION['data']=$data;
+        return redirect(base_url()."CariPegawai");
     }
 }

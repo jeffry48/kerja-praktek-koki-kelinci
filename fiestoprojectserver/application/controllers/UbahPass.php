@@ -25,16 +25,12 @@ class UbahPass extends CI_Controller {
         if($cekpasslama > 0)
         {
             $updatepass = $this->Karyawan->updatepassbaru($cookieData,$passbaru);
-            // echo "a";
-            ?>
-                <script type="text/javascript">
-                    alert("Berhasil Ubah Password");
-                </script>
-            <?php
-            // $data['karyawan'] = $this->Karyawan->getFromSearch($nama,$posisi,$alamat,$nohp,$jk);
-            // $this->load->view('home/login.php');
         }
-        // echo $cekpasslama;
-        return redirect(base_url()."ubahPass");
+        ?>
+            <script type="text/javascript">
+                alert("Berhasil Ubah Password");
+            </script>
+        <?php
+        return redirect(base_url()."UbahPass");
     }
 }

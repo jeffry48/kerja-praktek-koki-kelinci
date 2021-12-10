@@ -61,9 +61,9 @@
                                     </div>
                                     <!-- /.card-header -->
                                     <!-- form start -->
-                                    <form action = "<?= base_url() ?>UpdateKonsumen" method = "post">
+                                    <form action = "<?= $this->config->item('backend_server_url') ?>UpdateKonsumen" method = "post">
                                     <?php foreach($karyawan as $k): ?>
-                                        <input type="hidden" name="id" value="<?= $k['id_konsumen'] ?>">
+                                        <input type="hidden" name="id" value="<?php echo $k['id_konsumen']; ?>">
                                         <div class="card-body">
                                             <div class="form-group">
                                                 <label for="nama">Nama</label>
@@ -81,7 +81,7 @@
                                         </div>
                                         <!-- /.card-body -->
                                         <div class="card-footer">
-                                            <button type="submit" class="btn btn-primary">Update</button>
+                                            <button type="submit" class="btn btn-primary">Update Konsumen</button>
                                         </div>
                                     <?php endforeach; ?>
                                     </form>

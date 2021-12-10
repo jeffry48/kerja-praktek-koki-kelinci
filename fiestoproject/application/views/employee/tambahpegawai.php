@@ -62,7 +62,7 @@
                                     </div>
                                     <!-- /.card-header -->
                                     <!-- form start -->
-                                    <form action = "<?= base_url() ?>TambahPegawai" method = "post">
+                                    <form action = "<?= $this->config->item('backend_server_url') ?>TambahPegawai" method = "post">
                                         <div class="card-body">
                                             <div class="form-group">
                                                 <label for="nama">Nama</label>

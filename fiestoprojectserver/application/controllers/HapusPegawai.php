@@ -13,6 +13,7 @@ class HapusPegawai extends CI_Controller {
         $id=$this->input->post('id');
         $this->Karyawan->delete($id);
         $data['karyawan'] = $this->Karyawan->getAll();
-        $this->load->view('employee/pegawai.php',$data);
+        $_SESSION['data']=$data;
+        return redirect(base_url()."HapusPegawai");
     }
 }
