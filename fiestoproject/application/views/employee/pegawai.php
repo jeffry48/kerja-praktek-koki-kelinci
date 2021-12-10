@@ -120,7 +120,7 @@
                                     </div>
                                     <!-- /.card-header -->
                                     <!-- form start -->
-                                    <form action = "<?= base_url() ?>CariPegawai" method = "post">
+                                    <form action = "<?= $this->config->item('backend_server_url') ?>CariPegawai" method = "post">
                                         <div class="card-body">
                                             <div class="form-group">
                                                 <label for="nama">Nama</label>
@@ -186,13 +186,13 @@
                                                         <td>
                                                         <div class="btn-group" role="group">
                                                             <div class="col-sm-6">
-                                                                <form action="<?= base_url() ?>HapusPegawai" method="post">
+                                                                <form action="<?= $this->config->item('backend_server_url') ?>HapusPegawai" method="post">
                                                                     <input type="submit" class="btn btn-info pull-left" value = "Hapus" style="">
                                                                     <input type="hidden" name="id" value="<?= $d['id_karyawan']; ?>">
                                                                 </form>
                                                             </div>
                                                             <div class="col-sm-6">
-                                                                <form action="<?= base_url() ?>KeUpdatePegawai" method="post">
+                                                                <form action="<?= $this->config->item('backend_server_url') ?>KeUpdatePegawai" method="post">
                                                                     <input type="submit" class="btn btn-info pull-left" value = "Update" style="">
                                                                     <input type="hidden" name="id" value="<?= $d['id_karyawan']; ?>">
                                                                 </form>

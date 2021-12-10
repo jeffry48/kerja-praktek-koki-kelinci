@@ -58,14 +58,14 @@
                                 <!-- general form elements -->
                                 <div class="card card-primary">
                                     <div class="card-header">
-                                        
+                                        <h3 class="card-title">Update Pegawai</h3>
                                     </div>
                                     <!-- /.card-header -->
                                     <!-- form start -->
-                                    <form action = "<?= base_url() ?>UpdatePegawai" method = "post">
+                                    <form action = "<?= $this->config->item('backend_server_url')?>UpdatePegawai" method = "post">
                                     <?php foreach($karyawan as $k): ?>
+                                        <input type="hidden" name="id" value="<?php echo $k['id_karyawan']; ?>">
                                         <div class="card-body">
-                                            <input type="hidden" name="id" value="<?= $k['id_karyawan'] ?>">
                                             <div class="form-group">
                                                 <label for="nama">Nama</label>
                                                 <input type="text" class="form-control" name="nama" placeholder="Nama Karyawan" value="<?= $k['nama_karyawan'] ?>">
@@ -94,7 +94,7 @@
                                         </div>
                                         <!-- /.card-body -->
                                         <div class="card-footer">
-                                            <button type="submit" class="btn btn-primary">Update</button>
+                                            <button type="submit" class="btn btn-primary">Update Pegawai</button>
                                         </div>
                                         <?php endforeach; ?>
                                     </form>
